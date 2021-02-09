@@ -1,0 +1,49 @@
+{
+    "name": "mylistryx/yii2-bootstrap5",
+    "description": "The Twitter Bootstrap v5 extension for the Yii framework",
+    "version": "1.0.0",
+    "keywords": [
+        "yii2",
+        "bootstrap",
+        "bootstrap5"
+    ],
+    "type": "yii2-extension",
+    "license": "BSD-3-Clause",
+    "support": {
+        "source": "https://github.com/mylistryx/yii2-bootstrap45"
+    },
+    "authors": [
+        {
+            "name": "Sergey Zhukovskiy",
+            "email": "mylistryx@gmail.com",
+            "homepage": "https://net23.ru/"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "~7.4.0",
+        "yiisoft/yii2": "~2.0",
+        "npm-asset/bootstrap": "^5.0.0",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "yiisoft/yii2-coding-standards": "~2.0",
+        "cweagans/composer-patches": "^1.7"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "yii\\bootstrap5\\": "src"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
