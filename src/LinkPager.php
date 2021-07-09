@@ -60,7 +60,7 @@ class LinkPager extends Widget
     /**
      * @var string the CSS class for the each page button.
      */
-    public string $pageCssClass;
+    public string $pageCssClass = 'page-item';
     /**
      * @var string the CSS class for the "first" page button.
      */
@@ -226,7 +226,7 @@ class LinkPager extends Widget
         [$beginPage, $endPage] = $this->getPageRange();
         for ($i = $beginPage; $i <= $endPage; ++$i) {
             $buttons[] = $this->renderPageButton(
-                $i + 1,
+                (string)($i + 1),
                 $i,
                 '',
                 $this->disableCurrentPageButton && $i == $currentPage,
@@ -252,7 +252,7 @@ class LinkPager extends Widget
         $lastPageLabel = $this->lastPageLabel === true ? $pageCount : $this->lastPageLabel;
         if ($lastPageLabel !== false) {
             $buttons[] = $this->renderPageButton(
-                $lastPageLabel,
+                (string)$lastPageLabel,
                 $pageCount - 1,
                 $this->lastPageCssClass,
                 $currentPage >= $pageCount - 1,

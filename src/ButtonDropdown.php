@@ -195,7 +195,7 @@ class ButtonDropdown extends Widget
     protected function renderDropdown(): string
     {
         $config = $this->dropdown;
-        $config['clientOptions'] = false;
+        $config['clientOptions'] = [];
         $config['view'] = $this->getView();
         /** @var Widget $dropdownClass */
         $dropdownClass = $this->dropdownClass;

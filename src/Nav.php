@@ -136,7 +136,7 @@ class Nav extends Widget
     public function renderItems(): string
     {
         $items = [];
-        foreach ($this->items as $i => $item) {
+        foreach ($this->items as $item) {
             if (isset($item['visible']) && !$item['visible']) {
                 continue;
             }
@@ -211,7 +211,7 @@ class Nav extends Widget
             'options' => ArrayHelper::getValue($parentItem, 'dropdownOptions', []),
             'items' => $items,
             'encodeLabels' => $this->encodeLabels,
-            'clientOptions' => false,
+            'clientOptions' => [],
             'view' => $this->getView(),
         ]);
     }
@@ -228,7 +228,7 @@ class Nav extends Widget
             if (is_array($child) && !ArrayHelper::getValue($child, 'visible', true)) {
                 continue;
             }
-            if ($this->isItemActive($child)) {
+            if (is_array($child) && $this->isItemActive($child)) {
                 ArrayHelper::setValue($items[$i], 'active', true);
                 if ($this->activateParents) {
                     $active = true;
