@@ -46,7 +46,7 @@ class Alert extends Widget
      * the [[begin()]] and [[end()]] calls of the Alert widget will also be treated
      * as the body content, and will be rendered before this.
      */
-    public $body;
+    public string $body;
     /**
      * @var array|false the options for rendering the close button tag.
      * The close button is displayed in the header of the modal window. Clicking
@@ -55,7 +55,6 @@ class Alert extends Widget
      * The following special options are supported:
      *
      * - tag: string, the tag name of the button. Defaults to 'button'.
-     * - label: string, the label of the button. Defaults to '&times;'.
      *
      * The rest of the options will be rendered as the HTML attributes of the button tag.
      * Please refer to the [Alert documentation](https://getbootstrap.com/docs/5.0/components/alerts/)
@@ -91,7 +90,7 @@ class Alert extends Widget
      * Renders the alert body and the close button (if any).
      * @return string the rendering result
      */
-    protected function renderBodyEnd()
+    protected function renderBodyEnd(): string
     {
         return $this->body . "\n" . $this->renderCloseButton() . "\n";
     }
@@ -104,14 +103,8 @@ class Alert extends Widget
     {
         if (($closeButton = $this->closeButton) !== false) {
             $tag = ArrayHelper::remove($closeButton, 'tag', 'button');
-            $label = ArrayHelper::remove($closeButton, 'label', Html::tag('span', '&times;', [
-                'aria-hidden' => 'true',
-            ]));
-            if ($tag === 'button' && !isset($closeButton['type'])) {
-                $closeButton['type'] = 'button';
-            }
 
-            return Html::tag($tag, $label, $closeButton);
+            return Html::tag($tag, '', $closeButton);
         } else {
             return null;
         }
@@ -127,8 +120,10 @@ class Alert extends Widget
 
         if ($this->closeButton !== false) {
             $this->closeButton = array_merge([
-                'data-dismiss' => 'alert',
-                'class' => ['widget' => 'close'],
+                'type' => 'button',
+                'class' => ['widget' => 'btn-close'],
+                'data' => ['bs-dismiss' => 'alert'],
+                'aria' => ['label' => 'Close']
             ], $this->closeButton);
 
             Html::addCssClass($this->options, ['toggle' => 'alert-dismissible']);

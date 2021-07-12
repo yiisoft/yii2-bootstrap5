@@ -134,7 +134,7 @@ class Toast extends Widget
     {
         $button = $this->renderCloseButton();
         $tag = ArrayHelper::remove($this->titleOptions, 'tag', 'strong');
-        Html::addCssClass($this->titleOptions, ['widget' => 'mr-auto']);
+        Html::addCssClass($this->titleOptions, ['widget' => 'me-auto']);
         $title = Html::tag($tag, $this->title === null ? '' : $this->title, $this->titleOptions);
 
         if ($this->dateTime !== false) {
@@ -175,11 +175,8 @@ class Toast extends Widget
     protected function renderCloseButton(): string
     {
         $tag = ArrayHelper::remove($this->closeButton, 'tag', 'button');
-        $label = ArrayHelper::remove($this->closeButton, 'label', Html::tag('span', '&times;', [
-            'aria-hidden' => 'true',
-        ]));
 
-        return Html::tag($tag, "\n" . $label . "\n", $this->closeButton);
+        return Html::tag($tag, '', $this->closeButton);
     }
 
     /**
@@ -192,8 +189,8 @@ class Toast extends Widget
 
         $this->closeButton = array_merge([
             'aria' => ['label' => 'Close'],
-            'data' => ['dismiss' => 'toast'],
-            'class' => ['widget' => 'ml-2 mb-1 close'],
+            'data' => ['bs-dismiss' => 'toast'],
+            'class' => ['widget' => 'btn-close'],
             'type' => 'button',
         ], $this->closeButton);
 

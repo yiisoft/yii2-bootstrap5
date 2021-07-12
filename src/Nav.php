@@ -103,7 +103,7 @@ class Nav extends Widget
 
 
     /**
-     * Initializes the widget.
+     * {@inheritDoc}
      */
     public function init()
     {
@@ -120,7 +120,7 @@ class Nav extends Widget
     /**
      * Renders the widget.
      * @return string
-     * @throws InvalidConfigException
+     * @throws InvalidConfigException|\Throwable
      */
     public function run(): string
     {
@@ -131,7 +131,7 @@ class Nav extends Widget
     /**
      * Renders widget items.
      * @return string
-     * @throws InvalidConfigException
+     * @throws InvalidConfigException|\Throwable
      */
     public function renderItems(): string
     {
@@ -175,7 +175,9 @@ class Nav extends Widget
             Html::addCssClass($options, ['widget' => 'nav-item']);
             Html::addCssClass($linkOptions, ['widget' => 'nav-link']);
         } else {
-            $linkOptions['data-toggle'] = 'dropdown';
+            $linkOptions['data-bs-toggle'] = 'dropdown';
+            $linkOptions['role'] = 'button';
+            $linkOptions['aria-expanded'] = 'false';
             Html::addCssClass($options, ['widget' => 'dropdown nav-item']);
             Html::addCssClass($linkOptions, ['widget' => 'dropdown-toggle nav-link']);
             if (is_array($items)) {
@@ -220,7 +222,9 @@ class Nav extends Widget
      * Check to see if a child item is active optionally activating the parent.
      * @param array $items @see items
      * @param bool $active should the parent be active too
-     * @return array @see items
+     * @return array
+     * @see items
+     * @throws \Exception
      */
     protected function isChildActive(array $items, bool &$active): array
     {
@@ -256,6 +260,7 @@ class Nav extends Widget
      * be considered active.
      * @param array $item the menu item to be checked
      * @return bool whether the menu item is active
+     * @throws \Exception
      */
     protected function isItemActive(array $item): bool
     {

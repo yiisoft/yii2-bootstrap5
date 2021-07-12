@@ -25,7 +25,7 @@ class ToggleButtonGroupTest extends TestCase
         ]);
 
         $expectedHtml = <<<HTML
-<input type="hidden" name="ToggleButtonGroupTestModel[value]" value=""><div id="togglebuttongrouptestmodel-value" class="btn-group-toggle" data-toggle="buttons"><label class="btn btn-secondary" for="i0"><input type="checkbox" id="i0" name="ToggleButtonGroupTestModel[value][]" value="1" autocomplete="off">item 1</label>
+<input type="hidden" name="ToggleButtonGroupTestModel[value]" value=""><div id="togglebuttongrouptestmodel-value" class="btn-group" role="group"><label class="btn btn-secondary" for="i0"><input type="checkbox" id="i0" name="ToggleButtonGroupTestModel[value][]" value="1" autocomplete="off">item 1</label>
 <label class="btn btn-secondary" for="i1"><input type="checkbox" id="i1" name="ToggleButtonGroupTestModel[value][]" value="2" autocomplete="off">item 2</label></div>
 HTML;
         $this->assertEqualsWithoutLE($expectedHtml, $html);
@@ -63,7 +63,7 @@ HTML;
         ]);
 
         $expectedHtml = <<<HTML
-<input type="hidden" name="ToggleButtonGroupTestModel[value]" value=""><div id="togglebuttongrouptestmodel-value" class="btn-group-toggle" data-toggle="buttons"><label class="btn btn-secondary" for="i0"><input type="radio" id="i0" name="ToggleButtonGroupTestModel[value]" value="1" autocomplete="off">item 1</label>
+<input type="hidden" name="ToggleButtonGroupTestModel[value]" value=""><div id="togglebuttongrouptestmodel-value" class="btn-group" role="group"><label class="btn btn-secondary" for="i0"><input type="radio" id="i0" name="ToggleButtonGroupTestModel[value]" value="1" autocomplete="off">item 1</label>
 <label class="btn btn-secondary" for="i1"><input type="radio" id="i1" name="ToggleButtonGroupTestModel[value]" value="2" autocomplete="off">item 2</label></div>
 HTML;
         $this->assertEqualsWithoutLE($expectedHtml, $html);

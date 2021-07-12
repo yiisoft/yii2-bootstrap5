@@ -76,7 +76,8 @@ class Carousel extends Widget
 
 
     /**
-     * Initializes the widget.
+     * {@inheritDoc}
+     * @throws InvalidConfigException
      */
     public function init()
     {
@@ -91,9 +92,10 @@ class Carousel extends Widget
      * {@inheritdoc}
      * @throws InvalidConfigException
      */
-    public function run()
+    public function run(): string
     {
         $this->registerPlugin('carousel');
+
         return implode("\n", [
                 Html::beginTag('div', $this->options),
                 $this->renderIndicators(),
@@ -107,21 +109,28 @@ class Carousel extends Widget
      * Renders carousel indicators.
      * @return string the rendering result
      */
-    public function renderIndicators()
+    public function renderIndicators(): string
     {
         if ($this->showIndicators === false) {
             return '';
         }
         $indicators = [];
         for ($i = 0, $count = count($this->items); $i < $count; $i++) {
-            $options = ['data-target' => '#' . $this->options['id'], 'data-slide-to' => $i];
+            $options = [
+                'data' => [
+                    'bs-target' => '#' . $this->options['id'],
+                    'bs-slide-to' => $i
+                ],
+                'type' => 'button'
+            ];
             if ($i === 0) {
                 Html::addCssClass($options, ['activate' => 'active']);
+                $options['aria']['current'] = 'true';
             }
-            $indicators[] = Html::tag('li', '', $options);
+            $indicators[] = Html::tag('button', '', $options);
         }
 
-        return Html::tag('ol', implode("\n", $indicators), ['class' => ['carousel-indicators']]);
+        return Html::tag('div', implode("\n", $indicators), ['class' => ['carousel-indicators']]);
     }
 
     /**
@@ -129,7 +138,7 @@ class Carousel extends Widget
      * @return string the rendering result
      * @throws InvalidConfigException
      */
-    public function renderItems()
+    public function renderItems(): string
     {
         $items = [];
         for ($i = 0, $count = count($this->items); $i < $count; $i++) {
@@ -145,8 +154,9 @@ class Carousel extends Widget
      * @param int $index the item index as the first item should be set to `active`
      * @return string the rendering result
      * @throws InvalidConfigException if the item is invalid
+     * @throws \Exception
      */
-    public function renderItem($item, $index)
+    public function renderItem($item, int $index): string
     {
         if (is_string($item)) {
             $content = $item;
@@ -181,15 +191,21 @@ class Carousel extends Widget
     public function renderControls()
     {
         if (isset($this->controls[0], $this->controls[1])) {
-            return Html::a($this->controls[0], '#' . $this->options['id'], [
+            return Html::button($this->controls[0], [
                     'class' => 'carousel-control-prev',
-                    'data-slide' => 'prev',
-                    'role' => 'button',
+                    'data' => [
+                        'bs-target' => '#' . $this->options['id'],
+                        'bs-slide' => 'prev'
+                    ],
+                    'type' => 'button',
                 ]) . "\n"
-                . Html::a($this->controls[1], '#' . $this->options['id'], [
+                . Html::button($this->controls[1], [
                     'class' => 'carousel-control-next',
-                    'data-slide' => 'next',
-                    'role' => 'button',
+                    'data' => [
+                        'bs-target' => '#' . $this->options['id'],
+                        'bs-slide' => 'next'
+                    ],
+                    'type' => 'button',
                 ]);
         } elseif ($this->controls === false) {
             return '';

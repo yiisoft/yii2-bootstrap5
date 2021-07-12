@@ -19,10 +19,8 @@ class ToastTest extends TestCase
         $expected = <<<HTML
 <div id="w0" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
 <div class="toast-header">
-<strong class="mr-auto"></strong>
-<button type="button" class="ml-2 mb-1 close" aria-label="Close" data-dismiss="toast">
-<span aria-hidden="true">&times;</span>
-</button>
+<strong class="me-auto"></strong>
+<button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="toast"></button>
 </div>
 <div class="toast-body test" style="text-align: center;">
 
@@ -53,11 +51,9 @@ HTML;
         $expected = <<<HTML
 <div id="w0" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
 <div class="toast-header">
-<strong class="mr-auto">Toast title</strong>
+<strong class="me-auto">Toast title</strong>
 <small class="text-muted">a minute ago</small>
-<button type="button" class="ml-2 mb-1 close" aria-label="Close" data-dismiss="toast">
-<span aria-hidden="true">&times;</span>
-</button>
+<button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="toast"></button>
 </div>
 <div class="toast-body">
 Woohoo, you're reading this text in a toast!
@@ -81,11 +77,9 @@ HTML;
         $expected = <<<HTML
 <div id="w0" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
 <div class="toast-header">
-<strong class="mr-auto">Toast title</strong>
+<strong class="me-auto">Toast title</strong>
 <small class="toast-date-time text-muted" style="text-align: right;">a minute ago</small>
-<button type="button" class="ml-2 mb-1 close" aria-label="Close" data-dismiss="toast">
-<span aria-hidden="true">&times;</span>
-</button>
+<button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="toast"></button>
 </div>
 <div class="toast-body">
 
@@ -108,10 +102,8 @@ HTML;
         $expected = <<<HTML
 <div id="w0" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
 <div class="toast-header">
-<h5 class="mr-auto" style="text-align: left;">Toast title</h5>
-<button type="button" class="ml-2 mb-1 close" aria-label="Close" data-dismiss="toast">
-<span aria-hidden="true">&times;</span>
-</button>
+<h5 class="me-auto" style="text-align: left;">Toast title</h5>
+<button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="toast"></button>
 </div>
 <div class="toast-body">
 

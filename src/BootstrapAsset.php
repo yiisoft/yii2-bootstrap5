@@ -14,7 +14,5 @@ class BootstrapAsset extends AssetBundle
         'css/bootstrap.css',
     ];
 
-    public $js = [
-        'js/bootstrap.bundle.js',
-    ];
+    public $js = [];
 }

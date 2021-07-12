@@ -46,7 +46,7 @@ class ButtonDropdownTest extends TestCase
         ]);
 
         $expected = <<<EXPECTED
-<div id="w0" class="dropleft btn-group"><button id="w0-button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
+<div id="w0" class="dropleft btn-group"><button id="w0-button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Action</button>
 
 <div id="w1" class="dropdown-menu"><a class="dropdown-item" href="#">ItemA</a>
 <a class="dropdown-item" href="#">ItemB</a></div></div>
@@ -72,7 +72,7 @@ EXPECTED;
 
         $expected = <<<EXPECTED
 <div id="w0" class="dropdown btn-group"><button id="w1" class="btn">Split dropdown</button>
-<button id="w0-button" class="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>
+<button id="w0-button" class="btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden">Toggle Dropdown</span></button>
 <div id="w2" class="dropdown-menu"><a class="dropdown-item" href="#">ItemA</a>
 <a class="dropdown-item" href="#">ItemB</a></div></div>
 EXPECTED;

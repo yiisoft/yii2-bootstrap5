@@ -27,7 +27,7 @@ class NavBarTest extends TestCase
 <nav id="w0" class="navbar-inverse navbar-static-top navbar-frontend navbar">
 <div class="container">
 <a class="navbar-brand" href="/">My Company</a>
-<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#w0-collapse" aria-controls="w0-collapse" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+<button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#w0-collapse" aria-controls="w0-collapse" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 <div id="w0-collapse" class="collapse navbar-collapse">
 </div>
 </div>
@@ -109,13 +109,13 @@ HTML;
 <nav id="w0" class="navbar navbar-expand-lg navbar-light bg-light">
 <div class="container">
 <a class="navbar-brand" href="/">My Company</a>
-<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#w0-collapse" aria-controls="w0-collapse" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+<button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#w0-collapse" aria-controls="w0-collapse" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 <div id="w0-collapse" class="collapse navbar-collapse">
 <ul id="w1" class="mr-auto nav"><li class="nav-item"><a class="nav-link" href="#">Home</a></li>
 <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-<li class="dropdown nav-item"><a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">Dropdown</a><div id="w2" class="dropdown-menu"><a class="dropdown-item" href="#">Action</a>
+<li class="dropdown nav-item"><a class="dropdown-toggle nav-link" href="#" data-bs-toggle="dropdown" role="button" aria-expanded="false">Dropdown</a><div id="w2" class="dropdown-menu"><a class="dropdown-item" href="#">Action</a>
 <a class="dropdown-item" href="#">Another action</a>
-<div class="dropdown-divider"></div>
+<hr class="dropdown-divider">
 <a class="dropdown-item" href="#">Something else here</a></div></li></ul><form class="form-inline my-2 my-lg-0">
 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

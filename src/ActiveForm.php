@@ -72,6 +72,10 @@ class ActiveForm extends \yii\widgets\ActiveForm
      * Inline form layout
      */
     const LAYOUT_INLINE = 'inline';
+    /**
+     * Floating labels form layout
+     */
+    const LAYOUT_FLOATING = 'floating';
 
     /**
      * @var string the default field class name when calling [[field()]] to create a new field.
@@ -114,7 +118,7 @@ class ActiveForm extends \yii\widgets\ActiveForm
      */
     public function init()
     {
-        if (!in_array($this->layout, [self::LAYOUT_DEFAULT, self::LAYOUT_HORIZONTAL, self::LAYOUT_INLINE])) {
+        if (!in_array($this->layout, [self::LAYOUT_DEFAULT, self::LAYOUT_HORIZONTAL, self::LAYOUT_INLINE, self::LAYOUT_FLOATING])) {
             throw new InvalidConfigException('Invalid layout type: ' . $this->layout);
         }
 
@@ -125,9 +129,10 @@ class ActiveForm extends \yii\widgets\ActiveForm
     }
 
     /**
-     * @inheritdoc
+     * {@inheritDoc}
+     * @return ActiveField|\yii\widgets\ActiveField
      */
-    public function field($model, $attribute, $options = []): \yii\widgets\ActiveField
+    public function field($model, $attribute, $options = []): ActiveField
     {
         return parent::field($model, $attribute, $options);
     }

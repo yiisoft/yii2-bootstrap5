@@ -80,17 +80,17 @@ class Progress extends Widget
     /**
      * @var string the button label. This property will only be considered if [[bars]] is empty
      */
-    public $label;
+    public string $label;
     /**
      * @var int the amount of progress as a percentage. This property will only be considered if [[bars]] is empty
      */
-    public $percent = 0;
+    public int $percent = 0;
     /**
      * @var array the HTML attributes of the bar. This property will only be considered if [[bars]] is empty
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      * @since 2.0.6
      */
-    public $barOptions = [];
+    public array $barOptions = [];
     /**
      * @var array a set of bars that are stacked together to form a single progress bar.
      * Each bar is an array of the following structure:
@@ -106,7 +106,7 @@ class Progress extends Widget
      * ]
      * ```
      */
-    public $bars;
+    public array $bars;
 
 
     /**
@@ -123,7 +123,7 @@ class Progress extends Widget
      * {@inheritdoc}
      * @throws InvalidConfigException
      */
-    public function run()
+    public function run(): string
     {
         BootstrapAsset::register($this->getView());
         return $this->renderProgress();
@@ -133,8 +133,9 @@ class Progress extends Widget
      * Renders the progress.
      * @return string the rendering result.
      * @throws InvalidConfigException if the "percent" option is not set in a stacked progress bar.
+     * @throws \Exception
      */
-    protected function renderProgress()
+    protected function renderProgress(): string
     {
         $out = Html::beginTag('div', $this->options) . "\n";
         if (empty($this->bars)) {
@@ -164,14 +165,16 @@ class Progress extends Widget
      * @param array $options the HTML attributes of the bar
      * @return string the rendering result.
      */
-    protected function renderBar($percent, $label = '', $options = [])
+    protected function renderBar(int $percent, string $label = '', array $options = []): string
     {
         $percent = (float)trim(rtrim((string)$percent, '%'));
         $options = array_merge($options, [
             'role' => 'progressbar',
-            'aria-valuenow' => $percent,
-            'aria-valuemin' => 0,
-            'aria-valuemax' => 100,
+            'aria' => [
+                'valuenow' => $percent,
+                'valuemin' => 0,
+                'valuemax' => 100,
+            ]
         ]);
         Html::addCssClass($options, ['widget' => 'progress-bar']);
         Html::addCssStyle($options, ['width' => $percent . '%'], true);

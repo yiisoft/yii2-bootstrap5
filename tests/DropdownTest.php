@@ -42,7 +42,7 @@ class DropdownTest extends TestCase
         $expected = <<<EXPECTED
 <div id="w0" class="dropdown-menu"><h6 class="dropdown-header">Page1</h6>
 <div class="dropdown" aria-expanded="false">
-<a class="dropdown-item dropdown-toggle" href="#test" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">Dropdown1</a>
+<a class="dropdown-item dropdown-toggle" href="#test" data-bs-toggle="dropdown" aria-expanded="false" role="button">Dropdown1</a>
 <div id="w1" class="dropdown-submenu dropdown-menu"><h6 class="dropdown-header">Page2</h6>
 <h6 class="dropdown-header">Page3</h6></div>
 </div></div>
@@ -84,13 +84,13 @@ EXPECTED;
 
         $expected = <<<EXPECTED
 <div id="w0" class="dropdown-menu"><div class="dropdown" aria-expanded="false">
-<a class="dropdown-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">Dropdown1</a>
+<a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" role="button">Dropdown1</a>
 <div id="w1" class="submenu-list dropdown-submenu dropdown-menu"><h6 class="dropdown-header">Page1</h6>
 <h6 class="dropdown-header">Page2</h6></div>
 </div>
-<div class="dropdown-divider"></div>
+<hr class="dropdown-divider">
 <div class="dropdown" aria-expanded="false">
-<a class="dropdown-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">Dropdown2</a>
+<a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" role="button">Dropdown2</a>
 <div id="w2" class="submenu-override dropdown-submenu dropdown-menu"><h6 class="dropdown-header">Page3</h6>
 <h6 class="dropdown-header">Page4</h6></div>
 </div></div>
@@ -128,14 +128,14 @@ EXPECTED;
         );
         $expected = <<<HTML
 <div id="w0" class="dropdown-menu"><div class="dropdown" aria-expanded="false">
-<a class="dropdown-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">Dropdown1</a>
+<a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" role="button">Dropdown1</a>
 <div id="w1" class="submenu-list dropdown-submenu dropdown-menu"><h6 class="dropdown-header">Page1</h6>
 <h6 class="dropdown-header">Page2</h6></div>
 </div>
-<div class="dropdown-divider"></div>
+<hr class="dropdown-divider">
 <div class="dropdown" aria-expanded="false">
-<a class="dropdown-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">Dropdown2</a>
-<div id="w2" class="submenu-list dropdown-submenu dropdown-menu"><a class="dropdown-item active" href="/">Page3</a>
+<a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" role="button">Dropdown2</a>
+<div id="w2" class="submenu-list dropdown-submenu dropdown-menu"><a class="dropdown-item active" href="/" aria-current="true">Page3</a>
 <h6 class="dropdown-header">Page4</h6></div>
 </div></div>
 HTML;
@@ -173,13 +173,13 @@ HTML;
 
         $expected = <<<HTML
 <div id="w0" class="dropdown-menu"><div class="dropdown" aria-expanded="false">
-<a class="dropdown-item disabled dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button" tabindex="-1" aria-disabled="true">Dropdown1</a>
+<a class="dropdown-item disabled dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" role="button" tabindex="-1" aria-disabled="true">Dropdown1</a>
 <div id="w1" class="submenu-list dropdown-submenu dropdown-menu"><h6 class="dropdown-header">Page1</h6>
 <h6 class="dropdown-header">Page2</h6></div>
 </div>
-<div class="dropdown-divider"></div>
+<hr class="dropdown-divider">
 <div class="dropdown" aria-expanded="false">
-<a class="dropdown-item dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">Dropdown2</a>
+<a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" role="button">Dropdown2</a>
 <div id="w2" class="submenu-list dropdown-submenu dropdown-menu"><h6 class="dropdown-header">Page3</h6>
 <h6 class="dropdown-header">Page4</h6></div>
 </div></div>
@@ -193,12 +193,12 @@ HTML;
         Dropdown::$counter = 0;
         $form = <<<HTML
 <form class="px-4 py-3">
-<div class="form-group">
-<label for="exampleDropdownFormEmail1">Email address</label>
+<div class="mb-3">
+<label class="form-label" for="exampleDropdownFormEmail1">Email address</label>
 <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
 </div>
-<div class="form-group">
-<label for="exampleDropdownFormPassword1">Password</label>
+<div class="mb-3">
+<label class="form-label" for="exampleDropdownFormPassword1">Password</label>
 <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
 </div>
 <div class="form-check">
@@ -222,12 +222,12 @@ HTML;
 
         $expected = <<<HTML
 <div id="w0" class="dropdown-menu"><form class="px-4 py-3">
-<div class="form-group">
-<label for="exampleDropdownFormEmail1">Email address</label>
+<div class="mb-3">
+<label class="form-label" for="exampleDropdownFormEmail1">Email address</label>
 <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
 </div>
-<div class="form-group">
-<label for="exampleDropdownFormPassword1">Password</label>
+<div class="mb-3">
+<label class="form-label" for="exampleDropdownFormPassword1">Password</label>
 <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
 </div>
 <div class="form-check">
@@ -238,7 +238,7 @@ Remember me
 </div>
 <button type="submit" class="btn btn-primary">Sign in</button>
 </form>
-<div class="dropdown-divider"></div>
+<hr class="dropdown-divider">
 <a class="dropdown-item" href="#">New around here? Sign up</a>
 <a class="dropdown-item" href="#">Forgot password?</a></div>
 HTML;

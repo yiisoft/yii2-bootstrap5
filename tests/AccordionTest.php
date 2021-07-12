@@ -71,41 +71,41 @@ class AccordionTest extends TestCase
 
         $this->assertEqualsWithoutLE(<<<HTML
 <div id="w0" class="accordion">
-<div class="card"><div id="w0-collapse0-heading" class="card-header"><h5 class="mb-0"><button type="button" id="w1" class="btn-link btn" data-toggle="collapse" data-target="#w0-collapse0" aria-expanded="true" aria-controls="w0-collapse0">Collapsible Group Item #1</button>
+<div class="accordion-item"><div id="w0-collapse0-heading" class="accordion-header"><h5 class="mb-0"><button type="button" id="w1" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#w0-collapse0" aria-expanded="true" aria-controls="w0-collapse0">Collapsible Group Item #1</button>
 </h5></div>
-<div id="w0-collapse0" class="collapse show" aria-labelledby="w0-collapse0-heading" data-parent="#w0">
+<div id="w0-collapse0" class="collapse show" aria-labelledby="w0-collapse0-heading" data-bs-parent="#w0">
 <ul class="list-group">
 <li class="list-group-item">test content1</li>
 <li class="list-group-item">test content2</li>
 </ul>
 
 </div></div>
-<div id="testId" class="testClass card"><div id="w0-collapse1-heading" class="card-header"><h5 class="mb-0"><button type="button" id="w2" class="btn-link btn" data-toggle="collapse" data-target="#w0-collapse1" aria-expanded="false" aria-controls="w0-collapse1">Collapsible Group Item #2</button>
+<div id="testId" class="testClass accordion-item"><div id="w0-collapse1-heading" class="accordion-header"><h5 class="mb-0"><button type="button" id="w2" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#w0-collapse1" aria-expanded="false" aria-controls="w0-collapse1">Collapsible Group Item #2</button>
 </h5></div>
-<div id="w0-collapse1" class="testContentOptions collapse" aria-labelledby="w0-collapse1-heading" data-parent="#w0">
-<div class="card-body">Das ist das Haus vom Nikolaus</div>
+<div id="w0-collapse1" class="testContentOptions collapse" aria-labelledby="w0-collapse1-heading" data-bs-parent="#w0">
+<div class="accordion-body">Das ist das Haus vom Nikolaus</div>
 
-<div class="card-footer">Footer</div>
+<div class="accordion-footer">Footer</div>
 </div></div>
-<div id="testId2" class="testClass2 card"><div id="w0-collapse2-heading" class="card-header"><h5 class="mb-0"><button type="button" id="w3" class="btn-link btn" data-toggle="collapse" data-target="#w0-collapse2" aria-expanded="false" aria-controls="w0-collapse2"><h1>Collapsible Group Item #3</h1></button>
+<div id="testId2" class="testClass2 accordion-item"><div id="w0-collapse2-heading" class="accordion-header"><h5 class="mb-0"><button type="button" id="w3" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#w0-collapse2" aria-expanded="false" aria-controls="w0-collapse2"><h1>Collapsible Group Item #3</h1></button>
 </h5></div>
-<div id="w0-collapse2" class="testContentOptions2 collapse" aria-labelledby="w0-collapse2-heading" data-parent="#w0">
+<div id="w0-collapse2" class="testContentOptions2 collapse" aria-labelledby="w0-collapse2-heading" data-bs-parent="#w0">
 <ul class="list-group">
 <li class="list-group-item"><h2>test content1</h2></li>
 <li class="list-group-item"><h2>test content2</h2></li>
 </ul>
 
-<div class="card-footer">Footer2</div>
+<div class="accordion-footer">Footer2</div>
 </div></div>
-<div id="testId3" class="testClass3 card"><div id="w0-collapse3-heading" class="card-header"><h5 class="mb-0"><button type="button" id="w4" class="btn-link btn" data-toggle="collapse" data-target="#w0-collapse3" aria-expanded="false" aria-controls="w0-collapse3">&lt;h1&gt;Collapsible Group Item #4&lt;/h1&gt;</button>
+<div id="testId3" class="testClass3 accordion-item"><div id="w0-collapse3-heading" class="accordion-header"><h5 class="mb-0"><button type="button" id="w4" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#w0-collapse3" aria-expanded="false" aria-controls="w0-collapse3">&lt;h1&gt;Collapsible Group Item #4&lt;/h1&gt;</button>
 </h5></div>
-<div id="w0-collapse3" class="testContentOptions3 collapse" aria-labelledby="w0-collapse3-heading" data-parent="#w0">
+<div id="w0-collapse3" class="testContentOptions3 collapse" aria-labelledby="w0-collapse3-heading" data-bs-parent="#w0">
 <ul class="list-group">
 <li class="list-group-item"><h2>test content1</h2></li>
 <li class="list-group-item"><h2>test content2</h2></li>
 </ul>
 
-<div class="card-footer">Footer3</div>
+<div class="accordion-footer">Footer3</div>
 </div></div>
 </div>
 
@@ -137,28 +137,28 @@ HTML
 
         $this->assertEqualsWithoutLE(<<<HTML
 <div id="w0" class="accordion">
-<div class="card"><div id="w0-collapse0-heading" class="card-header"><h5 class="mb-0"><button type="button" id="w1" class="btn-link btn" data-toggle="collapse" data-target="#w0-collapse0" aria-expanded="true" aria-controls="w0-collapse0">Item1</button>
+<div class="accordion-item"><div id="w0-collapse0-heading" class="accordion-header"><h5 class="mb-0"><button type="button" id="w1" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#w0-collapse0" aria-expanded="true" aria-controls="w0-collapse0">Item1</button>
 </h5></div>
-<div id="w0-collapse0" class="collapse show" aria-labelledby="w0-collapse0-heading" data-parent="#w0">
-<div class="card-body">Content1</div>
+<div id="w0-collapse0" class="collapse show" aria-labelledby="w0-collapse0-heading" data-bs-parent="#w0">
+<div class="accordion-body">Content1</div>
 
 </div></div>
-<div class="card"><div id="w0-collapse1-heading" class="card-header"><h5 class="mb-0"><button type="button" id="w2" class="btn-link btn" data-toggle="collapse" data-target="#w0-collapse1" aria-expanded="false" aria-controls="w0-collapse1">Item2</button>
+<div class="accordion-item"><div id="w0-collapse1-heading" class="accordion-header"><h5 class="mb-0"><button type="button" id="w2" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#w0-collapse1" aria-expanded="false" aria-controls="w0-collapse1">Item2</button>
 </h5></div>
-<div id="w0-collapse1" class="collapse" aria-labelledby="w0-collapse1-heading" data-parent="#w0">
-<div class="card-body">Content2</div>
+<div id="w0-collapse1" class="collapse" aria-labelledby="w0-collapse1-heading" data-bs-parent="#w0">
+<div class="accordion-body">Content2</div>
 
 </div></div>
-<div class="card"><div id="w0-collapse2-heading" class="card-header"><h5 class="mb-0"><button type="button" id="w3" class="btn-link btn" data-toggle="collapse" data-target="#w0-collapse2" aria-expanded="false" aria-controls="w0-collapse2">Item3</button>
+<div class="accordion-item"><div id="w0-collapse2-heading" class="accordion-header"><h5 class="mb-0"><button type="button" id="w3" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#w0-collapse2" aria-expanded="false" aria-controls="w0-collapse2">Item3</button>
 </h5></div>
-<div id="w0-collapse2" class="collapse" aria-labelledby="w0-collapse2-heading" data-parent="#w0">
-<div class="card-body">Content3</div>
+<div id="w0-collapse2" class="collapse" aria-labelledby="w0-collapse2-heading" data-bs-parent="#w0">
+<div class="accordion-body">Content3</div>
 
 </div></div>
-<div class="card"><div id="w0-collapse3-heading" class="card-header"><h5 class="mb-0"><button type="button" id="w4" class="btn-link btn" data-toggle="collapse" data-target="#w0-collapse3" aria-expanded="false" aria-controls="w0-collapse3">FormField</button>
+<div class="accordion-item"><div id="w0-collapse3-heading" class="accordion-header"><h5 class="mb-0"><button type="button" id="w4" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#w0-collapse3" aria-expanded="false" aria-controls="w0-collapse3">FormField</button>
 </h5></div>
-<div id="w0-collapse3" class="collapse" aria-labelledby="w0-collapse3-heading" data-parent="#w0">
-<div class="card-body"><div class="form-group field-dynamicmodel-test">
+<div id="w0-collapse3" class="collapse" aria-labelledby="w0-collapse3-heading" data-bs-parent="#w0">
+<div class="accordion-body"><div class="form-group field-dynamicmodel-test">
 <input type="text" id="dynamicmodel-test" class="form-control" name="DynamicModel[test]">
 </div></div>
 
@@ -184,16 +184,16 @@ HTML
 
         $this->assertEqualsWithoutLE(<<<HTML
 <div id="w0" class="accordion">
-<div class="card"><div id="w0-collapse0-heading" class="card-header"><h5 class="mb-0"><button type="button" id="w1" class="btn-link btn" data-toggle="collapse" data-target="#w0-collapse0" aria-expanded="false" aria-controls="w0-collapse0">Item1</button>
+<div class="accordion-item"><div id="w0-collapse0-heading" class="accordion-header"><h5 class="mb-0"><button type="button" id="w1" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#w0-collapse0" aria-expanded="false" aria-controls="w0-collapse0">Item1</button>
 </h5></div>
-<div id="w0-collapse0" class="collapse" aria-labelledby="w0-collapse0-heading" data-parent="#w0">
-<div class="card-body">Content1</div>
+<div id="w0-collapse0" class="collapse" aria-labelledby="w0-collapse0-heading" data-bs-parent="#w0">
+<div class="accordion-body">Content1</div>
 
 </div></div>
-<div class="card"><div id="w0-collapse1-heading" class="card-header"><h5 class="mb-0"><button type="button" id="w2" class="btn-link btn" data-toggle="collapse" data-target="#w0-collapse1" aria-expanded="true" aria-controls="w0-collapse1">Item2</button>
+<div class="accordion-item"><div id="w0-collapse1-heading" class="accordion-header"><h5 class="mb-0"><button type="button" id="w2" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#w0-collapse1" aria-expanded="true" aria-controls="w0-collapse1">Item2</button>
 </h5></div>
-<div id="w0-collapse1" class="collapse show" aria-labelledby="w0-collapse1-heading" data-parent="#w0">
-<div class="card-body">Content2</div>
+<div id="w0-collapse1" class="collapse show" aria-labelledby="w0-collapse1-heading" data-bs-parent="#w0">
+<div class="accordion-body">Content2</div>
 
 </div></div>
 </div>
@@ -246,10 +246,10 @@ HTML
 
         $this->assertEqualsWithoutLE(<<<HTML
 <div id="w0" class="accordion">
-<div class="card"><div id="w0-collapse0-heading" class="card-header"><h5 class="mb-0"><button type="button" id="w1" class="btn-link btn" data-toggle="collapse" data-target="#w0-collapse0" aria-expanded="true" aria-controls="w0-collapse0">Collapsible Group Item #1</button>
+<div class="accordion-item"><div id="w0-collapse0-heading" class="accordion-header"><h5 class="mb-0"><button type="button" id="w1" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#w0-collapse0" aria-expanded="true" aria-controls="w0-collapse0">Collapsible Group Item #1</button>
 </h5></div>
-<div id="w0-collapse0" class="collapse show" aria-labelledby="w0-collapse0-heading" data-parent="#w0">
-<div class="card-body"><div class="form-group field-singer-firstname">
+<div id="w0-collapse0" class="collapse show" aria-labelledby="w0-collapse0-heading" data-bs-parent="#w0">
+<div class="accordion-body"><div class="form-group field-singer-firstname">
 <input type="text" id="singer-firstname" class="form-control" name="Singer[firstName]">
 </div></div>
 
@@ -276,12 +276,12 @@ HTML
         $output = Accordion::widget([
             'items' => $items
         ]);
-        $this->assertContains('data-parent="', $output);
+        $this->assertContains('data-bs-parent="', $output);
         $output = Accordion::widget([
             'autoCloseItems' => false,
             'items' => $items
         ]);
-        $this->assertNotContains('data-parent="', $output);
+        $this->assertNotContains('data-bs-parent="', $output);
     }
 
     /**

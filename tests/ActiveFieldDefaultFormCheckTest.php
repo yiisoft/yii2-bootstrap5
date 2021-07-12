@@ -85,7 +85,7 @@ class ActiveFieldDefaultFormCheckTest extends TestCase
         $html = $this->_activeField->checkbox()->render();
 
         $expectedHtml = <<<HTML
-<div class="form-group field-dynamicmodel-attributename">
+<div class="mb-3 field-dynamicmodel-attributename">
 <div class="form-check">
 <input type="hidden" name="DynamicModel[attributeName]" value="0"><input type="checkbox" id="dynamicmodel-attributename" class="form-check-input" name="DynamicModel[attributeName]" value="1">
 <label class="form-check-label" for="dynamicmodel-attributename">Attribute Name</label>
@@ -104,7 +104,7 @@ HTML;
         $html = $this->_activeField->radio()->render();
 
         $expectedHtml = <<<HTML
-<div class="form-group field-dynamicmodel-attributename">
+<div class="mb-3 field-dynamicmodel-attributename">
 <div class="form-check">
 <input type="hidden" name="DynamicModel[attributeName]" value="0"><input type="radio" id="dynamicmodel-attributename" class="form-check-input" name="DynamicModel[attributeName]" value="1">
 <label class="form-check-label" for="dynamicmodel-attributename">Attribute Name</label>
@@ -122,8 +122,8 @@ HTML;
         $html = $this->_activeField->checkboxList([1 => 'name1', 2 => 'name2'])->render();
 
         $expectedHtml = <<<HTML
-<div class="form-group field-dynamicmodel-attributename">
-<label>Attribute Name</label>
+<div class="mb-3 field-dynamicmodel-attributename">
+<label class="form-label">Attribute Name</label>
 <input type="hidden" name="DynamicModel[attributeName]" value=""><div id="dynamicmodel-attributename"><div class="form-check">
 <input type="checkbox" id="i0" class="form-check-input" name="DynamicModel[attributeName][]" value="1">
 <label class="form-check-label" for="i0">name1</label>
@@ -147,8 +147,8 @@ HTML;
         $html = $this->_activeField->radioList([1 => 'name1', 2 => 'name2'])->render();
 
         $expectedHtml = <<<HTML
-<div class="form-group field-dynamicmodel-attributename">
-<label>Attribute Name</label>
+<div class="mb-3 field-dynamicmodel-attributename">
+<label class="form-label">Attribute Name</label>
 <input type="hidden" name="DynamicModel[attributeName]" value=""><div id="dynamicmodel-attributename" role="radiogroup"><div class="form-check">
 <input type="radio" id="i0" class="form-check-input" name="DynamicModel[attributeName]" value="1">
 <label class="form-check-label" for="i0">name1</label>
@@ -187,7 +187,7 @@ HTML;
         $out = ob_get_clean();
 
         $expected = <<<HTML
-<div class="form-group row field-dynamicmodel-attributename">
+<div class="mb-3 row field-dynamicmodel-attributename">
 <label class="col-sm-2 col-form-label" for="dynamicmodel-attributename">Attribute Name</label>
 <div class="col-sm-10">
 <input type="text" id="dynamicmodel-attributename" class="form-control" name="DynamicModel[attributeName]">
@@ -197,7 +197,7 @@ HTML;
 </div>
 HTML;
         $expected2 = <<<HTML
-<div class="form-group row field-dynamicmodel-checkbox">
+<div class="mb-3 row field-dynamicmodel-checkbox">
 <div class="col-sm-10 offset-sm-2">
 <div class="form-check">
 <input type="hidden" name="DynamicModel[checkbox]" value="0"><input type="checkbox" id="dynamicmodel-checkbox" class="form-check-input" name="DynamicModel[checkbox]" value="1">
@@ -209,7 +209,7 @@ HTML;
 </div>
 HTML;
         $expected3 = <<<HTML
-<div class="form-group row field-dynamicmodel-gridradios">
+<div class="mb-3 row field-dynamicmodel-gridradios">
 <label class="col-sm-2 col-form-label">Grid Radios</label>
 <div class="col-sm-10">
 <input type="hidden" name="DynamicModel[gridRadios]" value=""><div id="dynamicmodel-gridradios" role="radiogroup"><div class="form-check">

@@ -84,7 +84,7 @@ class NavBar extends Widget
      */
     public string $screenReaderToggleText = 'Toggle navigation';
     /**
-     * @var string the toggle button content. Defaults to bootstrap 4 default `<span class="navbar-toggler-icon"></span>`
+     * @var string the toggle button content. Defaults to bootstrap 5 default `<span class="navbar-toggler-icon"></span>`
      */
     public string $togglerContent = '<span class="navbar-toggler-icon"></span>';
     /**
@@ -109,7 +109,7 @@ class NavBar extends Widget
 
 
     /**
-     * Initializes the widget.
+     * {@inheritDoc}
      */
     public function init()
     {
@@ -177,29 +177,6 @@ class NavBar extends Widget
     }
 
     /**
-     * Renders collapsible toggle button.
-     * @return string the rendering toggle button.
-     */
-    protected function renderToggleButton(): string
-    {
-        $options = $this->togglerOptions;
-        Html::addCssClass($options, ['widget' => 'navbar-toggler']);
-        return Html::button(
-            $this->togglerContent,
-            ArrayHelper::merge($options, [
-                'type' => 'button',
-                'data' => [
-                    'toggle' => 'collapse',
-                    'target' => '#' . $this->collapseOptions['id'],
-                ],
-                'aria-controls' => $this->collapseOptions['id'],
-                'aria-expanded' => 'false',
-                'aria-label' => $this->screenReaderToggleText,
-            ])
-        );
-    }
-
-    /**
      * Container options setter for backwards compatibility
      * @param array $collapseOptions
      * @deprecated
@@ -207,5 +184,31 @@ class NavBar extends Widget
     public function setContainerOptions(array $collapseOptions)
     {
         $this->collapseOptions = $collapseOptions;
+    }
+
+    /**
+     * Renders collapsible toggle button.
+     * @return string the rendering toggle button.
+     */
+    protected function renderToggleButton(): string
+    {
+        $options = $this->togglerOptions;
+        Html::addCssClass($options, ['widget' => 'navbar-toggler']);
+
+        return Html::button(
+            $this->togglerContent,
+            ArrayHelper::merge($options, [
+                'type' => 'button',
+                'data' => [
+                    'bs-toggle' => 'collapse',
+                    'bs-target' => '#' . $this->collapseOptions['id'],
+                ],
+                'aria' => [
+                    'controls' => $this->collapseOptions['id'],
+                    'expanded' => 'false',
+                    'label' => $this->screenReaderToggleText,
+                ]
+            ])
+        );
     }
 }

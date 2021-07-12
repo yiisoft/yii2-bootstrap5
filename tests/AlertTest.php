@@ -25,7 +25,7 @@ class AlertTest extends TestCase
 <div id="w0" class="alert-warning alert alert-dismissible" role="alert">
 
 <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
 </div>
 HTML;
@@ -47,7 +47,7 @@ HTML;
 <div id="w0" class="alert alert-dismissible" role="alert">
 
 Message1
-<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
 </div>
 HTML;

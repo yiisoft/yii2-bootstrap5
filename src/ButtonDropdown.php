@@ -147,13 +147,12 @@ class ButtonDropdown extends Widget
 
         if ($this->split) {
             $buttonOptions = $this->buttonOptions;
-            $this->buttonOptions['data-toggle'] = 'dropdown';
-            $this->buttonOptions['aria-haspopup'] = 'true';
-            $this->buttonOptions['aria-expanded'] = 'false';
+            $this->buttonOptions['data'] = ['bs-toggle' => 'dropdown'];
+            $this->buttonOptions['aria'] = ['expanded' => 'false'];
             Html::addCssClass($this->buttonOptions, ['toggle' => 'dropdown-toggle dropdown-toggle-split']);
             unset($buttonOptions['id']);
             $splitButton = Button::widget([
-                'label' => '<span class="sr-only">Toggle Dropdown</span>',
+                'label' => '<span class="visually-hidden">Toggle Dropdown</span>',
                 'encodeLabel' => false,
                 'options' => $this->buttonOptions,
                 'view' => $this->getView(),
@@ -161,9 +160,8 @@ class ButtonDropdown extends Widget
         } else {
             $buttonOptions = $this->buttonOptions;
             Html::addCssClass($buttonOptions, ['toggle' => 'dropdown-toggle']);
-            $buttonOptions['data-toggle'] = 'dropdown';
-            $buttonOptions['aria-haspopup'] = 'true';
-            $buttonOptions['aria-expanded'] = 'false';
+            $buttonOptions['data'] = ['bs-toggle' => 'dropdown'];
+            $buttonOptions['aria'] = ['expanded' => 'false'];
             $splitButton = '';
         }
 

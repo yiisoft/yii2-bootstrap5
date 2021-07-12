@@ -94,6 +94,4 @@ trait BootstrapWidgetTrait
             $this->getView()->registerJs(implode("\n", $js));
         }
     }
-
-    abstract function getView();
 }

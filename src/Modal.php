@@ -51,35 +51,35 @@ class Modal extends Widget
     /**
      * @var string the tile content in the modal window.
      */
-    public $title;
+    public string $title;
     /**
      * @var array additional title options
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $titleOptions = [];
+    public array $titleOptions = [];
     /**
      * @var array additional header options
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $headerOptions = [];
+    public array $headerOptions = [];
     /**
      * @var array body options
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $bodyOptions = [];
+    public array $bodyOptions = [];
     /**
-     * @var string the footer content in the modal window.
+     * @var string|null the footer content in the modal window.
      */
-    public $footer;
+    public ?string $footer;
     /**
      * @var array additional footer options
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $footerOptions = [];
+    public array $footerOptions = [];
     /**
-     * @var string the modal size. Can be [[SIZE_LARGE]] or [[SIZE_SMALL]], or empty for default.
+     * @var string|null the modal size. Can be [[SIZE_LARGE]] or [[SIZE_SMALL]], or empty for default.
      */
-    public $size;
+    public ?string $size;
     /**
      * @var array|false the options for rendering the close button tag.
      * The close button is displayed in the header of the modal window. Clicking
@@ -116,24 +116,25 @@ class Modal extends Widget
      * When true the modal-dialog-centered class will be added to the modal-dialog
      * @since 2.0.9
      */
-    public $centerVertical = false;
+    public bool $centerVertical = false;
     /**
      * @var boolean whether to make the modal body scrollable
      *
      * When true the modal-dialog-scrollable class will be added to the modal-dialog
      * @since 2.0.9
      */
-    public $scrollable = false;
+    public bool $scrollable = false;
     /**
      * @var array modal dialog options
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      * @since 2.0.9
      */
-    public $dialogOptions = [];
+    public array $dialogOptions = [];
 
 
     /**
-     * Initializes the widget.
+     * {@inheritDoc}
+     * @throws \yii\base\InvalidConfigException
      */
     public function init()
     {
@@ -167,10 +168,10 @@ class Modal extends Widget
      * Renders the header HTML markup of the modal
      * @return string the rendering result
      */
-    protected function renderHeader()
+    protected function renderHeader(): string
     {
         $button = $this->renderCloseButton();
-        if ($this->title !== null) {
+        if (isset($this->title)) {
             Html::addCssClass($this->titleOptions, ['widget' => 'modal-title']);
             $header = Html::tag('h5', $this->title, $this->titleOptions);
         } else {
@@ -190,7 +191,7 @@ class Modal extends Widget
      * Renders the opening tag of the modal body.
      * @return string the rendering result
      */
-    protected function renderBodyBegin()
+    protected function renderBodyBegin(): string
     {
         Html::addCssClass($this->bodyOptions, ['widget' => 'modal-body']);
         return Html::beginTag('div', $this->bodyOptions);
@@ -200,7 +201,7 @@ class Modal extends Widget
      * Renders the closing tag of the modal body.
      * @return string the rendering result
      */
-    protected function renderBodyEnd()
+    protected function renderBodyEnd(): string
     {
         return Html::endTag('div');
     }
@@ -209,9 +210,9 @@ class Modal extends Widget
      * Renders the HTML markup for the footer of the modal
      * @return string the rendering result
      */
-    protected function renderFooter()
+    protected function renderFooter(): ?string
     {
-        if ($this->footer !== null) {
+        if (isset($this->footer)) {
             Html::addCssClass($this->footerOptions, ['widget' => 'modal-footer']);
             return Html::tag('div', "\n" . $this->footer . "\n", $this->footerOptions);
         } else {
@@ -223,7 +224,7 @@ class Modal extends Widget
      * Renders the toggle button.
      * @return string the rendering result
      */
-    protected function renderToggleButton()
+    protected function renderToggleButton(): ?string
     {
         if (($toggleButton = $this->toggleButton) !== false) {
             $tag = ArrayHelper::remove($toggleButton, 'tag', 'button');
@@ -239,15 +240,12 @@ class Modal extends Widget
      * Renders the close button.
      * @return string the rendering result
      */
-    protected function renderCloseButton()
+    protected function renderCloseButton(): ?string
     {
         if (($closeButton = $this->closeButton) !== false) {
             $tag = ArrayHelper::remove($closeButton, 'tag', 'button');
-            $label = ArrayHelper::remove($closeButton, 'label', Html::tag('span', '&times;', [
-                'aria-hidden' => 'true',
-            ]));
 
-            return Html::tag($tag, $label, $closeButton);
+            return Html::tag($tag, '', $closeButton);
         } else {
             return null;
         }
@@ -260,47 +258,43 @@ class Modal extends Widget
     protected function initOptions()
     {
         $this->options = array_merge([
-            'class' => 'fade',
-            'role' => 'dialog',
             'tabindex' => -1,
             'aria-hidden' => 'true',
         ], $this->options);
-        Html::addCssClass($this->options, ['widget' => 'modal']);
+        Html::addCssClass($this->options, ['widget' => 'modal fade']);
 
-        if ($this->clientOptions !== false) {
+        if (!empty($this->clientOptions)) {
             $this->clientOptions = array_merge(['show' => false], $this->clientOptions);
         }
 
         $this->titleOptions = array_merge([
             'id' => $this->options['id'] . '-label',
         ], $this->titleOptions);
-        if (!isset($this->options['aria-label'], $this->options['aria-labelledby']) && $this->title !== null) {
+        if (!isset($this->options['aria-label'], $this->options['aria-labelledby']) && isset($this->title)) {
             $this->options['aria-labelledby'] = $this->titleOptions['id'];
         }
 
         if ($this->closeButton !== false) {
             $this->closeButton = array_merge([
-                'data-dismiss' => 'modal',
-                'class' => 'close',
+                'data-bs-dismiss' => 'modal',
+                'class' => 'btn-close',
                 'type' => 'button',
+                'aria-label' => 'Close'
             ], $this->closeButton);
         }
 
         if ($this->toggleButton !== false) {
             $this->toggleButton = array_merge([
-                'data-toggle' => 'modal',
+                'data-bs-toggle' => 'modal',
                 'type' => 'button',
             ], $this->toggleButton);
-            if (!isset($this->toggleButton['data-target']) && !isset($this->toggleButton['href'])) {
-                $this->toggleButton['data-target'] = '#' . $this->options['id'];
+            if (!isset($this->toggleButton['data-bs-target']) && !isset($this->toggleButton['href'])) {
+                $this->toggleButton['data-bs-target'] = '#' . $this->options['id'];
             }
         }
 
-        $this->dialogOptions = array_merge([
-            'role' => 'document',
-        ], $this->dialogOptions);
         Html::addCssClass($this->dialogOptions, ['widget' => 'modal-dialog']);
-        if ($this->size) {
+        if (isset($this->size)) {
             Html::addCssClass($this->dialogOptions, ['size' => $this->size]);
         }
         if ($this->centerVertical) {

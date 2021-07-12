@@ -51,9 +51,9 @@ class ActiveFieldTest extends TestCase
         $html = $this->activeField->fileInput()->render();
 
         $expectedHtml = <<<HTML
-<div class="form-group field-dynamicmodel-attributename">
-<label for="dynamicmodel-attributename">Attribute Name</label>
-<input type="hidden" name="DynamicModel[attributeName]" value=""><input type="file" id="dynamicmodel-attributename" class="form-control-file" name="DynamicModel[attributeName]">
+<div class="mb-3 field-dynamicmodel-attributename">
+<label class="form-label" for="dynamicmodel-attributename">Attribute Name</label>
+<input type="hidden" name="DynamicModel[attributeName]" value=""><input type="file" id="dynamicmodel-attributename" class="form-control" name="DynamicModel[attributeName]">
 
 <div class="invalid-feedback"></div>
 </div>
@@ -70,16 +70,16 @@ HTML;
         $html = $this->activeField->radioList([1 => 'name1', 2 => 'name2'])->render();
 
         $expectedHtml = <<<HTML
-<div class="form-group field-dynamicmodel-attributename">
-<label>Attribute Name</label>
-<input type="hidden" name="DynamicModel[attributeName]" value=""><div id="dynamicmodel-attributename" role="radiogroup"><div class="custom-control custom-radio">
-<input type="radio" id="i0" class="custom-control-input" name="DynamicModel[attributeName]" value="1">
-<label class="custom-control-label" for="i0">name1</label>
+<div class="mb-3 field-dynamicmodel-attributename">
+<label class="form-label">Attribute Name</label>
+<input type="hidden" name="DynamicModel[attributeName]" value=""><div id="dynamicmodel-attributename" role="radiogroup"><div class="form-check">
+<input type="radio" id="i0" class="form-check-input" name="DynamicModel[attributeName]" value="1">
+<label class="form-check-label" for="i0">name1</label>
 </div>
 
-<div class="custom-control custom-radio">
-<input type="radio" id="i1" class="custom-control-input" name="DynamicModel[attributeName]" value="2">
-<label class="custom-control-label" for="i1">name2</label>
+<div class="form-check">
+<input type="radio" id="i1" class="form-check-input" name="DynamicModel[attributeName]" value="2">
+<label class="form-check-label" for="i1">name2</label>
 <div class="invalid-feedback"></div>
 </div>
 </div>
@@ -96,10 +96,10 @@ HTML;
         $html = $this->activeField->radio()->render();
 
         $expectedHtml = <<<HTML
-<div class="form-group field-dynamicmodel-attributename">
-<div class="custom-control custom-radio">
-<input type="hidden" name="DynamicModel[attributeName]" value="0"><input type="radio" id="dynamicmodel-attributename" class="custom-control-input is-invalid" name="DynamicModel[attributeName]" value="1" aria-invalid="true">
-<label class="custom-control-label" for="dynamicmodel-attributename">Attribute Name</label>
+<div class="mb-3 field-dynamicmodel-attributename">
+<div class="form-check">
+<input type="hidden" name="DynamicModel[attributeName]" value="0"><input type="radio" id="dynamicmodel-attributename" class="form-check-input is-invalid" name="DynamicModel[attributeName]" value="1" aria-invalid="true">
+<label class="form-check-label" for="dynamicmodel-attributename">Attribute Name</label>
 <div class="invalid-feedback">Test print error message</div>
 
 </div>
@@ -115,16 +115,16 @@ HTML;
         $html = $this->activeField->radioList([1 => 'name1', 2 => 'name2'])->render();
 
         $expectedHtml = <<<HTML
-<div class="form-group field-dynamicmodel-attributename">
-<label>Attribute Name</label>
-<input type="hidden" name="DynamicModel[attributeName]" value=""><div id="dynamicmodel-attributename" class="is-invalid" role="radiogroup" aria-invalid="true"><div class="custom-control custom-radio">
-<input type="radio" id="i0" class="custom-control-input" name="DynamicModel[attributeName]" value="1">
-<label class="custom-control-label" for="i0">name1</label>
+<div class="mb-3 field-dynamicmodel-attributename">
+<label class="form-label">Attribute Name</label>
+<input type="hidden" name="DynamicModel[attributeName]" value=""><div id="dynamicmodel-attributename" class="is-invalid" role="radiogroup" aria-invalid="true"><div class="form-check">
+<input type="radio" id="i0" class="form-check-input" name="DynamicModel[attributeName]" value="1">
+<label class="form-check-label" for="i0">name1</label>
 </div>
 
-<div class="custom-control custom-radio">
-<input type="radio" id="i1" class="custom-control-input" name="DynamicModel[attributeName]" value="2">
-<label class="custom-control-label" for="i1">name2</label>
+<div class="form-check">
+<input type="radio" id="i1" class="form-check-input" name="DynamicModel[attributeName]" value="2">
+<label class="form-check-label" for="i1">name2</label>
 <div class="invalid-feedback">Test print error message</div>
 </div>
 </div>
@@ -140,16 +140,16 @@ HTML;
         $html = $this->activeField->checkboxList([1 => 'name1', 2 => 'name2'])->render();
 
         $expectedHtml = <<<HTML
-<div class="form-group field-dynamicmodel-attributename">
-<label>Attribute Name</label>
-<input type="hidden" name="DynamicModel[attributeName]" value=""><div id="dynamicmodel-attributename"><div class="custom-control custom-checkbox">
-<input type="checkbox" id="i0" class="custom-control-input" name="DynamicModel[attributeName][]" value="1">
-<label class="custom-control-label" for="i0">name1</label>
+<div class="mb-3 field-dynamicmodel-attributename">
+<label class="form-label">Attribute Name</label>
+<input type="hidden" name="DynamicModel[attributeName]" value=""><div id="dynamicmodel-attributename"><div class="form-check">
+<input type="checkbox" id="i0" class="form-check-input" name="DynamicModel[attributeName][]" value="1">
+<label class="form-check-label" for="i0">name1</label>
 </div>
 
-<div class="custom-control custom-checkbox">
-<input type="checkbox" id="i1" class="custom-control-input" name="DynamicModel[attributeName][]" value="2">
-<label class="custom-control-label" for="i1">name2</label>
+<div class="form-check">
+<input type="checkbox" id="i1" class="form-check-input" name="DynamicModel[attributeName][]" value="2">
+<label class="form-check-label" for="i1">name2</label>
 <div class="invalid-feedback"></div>
 </div>
 </div>
@@ -166,10 +166,10 @@ HTML;
         $html = $this->activeField->checkbox()->render();
 
         $expectedHtml = <<<HTML
-<div class="form-group field-dynamicmodel-attributename">
-<div class="custom-control custom-checkbox">
-<input type="hidden" name="DynamicModel[attributeName]" value="0"><input type="checkbox" id="dynamicmodel-attributename" class="custom-control-input is-invalid" name="DynamicModel[attributeName]" value="1" aria-invalid="true">
-<label class="custom-control-label" for="dynamicmodel-attributename">Attribute Name</label>
+<div class="mb-3 field-dynamicmodel-attributename">
+<div class="form-check">
+<input type="hidden" name="DynamicModel[attributeName]" value="0"><input type="checkbox" id="dynamicmodel-attributename" class="form-check-input is-invalid" name="DynamicModel[attributeName]" value="1" aria-invalid="true">
+<label class="form-check-label" for="dynamicmodel-attributename">Attribute Name</label>
 <div class="invalid-feedback">Test print error message</div>
 
 </div>
@@ -185,16 +185,16 @@ HTML;
         $html = $this->activeField->checkboxList([1 => 'name1', 2 => 'name2'])->render();
 
         $expectedHtml = <<<HTML
-<div class="form-group field-dynamicmodel-attributename">
-<label>Attribute Name</label>
-<input type="hidden" name="DynamicModel[attributeName]" value=""><div id="dynamicmodel-attributename" class="is-invalid" aria-invalid="true"><div class="custom-control custom-checkbox">
-<input type="checkbox" id="i0" class="custom-control-input" name="DynamicModel[attributeName][]" value="1">
-<label class="custom-control-label" for="i0">name1</label>
+<div class="mb-3 field-dynamicmodel-attributename">
+<label class="form-label">Attribute Name</label>
+<input type="hidden" name="DynamicModel[attributeName]" value=""><div id="dynamicmodel-attributename" class="is-invalid" aria-invalid="true"><div class="form-check">
+<input type="checkbox" id="i0" class="form-check-input" name="DynamicModel[attributeName][]" value="1">
+<label class="form-check-label" for="i0">name1</label>
 </div>
 
-<div class="custom-control custom-checkbox">
-<input type="checkbox" id="i1" class="custom-control-input" name="DynamicModel[attributeName][]" value="2">
-<label class="custom-control-label" for="i1">name2</label>
+<div class="form-check">
+<input type="checkbox" id="i1" class="form-check-input" name="DynamicModel[attributeName][]" value="2">
+<label class="form-check-label" for="i1">name2</label>
 <div class="invalid-feedback">Test print error message</div>
 </div>
 </div>
@@ -211,16 +211,16 @@ HTML;
         $html = $this->activeField->radioList([1 => 'name1', 2 => 'name2'])->render();
 
         $expectedHtml = <<<HTML
-<div class="form-group field-dynamicmodel-attributename">
-<label>Attribute Name</label>
-<input type="hidden" name="DynamicModel[attributeName]" value=""><div id="dynamicmodel-attributename" role="radiogroup"><div class="custom-control custom-radio custom-control-inline">
-<input type="radio" id="i0" class="custom-control-input" name="DynamicModel[attributeName]" value="1">
-<label class="custom-control-label" for="i0">name1</label>
+<div class="mb-3 field-dynamicmodel-attributename">
+<label class="form-label">Attribute Name</label>
+<input type="hidden" name="DynamicModel[attributeName]" value=""><div id="dynamicmodel-attributename" role="radiogroup"><div class="form-check">
+<input type="radio" id="i0" class="form-check-input" name="DynamicModel[attributeName]" value="1">
+<label class="form-check-label" for="i0">name1</label>
 </div>
 
-<div class="custom-control custom-radio custom-control-inline">
-<input type="radio" id="i1" class="custom-control-input" name="DynamicModel[attributeName]" value="2">
-<label class="custom-control-label" for="i1">name2</label>
+<div class="form-check">
+<input type="radio" id="i1" class="form-check-input" name="DynamicModel[attributeName]" value="2">
+<label class="form-check-label" for="i1">name2</label>
 <div class="invalid-feedback"></div>
 </div>
 </div>
@@ -237,16 +237,16 @@ HTML;
         $html = $this->activeField->checkboxList([1 => 'name1', 2 => 'name2'])->render();
 
         $expectedHtml = <<<HTML
-<div class="form-group field-dynamicmodel-attributename">
-<label>Attribute Name</label>
-<input type="hidden" name="DynamicModel[attributeName]" value=""><div id="dynamicmodel-attributename"><div class="custom-control custom-checkbox custom-control-inline">
-<input type="checkbox" id="i0" class="custom-control-input" name="DynamicModel[attributeName][]" value="1">
-<label class="custom-control-label" for="i0">name1</label>
+<div class="mb-3 field-dynamicmodel-attributename">
+<label class="form-label">Attribute Name</label>
+<input type="hidden" name="DynamicModel[attributeName]" value=""><div id="dynamicmodel-attributename"><div class="form-check">
+<input type="checkbox" id="i0" class="form-check-input" name="DynamicModel[attributeName][]" value="1">
+<label class="form-check-label" for="i0">name1</label>
 </div>
 
-<div class="custom-control custom-checkbox custom-control-inline">
-<input type="checkbox" id="i1" class="custom-control-input" name="DynamicModel[attributeName][]" value="2">
-<label class="custom-control-label" for="i1">name2</label>
+<div class="form-check">
+<input type="checkbox" id="i1" class="form-check-input" name="DynamicModel[attributeName][]" value="2">
+<label class="form-check-label" for="i1">name2</label>
 <div class="invalid-feedback"></div>
 </div>
 </div>
@@ -288,49 +288,5 @@ HTML;
         ])->render();
 
         $this->assertContains('data-attribute="test"', $content);
-    }
-
-    /**
-     *
-     */
-    public function testCustomRadio()
-    {
-        Html::$counter = 0;
-        $this->activeField->inline = true;
-        $html = $this->activeField->radio()->render();
-
-        $expectedHtml = <<<HTML
-<div class="form-group field-dynamicmodel-attributename">
-<div class="custom-control custom-radio">
-<input type="hidden" name="DynamicModel[attributeName]" value="0"><input type="radio" id="dynamicmodel-attributename" class="custom-control-input" name="DynamicModel[attributeName]" value="1">
-<label class="custom-control-label" for="dynamicmodel-attributename">Attribute Name</label>
-<div class="invalid-feedback"></div>
-
-</div>
-</div>
-HTML;
-        $this->assertEqualsWithoutLE($expectedHtml, $html);
-    }
-
-    /**
-     *
-     */
-    public function testCustomCheckbox()
-    {
-        Html::$counter = 0;
-        $this->activeField->inline = true;
-        $html = $this->activeField->checkbox()->render();
-
-        $expectedHtml = <<<HTML
-<div class="form-group field-dynamicmodel-attributename">
-<div class="custom-control custom-checkbox">
-<input type="hidden" name="DynamicModel[attributeName]" value="0"><input type="checkbox" id="dynamicmodel-attributename" class="custom-control-input" name="DynamicModel[attributeName]" value="1">
-<label class="custom-control-label" for="dynamicmodel-attributename">Attribute Name</label>
-<div class="invalid-feedback"></div>
-
-</div>
-</div>
-HTML;
-        $this->assertEqualsWithoutLE($expectedHtml, $html);
     }
 }

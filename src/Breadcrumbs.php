@@ -89,6 +89,9 @@ class Breadcrumbs extends Widget
         Html::addCssClass($this->options, ['widget' => 'breadcrumb']);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function run(): string
     {
         if (!isset($this->options['id'])) {
@@ -97,8 +100,6 @@ class Breadcrumbs extends Widget
 
         /** @psalm-suppress InvalidArgument */
         Html::addCssClass($this->options, ['widget' => 'breadcrumb']);
-
-        $this->registerPlugin('breadcrumb');
 
         if (empty($this->links)) {
             return '';
@@ -133,7 +134,7 @@ class Breadcrumbs extends Widget
      * @param string $template the template to be used to rendered the link. The token "{link}" will be replaced by the
      * link.
      *
-     * @throws JsonException|RuntimeException if `$link` does not have "label" element.
+     * @throws RuntimeException if `$link` does not have "label" element.
      *
      * @return string the rendering result
      */

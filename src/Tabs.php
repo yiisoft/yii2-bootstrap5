@@ -165,6 +165,7 @@ class Tabs extends Widget
      * @param array $items
      * @param string $prefix
      * @throws InvalidConfigException
+     * @throws \Exception
      */
     protected function prepareItems(array &$items, string $prefix = '')
     {
@@ -196,9 +197,9 @@ class Tabs extends Widget
                     ArrayHelper::setValue($items[$n], 'url', '#' . $options['id']);
                     ArrayHelper::setValue($items[$n], 'linkOptions.data.toggle', 'tab');
                     ArrayHelper::setValue($items[$n], 'linkOptions.role', 'tab');
-                    ArrayHelper::setValue($items[$n], 'linkOptions.aria-controls', $options['id']);
+                    ArrayHelper::setValue($items[$n], 'linkOptions.aria.controls', $options['id']);
                     if (!$disabled) {
-                        ArrayHelper::setValue($items[$n], 'linkOptions.aria-selected', $selected ? 'true' : 'false');
+                        ArrayHelper::setValue($items[$n], 'linkOptions.aria.selected', $selected ? 'true' : 'false');
                     }
                 } else {
                     continue;
@@ -236,6 +237,7 @@ class Tabs extends Widget
      *
      * This method activates the first tab that is visible and
      * not explicitly set to inactive (`'active' => false`).
+     * @throws \Exception
      */
     protected function activateFirstVisibleTab()
     {

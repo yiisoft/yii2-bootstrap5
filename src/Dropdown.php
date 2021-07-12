@@ -97,7 +97,7 @@ class Dropdown extends Widget
         foreach ($items as $item) {
             if (is_string($item)) {
                 $lines[] = ($item === '-')
-                    ? Html::tag('div', '', ['class' => 'dropdown-divider'])
+                    ? Html::tag('hr', '', ['class' => 'dropdown-divider'])
                     : $item;
                 continue;
             }
@@ -120,6 +120,7 @@ class Dropdown extends Widget
                 ArrayHelper::setValue($linkOptions, 'aria-disabled', 'true');
                 Html::addCssClass($linkOptions, ['disable' => 'disabled']);
             } elseif ($active) {
+                ArrayHelper::setValue($linkOptions, 'aria-current', 'true');
                 Html::addCssClass($linkOptions, ['activate' => 'active']);
             }
 
@@ -141,8 +142,7 @@ class Dropdown extends Widget
 
                 $lines[] = Html::beginTag('div', array_merge_recursive(['class' => ['dropdown'], 'aria-expanded' => 'false'], $itemOptions));
                 $lines[] = Html::a($label, $url, array_merge([
-                    'data-toggle' => 'dropdown',
-                    'aria-haspopup' => 'true',
+                    'data-bs-toggle' => 'dropdown',
                     'aria-expanded' => 'false',
                     'role' => 'button',
                 ], $linkOptions));

@@ -37,6 +37,7 @@ class Button extends Widget
     /**
      * Initializes the widget.
      * If you override this method, make sure you call the parent implementation first.
+     * @throws \yii\base\InvalidConfigException
      */
     public function init()
     {
@@ -51,8 +52,10 @@ class Button extends Widget
      */
     public function run(): string
     {
-        $this->registerPlugin('button');
-        return Html::tag($this->tagName, $this->encodeLabel ? Html::encode($this->label) : $this->label,
-            $this->options);
+        return Html::tag(
+            $this->tagName,
+            $this->encodeLabel ? Html::encode($this->label) : $this->label,
+            $this->options
+        );
     }
 }
