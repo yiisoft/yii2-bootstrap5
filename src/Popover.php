@@ -14,7 +14,7 @@ use yii\helpers\ArrayHelper;
  * The following example will show the content enclosed between the [[begin()]]
  * and [[end()]] calls within the modal window:
  *
- * ~~~php
+ * ```php
  * Popover::begin([
  *     'title' => 'Hello world',
  *     'toggleButton' => ['label' => 'click me'],
@@ -23,7 +23,7 @@ use yii\helpers\ArrayHelper;
  * echo 'Say hello...';
  *
  * Popover::end();
- * ~~~
+ * ```
  *
  * @see https://getbootstrap.com/docs/5.0/components/popovers/
  * @author Simon Karlen <simi.albi@outlook.com>
@@ -100,7 +100,9 @@ class Popover extends Widget
     {
         $content = ob_get_clean();
 
-        $this->clientOptions['content'] = $content;
+        if (!empty($content)) {
+            $this->clientOptions['content'] = $content;
+        }
         $html = $this->renderToggleButton();
 
         $this->registerPlugin('popover');
@@ -124,14 +126,8 @@ class Popover extends Widget
      */
     protected function renderHeader(): string
     {
-        if (isset($this->title)) {
-            $header = $this->title;
-        } else {
-            $header = '';
-        }
-
         Html::addCssClass($this->headerOptions, ['widget' => 'popover-header']);
-        return Html::tag('h3', "\n" . $header . "\n", $this->headerOptions);
+        return Html::tag('h3', '', $this->headerOptions);
     }
 
     /**
@@ -141,7 +137,7 @@ class Popover extends Widget
     protected function renderBody(): string
     {
         Html::addCssClass($this->bodyOptions, ['widget' => 'popover-body']);
-        return Html::tag('div', $this->bodyOptions);
+        return Html::tag('div', '', $this->bodyOptions);
     }
 
     /**
@@ -172,10 +168,11 @@ class Popover extends Widget
             'role' => 'tooltip',
         ], $this->options, ['id' => $this->options['id'] . '-popover']);
         Html::addCssClass($options, ['widget' => 'popover']);
-        $template = Html::tag('div', $options);
+        $template = Html::beginTag('div', $options);
         $template .= $this->renderArrow();
         $template .= $this->renderHeader();
         $template .= $this->renderBody();
+        $template .= Html::endTag('div');
 
         $this->clientOptions = array_merge([
             'template' => $template,
@@ -187,7 +184,6 @@ class Popover extends Widget
 
         if ($this->toggleButton !== false) {
             $this->toggleButton = array_merge([
-                'data-bs-toggle' => 'popover',
                 'type' => 'button',
             ], $this->toggleButton);
         }
