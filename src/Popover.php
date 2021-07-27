@@ -44,7 +44,7 @@ class Popover extends Widget
     /**
      * @var string|null the tile content in the popover.
      */
-    public ?string $title;
+    public ?string $title = null;
     /**
      * @var array additional header options
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
