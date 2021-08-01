@@ -42,7 +42,7 @@ class LinkPager extends Widget
      * @var array HTML attributes for the pager container tag.
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public array $options = [];
+    public $options = [];
     /**
      * @var array HTML attributes for the pager list tag.
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
@@ -102,12 +102,12 @@ class LinkPager extends Widget
      * @var string|bool the label for the "next" page button. Note that this will NOT be HTML-encoded.
      * If this property is false, the "next" page button will not be displayed.
      */
-    public $nextPageLabel = '<span aria-hidden="true">&raquo;</span';
+    public $nextPageLabel = "<span aria-hidden=\"true\">&raquo;</span>\n<span class=\"sr-only\">Next</span>";
     /**
      * @var string|bool the text label for the "previous" page button. Note that this will NOT be HTML-encoded.
      * If this property is false, the "previous" page button will not be displayed.
      */
-    public $prevPageLabel = '<span aria-hidden="true">&laquo;</span>';
+    public $prevPageLabel = "<span aria-hidden=\"true\">&laquo;</span>\n<span class=\"sr-only\">Previous</span>";
     /**
      * @var string|bool the text label for the "first" page button. Note that this will NOT be HTML-encoded.
      * If it's specified as true, page number will be used as label.

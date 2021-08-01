@@ -151,4 +151,18 @@ class LinkPagerTest extends TestCase
         ]);
         $this->assertTrue($initTriggered);
     }
+
+    public function testDisabledLabel()
+    {
+        $output = LinkPager::widget([
+            'pagination' => $this->getPagination( 1 ),
+            'linkContainerOptions' => [
+                'tag' => 'div',
+                'class' => 'my-class',
+            ],
+        ]);
+
+        $this->assertStringContainsString('<span aria-hidden="true">&laquo;</span>', $output);
+        $this->assertStringContainsString('<span aria-hidden="true">&raquo;</span>', $output);
+    }
 }
