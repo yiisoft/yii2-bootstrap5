@@ -102,7 +102,7 @@ class LinkPager extends Widget
      * @var string|bool the label for the "next" page button. Note that this will NOT be HTML-encoded.
      * If this property is false, the "next" page button will not be displayed.
      */
-    public $nextPageLabel = '<span aria-hidden="true">&raquo;</span';
+    public $nextPageLabel = '<span aria-hidden="true">&raquo;</span>';
     /**
      * @var string|bool the text label for the "previous" page button. Note that this will NOT be HTML-encoded.
      * If this property is false, the "previous" page button will not be displayed.
