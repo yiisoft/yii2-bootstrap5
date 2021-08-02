@@ -1,5 +1,5 @@
 {
-    "name": "simialbi/yii2-bootstrap5",
+    "name": "yiisoft/yii2-bootstrap5",
     "description": "The Twitter Bootstrap v5 extension for the Yii framework",
     "version": "1.0.0",
     "keywords": [
@@ -10,7 +10,7 @@
     "type": "yii2-extension",
     "license": "BSD-3-Clause",
     "support": {
-        "source": "https://github.com/simialbi/yii2-bootstrap5"
+        "source": "https://github.com/yiisoft/yii2-bootstrap5"
     },
     "authors": [
         {
