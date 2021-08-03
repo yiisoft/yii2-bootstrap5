@@ -9,7 +9,7 @@ use yii\data\Pagination;
 use yii\helpers\ArrayHelper;
 
 /**
- * LinkPager represents a bootstrap 4 version of [[\yii\widgets\LinkPager]]. It displays a list of hyperlinks
+ * LinkPager represents a Bootstrap 5 version of [[\yii\widgets\LinkPager]]. It displays a list of hyperlinks
  * that lead to different pages of target.
  *
  * LinkPager works with a [[\yii\widget\Pagination]] object which specifies the total number

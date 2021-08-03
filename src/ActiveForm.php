@@ -7,9 +7,9 @@ namespace yii\bootstrap5;
 use yii\base\InvalidConfigException;
 
 /**
- * A Bootstrap 4 enhanced version of [[\yii\widgets\ActiveForm]].
+ * A Bootstrap 5 enhanced version of [[\yii\widgets\ActiveForm]].
  *
- * This class mainly adds the [[layout]] property to choose a Bootstrap 4 form layout.
+ * This class mainly adds the [[layout]] property to choose a Bootstrap 5 form layout.
  * So for example to render a horizontal form you would:
  *
  * ```php
@@ -91,7 +91,7 @@ class ActiveForm extends \yii\widgets\ActiveForm
      * By choosing a layout, an appropriate default field configuration is applied. This will
      * render the form fields with slightly different markup for each layout. You can
      * override these defaults through [[fieldConfig]].
-     * @see ActiveField for details on Bootstrap 4 field configuration
+     * @see ActiveField for details on Bootstrap 5 field configuration
      */
     public string $layout = self::LAYOUT_DEFAULT;
     /**

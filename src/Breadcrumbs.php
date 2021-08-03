@@ -13,7 +13,7 @@ use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
- * Breadcrumbs represents a bootstrap 4 version of [[\yii\widgets\Breadcrumbs]]. It displays
+ * Breadcrumbs represents a Bootstrap 5 version of [[\yii\widgets\Breadcrumbs]]. It displays
  * a list of links indicating the position of the current page in the whole site hierarchy.
  *
  * To use Breadcrumbs, you need to configure its [[links]] property, which specifies the links to be displayed. For example,
