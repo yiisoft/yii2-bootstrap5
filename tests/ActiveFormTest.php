@@ -229,7 +229,7 @@ HTML;
 
         $expected = <<<HTML
 <div class="form-floating mt-3 field-dynamicmodel-attributename">
-<input type="text" id="dynamicmodel-attributename" class="form-control" name="DynamicModel[attributeName]">
+<input type="text" id="dynamicmodel-attributename" class="form-control" name="DynamicModel[attributeName]" placeholder="Attribute Name">
 <label class="form-label" for="dynamicmodel-attributename">Attribute Name</label>
 <div class="invalid-feedback"></div>
 
@@ -237,7 +237,7 @@ HTML;
 HTML;
         $expected2 = <<<HTML
 <div class="form-floating mt-3 field-dynamicmodel-selectname">
-<input type="hidden" name="DynamicModel[selectName]" value=""><select id="dynamicmodel-selectname" class="form-control" name="DynamicModel[selectName]" size="4">
+<input type="hidden" name="DynamicModel[selectName]" value=""><select id="dynamicmodel-selectname" class="form-control" name="DynamicModel[selectName]" size="4" placeholder>
 <option value="1">One</option>
 <option value="2">Two</option>
 <option value="3">Three</option>

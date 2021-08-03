@@ -519,6 +519,7 @@ class ActiveField extends \yii\widgets\ActiveField
 
             Html::addCssClass($config['labelOptions'], ['screenreader' => 'visually-hidden']);
         } elseif ($layout === ActiveForm::LAYOUT_FLOATING) {
+            $config['inputOptions']['placeholder'] = true;
             $config['template'] = "{input}\n{label}\n{error}\n{hint}";
             Html::addCssClass($config['options'], ['layout' => 'form-floating mt-3']);
         }
