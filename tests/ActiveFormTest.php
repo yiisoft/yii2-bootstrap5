@@ -208,6 +208,63 @@ HTML;
         $this->assertContainsWithoutLE($expected3, $out);
     }
 
+    public function testFloatingLayout()
+    {
+        ActiveForm::$counter = 0;
+        ob_start();
+        $model = new DynamicModel(['attributeName', 'selectName', 'checkboxName']);
+        $form = ActiveForm::begin([
+            'action' => '/some-action',
+            'layout' => ActiveForm::LAYOUT_FLOATING
+        ]);
+        echo $form->field($model, 'attributeName');
+        echo $form->field($model, 'selectName')->listBox([
+            '1' => 'One',
+            '2' => 'Two',
+            '3' => 'Three'
+        ]);
+        echo $form->field($model, 'checkboxName')->checkbox();
+        ActiveForm::end();
+        $out = ob_get_clean();
+
+        $expected = <<<HTML
+<div class="form-floating mt-3 field-dynamicmodel-attributename">
+<input type="text" id="dynamicmodel-attributename" class="form-control" name="DynamicModel[attributeName]">
+<label class="form-label" for="dynamicmodel-attributename">Attribute Name</label>
+<div class="invalid-feedback"></div>
+
+</div>
+HTML;
+        $expected2 = <<<HTML
+<div class="form-floating mt-3 field-dynamicmodel-selectname">
+<input type="hidden" name="DynamicModel[selectName]" value=""><select id="dynamicmodel-selectname" class="form-control" name="DynamicModel[selectName]" size="4">
+<option value="1">One</option>
+<option value="2">Two</option>
+<option value="3">Three</option>
+</select>
+<label class="form-label" for="dynamicmodel-selectname">Select Name</label>
+<div class="invalid-feedback"></div>
+
+</div>
+HTML;
+        $expected3 = <<<HTML
+<div class="form-floating mt-3 field-dynamicmodel-checkboxname">
+<div class="form-check">
+<input type="hidden" name="DynamicModel[checkboxName]" value="0"><input type="checkbox" id="dynamicmodel-checkboxname" class="form-check-input" name="DynamicModel[checkboxName]" value="1">
+<label class="form-check-label" for="dynamicmodel-checkboxname">Checkbox Name</label>
+<div class="invalid-feedback"></div>
+
+</div>
+</div>
+HTML;
+
+
+        $this->assertContainsWithoutLE('<form id="w0"', $out);
+        $this->assertContainsWithoutLE($expected, $out);
+        $this->assertContainsWithoutLE($expected2, $out);
+        $this->assertContainsWithoutLE($expected3, $out);
+    }
+
     public function testHintRendering()
     {
         ActiveForm::$counter = 0;
