@@ -195,7 +195,7 @@ class Tabs extends Widget
                 ArrayHelper::setValue($items[$n], 'options', $headerOptions);
                 if (!isset($item['url'])) {
                     ArrayHelper::setValue($items[$n], 'url', '#' . $options['id']);
-                    ArrayHelper::setValue($items[$n], 'linkOptions.data.toggle', 'tab');
+                    ArrayHelper::setValue($items[$n], 'linkOptions.data.bs-toggle', 'tab');
                     ArrayHelper::setValue($items[$n], 'linkOptions.role', 'tab');
                     ArrayHelper::setValue($items[$n], 'linkOptions.aria.controls', $options['id']);
                     if (!$disabled) {
