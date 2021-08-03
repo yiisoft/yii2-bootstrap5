@@ -16,6 +16,8 @@ yii2-bootstrap5 は、Bootstrap 4 から Bootstrap 5 への移行ガイドに従
 
 ### ActiveForm
 
+新しい定数[[yii\bootstrap5\ActiveForm::LAYOUT_FLOATING]]があります。 Bootstrap5で導入された[新しいフォームレイアウト](https://getbootstrap.com/docs/5.0/forms/floating-labels/)です。
+
 ### Breadcrumbs
 
 ### ButtonDropdown

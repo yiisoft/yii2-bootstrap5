@@ -16,6 +16,9 @@ The most notable changes are summarized below:
 
 ### ActiveForm
 
+There is a new constant [[yii\bootstrap5\ActiveForm::LAYOUT_FLOATING]]. It's a 
+[new form layout](https://getbootstrap.com/docs/5.0/forms/floating-labels/) introduced in Bootstrap 5.
+
 ### Breadcrumbs
 
 ### ButtonDropdown
