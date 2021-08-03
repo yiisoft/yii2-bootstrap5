@@ -2,25 +2,28 @@ Yii widgets
 ===========
 
 Most complex bootstrap components are wrapped into Yii widgets to allow more robust syntax and integrate with
-framework features. All widgets belong to `\yii\bootstrap4` namespace:
+framework features. All widgets belong to `\yii\bootstrap5` namespace:
 
-- [[yii\bootstrap4\Accordion|Accordion]]
-- [[yii\bootstrap4\ActiveField|ActiveField]]
-- [[yii\bootstrap4\ActiveForm|ActiveForm]]
-- [[yii\bootstrap4\Alert|Alert]]
-- [[yii\bootstrap4\Breadcrumbs|Breadcrumbs]]
-- [[yii\bootstrap4\Button|Button]]
-- [[yii\bootstrap4\ButtonDropdown|ButtonDropdown]]
-- [[yii\bootstrap4\ButtonGroup|ButtonGroup]]
-- [[yii\bootstrap4\ButtonToolbar|ButtonToolbar]]
-- [[yii\bootstrap4\Carousel|Carousel]]
-- [[yii\bootstrap4\Dropdown|Dropdown]]
-- [[yii\bootstrap4\Modal|Modal]]
-- [[yii\bootstrap4\Nav|Nav]]
-- [[yii\bootstrap4\NavBar|NavBar]]
-- [[yii\bootstrap4\Progress|Progress]]
-- [[yii\bootstrap4\Tabs|Tabs]]
-- [[yii\bootstrap4\ToggleButtonGroup|ToggleButtonGroup]]
+- [[yii\bootstrap5\Accordion|Accordion]]
+- [[yii\bootstrap5\ActiveField|ActiveField]]
+- [[yii\bootstrap5\ActiveForm|ActiveForm]]
+- [[yii\bootstrap5\Alert|Alert]]
+- [[yii\bootstrap5\Breadcrumbs|Breadcrumbs]]
+- [[yii\bootstrap5\Button|Button]]
+- [[yii\bootstrap5\ButtonDropdown|ButtonDropdown]]
+- [[yii\bootstrap5\ButtonGroup|ButtonGroup]]
+- [[yii\bootstrap5\ButtonToolbar|ButtonToolbar]]
+- [[yii\bootstrap5\Carousel|Carousel]]
+- [[yii\bootstrap5\Dropdown|Dropdown]]
+- [[yii\bootstrap5\LinkPager|LinkPager]]
+- [[yii\bootstrap5\Modal|Modal]]
+- [[yii\bootstrap5\Nav|Nav]]
+- [[yii\bootstrap5\NavBar|NavBar]]
+- [[yii\bootstrap5\Popover|Popover]]
+- [[yii\bootstrap5\Progress|Progress]]
+- [[yii\bootstrap5\Tabs|Tabs]]
+- [[yii\bootstrap5\Toast|Toast]]
+- [[yii\bootstrap5\ToggleButtonGroup|ToggleButtonGroup]]
 
 
 ## Customizing widget CSS classes <span id="customizing-css-classes"></span>
@@ -28,7 +31,7 @@ framework features. All widgets belong to `\yii\bootstrap4` namespace:
 The widgets allow quick composition of the HTML for the bootstrap components that require the bootstrap CSS classes.
 The default classes for a particular component will be added automatically by the widget, and the optional classes that you may want to customize are usually supported through the properties of the widget.
 
-For example, you may use [[yii\bootstrap4\Button::options]] to customize the appearance of a button.
+For example, you may use [[yii\bootstrap5\Button::options]] to customize the appearance of a button.
 The class 'btn' which is required for a button will be added automatically, so you don't need to worry about it.
 All you need is specify a particular button class:
 
@@ -40,7 +43,7 @@ echo Button::widget([
 ```
 
 However, sometimes you may need to replace the default classes with the alternative ones.
-For example, the widget [[yii\bootstrap4\ButtonGroup]] uses 'btn-group' class for the container div by default,
+For example, the widget [[yii\bootstrap5\ButtonGroup]] uses 'btn-group' class for the container div by default,
 but you may need to use 'btn-group-vertical' instead to align the buttons vertically.
 Using a plain 'class' option simply adds 'btn-group-vertical' to 'btn-group', which will produce an incorrect result.
 In order to override the default classes of a widget, you need to specify the 'class' option as an array that contains the customized class definition under the 'widget' key:

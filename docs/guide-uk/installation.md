@@ -8,7 +8,7 @@
 Запустіть
 
 ```
-php composer.phar require --prefer-dist yiisoft/yii2-bootstrap4
+php composer.phar require --prefer-dist yiisoft/yii2-bootstrap5
 ```
 
 або додайте

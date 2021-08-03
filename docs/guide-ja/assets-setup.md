@@ -80,7 +80,7 @@ Bower または NPM のクライアントを直接に使って Bootstrap のア�
 
 ```json
 "replace": {
-    "npm-asset/bootstrap": ">=4.2.1"
+    "npm-asset/bootstrap": ">=5.0.2"
 },
 ```
 
@@ -93,7 +93,7 @@ Bower または NPM のクライアントを直接に使って Bootstrap のア�
 
 ```json
 "replace": {
-    "npm-asset/bootstrap": ">=4.2.1"
+    "npm-asset/bootstrap": ">=5.0.2"
 },
 ```
 
@@ -105,16 +105,16 @@ return [
         'assetManager' => [
             // CDN を使うようにバンドルをオーバーライド 
             'bundles' => [
-                'yii\bootstrap4\BootstrapAsset' => [
+                'yii\bootstrap5\BootstrapAsset' => [
                     'sourcePath' => null,
-                    'baseUrl' => 'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1',
+                    'baseUrl' => 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/',
                     'css' => [
                         'css/bootstrap.min.css'
                     ],
                 ],
-                'yii\bootstrap4\BootstrapPluginAsset' => [
+                'yii\bootstrap5\BootstrapPluginAsset' => [
                     'sourcePath' => null,
-                    'baseUrl' => 'https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1',
+                    'baseUrl' => 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/',
                     'js' => [
                         'js/bootstrap.bundle.min.js'
                     ],
@@ -141,7 +141,7 @@ Bootstrap アセットを手作業でダウンロードし、プロジェクト�
 
 ```json
 "replace": {
-    "npm-asset/bootstrap": ">=4.2.1"
+    "npm-asset/bootstrap": ">=5.0.2"
 },
 ```
 
@@ -153,13 +153,13 @@ return [
         'assetManager' => [
             // バンドルをオーバーライドし、ローカル・プロジェクト・ファイルを使う
             'bundles' => [
-                'yii\bootstrap4\BootstrapAsset' => [
+                'yii\bootstrap5\BootstrapAsset' => [
                     'sourcePath' => '@app/assets/source/bootstrap/dist',
                     'css' => [
                         YII_ENV_DEV ? 'css/bootstrap.css' : 'css/bootstrap.min.css',
                     ],
                 ],
-                'yii\bootstrap4\BootstrapPluginAsset' => [
+                'yii\bootstrap5\BootstrapPluginAsset' => [
                     'sourcePath' => '@app/assets/source/bootstrap/dist',
                     'js' => [
                         YII_ENV_DEV ? 'js/bootstrap.js' : 'js/bootstrap.min.js',

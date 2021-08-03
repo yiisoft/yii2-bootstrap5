@@ -9,7 +9,7 @@ convenient way to include bootstrap assets in your pages with a single line adde
 ```php
 public $depends = [
     'yii\web\YiiAsset',
-    'yii\bootstrap4\BootstrapAsset', // this line
+    'yii\bootstrap5\BootstrapAsset', // this line
 ];
 ```
 

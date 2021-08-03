@@ -9,7 +9,7 @@ Yii не загортає основи bootstrap в код PHP, оскільки
 ```php
 public $depends = [
     'yii\web\YiiAsset',
-    'yii\bootstrap4\BootstrapAsset', // цей рядок
+    'yii\bootstrap5\BootstrapAsset', // цей рядок
 ];
 ```
 

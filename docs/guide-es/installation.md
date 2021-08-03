@@ -8,7 +8,7 @@ La mejor manera para instalar esta extensión es a través de [composer](http://
 Ejecuta
 
 ```
-php composer.phar require --prefer-dist yiisoft/yii2-bootstrap4
+php composer.phar require --prefer-dist yiisoft/yii2-bootstrap5
 ```
 
 o añade

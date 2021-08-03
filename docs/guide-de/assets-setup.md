@@ -77,7 +77,7 @@ Fügen Sie zur `composer.json`-Datei Ihres Projekts folgende Zeilen hinzu zum Ve
 
 ```json
 "replace": {
-    "npm-asset/bootstrap": ">=4.2.1"
+    "npm-asset/bootstrap": ">=5.0.2"
 },
 ```
 
@@ -89,7 +89,7 @@ Fügen Sie zur `composer.json`-Datei Ihres Projekts folgende Zeilen hinzu zum Ve
 
 ```json
 "replace": {
-    "npm-asset/bootstrap": ">=4.2.1"
+    "npm-asset/bootstrap": ">=5.0.2"
 },
 ```
 
@@ -101,16 +101,16 @@ return [
         'assetManager' => [
             // override bundles to use CDN :
             'bundles' => [
-                'yii\bootstrap4\BootstrapAsset' => [
+                'yii\bootstrap5\BootstrapAsset' => [
                     'sourcePath' => null,
-                    'baseUrl' => 'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1',
+                    'baseUrl' => 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/',
                     'css' => [
                         'css/bootstrap.min.css'
                     ],
                 ],
-                'yii\bootstrap4\BootstrapPluginAsset' => [
+                'yii\bootstrap5\BootstrapPluginAsset' => [
                     'sourcePath' => null,
-                    'baseUrl' => 'https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1',
+                    'baseUrl' => 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/',
                     'js' => [
                         'js/bootstrap.bundle.min.js'
                     ],
@@ -135,7 +135,7 @@ Fügen Sie zur `composer.json`-Datei Ihres Projekts folgende Zeilen hinzu zum Ve
 
 ```json
 "replace": {
-    "npm-asset/bootstrap": ">=4.2.1"
+    "npm-asset/bootstrap": ">=5.0.2"
 },
 ```
 
@@ -147,13 +147,13 @@ return [
         'assetManager' => [
             // override bundles to use local project files :
             'bundles' => [
-                'yii\bootstrap4\BootstrapAsset' => [
+                'yii\bootstrap5\BootstrapAsset' => [
                     'sourcePath' => '@app/assets/source/bootstrap/dist',
                     'css' => [
                         YII_ENV_DEV ? 'css/bootstrap.css' : 'css/bootstrap.min.css',
                     ],
                 ],
-                'yii\bootstrap4\BootstrapPluginAsset' => [
+                'yii\bootstrap5\BootstrapPluginAsset' => [
                     'sourcePath' => '@app/assets/source/bootstrap/dist',
                     'js' => [
                         YII_ENV_DEV ? 'js/bootstrap.js' : 'js/bootstrap.min.js',

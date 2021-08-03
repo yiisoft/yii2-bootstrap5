@@ -8,7 +8,7 @@
 直接运行
 
 ```
-php composer.phar require --prefer-dist yiisoft/yii2-bootstrap4
+php composer.phar require --prefer-dist yiisoft/yii2-bootstrap5
 ```
 
 或者在项目目录的 `composer.json` 文件中添加如下代码

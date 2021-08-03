@@ -9,7 +9,7 @@ im `@app/assets` Verzeichnis:
 ```php
 public $depends = [
     'yii\web\YiiAsset',
-    'yii\bootstrap4\BootstrapAsset', // Diese Zeile
+    'yii\bootstrap5\BootstrapAsset', // Diese Zeile
 ];
 ```
 
