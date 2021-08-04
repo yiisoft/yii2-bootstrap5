@@ -2,6 +2,7 @@
 
 namespace yiiunit\extensions\bootstrap5;
 
+use PHPUnit\Framework\Constraint\IsType;
 use Yii;
 use yii\bootstrap5\Html;
 use yii\bootstrap5\Popover;
@@ -35,7 +36,7 @@ HTML;
 
         $js = Yii::$app->view->js[View::POS_READY];
 
-        $this->assertIsArray($js);
+        $this->assertInternalType(IsType::TYPE_ARRAY, $js);
         $options = array_shift($js);
 
         $this->assertContainsWithoutLE("jQuery('#w0').popover({", $options);
@@ -54,7 +55,7 @@ HTML;
 
         $js = Yii::$app->view->js[View::POS_READY];
 
-        $this->assertIsArray($js);
+        $this->assertInternalType(IsType::TYPE_ARRAY, $js);
         $options = array_shift($js);
 
         $this->assertContainsWithoutLE('"content":"\u003Cspan class=\u0022test-content\u0022\u003ETest content\u003C\/span\u003E"', $options);
