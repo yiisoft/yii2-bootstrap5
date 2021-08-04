@@ -97,6 +97,11 @@ class Offcanvas extends Widget
 
     /**
      * @var array Additional title options.
+     *
+     * The following special options are supported:
+     *
+     * - tag: string, the tag name of the button. Defaults to 'h5'.
+     *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $titleOptions = [];
@@ -142,8 +147,9 @@ class Offcanvas extends Widget
     {
         $button = $this->renderCloseButton();
         if (isset($this->title)) {
+            $tag = ArrayHelper::remove($this->titleOptions, 'tag', 'h5');
             Html::addCssClass($this->titleOptions, ['widget' => 'offcanvas-title']);
-            $header = Html::tag('h5', $this->title, $this->titleOptions);
+            $header = Html::tag($tag, $this->title, $this->titleOptions);
         } else {
             $header = '';
         }

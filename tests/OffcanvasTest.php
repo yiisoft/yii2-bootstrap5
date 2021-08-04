@@ -2,8 +2,6 @@
 
 namespace yiiunit\extensions\bootstrap5;
 
-use yii\bootstrap5\Html;
-use yii\bootstrap5\Modal;
 use yii\bootstrap5\Offcanvas;
 
 /**
@@ -42,6 +40,13 @@ HTML;
         ob_start();
         Offcanvas::begin([
             'title' => 'Offcanvas title',
+            'headerOptions' => [
+                'data-test' => 'Test'
+            ],
+            'titleOptions' => [
+                'tag' => 'h2'
+            ],
+            'placement' => Offcanvas::PLACEMENT_END,
             'backdrop' => false,
             'scrolling' => true,
             'closeButton' => false
@@ -52,9 +57,9 @@ HTML;
 
         $expected = <<<HTML
 
-<div id="w0" class="offcanvas offcanvas-start" tabindex="-1" data-bs-backdrop="false" data-bs-scroll="true" aria-labelledby="w0-label">
-<div class="offcanvas-header">
-<h5 id="w0-label" class="offcanvas-title">Offcanvas title</h5>
+<div id="w0" class="offcanvas offcanvas-end" tabindex="-1" data-bs-backdrop="false" data-bs-scroll="true" aria-labelledby="w0-label">
+<div class="offcanvas-header" data-test="Test">
+<h2 id="w0-label" class="offcanvas-title">Offcanvas title</h2>
 </div>
 <div class="offcanvas-body">
 <p>Woohoo, you're reading this text in an offcanvas!</p>
