@@ -1,100 +1,78 @@
 <?php
-
-declare(strict_types=1);
+/**
+ * @package yii2-bootstrap5
+ * @author Simon Karlen <simi.albi@gmail.com>
+ */
 
 namespace yii\bootstrap5;
 
-use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 
 /**
- * Modal renders a modal window that can be toggled by clicking on a button.
+ * Offcanvas is a sidebar component that can be toggled via JavaScript to appear from the left, right, or bottom edge
+ * of the viewport. Buttons or anchors are used as triggers that are attached to specific elements you toggle, and data
+ * attributes are used to invoke the required JavaScript.
  *
- * The following example will show the content enclosed between the [[begin()]]
- * and [[end()]] calls within the modal window:
+ * The following example will show the content enclosed the [[begin()]] and [[end()]] calls within the offcancas
+ * container:
  *
- * ~~~php
- * Modal::begin([
- *     'title' => 'Hello world',
- *     'toggleButton' => ['label' => 'click me'],
+ * ```php
+ * Offcanvas::begin([
+ *     'placement' => Offcanvas::PLACEMENT_END,
+ *     'backdrop' => true,
+ *     'scrolling' => true
  * ]);
  *
- * echo 'Say hello...';
+ * Nav::widget([...]);
  *
- * Modal::end();
- * ~~~
+ * Offcanvas::end();
+ * ```
  *
- * @see https://getbootstrap.com/docs/5.0/components/modal/
- * @author Antonio Ramirez <amigo.cobos@gmail.com>
- * @author Qiang Xue <qiang.xue@gmail.com>
+ * @see https://getbootstrap.com/docs/5.0/components/offcanvas/
  * @author Simon Karlen <simi.albi@outlook.com>
  */
-class Modal extends Widget
+class Offcanvas extends Widget
 {
-    /**
-     * The additional css class of extra large modal
-     * @since 2.0.3
-     */
-    const SIZE_EXTRA_LARGE = 'modal-xl';
-    /**
-     * The additional css class of large modal
-     */
-    const SIZE_LARGE = 'modal-lg';
-    /**
-     * The additional css class of small modal
-     */
-    const SIZE_SMALL = 'modal-sm';
-    /**
-     * The additional css class of default modal
-     */
-    const SIZE_DEFAULT = '';
+    const PLACEMENT_START = 'start';
+    const PLACEMENT_END = 'end';
+    const PLACEMENT_TOP = 'top';
+    const PLACEMENT_BOTTOM = 'bottom';
 
     /**
-     * @var string the title content in the modal window.
+     * @var string Where to place the offcanvas. Can be of of the [[PLACEMENT_*]] constants.
+     */
+    public $placement = self::PLACEMENT_START;
+
+    /**
+     * @var boolean Whether to enable backdrop or not. Defaults to `true`.
+     */
+    public $backdrop = true;
+
+    /**
+     * @var boolean Whether to enable body scrolling or not. Defaults to `false`.
+     */
+    public $scrolling = false;
+
+    /**
+     * @var string The title content in the offcanvas container.
      */
     public $title;
-    /**
-     * @var array additional title options
-     * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
-     */
-    public $titleOptions = [];
-    /**
-     * @var array additional header options
-     * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
-     */
-    public $headerOptions = [];
-    /**
-     * @var array body options
-     * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
-     */
-    public $bodyOptions = [];
-    /**
-     * @var string|null the footer content in the modal window.
-     */
-    public $footer;
-    /**
-     * @var array additional footer options
-     * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
-     */
-    public $footerOptions = [];
-    /**
-     * @var string|null the modal size. Can be [[SIZE_LARGE]] or [[SIZE_SMALL]], or empty for default.
-     */
-    public $size;
+
     /**
      * @var array|false the options for rendering the close button tag.
-     * The close button is displayed in the header of the modal window. Clicking
-     * on the button will hide the modal window. If this is false, no close button will be rendered.
+     * The close button is displayed in the header of the offcanvas container. Clicking
+     * on the button will hide the offcanvas container. If this is false, no close button will be rendered.
      *
      * The following special options are supported:
      *
      * - tag: string, the tag name of the button. Defaults to 'button'.
      *
      * The rest of the options will be rendered as the HTML attributes of the button tag.
-     * Please refer to the [Modal plugin help](http://getbootstrap.com/javascript/#modals)
+     * Please refer to the [Offcanvas plugin help](https://getbootstrap.com/docs/5.0/components/offcanvas/)
      * for the supported HTML attributes.
      */
     public $closeButton = [];
+
     /**
      * @var array|false the options for rendering the toggle button tag.
      * The toggle button is used to toggle the visibility of the modal window.
@@ -110,31 +88,27 @@ class Modal extends Widget
      * for the supported HTML attributes.
      */
     public $toggleButton = false;
-    /**
-     * @var boolean whether to center the modal vertically
-     *
-     * When true the modal-dialog-centered class will be added to the modal-dialog
-     * @since 2.0.9
-     */
-    public $centerVertical = false;
-    /**
-     * @var boolean whether to make the modal body scrollable
-     *
-     * When true the modal-dialog-scrollable class will be added to the modal-dialog
-     * @since 2.0.9
-     */
-    public $scrollable = false;
-    /**
-     * @var array modal dialog options
-     * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
-     * @since 2.0.9
-     */
-    public $dialogOptions = [];
 
+    /**
+     * @var array Additional header options.
+     * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
+     */
+    public $headerOptions = [];
+
+    /**
+     * @var array Additional title options.
+     * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
+     */
+    public $titleOptions = [];
+
+    /**
+     * @var array Additional body options.
+     * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
+     */
+    public $bodyOptions = [];
 
     /**
      * {@inheritDoc}
-     * @throws InvalidConfigException
      */
     public function init()
     {
@@ -144,11 +118,10 @@ class Modal extends Widget
 
         echo $this->renderToggleButton() . "\n";
         echo Html::beginTag('div', $this->options) . "\n";
-        echo Html::beginTag('div', $this->dialogOptions) . "\n";
-        echo Html::beginTag('div', ['class' => 'modal-content']) . "\n";
         echo $this->renderHeader() . "\n";
         echo $this->renderBodyBegin() . "\n";
     }
+
 
     /**
      * Renders the widget.
@@ -156,12 +129,9 @@ class Modal extends Widget
     public function run()
     {
         echo "\n" . $this->renderBodyEnd();
-        echo "\n" . $this->renderFooter();
-        echo "\n" . Html::endTag('div'); // modal-content
-        echo "\n" . Html::endTag('div'); // modal-dialog
         echo "\n" . Html::endTag('div');
 
-        $this->registerPlugin('modal');
+        $this->registerPlugin('offcanvas');
     }
 
     /**
@@ -172,7 +142,7 @@ class Modal extends Widget
     {
         $button = $this->renderCloseButton();
         if (isset($this->title)) {
-            Html::addCssClass($this->titleOptions, ['widget' => 'modal-title']);
+            Html::addCssClass($this->titleOptions, ['widget' => 'offcanvas-title']);
             $header = Html::tag('h5', $this->title, $this->titleOptions);
         } else {
             $header = '';
@@ -183,7 +153,7 @@ class Modal extends Widget
         } elseif ($header === '') {
             return '';
         }
-        Html::addCssClass($this->headerOptions, ['widget' => 'modal-header']);
+        Html::addCssClass($this->headerOptions, ['widget' => 'offcanvas-header']);
 
         return Html::tag('div', "\n" . $header . "\n", $this->headerOptions);
     }
@@ -194,7 +164,7 @@ class Modal extends Widget
      */
     protected function renderBodyBegin(): string
     {
-        Html::addCssClass($this->bodyOptions, ['widget' => 'modal-body']);
+        Html::addCssClass($this->bodyOptions, ['widget' => 'offcanvas-body']);
 
         return Html::beginTag('div', $this->bodyOptions);
     }
@@ -206,21 +176,6 @@ class Modal extends Widget
     protected function renderBodyEnd(): string
     {
         return Html::endTag('div');
-    }
-
-    /**
-     * Renders the HTML markup for the footer of the modal
-     * @return string|null the rendering result
-     */
-    protected function renderFooter()
-    {
-        if (isset($this->footer)) {
-            Html::addCssClass($this->footerOptions, ['widget' => 'modal-footer']);
-
-            return Html::tag('div', "\n" . $this->footer . "\n", $this->footerOptions);
-        } else {
-            return null;
-        }
     }
 
     /**
@@ -262,13 +217,10 @@ class Modal extends Widget
     {
         $this->options = array_merge([
             'tabindex' => -1,
-            'aria-hidden' => 'true',
+            'data-bs-backdrop' => $this->backdrop ? 'true' : 'false',
+            'data-bs-scroll' => $this->scrolling ? 'true' : 'false'
         ], $this->options);
-        Html::addCssClass($this->options, ['widget' => 'modal fade']);
-
-        if (!empty($this->clientOptions)) {
-            $this->clientOptions = array_merge(['show' => false], $this->clientOptions);
-        }
+        Html::addCssClass($this->options, ['widget' => 'offcanvas offcanvas-' . $this->placement]);
 
         $this->titleOptions = array_merge([
             'id' => $this->options['id'] . '-label',
@@ -279,8 +231,8 @@ class Modal extends Widget
 
         if ($this->closeButton !== false) {
             $this->closeButton = array_merge([
-                'data-bs-dismiss' => 'modal',
-                'class' => 'btn-close',
+                'data-bs-dismiss' => 'offcanvas',
+                'class' => 'btn-close text-reset',
                 'type' => 'button',
                 'aria-label' => 'Close'
             ], $this->closeButton);
@@ -288,23 +240,13 @@ class Modal extends Widget
 
         if ($this->toggleButton !== false) {
             $this->toggleButton = array_merge([
-                'data-bs-toggle' => 'modal',
+                'data-bs-toggle' => 'offcanvas',
                 'type' => 'button',
+                'aria-controls' => $this->options['id']
             ], $this->toggleButton);
             if (!isset($this->toggleButton['data-bs-target']) && !isset($this->toggleButton['href'])) {
                 $this->toggleButton['data-bs-target'] = '#' . $this->options['id'];
             }
-        }
-
-        Html::addCssClass($this->dialogOptions, ['widget' => 'modal-dialog']);
-        if (isset($this->size)) {
-            Html::addCssClass($this->dialogOptions, ['size' => $this->size]);
-        }
-        if ($this->centerVertical) {
-            Html::addCssClass($this->dialogOptions, ['align' => 'modal-dialog-centered']);
-        }
-        if ($this->scrollable) {
-            Html::addCssClass($this->dialogOptions, ['scroll' => 'modal-dialog-scrollable']);
         }
     }
 }
