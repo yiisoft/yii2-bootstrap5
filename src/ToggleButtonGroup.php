@@ -53,7 +53,7 @@ class ToggleButtonGroup extends InputWidget
      * @see Html::radio()
      */
     public $labelOptions = [
-        'class' => ['btn', 'btn-secondary'],
+        'class' => ['btn', 'btn-outline-secondary'],
     ];
     /**
      * @var bool whether the items labels should be HTML-encoded.
@@ -115,21 +115,20 @@ class ToggleButtonGroup extends InputWidget
     {
         unset($index);
         $labelOptions = $this->labelOptions;
-        $labelOptions['wrapInput'] = true;
+        $labelOptions['wrapInput'] = false;
         Html::addCssClass($labelOptions, ['widget' => 'btn']);
-        if ($checked) {
-            Html::addCssClass($labelOptions, ['activate' => 'active']);
-        }
         $type = $this->type;
         if ($this->encodeLabels) {
             $label = Html::encode($label);
         }
-
-        return Html::$type($name, $checked, [
+        $options = [
             'label' => $label,
             'labelOptions' => $labelOptions,
             'autocomplete' => 'off',
             'value' => $value,
-        ]);
+        ];
+        Html::addCssClass($options, ['widget' => 'btn-check']);
+
+        return Html::$type($name, $checked, $options);
     }
 }
