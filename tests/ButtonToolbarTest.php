@@ -1,4 +1,5 @@
 <?php
+
 namespace yiiunit\extensions\bootstrap5;
 
 

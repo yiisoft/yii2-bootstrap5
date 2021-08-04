@@ -1,7 +1,9 @@
 <?php
+
 namespace yiiunit\extensions\bootstrap5;
 
 use yii\base\DynamicModel;
+use yii\base\InvalidConfigException;
 use yii\bootstrap5\Accordion;
 use yii\widgets\ActiveForm;
 
@@ -110,7 +112,7 @@ class AccordionTest extends TestCase
 </div>
 
 HTML
-        , $output);
+            , $output);
     }
 
     public function testLabelKeys()
@@ -131,7 +133,7 @@ HTML
                     'label' => 'Item3',
                     'content' => 'Content3',
                 ],
-                'FormField' => $form->field(new DynamicModel(['test']), 'test',['template' => '{input}']),
+                'FormField' => $form->field(new DynamicModel(['test']), 'test', ['template' => '{input}']),
             ]
         ]);
 
@@ -166,7 +168,7 @@ HTML
 </div>
 
 HTML
-        , $output);
+            , $output);
     }
 
     public function testExpandOptions()
@@ -199,15 +201,15 @@ HTML
 </div>
 
 HTML
-        , $output);
+            , $output);
     }
 
     public function invalidItemsProvider()
     {
         return [
-            [ ['content'] ], // only content without label key
-            [ [[]] ], // only content array without label
-            [ [['content' => 'test']] ], // only content array without label
+            [['content']], // only content without label key
+            [[[]]], // only content array without label
+            [[['content' => 'test']]], // only content array without label
         ];
     }
 
@@ -257,7 +259,7 @@ HTML
 </div>
 
 HTML
-        , $output);
+            , $output);
     }
 
     public function testAutoCloseItems()
@@ -285,7 +287,6 @@ HTML
     }
 
     /**
-     * @depends testRender
      */
     public function testItemToggleTag()
     {

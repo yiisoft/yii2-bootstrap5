@@ -1,4 +1,5 @@
 <?php
+
 namespace yiiunit\extensions\bootstrap5;
 
 use yii\bootstrap5\Button;

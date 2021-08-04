@@ -38,7 +38,6 @@ HTML;
     }
 
     /**
-     * @depends testBodyOptions
      */
     public function testContainerOptions()
     {

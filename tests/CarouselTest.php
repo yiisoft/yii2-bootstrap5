@@ -1,4 +1,5 @@
 <?php
+
 namespace yiiunit\extensions\bootstrap5;
 
 
@@ -58,7 +59,6 @@ HTML;
     }
 
     /**
-     * @depends testContainerOptions
      */
     public function testCrossfade()
     {

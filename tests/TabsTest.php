@@ -152,12 +152,12 @@ class TabsTest extends TestCase
         Tabs::$counter = 0;
         $html = Tabs::widget([
             'items' => [
-                 [
+                [
                     'label' => 'Page1',
                     'content' => 'Page1',
                     'disabled' => true
-               ],
-               [
+                ],
+                [
                     'label' => 'Page2',
                     'content' => 'Page2',
                 ],
@@ -371,7 +371,7 @@ HTML;
         $this->assertEquals($expected, $html);
     }
 
-        public function testHeaderOptions()
+    public function testHeaderOptions()
     {
         Tabs::$counter = 0;
         $html = Tabs::widget([

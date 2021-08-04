@@ -26,25 +26,6 @@ class ActiveFieldTest extends TestCase
      */
     private $attributeName = 'attributeName';
 
-    protected function setUp()
-    {
-        // dirty way to have Request object not throwing exception when running testHomeLinkNull()
-        $_SERVER['SCRIPT_FILENAME'] = "index.php";
-        $_SERVER['SCRIPT_NAME'] = "index.php";
-
-        parent::setUp();
-
-        $this->helperModel = new DynamicModel(['attributeName']);
-        ob_start();
-        $this->helperForm = ActiveForm::begin(['action' => '/something']);
-        ActiveForm::end();
-        ob_end_clean();
-
-        $this->activeField = new ActiveField(['form' => $this->helperForm]);
-        $this->activeField->model = $this->helperModel;
-        $this->activeField->attribute = $this->attributeName;
-    }
-
     public function testFileInput()
     {
         Html::$counter = 0;
@@ -61,8 +42,6 @@ HTML;
 
         $this->assertEqualsWithoutLE($expectedHtml, $html);
     }
-
-    // Tests :
 
     public function testRadioList()
     {
@@ -88,6 +67,8 @@ HTML;
 HTML;
         $this->assertEqualsWithoutLE($expectedHtml, $html);
     }
+
+    // Tests :
 
     public function testRadioError()
     {
@@ -257,7 +238,6 @@ HTML;
     }
 
     /**
-     * @depends testRadioList
      *
      * @see https://github.com/yiisoft/yii2-bootstrap/issues/81
      */
@@ -274,7 +254,6 @@ HTML;
     }
 
     /**
-     * @depends testCheckboxList
      *
      * @see https://github.com/yiisoft/yii2-bootstrap/issues/81
      */
@@ -288,5 +267,24 @@ HTML;
         ])->render();
 
         $this->assertContains('data-attribute="test"', $content);
+    }
+
+    protected function setUp()
+    {
+        // dirty way to have Request object not throwing exception when running testHomeLinkNull()
+        $_SERVER['SCRIPT_FILENAME'] = "index.php";
+        $_SERVER['SCRIPT_NAME'] = "index.php";
+
+        parent::setUp();
+
+        $this->helperModel = new DynamicModel(['attributeName']);
+        ob_start();
+        $this->helperForm = ActiveForm::begin(['action' => '/something']);
+        ActiveForm::end();
+        ob_end_clean();
+
+        $this->activeField = new ActiveField(['form' => $this->helperForm]);
+        $this->activeField->model = $this->helperModel;
+        $this->activeField->attribute = $this->attributeName;
     }
 }

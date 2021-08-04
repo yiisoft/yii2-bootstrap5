@@ -32,9 +32,9 @@ HTML;
     }
 
     /**
-     * @depends testCheckbox
      */
-    public function testCheckboxChecked() {
+    public function testCheckboxChecked()
+    {
         Html::$counter = 0;
         $html = ToggleButtonGroup::widget([
             'type' => ToggleButtonGroup::TYPE_CHECKBOX,
@@ -70,9 +70,9 @@ HTML;
     }
 
     /**
-     * @depends testRadio
      */
-    public function testRadioChecked() {
+    public function testRadioChecked()
+    {
         Html::$counter = 0;
         $html = ToggleButtonGroup::widget([
             'type' => ToggleButtonGroup::TYPE_RADIO,

@@ -15,15 +15,6 @@ use yiiunit\extensions\bootstrap5\data\User;
 class ActiveFormTest extends TestCase
 {
 
-    protected function setUp()
-    {
-        // dirty way to have Request object not throwing exception when running testFormNoRoleAttribute()
-        $_SERVER['REQUEST_URI'] = "index.php";
-
-        parent::setUp();
-
-    }
-
     public function testDefaultLayout()
     {
         ActiveForm::$counter = 0;
@@ -124,7 +115,6 @@ HTML;
     }
 
     /**
-     * @depends testHorizontalLayout
      */
     public function testHorizontalLayoutTemplateOverride()
     {
@@ -374,5 +364,14 @@ HTML;
 
 
         $this->assertContainsWithoutLE('<div class="alert alert-danger"', $out);
+    }
+
+    protected function setUp()
+    {
+        // dirty way to have Request object not throwing exception when running testFormNoRoleAttribute()
+        $_SERVER['REQUEST_URI'] = "index.php";
+
+        parent::setUp();
+
     }
 }

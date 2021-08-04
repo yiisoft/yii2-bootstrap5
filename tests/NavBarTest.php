@@ -1,4 +1,5 @@
 <?php
+
 namespace yiiunit\extensions\bootstrap5;
 
 use yii\bootstrap5\Nav;
@@ -68,9 +69,9 @@ EXPECTED;
     }
 
     /**
-     * @depends testRender
      */
-    public function testNavAndForm() {
+    public function testNavAndForm()
+    {
 
         NavBar::$counter = 0;
 

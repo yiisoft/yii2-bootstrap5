@@ -1,4 +1,5 @@
 <?php
+
 namespace yiiunit\extensions\bootstrap5;
 
 use yii\bootstrap5\Nav;
@@ -10,26 +11,6 @@ use yii\bootstrap5\Nav;
  */
 class NavTest extends TestCase
 {
-    protected function setUp()
-    {
-        $this->mockWebApplication([
-            'components' => [
-                'request' => [
-                    'class' => 'yii\web\Request',
-                    'scriptUrl' => '/base/index.php',
-                    'hostInfo' => 'http://example.com/',
-                    'url' => '/base/index.php&r=site%2Fcurrent&id=42'
-                ],
-                'urlManager' => [
-                    'class' => 'yii\web\UrlManager',
-                    'baseUrl' => '/base',
-                    'scriptUrl' => '/base/index.php',
-                    'hostInfo' => 'http://example.com/',
-                ]
-            ],
-        ]);
-    }
-
     public function testIds()
     {
         Nav::$counter = 0;
@@ -364,5 +345,25 @@ EXPECTED;
 EXPECTED;
 
         $this->assertEqualsWithoutLE($expected, $out);
+    }
+
+    protected function setUp()
+    {
+        $this->mockWebApplication([
+            'components' => [
+                'request' => [
+                    'class' => 'yii\web\Request',
+                    'scriptUrl' => '/base/index.php',
+                    'hostInfo' => 'http://example.com/',
+                    'url' => '/base/index.php&r=site%2Fcurrent&id=42'
+                ],
+                'urlManager' => [
+                    'class' => 'yii\web\UrlManager',
+                    'baseUrl' => '/base',
+                    'scriptUrl' => '/base/index.php',
+                    'hostInfo' => 'http://example.com/',
+                ]
+            ],
+        ]);
     }
 }

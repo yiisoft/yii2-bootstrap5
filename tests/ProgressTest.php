@@ -1,4 +1,5 @@
 <?php
+
 namespace yiiunit\extensions\bootstrap5;
 
 
@@ -46,7 +47,6 @@ HTML;
     }
 
     /**
-     * @depends testRender
      */
     public function testMultiple()
     {
@@ -76,7 +76,7 @@ HTML;
     public function testRussianLocaleRendering()
     {
         $this->mockWebApplication([
-            'language'       => 'ru-RU',
+            'language' => 'ru-RU',
             'sourceLanguage' => 'en-US',
         ]);
 

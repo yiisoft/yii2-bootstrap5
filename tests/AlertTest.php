@@ -34,7 +34,6 @@ HTML;
     }
 
     /**
-     * @depends testNormalAlert
      */
     public function testDismissibleAlert()
     {

@@ -1,4 +1,5 @@
 <?php
+
 namespace yiiunit\extensions\bootstrap5;
 
 use Yii;
@@ -26,57 +27,6 @@ class ActiveFieldDefaultFormCheckTest extends TestCase
      * @var string
      */
     private $_attributeName = 'attributeName';
-
-    protected function setUp()
-    {
-        // dirty way to have Request object not throwing exception when running testHomeLinkNull()
-        $_SERVER['SCRIPT_FILENAME'] = 'index.php';
-        $_SERVER['SCRIPT_NAME'] = 'index.php';
-
-        $this->mockWebApplication([
-            'container' => [
-                'definitions' => [
-                    'yii\bootstrap5\ActiveField' => [
-                        'checkTemplate' => "<div class=\"form-check\">\n{input}\n{label}\n{error}\n{hint}\n</div>",
-                        'radioTemplate' => "<div class=\"form-check\">\n{input}\n{label}\n{error}\n{hint}\n</div>",
-                        'checkHorizontalTemplate' => "{beginWrapper}\n<div class=\"form-check\">\n{input}\n{label}\n{error}\n{hint}\n</div>\n{endWrapper}",
-                        'radioHorizontalTemplate' => "{beginWrapper}\n<div class=\"form-check\">\n{input}\n{label}\n{error}\n{hint}\n</div>\n{endWrapper}",
-                        'checkOptions' => [
-                            'class' => ['widget' => 'form-check-input'],
-                            'labelOptions' => [
-                                'class' => ['widget' => 'form-check-label']
-                            ],
-                            'wrapperOptions' => [
-                                'class' => ['widget' => 'form-check']
-                            ]
-                        ],
-                        'radioOptions' => [
-                            'class' => ['widget' => 'form-check-input'],
-                            'labelOptions' => [
-                                'class' => ['widget' => 'form-check-label']
-                            ],
-                            'wrapperOptions' => [
-                                'class' => ['widget' => 'form-check']
-                            ]
-                        ]
-                    ]
-                ]
-            ]
-        ]);
-
-        $this->_helperModel = new DynamicModel(['attributeName']);
-        ob_start();
-        $this->_helperForm = ActiveForm::begin(['action' => '/something']);
-        ActiveForm::end();
-        ob_end_clean();
-
-        $this->_activeField = Yii::createObject([
-            'class' => 'yii\bootstrap5\ActiveField',
-            'form' => $this->_helperForm
-        ]);
-        $this->_activeField->model = $this->_helperModel;
-        $this->_activeField->attribute = $this->_attributeName;
-    }
 
     public function testDefaultCheckboxByConfig()
     {
@@ -237,5 +187,56 @@ HTML;
         $this->assertContainsWithoutLE($expected, $out);
         $this->assertContainsWithoutLE($expected2, $out);
         $this->assertContainsWithoutLE($expected3, $out);
+    }
+
+    protected function setUp()
+    {
+        // dirty way to have Request object not throwing exception when running testHomeLinkNull()
+        $_SERVER['SCRIPT_FILENAME'] = 'index.php';
+        $_SERVER['SCRIPT_NAME'] = 'index.php';
+
+        $this->mockWebApplication([
+            'container' => [
+                'definitions' => [
+                    'yii\bootstrap5\ActiveField' => [
+                        'checkTemplate' => "<div class=\"form-check\">\n{input}\n{label}\n{error}\n{hint}\n</div>",
+                        'radioTemplate' => "<div class=\"form-check\">\n{input}\n{label}\n{error}\n{hint}\n</div>",
+                        'checkHorizontalTemplate' => "{beginWrapper}\n<div class=\"form-check\">\n{input}\n{label}\n{error}\n{hint}\n</div>\n{endWrapper}",
+                        'radioHorizontalTemplate' => "{beginWrapper}\n<div class=\"form-check\">\n{input}\n{label}\n{error}\n{hint}\n</div>\n{endWrapper}",
+                        'checkOptions' => [
+                            'class' => ['widget' => 'form-check-input'],
+                            'labelOptions' => [
+                                'class' => ['widget' => 'form-check-label']
+                            ],
+                            'wrapperOptions' => [
+                                'class' => ['widget' => 'form-check']
+                            ]
+                        ],
+                        'radioOptions' => [
+                            'class' => ['widget' => 'form-check-input'],
+                            'labelOptions' => [
+                                'class' => ['widget' => 'form-check-label']
+                            ],
+                            'wrapperOptions' => [
+                                'class' => ['widget' => 'form-check']
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]);
+
+        $this->_helperModel = new DynamicModel(['attributeName']);
+        ob_start();
+        $this->_helperForm = ActiveForm::begin(['action' => '/something']);
+        ActiveForm::end();
+        ob_end_clean();
+
+        $this->_activeField = Yii::createObject([
+            'class' => 'yii\bootstrap5\ActiveField',
+            'form' => $this->_helperForm
+        ]);
+        $this->_activeField->model = $this->_helperModel;
+        $this->_activeField->attribute = $this->_attributeName;
     }
 }

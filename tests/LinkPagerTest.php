@@ -17,32 +17,6 @@ use yii\helpers\StringHelper;
  */
 class LinkPagerTest extends TestCase
 {
-    protected function setUp()
-    {
-        parent::setUp();
-        $this->mockWebApplication([
-            'components' => [
-                'urlManager' => [
-                    'scriptUrl' => '/',
-                ],
-            ],
-        ]);
-    }
-
-    /**
-     * Get pagination.
-     * @param int $page
-     * @return Pagination
-     */
-    private function getPagination($page)
-    {
-        $pagination = new Pagination();
-        $pagination->setPage($page);
-        $pagination->totalCount = 500;
-        $pagination->route = 'test';
-        return $pagination;
-    }
-
     public function testFirstLastPageLabels()
     {
         $pagination = $this->getPagination(5);
@@ -79,7 +53,6 @@ class LinkPagerTest extends TestCase
     }
 
     /**
-     * @depends testDisabledPageElementOptions
      */
     public function testOverrideDisabledPageElementOptions()
     {
@@ -150,5 +123,32 @@ class LinkPagerTest extends TestCase
             }
         ]);
         $this->assertTrue($initTriggered);
+    }
+
+    protected function setUp()
+    {
+        parent::setUp();
+        $this->mockWebApplication([
+            'components' => [
+                'urlManager' => [
+                    'scriptUrl' => '/',
+                ],
+            ],
+        ]);
+    }
+
+    /**
+     * Get pagination.
+     * @param int $page
+     * @return Pagination
+     */
+    private function getPagination($page)
+    {
+        $pagination = new Pagination();
+        $pagination->setPage($page);
+        $pagination->totalCount = 500;
+        $pagination->route = 'test';
+
+        return $pagination;
     }
 }
