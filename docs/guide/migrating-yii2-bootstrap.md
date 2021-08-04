@@ -7,6 +7,7 @@ The most notable changes are summarized below:
 ## General
 
 * The namespace is `yii\bootstrap5` instead of `yii\bootstrap4`
+* The php compatibility **is limited to** `>=7.0`
 
 ## Widgets / Classes
 

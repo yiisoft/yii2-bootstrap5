@@ -7,6 +7,7 @@ Die grössten Änderungen finden Sie hier zusammengefasst:
 ## Allgemein
 
 * Der Namespace ist nun `yii\bootstrap5` anstatt `yii\bootstrap4`
+* Die PHP Kompatibilität **ist beschränkt auf** `>=7.0`
 
 ## Widgets / Klassen
 
