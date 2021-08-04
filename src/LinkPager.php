@@ -37,54 +37,54 @@ class LinkPager extends Widget
      * @var Pagination the pagination object that this pager is associated with.
      * You must set this property in order to make LinkPager work.
      */
-    public Pagination $pagination;
+    public $pagination;
     /**
      * @var array HTML attributes for the pager container tag.
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public array $options = [];
+    public $options = [];
     /**
      * @var array HTML attributes for the pager list tag.
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public array $listOptions = ['class' => ['pagination']];
+    public $listOptions = ['class' => ['pagination']];
     /**
      * @var array HTML attributes which will be applied to all link containers
      */
-    public array $linkContainerOptions = ['class' => ['page-item']];
+    public $linkContainerOptions = ['class' => ['page-item']];
     /**
      * @var array HTML attributes for the link in a pager container tag.
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public array $linkOptions = ['class' => ['page-link']];
+    public $linkOptions = ['class' => ['page-link']];
     /**
      * @var string the CSS class for the each page button.
      */
-    public string $pageCssClass = 'page-item';
+    public $pageCssClass = 'page-item';
     /**
      * @var string the CSS class for the "first" page button.
      */
-    public string $firstPageCssClass = 'first';
+    public $firstPageCssClass = 'first';
     /**
      * @var string the CSS class for the "last" page button.
      */
-    public string $lastPageCssClass = 'last';
+    public $lastPageCssClass = 'last';
     /**
      * @var string the CSS class for the "previous" page button.
      */
-    public string $prevPageCssClass = 'prev';
+    public $prevPageCssClass = 'prev';
     /**
      * @var string the CSS class for the "next" page button.
      */
-    public string $nextPageCssClass = 'next';
+    public $nextPageCssClass = 'next';
     /**
      * @var string the CSS class for the active (currently selected) page button.
      */
-    public string $activePageCssClass = 'active';
+    public $activePageCssClass = 'active';
     /**
      * @var string the CSS class for the disabled page buttons.
      */
-    public string $disabledPageCssClass = 'disabled';
+    public $disabledPageCssClass = 'disabled';
     /**
      * @var array the options for the disabled tag to be generated inside the disabled list element.
      * In order to customize the html tag, please use the tag key.
@@ -93,11 +93,11 @@ class LinkPager extends Widget
      * $disabledListItemSubTagOptions = ['class' => 'disabled-link'];
      * ```
      */
-    public array $disabledListItemSubTagOptions = [];
+    public $disabledListItemSubTagOptions = [];
     /**
      * @var int maximum number of page buttons that can be displayed. Defaults to 10.
      */
-    public int $maxButtonCount = 10;
+    public $maxButtonCount = 10;
     /**
      * @var string|bool the label for the "next" page button. Note that this will NOT be HTML-encoded.
      * If this property is false, the "next" page button will not be displayed.
@@ -126,15 +126,15 @@ class LinkPager extends Widget
      * @see http://www.w3.org/TR/html401/struct/links.html#h-12.1.2
      * @see registerLinkTags()
      */
-    public bool $registerLinkTags = false;
+    public $registerLinkTags = false;
     /**
      * @var bool Hide widget when only one page exist.
      */
-    public bool $hideOnSinglePage = true;
+    public $hideOnSinglePage = true;
     /**
      * @var bool whether to render current page button as disabled.
      */
-    public bool $disableCurrentPageButton = false;
+    public $disableCurrentPageButton = false;
 
 
     /**
@@ -223,7 +223,7 @@ class LinkPager extends Widget
         }
 
         // internal pages
-        [$beginPage, $endPage] = $this->getPageRange();
+        list($beginPage, $endPage) = $this->getPageRange();
         for ($i = $beginPage; $i <= $endPage; ++$i) {
             $buttons[] = $this->renderPageButton(
                 (string)($i + 1),
@@ -262,6 +262,7 @@ class LinkPager extends Widget
 
         $options = $this->listOptions;
         $tag = ArrayHelper::remove($options, 'tag', 'ul');
+
         return Html::tag($tag, implode("\n", $buttons), $options);
     }
 

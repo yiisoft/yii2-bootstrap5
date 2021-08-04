@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace yii\bootstrap5;
 
+use Exception;
 use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 
@@ -40,7 +41,7 @@ class Carousel extends Widget
      * @var array|null the labels for the previous and the next control buttons.
      * If null, it means the previous and the next control buttons should not be displayed.
      */
-    public ?array $controls = [
+    public $controls = [
         '<span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span>',
         '<span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span>',
     ];
@@ -48,7 +49,7 @@ class Carousel extends Widget
     /**
      * @var bool whether carousel indicators (<ol> tag with anchors to items) should be displayed or not.
      */
-    public bool $showIndicators = true;
+    public $showIndicators = true;
     /**
      * @var array list of slides in the carousel. Each array element represents a single
      * slide with the following structure:
@@ -64,15 +65,15 @@ class Carousel extends Widget
      * ]
      * ```
      */
-    public array $items = [];
+    public $items = [];
     /**
      * @var bool Animate slides with a fade transition instead of a slide. Defaults to `false`
      */
-    public bool $crossfade = false;
+    public $crossfade = false;
     /**
      * {@inheritdoc}
      */
-    public array $options = ['data-bs-ride' => 'carousel'];
+    public $options = ['data-bs-ride' => 'carousel'];
 
 
     /**
@@ -154,7 +155,7 @@ class Carousel extends Widget
      * @param int $index the item index as the first item should be set to `active`
      * @return string the rendering result
      * @throws InvalidConfigException if the item is invalid
-     * @throws \Exception
+     * @throws Exception
      */
     public function renderItem($item, int $index): string
     {
@@ -186,9 +187,12 @@ class Carousel extends Widget
 
     /**
      * Renders previous and next control buttons.
+     *
+     * @return string The rendered controls
+     *
      * @throws InvalidConfigException if [[controls]] is invalid.
      */
-    public function renderControls()
+    public function renderControls(): string
     {
         if (isset($this->controls[0], $this->controls[1])) {
             return Html::button($this->controls[0], [

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace yii\bootstrap5;
 
+use Throwable;
+
 /**
  * ButtonToolbar Combines sets of button groups into button toolbars for more complex components.
  * Use utility classes as needed to space out groups, buttons, and more.
@@ -57,7 +59,7 @@ class ButtonToolbar extends Widget
      * - options: array optional, the HTML attributes of the button group.
      * - encodeLabels: bool whether to HTML-encode the button labels.
      */
-    public array $buttonGroups = [];
+    public $buttonGroups = [];
 
 
     /**
@@ -75,18 +77,19 @@ class ButtonToolbar extends Widget
     /**
      * {@inheritdoc}
      * @return string
-     * @throws \Throwable
+     * @throws Throwable
      */
     public function run(): string
     {
         BootstrapAsset::register($this->getView());
+
         return Html::tag('div', $this->renderButtonGroups(), $this->options);
     }
 
     /**
      * Generates the button groups that compound the toolbar as specified on [[buttonGroups]].
      * @return string the rendering result.
-     * @throws \Throwable
+     * @throws Throwable
      */
     protected function renderButtonGroups(): string
     {

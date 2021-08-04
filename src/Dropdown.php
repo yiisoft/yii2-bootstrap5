@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace yii\bootstrap5;
 
+use Exception;
 use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 
@@ -51,19 +52,19 @@ class Dropdown extends Widget
      *
      * To insert divider use `-`.
      */
-    public array $items = [];
+    public $items = [];
     /**
      * @var bool whether the labels for header items should be HTML-encoded.
      */
-    public bool $encodeLabels = true;
+    public $encodeLabels = true;
     /**
      * @var array|null the HTML attributes for sub-menu container tags.
      */
-    public ?array $submenuOptions = [];
+    public $submenuOptions = [];
 
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function init()
     {
@@ -80,6 +81,7 @@ class Dropdown extends Widget
     {
         BootstrapPluginAsset::register($this->getView());
         $this->registerClientEvents();
+
         return $this->renderItems($this->items, $this->options);
     }
 
@@ -89,7 +91,7 @@ class Dropdown extends Widget
      * @param array $options the container HTML attributes
      * @return string the rendering result.
      * @throws InvalidConfigException if the label option is not specified in one of the items.
-     * @throws \Exception
+     * @throws Exception
      */
     protected function renderItems(array $items, array $options = []): string
     {

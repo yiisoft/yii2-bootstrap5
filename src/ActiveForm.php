@@ -93,7 +93,7 @@ class ActiveForm extends \yii\widgets\ActiveForm
      * override these defaults through [[fieldConfig]].
      * @see ActiveField for details on Bootstrap 5 field configuration
      */
-    public string $layout = self::LAYOUT_DEFAULT;
+    public $layout = self::LAYOUT_DEFAULT;
     /**
      * @var string the CSS class that is added to a field container when the associated attribute has validation error.
      */

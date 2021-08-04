@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace yii\bootstrap5;
 
+use Exception;
+use Throwable;
+use Yii;
 use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
-use Yii;
 
 /**
  * Nav renders a nav HTML component.
@@ -67,39 +69,39 @@ class Nav extends Widget
      *
      * If a menu item is a string, it will be rendered directly without HTML encoding.
      */
-    public array $items = [];
+    public $items = [];
     /**
      * @var bool whether the nav items labels should be HTML-encoded.
      */
-    public bool $encodeLabels = true;
+    public $encodeLabels = true;
     /**
      * @var bool whether to automatically activate items according to whether their route setting
      * matches the currently requested route.
      * @see isItemActive
      */
-    public bool $activateItems = true;
+    public $activateItems = true;
     /**
      * @var bool whether to activate parent menu items when one of the corresponding child menu items is active.
      */
-    public bool $activateParents = false;
+    public $activateParents = false;
     /**
      * @var string|null the route used to determine if a menu item is active or not.
      * If not set, it will use the route of the current request.
      * @see params
      * @see isItemActive
      */
-    public ?string $route = null;
+    public $route = null;
     /**
      * @var array|null the parameters used to determine if a menu item is active or not.
      * If not set, it will use `$_GET`.
      * @see route
      * @see isItemActive
      */
-    public ?array $params = null;
+    public $params = null;
     /**
      * @var string name of a class to use for rendering dropdowns within this widget. Defaults to [[Dropdown]].
      */
-    public string $dropdownClass = Dropdown::class;
+    public $dropdownClass = Dropdown::class;
 
 
     /**
@@ -120,18 +122,19 @@ class Nav extends Widget
     /**
      * Renders the widget.
      * @return string
-     * @throws InvalidConfigException|\Throwable
+     * @throws InvalidConfigException|Throwable
      */
     public function run(): string
     {
         BootstrapAsset::register($this->getView());
+
         return $this->renderItems();
     }
 
     /**
      * Renders widget items.
      * @return string
-     * @throws InvalidConfigException|\Throwable
+     * @throws InvalidConfigException|Throwable
      */
     public function renderItems(): string
     {
@@ -151,7 +154,7 @@ class Nav extends Widget
      * @param string|array $item the item to render.
      * @return string the rendering result.
      * @throws InvalidConfigException
-     * @throws \Throwable
+     * @throws Throwable
      */
     public function renderItem($item): string
     {
@@ -203,12 +206,13 @@ class Nav extends Widget
      * @param array $items the given items. Please refer to [[Dropdown::items]] for the array structure.
      * @param array $parentItem the parent item information. Please refer to [[items]] for the structure of this array.
      * @return string the rendering result.
-     * @throws \Throwable
+     * @throws Throwable
      */
     protected function renderDropdown(array $items, array $parentItem): string
     {
         /** @var Widget $dropdownClass */
         $dropdownClass = $this->dropdownClass;
+
         return $dropdownClass::widget([
             'options' => ArrayHelper::getValue($parentItem, 'dropdownOptions', []),
             'items' => $items,
@@ -223,8 +227,8 @@ class Nav extends Widget
      * @param array $items @see items
      * @param bool $active should the parent be active too
      * @return array
+     * @throws Exception
      * @see items
-     * @throws \Exception
      */
     protected function isChildActive(array $items, bool &$active): array
     {
@@ -248,6 +252,7 @@ class Nav extends Widget
                 }
             }
         }
+
         return $items;
     }
 
@@ -260,7 +265,7 @@ class Nav extends Widget
      * be considered active.
      * @param array $item the menu item to be checked
      * @return bool whether the menu item is active
-     * @throws \Exception
+     * @throws Exception
      */
     protected function isItemActive(array $item): bool
     {

@@ -32,33 +32,33 @@ class ToggleButtonGroup extends InputWidget
     /**
      * Checkbox type
      */
-    public const TYPE_CHECKBOX = 'checkbox';
+    const TYPE_CHECKBOX = 'checkbox';
     /**
      * Radio type
      */
-    public const TYPE_RADIO = 'radio';
+    const TYPE_RADIO = 'radio';
 
     /**
      * @var string input type, can be [[TYPE_CHECKBOX]] or [[TYPE_RADIO]]
      */
-    public string $type;
+    public $type;
     /**
      * @var array the data item used to generate the checkboxes.
      * The array values are the labels, while the array keys are the corresponding checkbox or radio values.
      */
-    public array $items = [];
+    public $items = [];
     /**
      * @var array, the HTML attributes for the label (button) tag.
      * @see Html::checkbox()
      * @see Html::radio()
      */
-    public array $labelOptions = [
+    public $labelOptions = [
         'class' => ['btn', 'btn-secondary'],
     ];
     /**
      * @var bool whether the items labels should be HTML-encoded.
      */
-    public bool $encodeLabels = true;
+    public $encodeLabels = true;
 
 
     /**
@@ -124,6 +124,7 @@ class ToggleButtonGroup extends InputWidget
         if ($this->encodeLabels) {
             $label = Html::encode($label);
         }
+
         return Html::$type($name, $checked, [
             'label' => $label,
             'labelOptions' => $labelOptions,

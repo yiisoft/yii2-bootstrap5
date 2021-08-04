@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace yii\bootstrap5;
 
+use Exception;
 use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 
@@ -80,17 +81,17 @@ class Progress extends Widget
     /**
      * @var string the button label. This property will only be considered if [[bars]] is empty
      */
-    public string $label;
+    public $label;
     /**
      * @var int the amount of progress as a percentage. This property will only be considered if [[bars]] is empty
      */
-    public int $percent = 0;
+    public $percent = 0;
     /**
      * @var array the HTML attributes of the bar. This property will only be considered if [[bars]] is empty
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      * @since 2.0.6
      */
-    public array $barOptions = [];
+    public $barOptions = [];
     /**
      * @var array a set of bars that are stacked together to form a single progress bar.
      * Each bar is an array of the following structure:
@@ -106,7 +107,7 @@ class Progress extends Widget
      * ]
      * ```
      */
-    public array $bars;
+    public $bars;
 
 
     /**
@@ -126,6 +127,7 @@ class Progress extends Widget
     public function run(): string
     {
         BootstrapAsset::register($this->getView());
+
         return $this->renderProgress();
     }
 
@@ -133,7 +135,7 @@ class Progress extends Widget
      * Renders the progress.
      * @return string the rendering result.
      * @throws InvalidConfigException if the "percent" option is not set in a stacked progress bar.
-     * @throws \Exception
+     * @throws Exception
      */
     protected function renderProgress(): string
     {

@@ -44,27 +44,27 @@ class Popover extends Widget
     /**
      * @var string|null the tile content in the popover.
      */
-    public ?string $title = null;
+    public $title = null;
     /**
      * @var array additional header options
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public array $headerOptions = [];
+    public $headerOptions = [];
     /**
      * @var array body options
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public array $bodyOptions = [];
+    public $bodyOptions = [];
     /**
      * @var array arrow options
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public array $arrowOptions = [];
+    public $arrowOptions = [];
     /**
      * @var string How to position the popover - [[PLACEMENT_AUTO]] | [[PLACEMENT_TOP]] | [[PLACEMENT_BOTTOM]] |
      * [[PLACEMENT_LEFT]] | [[PLACEMENT_RIGHT]]. When auto is specified, it will dynamically reorient the popover.
      */
-    public string $placement = self::PLACEMENT_AUTO;
+    public $placement = self::PLACEMENT_AUTO;
     /**
      * @var array|false the options for rendering the toggle button tag.
      * The toggle button is used to toggle the visibility of the popover.
@@ -96,7 +96,7 @@ class Popover extends Widget
     /**
      * {@inheritDoc}
      */
-    public function run(): ?string
+    public function run()
     {
         $content = ob_get_clean();
 
@@ -117,6 +117,7 @@ class Popover extends Widget
     protected function renderArrow(): string
     {
         Html::addCssClass($this->arrowOptions, ['widget' => 'popover-arrow']);
+
         return Html::tag('div', '', $this->arrowOptions);
     }
 
@@ -127,6 +128,7 @@ class Popover extends Widget
     protected function renderHeader(): string
     {
         Html::addCssClass($this->headerOptions, ['widget' => 'popover-header']);
+
         return Html::tag('h3', '', $this->headerOptions);
     }
 
@@ -137,14 +139,15 @@ class Popover extends Widget
     protected function renderBody(): string
     {
         Html::addCssClass($this->bodyOptions, ['widget' => 'popover-body']);
+
         return Html::tag('div', '', $this->bodyOptions);
     }
 
     /**
      * Renders the toggle button.
-     * @return string the rendering result
+     * @return string|null the rendering result
      */
-    protected function renderToggleButton(): ?string
+    protected function renderToggleButton()
     {
         if (($toggleButton = $this->toggleButton) !== false) {
             $tag = ArrayHelper::remove($toggleButton, 'tag', 'button');

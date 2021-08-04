@@ -16,12 +16,12 @@ abstract class BaseHtml extends \yii\helpers\Html
      * @var int a counter used to generate [[id]] for widgets.
      * @internal
      */
-    public static int $counter = 0;
+    public static $counter = 0;
     /**
      * @var string the prefix to the automatically generated widget IDs.
      * @see getId()
      */
-    public static string $autoIdPrefix = 'i';
+    public static $autoIdPrefix = 'i';
     /**
      * @var array list of tag attributes that should be specially handled when their values are of array type.
      * In particular, if the value of the `data` attribute is `['name' => 'xyz', 'age' => 13]`, two attributes
@@ -46,12 +46,13 @@ abstract class BaseHtml extends \yii\helpers\Html
         static::addCssClass($options, 'form-control-plaintext');
         $value = (string)$value;
         $options['readonly'] = true;
+
         return static::input('text', null, $value, $options);
     }
 
     /**
      * Generates a Bootstrap static form control for the given model attribute.
-     * @param \yii\base\Model $model the model object.
+     * @param Model $model the model object.
      * @param string $attribute the attribute name or expression. See [[getAttributeName()]] for the format
      * about attribute expression.
      * @param array $options the tag options in terms of name-value pairs. See [[staticControl()]] for details.
@@ -66,6 +67,7 @@ abstract class BaseHtml extends \yii\helpers\Html
         } else {
             $value = static::getAttributeValue($model, $attribute);
         }
+
         return static::staticControl($value, $options);
     }
 
@@ -86,6 +88,7 @@ abstract class BaseHtml extends \yii\helpers\Html
                         'labelOptions' => ['class' => 'form-check-label'],
                         'value' => $value,
                     ], $itemOptions);
+
                 return '<div class="form-check">' . static::radio($name, $checked, $options) . '</div>';
             };
         }
@@ -110,11 +113,24 @@ abstract class BaseHtml extends \yii\helpers\Html
                         'labelOptions' => ['class' => 'form-check-label'],
                         'value' => $value,
                     ], $itemOptions);
+
                 return '<div class="form-check">' . Html::checkbox($name, $checked, $options) . '</div>';
             };
         }
 
         return parent::checkboxList($name, $selection, $items, $options);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function error($model, $attribute, $options = []): string
+    {
+        if (!array_key_exists('class', $options)) {
+            $options['class'] = ['invalid-feedback'];
+        }
+
+        return parent::error($model, $attribute, $options);
     }
 
     /**
@@ -152,21 +168,11 @@ abstract class BaseHtml extends \yii\helpers\Html
             } else {
                 $content = $input . "\n" . static::label($label, $options['id'], $labelOptions);
             }
+
             return $hidden . $content;
         }
 
         return $hidden . static::input($type, $name, $value, $options);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function error($model, $attribute, $options = []): string
-    {
-        if (!array_key_exists('class', $options)) {
-            $options['class'] = ['invalid-feedback'];
-        }
-        return parent::error($model, $attribute, $options);
     }
 
     /**

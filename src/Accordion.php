@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace yii\bootstrap5;
 
+use Exception;
 use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 
@@ -83,16 +84,16 @@ class Accordion extends Widget
      * ])
      * ```
      */
-    public array $items = [];
+    public $items = [];
     /**
      * @var bool whether the labels for header items should be HTML-encoded.
      */
-    public bool $encodeLabels = true;
+    public $encodeLabels = true;
     /**
      * @var bool whether to close other items if an item is opened. Defaults to `true` which causes an
      * accordion effect. Set this to `false` to allow keeping multiple items open at once.
      */
-    public bool $autoCloseItems = true;
+    public $autoCloseItems = true;
     /**
      * @var array the HTML options for the item toggle tag. Key 'tag' might be used here for the tag name specification.
      * For example:
@@ -105,7 +106,7 @@ class Accordion extends Widget
      * ```
      *
      */
-    public array $itemToggleOptions = [];
+    public $itemToggleOptions = [];
 
 
     /**
@@ -116,6 +117,7 @@ class Accordion extends Widget
     {
         $this->registerPlugin('collapse');
         Html::addCssClass($this->options, ['widget' => 'accordion']);
+
         return implode("\n", [
                 Html::beginTag('div', $this->options),
                 $this->renderItems(),
@@ -164,7 +166,7 @@ class Accordion extends Widget
      * @param int $index the item index as each item group content must have an id
      * @return string the rendering result
      * @throws InvalidConfigException
-     * @throws \Exception
+     * @throws Exception
      */
     public function renderItem(string $header, array $item, int $index): string
     {

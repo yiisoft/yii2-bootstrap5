@@ -7,7 +7,6 @@
 
 namespace yii\bootstrap5;
 
-use JsonException;
 use RuntimeException;
 use Yii;
 use yii\helpers\ArrayHelper;
@@ -33,18 +32,18 @@ class Breadcrumbs extends Widget
     /**
      * @var string the name of the breadcrumb container tag.
      */
-    public string $tag = 'ol';
+    public $tag = 'ol';
     /**
      * @var bool whether to HTML-encode the link labels.
      */
-    public bool $encodeLabels = true;
+    public $encodeLabels = true;
     /**
      * @var array the first hyperlink in the breadcrumbs (called home link).
      * Please refer to [[links]] on the format of the link.
      * If this property is not set, it will default to a link pointing to [[\yii\web\Application::homeUrl]]
      * with the label 'Home'. If this property is false, the home link will not be rendered.
      */
-    public array $homeLink = [];
+    public $homeLink = [];
     /**
      * @var array list of links to appear in the breadcrumbs. If this property is empty,
      * the widget will not render anything. Each array element represents a single link in the breadcrumbs
@@ -60,22 +59,22 @@ class Breadcrumbs extends Widget
      *
      *
      */
-    public array $links = [];
+    public $links = [];
     /**
      * @var string the template used to render each inactive item in the breadcrumbs. The token `{link}`
      * will be replaced with the actual HTML link for each inactive item.
      */
-    public string $itemTemplate = "<li class=\"breadcrumb-item\">{link}</li>\n";
+    public $itemTemplate = "<li class=\"breadcrumb-item\">{link}</li>\n";
     /**
      * @var string the template used to render each active item in the breadcrumbs. The token `{link}`
      * will be replaced with the actual HTML link for each active item.
      */
-    public string $activeItemTemplate = "<li class=\"breadcrumb-item active\" aria-current=\"page\">{link}</li>\n";
+    public $activeItemTemplate = "<li class=\"breadcrumb-item active\" aria-current=\"page\">{link}</li>\n";
     /**
      * @var array the HTML attributes for the widgets nav container tag.
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public array $navOptions = ['aria-label' => 'breadcrumb'];
+    public $navOptions = ['aria-label' => 'breadcrumb'];
 
 
     /**
@@ -125,42 +124,6 @@ class Breadcrumbs extends Widget
         }
 
         return Html::tag('nav', Html::tag($this->tag, implode('', $links), $this->options), $this->navOptions);
-    }
-
-    /**
-     * Renders a single breadcrumb item.
-     *
-     * @param array $link the link to be rendered. It must contain the "label" element. The "url" element is optional.
-     * @param string $template the template to be used to rendered the link. The token "{link}" will be replaced by the
-     * link.
-     *
-     * @throws RuntimeException if `$link` does not have "label" element.
-     *
-     * @return string the rendering result
-     */
-    protected function renderItem(array $link, string $template): string
-    {
-        $encodeLabel = ArrayHelper::remove($link, 'encode', $this->encodeLabels);
-
-        if (array_key_exists('label', $link)) {
-            $label = $encodeLabel ? Html::encode($link['label']) : $link['label'];
-        } else {
-            throw new RuntimeException('The "label" element is required for each link.');
-        }
-
-        if (isset($link['template'])) {
-            $template = $link['template'];
-        }
-
-        if (isset($link['url'])) {
-            $options = $link;
-            unset($options['template'], $options['label'], $options['url']);
-            $linkHtml = Html::a($label, $link['url'], $options);
-        } else {
-            $linkHtml = $label;
-        }
-
-        return strtr($template, ['{link}' => $linkHtml]);
     }
 
     /**
@@ -293,6 +256,42 @@ class Breadcrumbs extends Widget
         $this->tag = $value;
 
         return $this;
+    }
+
+    /**
+     * Renders a single breadcrumb item.
+     *
+     * @param array $link the link to be rendered. It must contain the "label" element. The "url" element is optional.
+     * @param string $template the template to be used to rendered the link. The token "{link}" will be replaced by the
+     * link.
+     *
+     * @return string the rendering result
+     * @throws RuntimeException if `$link` does not have "label" element.
+     *
+     */
+    protected function renderItem(array $link, string $template): string
+    {
+        $encodeLabel = ArrayHelper::remove($link, 'encode', $this->encodeLabels);
+
+        if (array_key_exists('label', $link)) {
+            $label = $encodeLabel ? Html::encode($link['label']) : $link['label'];
+        } else {
+            throw new RuntimeException('The "label" element is required for each link.');
+        }
+
+        if (isset($link['template'])) {
+            $template = $link['template'];
+        }
+
+        if (isset($link['url'])) {
+            $options = $link;
+            unset($options['template'], $options['label'], $options['url']);
+            $linkHtml = Html::a($label, $link['url'], $options);
+        } else {
+            $linkHtml = $label;
+        }
+
+        return strtr($template, ['{link}' => $linkHtml]);
     }
 
 }

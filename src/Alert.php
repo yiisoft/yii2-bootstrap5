@@ -46,7 +46,7 @@ class Alert extends Widget
      * the [[begin()]] and [[end()]] calls of the Alert widget will also be treated
      * as the body content, and will be rendered before this.
      */
-    public string $body;
+    public $body;
     /**
      * @var array|false the options for rendering the close button tag.
      * The close button is displayed in the header of the modal window. Clicking
@@ -99,7 +99,7 @@ class Alert extends Widget
      * Renders the close button.
      * @return string|null the rendering result
      */
-    protected function renderCloseButton(): ?string
+    protected function renderCloseButton()
     {
         if (($closeButton = $this->closeButton) !== false) {
             $tag = ArrayHelper::remove($closeButton, 'tag', 'button');

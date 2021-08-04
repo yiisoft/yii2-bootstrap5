@@ -47,7 +47,7 @@ class NavBar extends Widget
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public array $options = [];
+    public $options = [];
     /**
      * @var array the HTML attributes for the container tag. The following special options are recognized:
      *
@@ -55,7 +55,7 @@ class NavBar extends Widget
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public array $collapseOptions = [];
+    public $collapseOptions = [];
     /**
      * @var string|bool the text of the brand or false if it's not used. Note that this is not HTML-encoded.
      * @see https://getbootstrap.com/docs/5.0/components/navbar/
@@ -78,34 +78,34 @@ class NavBar extends Widget
      * @var array the HTML attributes of the brand link.
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public array $brandOptions = [];
+    public $brandOptions = [];
     /**
      * @var string text to show for screen readers for the button to toggle the navbar.
      */
-    public string $screenReaderToggleText = 'Toggle navigation';
+    public $screenReaderToggleText = 'Toggle navigation';
     /**
      * @var string the toggle button content. Defaults to bootstrap 5 default `<span class="navbar-toggler-icon"></span>`
      */
-    public string $togglerContent = '<span class="navbar-toggler-icon"></span>';
+    public $togglerContent = '<span class="navbar-toggler-icon"></span>';
     /**
      * @var array the HTML attributes of the navbar toggler button.
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public array $togglerOptions = [];
+    public $togglerOptions = [];
     /**
      * @var bool whether the navbar content should be included in an inner div container which by default
      * adds left and right padding. Set this to false for a 100% width navbar.
      */
-    public bool $renderInnerContainer = true;
+    public $renderInnerContainer = true;
     /**
      * @var array the HTML attributes of the inner container.
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public array $innerContainerOptions = [];
+    public $innerContainerOptions = [];
     /**
      * {@inheritdoc}
      */
-    public array $clientOptions = [];
+    public $clientOptions = [];
 
 
     /**

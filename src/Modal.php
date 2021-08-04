@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace yii\bootstrap5;
 
+use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -51,35 +52,35 @@ class Modal extends Widget
     /**
      * @var string the tile content in the modal window.
      */
-    public string $title;
+    public $title;
     /**
      * @var array additional title options
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public array $titleOptions = [];
+    public $titleOptions = [];
     /**
      * @var array additional header options
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public array $headerOptions = [];
+    public $headerOptions = [];
     /**
      * @var array body options
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public array $bodyOptions = [];
+    public $bodyOptions = [];
     /**
      * @var string|null the footer content in the modal window.
      */
-    public ?string $footer;
+    public $footer;
     /**
      * @var array additional footer options
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public array $footerOptions = [];
+    public $footerOptions = [];
     /**
      * @var string|null the modal size. Can be [[SIZE_LARGE]] or [[SIZE_SMALL]], or empty for default.
      */
-    public ?string $size;
+    public $size;
     /**
      * @var array|false the options for rendering the close button tag.
      * The close button is displayed in the header of the modal window. Clicking
@@ -116,25 +117,25 @@ class Modal extends Widget
      * When true the modal-dialog-centered class will be added to the modal-dialog
      * @since 2.0.9
      */
-    public bool $centerVertical = false;
+    public $centerVertical = false;
     /**
      * @var boolean whether to make the modal body scrollable
      *
      * When true the modal-dialog-scrollable class will be added to the modal-dialog
      * @since 2.0.9
      */
-    public bool $scrollable = false;
+    public $scrollable = false;
     /**
      * @var array modal dialog options
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      * @since 2.0.9
      */
-    public array $dialogOptions = [];
+    public $dialogOptions = [];
 
 
     /**
      * {@inheritDoc}
-     * @throws \yii\base\InvalidConfigException
+     * @throws InvalidConfigException
      */
     public function init()
     {
@@ -184,6 +185,7 @@ class Modal extends Widget
             return '';
         }
         Html::addCssClass($this->headerOptions, ['widget' => 'modal-header']);
+
         return Html::tag('div', "\n" . $header . "\n", $this->headerOptions);
     }
 
@@ -194,6 +196,7 @@ class Modal extends Widget
     protected function renderBodyBegin(): string
     {
         Html::addCssClass($this->bodyOptions, ['widget' => 'modal-body']);
+
         return Html::beginTag('div', $this->bodyOptions);
     }
 
@@ -208,12 +211,13 @@ class Modal extends Widget
 
     /**
      * Renders the HTML markup for the footer of the modal
-     * @return string the rendering result
+     * @return string|null the rendering result
      */
-    protected function renderFooter(): ?string
+    protected function renderFooter()
     {
         if (isset($this->footer)) {
             Html::addCssClass($this->footerOptions, ['widget' => 'modal-footer']);
+
             return Html::tag('div', "\n" . $this->footer . "\n", $this->footerOptions);
         } else {
             return null;
@@ -222,9 +226,9 @@ class Modal extends Widget
 
     /**
      * Renders the toggle button.
-     * @return string the rendering result
+     * @return string|null the rendering result
      */
-    protected function renderToggleButton(): ?string
+    protected function renderToggleButton()
     {
         if (($toggleButton = $this->toggleButton) !== false) {
             $tag = ArrayHelper::remove($toggleButton, 'tag', 'button');
@@ -238,9 +242,9 @@ class Modal extends Widget
 
     /**
      * Renders the close button.
-     * @return string the rendering result
+     * @return string|null the rendering result
      */
-    protected function renderCloseButton(): ?string
+    protected function renderCloseButton()
     {
         if (($closeButton = $this->closeButton) !== false) {
             $tag = ArrayHelper::remove($closeButton, 'tag', 'button');

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace yii\bootstrap5;
 
+use Throwable;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -48,11 +49,11 @@ class ButtonGroup extends Widget
      * - options: array, optional, the HTML attributes of the button.
      * - visible: bool, optional, whether this button is visible. Defaults to true.
      */
-    public array $buttons = [];
+    public $buttons = [];
     /**
      * @var bool whether to HTML-encode the button labels.
      */
-    public bool $encodeLabels = true;
+    public $encodeLabels = true;
 
 
     /**
@@ -70,18 +71,19 @@ class ButtonGroup extends Widget
     /**
      * {@inheritdoc}
      * @return string
-     * @throws \Throwable
+     * @throws Throwable
      */
     public function run(): string
     {
         BootstrapAsset::register($this->getView());
+
         return Html::tag('div', $this->renderButtons(), $this->options);
     }
 
     /**
      * Generates the buttons that compound the group as specified on [[buttons]].
      * @return string the rendering result.
-     * @throws \Throwable
+     * @throws Throwable
      */
     protected function renderButtons(): string
     {

@@ -35,14 +35,14 @@ trait BootstrapWidgetTrait
      * For example, [this page](http://getbootstrap.com/javascript/#modals) shows
      * how to use the "Modal" plugin and the supported options (e.g. "remote").
      */
-    public array $clientOptions = [];
+    public $clientOptions = [];
     /**
      * @var array the event handlers for the underlying Bootstrap JS plugin.
      * Please refer to the corresponding Bootstrap plugin Web page for possible events.
      * For example, [this page](http://getbootstrap.com/javascript/#modals) shows
      * how to use the "Modal" plugin and the supported events (e.g. "shown").
      */
-    public array $clientEvents = [];
+    public $clientEvents = [];
 
 
     /**

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace yii\bootstrap5;
 
+use Throwable;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 
@@ -50,7 +51,7 @@ class ButtonDropdown extends Widget
     /**
      * @var string the button label
      */
-    public string $label = 'Button';
+    public $label = 'Button';
     /**
      * @var array the HTML attributes for the container tag. The following special options are recognized:
      *
@@ -58,43 +59,43 @@ class ButtonDropdown extends Widget
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public array $options = [];
+    public $options = [];
     /**
      * @var array the HTML attributes of the button.
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public array $buttonOptions = [];
+    public $buttonOptions = [];
     /**
      * @var array the configuration array for [[Dropdown]].
      */
-    public array $dropdown = [];
+    public $dropdown = [];
     /**
      * @var string the drop-direction of the widget
      *
      * Possible values are 'left', 'right', 'up', or 'down' (default)
      */
-    public string $direction = self::DIRECTION_DOWN;
+    public $direction = self::DIRECTION_DOWN;
     /**
      * @var bool whether to display a group of split-styled button group.
      */
-    public bool $split = false;
+    public $split = false;
     /**
      * @var string the tag to use to render the button
      */
-    public string $tagName = 'button';
+    public $tagName = 'button';
     /**
      * @var bool whether the label should be HTML-encoded.
      */
-    public bool $encodeLabel = true;
+    public $encodeLabel = true;
     /**
      * @var string name of a class to use for rendering dropdowns withing this widget. Defaults to [[Dropdown]].
      */
-    public string $dropdownClass = Dropdown::class;
+    public $dropdownClass = Dropdown::class;
     /**
      * @var bool whether to render the container using the [[options]] as HTML attributes. If set to `false`,
      * the container element enclosing the button and dropdown will NOT be rendered.
      */
-    public bool $renderContainer = true;
+    public $renderContainer = true;
 
 
     /**
@@ -112,7 +113,7 @@ class ButtonDropdown extends Widget
     /**
      * {@inheritdoc}
      * @return string
-     * @throws \Throwable
+     * @throws Throwable
      */
     public function run(): string
     {
@@ -129,13 +130,14 @@ class ButtonDropdown extends Widget
         $this->options['id'] = $this->buttonOptions['id'];
 
         $this->registerPlugin('dropdown');
+
         return $html;
     }
 
     /**
      * Generates the button dropdown.
      * @return string the rendering result.
-     * @throws \Throwable
+     * @throws Throwable
      */
     protected function renderButton(): string
     {
@@ -188,7 +190,7 @@ class ButtonDropdown extends Widget
     /**
      * Generates the dropdown menu.
      * @return string the rendering result.
-     * @throws \Throwable
+     * @throws Throwable
      */
     protected function renderDropdown(): string
     {
@@ -197,6 +199,7 @@ class ButtonDropdown extends Widget
         $config['view'] = $this->getView();
         /** @var Widget $dropdownClass */
         $dropdownClass = $this->dropdownClass;
+
         return $dropdownClass::widget($config);
     }
 }

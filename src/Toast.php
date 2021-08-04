@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace yii\bootstrap5;
 
+use DateInterval;
+use DateTime;
+use DateTimeInterface;
 use Yii;
 use yii\helpers\ArrayHelper;
 
@@ -44,13 +47,13 @@ class Toast extends Widget
      * the [[begin()]] and [[end()]] calls of the Toast widget will also be treated
      * as the body content, and will be rendered before this.
      */
-    public ?string $body = null;
+    public $body = null;
     /**
      * @var string|null The title content in the toast.
      */
-    public ?string $title = null;
+    public $title = null;
     /**
-     * @var int|string|\DateTime|\DateTimeInterface|\DateInterval|false The date time the toast message references to.
+     * @var int|string|DateTime|DateTimeInterface|DateInterval|false The date time the toast message references to.
      * This will be formatted as relative time (via formatter component). It will be omitted if
      * set to `false` (default).
      */
@@ -68,7 +71,7 @@ class Toast extends Widget
      * Please refer to the [Toast documentation](https://getbootstrap.com/docs/5.0/components/toasts/)
      * for the supported HTML attributes.
      */
-    public array $closeButton = [];
+    public $closeButton = [];
     /**
      * @var array additional title options
      *
@@ -78,7 +81,7 @@ class Toast extends Widget
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public array $titleOptions = [];
+    public $titleOptions = [];
     /**
      * @var array additional date time part options
      *
@@ -88,17 +91,17 @@ class Toast extends Widget
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public array $dateTimeOptions = [];
+    public $dateTimeOptions = [];
     /**
      * @var array additional header options
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public array $headerOptions = [];
+    public $headerOptions = [];
     /**
      * @var array body options
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public array $bodyOptions = [];
+    public $bodyOptions = [];
 
 
     /**
@@ -146,6 +149,7 @@ class Toast extends Widget
         $title .= "\n" . $button;
 
         Html::addCssClass($this->headerOptions, ['widget' => 'toast-header']);
+
         return Html::tag('div', "\n" . $title . "\n", $this->headerOptions);
     }
 
@@ -156,6 +160,7 @@ class Toast extends Widget
     protected function renderBodyBegin(): string
     {
         Html::addCssClass($this->bodyOptions, ['widget' => 'toast-body']);
+
         return Html::beginTag('div', $this->bodyOptions);
     }
 
