@@ -49,13 +49,19 @@ class NavBar extends Widget
      */
     public $options = [];
     /**
-     * @var array the HTML attributes for the container tag. The following special options are recognized:
+     * @var array|bool the HTML attributes for the collapse container tag. The following special options are recognized:
      *
      * - tag: string, defaults to "div", the name of the container tag.
      *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $collapseOptions = [];
+    /**
+     * @var array|bool the HTML attributes for the offcanvas container tag.
+     *
+     * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
+     */
+    public $offcanvasOptions = false;
     /**
      * @var string|bool the text of the brand or false if it's not used. Note that this is not HTML-encoded.
      * @see https://getbootstrap.com/docs/5.1/components/navbar/
@@ -130,8 +136,10 @@ class NavBar extends Widget
         if (!isset($this->innerContainerOptions['class'])) {
             Html::addCssClass($this->innerContainerOptions, ['panel' => 'container']);
         }
-        if (!isset($this->collapseOptions['id'])) {
+        if ($this->collapseOptions !== false && !isset($this->collapseOptions['id'])) {
             $this->collapseOptions['id'] = "{$this->options['id']}-collapse";
+        } elseif ($this->offcanvasOptions !== false && !isset($this->offcanvasOptions['id'])) {
+            $this->offcanvasOptions['id'] = "{$this->options['id']}-offcanvas";
         }
         if ($this->brandImage !== false) {
             $this->brandLabel = Html::img($this->brandImage);
@@ -148,9 +156,6 @@ class NavBar extends Widget
                 );
             }
         }
-        Html::addCssClass($this->collapseOptions, ['collapse' => 'collapse', 'widget' => 'navbar-collapse']);
-        $collapseOptions = $this->collapseOptions;
-        $collapseTag = ArrayHelper::remove($collapseOptions, 'tag', 'div');
 
         echo Html::beginTag($navTag, $navOptions) . "\n";
         if ($this->renderInnerContainer) {
@@ -158,7 +163,14 @@ class NavBar extends Widget
         }
         echo $brand . "\n";
         echo $this->renderToggleButton() . "\n";
-        echo Html::beginTag($collapseTag, $collapseOptions) . "\n";
+        if ($this->collapseOptions !== false) {
+            Html::addCssClass($this->collapseOptions, ['collapse' => 'collapse', 'widget' => 'navbar-collapse']);
+            $collapseOptions = $this->collapseOptions;
+            $collapseTag = ArrayHelper::remove($collapseOptions, 'tag', 'div');
+            echo Html::beginTag($collapseTag, $collapseOptions) . "\n";
+        } elseif ($this->offcanvasOptions !== false) {
+            Offcanvas::begin($this->offcanvasOptions);
+        }
     }
 
     /**
@@ -166,8 +178,12 @@ class NavBar extends Widget
      */
     public function run()
     {
-        $tag = ArrayHelper::remove($this->collapseOptions, 'tag', 'div');
-        echo Html::endTag($tag) . "\n";
+        if ($this->collapseOptions !== false) {
+            $tag = ArrayHelper::remove($this->collapseOptions, 'tag', 'div');
+            echo Html::endTag($tag) . "\n";
+        } elseif ($this->offcanvasOptions !== false) {
+            Offcanvas::end();
+        }
         if ($this->renderInnerContainer) {
             echo Html::endTag('div') . "\n";
         }
@@ -194,17 +210,22 @@ class NavBar extends Widget
     {
         $options = $this->togglerOptions;
         Html::addCssClass($options, ['widget' => 'navbar-toggler']);
+        if ($this->offcanvasOptions !== false) {
+            $bsData = ['bs-toggle' => 'offcanvas', 'bs-target' => '#' . $this->offcanvasOptions['id']];
+            $aria = $this->offcanvasOptions['id'];
+        } else {
+            $bsData = ['bs-toggle' => 'collapse', 'bs-target' => '#' . $this->collapseOptions['id']];
+            $aria = $this->collapseOptions['id'];
+        }
+
 
         return Html::button(
             $this->togglerContent,
             ArrayHelper::merge($options, [
                 'type' => 'button',
-                'data' => [
-                    'bs-toggle' => 'collapse',
-                    'bs-target' => '#' . $this->collapseOptions['id'],
-                ],
+                'data' => $bsData,
                 'aria' => [
-                    'controls' => $this->collapseOptions['id'],
+                    'controls' => $aria,
                     'expanded' => 'false',
                     'label' => $this->screenReaderToggleText,
                 ]
