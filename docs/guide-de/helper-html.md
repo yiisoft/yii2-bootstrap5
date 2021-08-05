@@ -6,7 +6,9 @@ Ausschliesslich die komplexesten von ihnen sind mittels Widgets in dieser Erweit
 mittels HTML zusammengestellt werden.
 Einige spezielle Bootstrap Markups sind implementiert im [[\yii\bootstrap5\Html]]-Helper.
 Die [[\yii\bootstrap5\Html]]-Klasse ist eine Erweiterung der regulären [[\yii\helpers\Html]]-Klasse mit Anpassungen zur 
-Verwendung mit Bootstrap. Sie bietet verschiedene nützliche Methoden.
+Verwendung mit Bootstrap. Sie bietet verschiedene nützliche Methoden wie z.B.
+
+- `staticControl()` - erlaubt das erstellen von "[statischen Feldern](https://getbootstrap.com/docs/5.1/forms/form-control/#readonly-plain-text)"
 
 Die [[\yii\bootstrap5\Html]]-Klasse erbt von der [[\yii\helpers\Html]]-Klasse und ersetzt diese dadurch vollumfänglich.
 Sie benötigen folglich **nicht** beide in Ihren Views.

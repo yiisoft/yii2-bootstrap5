@@ -18,7 +18,7 @@ Die grössten Änderungen finden Sie hier zusammengefasst:
 ### ActiveForm
 
 Es gibt eine neue Konstante [[yii\bootstrap5\ActiveForm::LAYOUT_FLOATING]]. Sie repräsentiert ein
-[neues Formular-Layout](https://getbootstrap.com/docs/5.0/forms/floating-labels/) in Bootstrap 5.
+[neues Formular-Layout](https://getbootstrap.com/docs/5.1/forms/floating-labels/) in Bootstrap 5.
 
 ### Breadcrumbs
 

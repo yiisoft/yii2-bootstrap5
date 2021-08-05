@@ -66,7 +66,7 @@ Navbar ウィジェットには独特の癖があります。あなたは Navbar
 Navbar の全体的なスタイル (カラー・スキーム) を指定しなければなりません。
 
 カラー・スキームと折り畳みのブレークポイントは CSS のクラスで変更することが出来ます。指定されない場合は、カラー・スキームは `navbar-light bg-light`、
-ブレークポイントは`navbar-expand-lg` がデフォルトとして採用されます。詳細な情報は、[Bootstrap documentation](https://getbootstrap.com/docs/4.2/components/navbar/) を参照して下さい。
+ブレークポイントは`navbar-expand-lg` がデフォルトとして採用されます。詳細な情報は、[Bootstrap documentation](https://getbootstrap.com/docs/5.1/components/navbar/) を参照して下さい。
 
 ```php
 Navbar::begin([

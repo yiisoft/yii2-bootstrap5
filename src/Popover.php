@@ -25,7 +25,7 @@ use yii\helpers\ArrayHelper;
  * Popover::end();
  * ```
  *
- * @see https://getbootstrap.com/docs/5.0/components/popovers/
+ * @see https://getbootstrap.com/docs/5.1/components/popovers/
  * @author Simon Karlen <simi.albi@outlook.com>
  */
 class Popover extends Widget
@@ -76,7 +76,7 @@ class Popover extends Widget
      * - label: string, the label of the button. Defaults to 'Show'.
      *
      * The rest of the options will be rendered as the HTML attributes of the button tag.
-     * Please refer to the [Popover plugin help](https://getbootstrap.com/docs/5.0/components/popovers/)
+     * Please refer to the [Popover plugin help](https://getbootstrap.com/docs/5.1/components/popovers/)
      * for the supported HTML attributes.
      */
     public $toggleButton = false;

@@ -22,7 +22,7 @@ use yii\base\InvalidConfigException;
  * ]) ?>
  * ```
  *
- * @see https://getbootstrap.com/docs/5.0/components/buttons/#checkbox-and-radio-buttons
+ * @see https://getbootstrap.com/docs/5.1/components/buttons/#checkbox-and-radio-buttons
  *
  * @author Paul Klimov <klimov.paul@gmail.com>
  * @author Simon Karlen <simi.albi@outlook.com>

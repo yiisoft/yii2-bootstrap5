@@ -8,7 +8,7 @@ However, several special Bootstrap markup cases are covered by the [[\yii\bootst
 [[\yii\bootstrap5\Html]] is an enhanced version of the regular [[\yii\helpers\Html]] dedicated to the Bootstrap needs.
 It provides some useful methods like:
 
- - `staticControl()` - allows rendering of form "[static controls](https://getbootstrap.com/docs/4.1/components/forms/#readonly-plain-text)"
+ - `staticControl()` - allows rendering of form "[static controls](https://getbootstrap.com/docs/5.1/forms/form-control/#readonly-plain-text)"
 
 As [[\yii\bootstrap5\Html]] extends [[\yii\helpers\Html]], it can be used as a substitute, so you don't need them both
 inside your view files.

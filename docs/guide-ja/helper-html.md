@@ -8,7 +8,7 @@ Bootstrap は、一貫性の高い多数の HTML 構文ないしはスケルト�
 [[\yii\bootstrap5\Html]] は通常の [[\yii\helpers\Html]] の拡張版であり、Bootstrap の要求に特化して、
 いくつかの便利なメソッドを提供するものです。例えば、
 
- - `staticControl()` - フォームの "[static controls](https://getbootstrap.com/docs/4.1/components/forms/#readonly-plain-text)" のレンダリングを可能にする
+ - `staticControl()` - フォームの "[static controls](https://getbootstrap.com/docs/5.1/forms/form-control/#readonly-plain-text)" のレンダリングを可能にする
 
 [[\yii\bootstrap5\Html]] は [[\yii\helpers\Html]] を継承しており、
 その代替物として使うことが出来ますので、ビュー・ファイルの中で両方を使う必要はありません。

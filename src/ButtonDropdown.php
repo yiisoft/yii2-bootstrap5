@@ -25,8 +25,8 @@ use yii\helpers\Url;
  *     ],
  * ]);
  * ```
- * @see https://getbootstrap.com/docs/5.0/components/buttons/
- * @see https://getbootstrap.com/docs/5.0/components/dropdowns/
+ * @see https://getbootstrap.com/docs/5.1/components/buttons/
+ * @see https://getbootstrap.com/docs/5.1/components/dropdowns/
  * @author Antonio Ramirez <amigo.cobos@gmail.com>
  */
 class ButtonDropdown extends Widget

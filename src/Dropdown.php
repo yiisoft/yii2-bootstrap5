@@ -26,7 +26,7 @@ use yii\helpers\ArrayHelper;
  *     ?>
  * </div>
  * ```
- * @see https://getbootstrap.com/docs/5.0/components/dropdowns/
+ * @see https://getbootstrap.com/docs/5.1/components/dropdowns/
  * @author Antonio Ramirez <amigo.cobos@gmail.com>
  * @author Simon Karlen <simi.albi@outlook.com>
  */

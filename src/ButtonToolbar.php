@@ -44,8 +44,8 @@ use Throwable;
  *
  * Pressing on the button should be handled via JavaScript. See the following for details:
  *
- * @see https://getbootstrap.com/docs/5.0/components/buttons/
- * @see https://getbootstrap.com/docs/5.0/components/button-group/#button-toolbar
+ * @see https://getbootstrap.com/docs/5.1/components/buttons/
+ * @see https://getbootstrap.com/docs/5.1/components/button-group/#button-toolbar
  *
  * @author Simon Karlen <simi.albi@outlook.com>
  */

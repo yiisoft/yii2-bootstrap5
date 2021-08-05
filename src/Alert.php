@@ -35,7 +35,7 @@ use yii\helpers\ArrayHelper;
  * Alert::end();
  * ```
  *
- * @see https://getbootstrap.com/docs/5.0/components/alerts/
+ * @see https://getbootstrap.com/docs/5.1/components/alerts/
  * @author Antonio Ramirez <amigo.cobos@gmail.com>
  * @author Simon Karlen <simi.albi@outlook.com>
  */
@@ -57,7 +57,7 @@ class Alert extends Widget
      * - tag: string, the tag name of the button. Defaults to 'button'.
      *
      * The rest of the options will be rendered as the HTML attributes of the button tag.
-     * Please refer to the [Alert documentation](https://getbootstrap.com/docs/5.0/components/alerts/)
+     * Please refer to the [Alert documentation](https://getbootstrap.com/docs/5.1/components/alerts/)
      * for the supported HTML attributes.
      */
     public $closeButton = [];

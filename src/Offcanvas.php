@@ -28,7 +28,7 @@ use yii\helpers\ArrayHelper;
  * Offcanvas::end();
  * ```
  *
- * @see https://getbootstrap.com/docs/5.0/components/offcanvas/
+ * @see https://getbootstrap.com/docs/5.1/components/offcanvas/
  * @author Simon Karlen <simi.albi@outlook.com>
  */
 class Offcanvas extends Widget
@@ -68,7 +68,7 @@ class Offcanvas extends Widget
      * - tag: string, the tag name of the button. Defaults to 'button'.
      *
      * The rest of the options will be rendered as the HTML attributes of the button tag.
-     * Please refer to the [Offcanvas plugin help](https://getbootstrap.com/docs/5.0/components/offcanvas/)
+     * Please refer to the [Offcanvas plugin help](https://getbootstrap.com/docs/5.1/components/offcanvas/)
      * for the supported HTML attributes.
      */
     public $closeButton = [];

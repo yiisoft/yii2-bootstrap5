@@ -7,8 +7,7 @@ Bootstrap 引入了许多一致的 HTML 结构和骨架，允许创建不同的�
 [[\yii\bootstrap5\Html]] 是基于 Bootstrap 的 [[\yii\helpers\Html]] 增强版.
 它提供了很多实用的方法，例如:
 
- - `icon()` - 生成Glyphicon图标
- - `staticControl()` - 生成表单静态组件 "static controls"
+ - `staticControl()` - 生成表单静态组件 "[static controls](https://getbootstrap.com/docs/5.1/forms/form-control/#readonly-plain-text)"
 
 [[\yii\bootstrap5\Html]] 继承了 [[\yii\helpers\Html]] 的所有功能，所以不需要在视图文件中同时引入这两个文件，如果需要，仅使用 [[\yii\bootstrap5\Html]] 即可.
 例如:

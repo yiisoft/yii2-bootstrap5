@@ -39,7 +39,7 @@ abstract class BaseHtml extends \yii\helpers\Html
      * the attributes of the resulting tag. There are also a special options:
      *
      * @return string generated HTML
-     * @see https://getbootstrap.com/docs/5.0/components/forms/#readonly-plain-text
+     * @see https://getbootstrap.com/docs/5.1/components/forms/#readonly-plain-text
      */
     public static function staticControl(string $value, array $options = []): string
     {

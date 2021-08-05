@@ -66,7 +66,7 @@ Fügen Sie dafür folgende Zeilen zur `package.json`-Datei Ihres Projekts hinzu:
 {
     ...
     "dependencies": {
-        "bootstrap": "4.2.1",
+        "bootstrap": "5.1",
         ...
     }
     ...
@@ -77,7 +77,7 @@ Fügen Sie zur `composer.json`-Datei Ihres Projekts folgende Zeilen hinzu zum Ve
 
 ```json
 "replace": {
-    "npm-asset/bootstrap": ">=5.0.2"
+    "npm-asset/bootstrap": ">=5.1"
 },
 ```
 
@@ -89,7 +89,7 @@ Fügen Sie zur `composer.json`-Datei Ihres Projekts folgende Zeilen hinzu zum Ve
 
 ```json
 "replace": {
-    "npm-asset/bootstrap": ">=5.0.2"
+    "npm-asset/bootstrap": ">=5.1"
 },
 ```
 
@@ -103,14 +103,14 @@ return [
             'bundles' => [
                 'yii\bootstrap5\BootstrapAsset' => [
                     'sourcePath' => null,
-                    'baseUrl' => 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/',
+                    'baseUrl' => 'https://cdn.jsdelivr.net/npm/bootstrap@5.1/dist/',
                     'css' => [
                         'css/bootstrap.min.css'
                     ],
                 ],
                 'yii\bootstrap5\BootstrapPluginAsset' => [
                     'sourcePath' => null,
-                    'baseUrl' => 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/',
+                    'baseUrl' => 'https://cdn.jsdelivr.net/npm/bootstrap@5.1/dist/',
                     'js' => [
                         'js/bootstrap.bundle.min.js'
                     ],
@@ -135,7 +135,7 @@ Fügen Sie zur `composer.json`-Datei Ihres Projekts folgende Zeilen hinzu zum Ve
 
 ```json
 "replace": {
-    "npm-asset/bootstrap": ">=5.0.2"
+    "npm-asset/bootstrap": ">=5.1"
 },
 ```
 

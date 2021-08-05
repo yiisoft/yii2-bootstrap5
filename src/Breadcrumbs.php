@@ -23,7 +23,7 @@ use yii\helpers\ArrayHelper;
  *     'options' => [],
  * ]);
  * ```
- * @see https://getbootstrap.com/docs/5.0/components/breadcrumb/
+ * @see https://getbootstrap.com/docs/5.1/components/breadcrumb/
  * @author Alexandr Kozhevnikov <onmotion1@gmail.com>
  * @author Simon Karlen <simi.albi@outlook.com>
  */

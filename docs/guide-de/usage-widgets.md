@@ -65,7 +65,7 @@ Das Navbar Widget hat so seine Eigenheiten. Bei der Verwendung des Widgets sollt
 ab welchem die Navigation zugeklappt wird (Mobile Navigation) sowie das Farbschema definiert sind.
 
 Diese Definition geschieht über CSS Klassen. Die Standartwerte lauten `navbar-light bg-light` fürs Farbschema und
-`navbar-expand-lg` für den brakpoint. Für weitere Informationen, konsultieren Sie die [Bootstrap Dokumentation](https://getbootstrap.com/docs/4.2/components/navbar/):
+`navbar-expand-lg` für den brakpoint. Für weitere Informationen, konsultieren Sie die [Bootstrap Dokumentation](https://getbootstrap.com/docs/5.1/components/navbar/):
 ```php
 Navbar::begin([
     'options' => [

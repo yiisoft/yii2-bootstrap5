@@ -17,7 +17,7 @@ use yii\base\InvalidConfigException;
  *     'options' => ['class' => 'btn-lg'],
  * ]);
  * ```
- * @see https://getbootstrap.com/docs/5.0/components/buttons/
+ * @see https://getbootstrap.com/docs/5.1/components/buttons/
  * @author Antonio Ramirez <amigo.cobos@gmail.com>
  */
 class Button extends Widget

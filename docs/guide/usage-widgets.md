@@ -66,7 +66,7 @@ The navbar widget has its peculiarities. You should define at which breakpoint t
 style of navbar (color scheme).
 
 You can change the color scheme and the collapse breakpoint with css classes. If not defined, the scheme defaults to 
-`navbar-light bg-light` and the breakpoint to `navbar-expand-lg`. For more information, see [Bootstrap documentation](https://getbootstrap.com/docs/4.2/components/navbar/):
+`navbar-light bg-light` and the breakpoint to `navbar-expand-lg`. For more information, see [Bootstrap documentation](https://getbootstrap.com/docs/5.1/components/navbar/):
 
 ```php
 Navbar::begin([

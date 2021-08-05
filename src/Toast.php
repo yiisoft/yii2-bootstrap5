@@ -37,7 +37,7 @@ use yii\helpers\ArrayHelper;
  * Toast::end();
  * ```
  *
- * @see https://getbootstrap.com/docs/5.0/components/toasts/
+ * @see https://getbootstrap.com/docs/5.1/components/toasts/
  * @author Simon Karlen <simi.albi@outlook.com>
  */
 class Toast extends Widget
@@ -68,7 +68,7 @@ class Toast extends Widget
      * - label: string, the label of the button. Defaults to '&times;'.
      *
      * The rest of the options will be rendered as the HTML attributes of the button tag.
-     * Please refer to the [Toast documentation](https://getbootstrap.com/docs/5.0/components/toasts/)
+     * Please refer to the [Toast documentation](https://getbootstrap.com/docs/5.1/components/toasts/)
      * for the supported HTML attributes.
      */
     public $closeButton = [];

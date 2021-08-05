@@ -31,7 +31,7 @@ use yii\helpers\ArrayHelper;
  * ]);
  * ```
  *
- * @see https://getbootstrap.com/docs/5.0/components/carousel/
+ * @see https://getbootstrap.com/docs/5.1/components/carousel/
  * @author Antonio Ramirez <amigo.cobos@gmail.com>
  * @author Simon Karlen <simi.albi@outlook.com>
  */

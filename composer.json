@@ -28,7 +28,7 @@
         "php": ">=7.0",
         "ext-json": "*",
         "yiisoft/yii2": "^2.0.42",
-        "bower-asset/bootstrap": "^5.0.0"
+        "bower-asset/bootstrap": "^5.1.0"
     },
     "require-dev": {
         "yiisoft/yii2-coding-standards": "~2.0",
