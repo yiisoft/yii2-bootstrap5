@@ -19,6 +19,7 @@ características estruturais do framework. Todos widgets pertencem ao namespace 
 - [[yii\bootstrap5\Modal|Modal]]
 - [[yii\bootstrap5\Nav|Nav]]
 - [[yii\bootstrap5\NavBar|NavBar]]
+- [[yii\bootstrap5\Offcanvas|Offcanvas]]
 - [[yii\bootstrap5\Popover|Popover]]
 - [[yii\bootstrap5\Progress|Progress]]
 - [[yii\bootstrap5\Tabs|Tabs]]

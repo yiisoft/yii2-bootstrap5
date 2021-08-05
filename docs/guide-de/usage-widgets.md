@@ -18,6 +18,7 @@ von Framework-Funktionen. Alle Widgets gehören zum `\yii\bootstrap5` Namespace:
 - [[yii\bootstrap5\Modal|Modal]]
 - [[yii\bootstrap5\Nav|Nav]]
 - [[yii\bootstrap5\NavBar|NavBar]]
+- [[yii\bootstrap5\Offcanvas|Offcanvas]]
 - [[yii\bootstrap5\Progress|Progress]]
 - [[yii\bootstrap5\Tabs|Tabs]]
 - [[yii\bootstrap5\ToggleButtonGroup|ToggleButtonGroup]]

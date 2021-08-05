@@ -36,6 +36,10 @@ There is a new constant [[yii\bootstrap5\ActiveForm::LAYOUT_FLOATING]]. It's a
 
 ### NavBar
 
+There is now the possibility to create an [offcanvas navbar](https://getbootstrap.com/docs/5.1/components/navbar/#offcanvas).
+You can achieve this by setting the `$collapseOptions` to `false` in [[yii\bootstrap5\NavBar|Navbar]] widget and the 
+`$offcanvasOptions` to at least an empty array.
+
 ### Tabs
 
 ### ToggleButtonGroup
