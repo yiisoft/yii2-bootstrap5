@@ -1,4 +1,9 @@
 <?php
+/**
+ * @link http://www.yiiframework.com/
+ * @copyright Copyright (c) 2008 Yii Software LLC
+ * @license http://www.yiiframework.com/license/
+ */
 
 declare(strict_types=1);
 
@@ -45,7 +50,6 @@ class Carousel extends Widget
         '<span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span>',
         '<span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span>',
     ];
-
     /**
      * @var bool whether carousel indicators (<ol> tag with anchors to items) should be displayed or not.
      */

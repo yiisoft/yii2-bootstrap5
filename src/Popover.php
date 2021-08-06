@@ -1,8 +1,11 @@
 <?php
 /**
- * @package yii2-bootstrap5
- * @author Simon Karlen <simi.albi@gmail.com>
+ * @link http://www.yiiframework.com/
+ * @copyright Copyright (c) 2008 Yii Software LLC
+ * @license http://www.yiiframework.com/license/
  */
+
+declare(strict_types=1);
 
 namespace yii\bootstrap5;
 
@@ -35,7 +38,6 @@ class Popover extends Widget
     const PLACEMENT_BOTTOM = 'bottom';
     const PLACEMENT_LEFT = 'left';
     const PLACEMENT_RIGHT = 'right';
-
     const TRIGGER_CLICK = 'click';
     const TRIGGER_HOVER = 'hover';
     const TRIGGER_FOCUS = 'focus';
@@ -80,6 +82,7 @@ class Popover extends Widget
      * for the supported HTML attributes.
      */
     public $toggleButton = false;
+
 
     /**
      * {@inheritDoc}

@@ -1,8 +1,11 @@
 <?php
 /**
- * @package yii2-bootstrap5
- * @author Simon Karlen <simi.albi@gmail.com>
+ * @link http://www.yiiframework.com/
+ * @copyright Copyright (c) 2008 Yii Software LLC
+ * @license http://www.yiiframework.com/license/
  */
+
+declare(strict_types=1);
 
 namespace yii\bootstrap5;
 
@@ -42,22 +45,18 @@ class Offcanvas extends Widget
      * @var string Where to place the offcanvas. Can be of of the [[PLACEMENT_*]] constants.
      */
     public $placement = self::PLACEMENT_START;
-
     /**
      * @var boolean Whether to enable backdrop or not. Defaults to `true`.
      */
     public $backdrop = true;
-
     /**
      * @var boolean Whether to enable body scrolling or not. Defaults to `false`.
      */
     public $scrolling = false;
-
     /**
      * @var string The title content in the offcanvas container.
      */
     public $title;
-
     /**
      * @var array|false the options for rendering the close button tag.
      * The close button is displayed in the header of the offcanvas container. Clicking
@@ -72,7 +71,6 @@ class Offcanvas extends Widget
      * for the supported HTML attributes.
      */
     public $closeButton = [];
-
     /**
      * @var array|false the options for rendering the toggle button tag.
      * The toggle button is used to toggle the visibility of the modal window.
@@ -88,13 +86,11 @@ class Offcanvas extends Widget
      * for the supported HTML attributes.
      */
     public $toggleButton = false;
-
     /**
      * @var array Additional header options.
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $headerOptions = [];
-
     /**
      * @var array Additional title options.
      *
@@ -105,12 +101,12 @@ class Offcanvas extends Widget
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $titleOptions = [];
-
     /**
      * @var array Additional body options.
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $bodyOptions = [];
+
 
     /**
      * {@inheritDoc}
