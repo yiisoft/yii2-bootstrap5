@@ -1,8 +1,8 @@
 Yii Framework 2 bootstrap5 extension Change Log
 ==============================================
 
-2.0.1 under development
------------------------
+2.0.1 August 11, 2021
+---------------------
 
 - no changes in this release.
 
