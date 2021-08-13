@@ -73,7 +73,7 @@ abstract class BaseHtml extends \yii\helpers\Html
             $value = static::getAttributeValue($model, $attribute);
         }
 
-        return static::staticControl($value, $options);
+        return static::staticControl((string)$value, $options);
     }
 
     /**
