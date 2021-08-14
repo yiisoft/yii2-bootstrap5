@@ -494,7 +494,7 @@ class ActiveField extends \yii\widgets\ActiveField
     {
         $config = [
             'hintOptions' => [
-                'tag' => 'small',
+                'tag' => 'div',
                 'class' => ['form-text', 'text-muted'],
             ],
             'errorOptions' => [
