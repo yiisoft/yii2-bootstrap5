@@ -310,6 +310,58 @@ HTML;
         $this->assertContainsWithoutLE($expected4, $out);
     }
 
+    public function testStaticControlRendering()
+    {
+        ActiveForm::$counter = 0;
+        ob_start();
+        $model = new User();
+        $model->setAttributes([
+            'id' => 1,
+            'firstName' => 'John',
+            'lastName' => 'Doe'
+        ]);
+        $form = ActiveForm::begin([
+            'action' => '/some-action',
+            'layout' => ActiveForm::LAYOUT_DEFAULT
+        ]);
+        echo $form->field($model, 'id')->staticControl();
+        echo $form->field($model, 'firstName')->staticControl();
+        echo $form->field($model, 'lastName')->staticControl();
+        echo $form->field($model, 'username')->staticControl();
+        ActiveForm::end();
+        $out = ob_get_clean();
+
+        $expected = <<<HTML
+<div class="mb-3 field-user-id">
+<label class="form-label" for="user-id">Id</label>
+<input type="text" class="form-control-plaintext" value="1" readonly>
+
+<div class="invalid-feedback"></div>
+</div>
+HTML;
+
+        $expected2 = <<<HTML
+<div class="mb-3 field-user-firstname">
+<label class="form-label" for="user-firstname">First Name</label>
+<input type="text" class="form-control-plaintext" value="John" readonly>
+
+<div class="invalid-feedback"></div>
+</div>
+HTML;
+        $expected3 = <<<HTML
+<div class="mb-3 field-user-lastname">
+<label class="form-label" for="user-lastname">Last Name</label>
+<input type="text" class="form-control-plaintext" value="Doe" readonly>
+
+<div class="invalid-feedback"></div>
+</div>
+HTML;
+
+        $this->assertContainsWithoutLE($expected, $out);
+        $this->assertContainsWithoutLE($expected2, $out);
+        $this->assertContainsWithoutLE($expected3, $out);
+    }
+
     /**
      * Fixes #128
      * @see https://github.com/yiisoft/yii2-bootstrap5/issues/128
