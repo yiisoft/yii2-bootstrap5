@@ -4,7 +4,7 @@ Yii Framework 2 bootstrap5 extension Change Log
 2.0.2 under development
 -----------------------
 
-- no changes in this release.
+- Bug #5: BootstrapWidgetTrait::registerPlugin do nothing if no clientOptions is provided (dicrtarasov)
 
 
 2.0.1 August 11, 2021
