@@ -291,7 +291,7 @@ HTML;
 <div class="mb-3 field-user-username required">
 <label class="form-label" for="user-username">Username</label>
 <input type="text" id="user-username" class="form-control" name="User[username]" aria-required="true">
-<small class="form-text text-muted">Your username must be at least 4 characters long</small>
+<div class="form-text text-muted">Your username must be at least 4 characters long</div>
 <div class="invalid-feedback"></div>
 </div>
 HTML;
@@ -299,7 +299,7 @@ HTML;
 <div class="mb-3 field-user-password required">
 <label class="form-label" for="user-password">Password</label>
 <input type="password" id="user-password" class="form-control" name="User[password]" aria-required="true">
-<small class="form-text text-muted">Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.</small>
+<div class="form-text text-muted">Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.</div>
 <div class="invalid-feedback"></div>
 </div>
 HTML;
@@ -330,7 +330,7 @@ HTML;
 <div class="mb-3 field-user-username required">
 <label class="form-label" for="user-username">Username</label>
 <input type="text" id="user-username" class="form-control is-invalid" name="User[username]" aria-required="true" aria-invalid="true">
-<small class="form-text text-muted">Your username must be at least 4 characters long</small>
+<div class="form-text text-muted">Your username must be at least 4 characters long</div>
 <div class="invalid-feedback">Username cannot be blank.</div>
 </div>
 HTML;

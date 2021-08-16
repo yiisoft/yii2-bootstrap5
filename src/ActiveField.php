@@ -156,7 +156,7 @@ class ActiveField extends \yii\widgets\ActiveField
     /**
      * {@inheritdoc}
      */
-    public $hintOptions = ['class' => ['widget' => 'form-text', 'text-muted'], 'tag' => 'small'];
+    public $hintOptions = ['class' => ['widget' => 'form-text', 'text-muted'], 'tag' => 'div'];
     /**
      * @var null|array CSS grid classes for horizontal layout. This must be an array with these keys:
      *  - 'offset' the offset grid class to append to the wrapper if no label is rendered
@@ -494,7 +494,7 @@ class ActiveField extends \yii\widgets\ActiveField
     {
         $config = [
             'hintOptions' => [
-                'tag' => 'small',
+                'tag' => 'div',
                 'class' => ['form-text', 'text-muted'],
             ],
             'errorOptions' => [
