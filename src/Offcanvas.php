@@ -204,8 +204,12 @@ class Offcanvas extends Widget
     {
         if (($closeButton = $this->closeButton) !== false) {
             $tag = ArrayHelper::remove($closeButton, 'tag', 'button');
+            $label = ArrayHelper::remove($closeButton, 'label', '');
+            if ($tag === 'button' && !isset($closeButton['type'])) {
+                $closeButton['type'] = 'button';
+            }
 
-            return Html::tag($tag, '', $closeButton);
+            return Html::tag($tag, $label, $closeButton);
         } else {
             return null;
         }
@@ -233,10 +237,9 @@ class Offcanvas extends Widget
 
         if ($this->closeButton !== false) {
             $this->closeButton = array_merge([
-                'data-bs-dismiss' => 'offcanvas',
-                'class' => 'btn-close text-reset',
-                'type' => 'button',
-                'aria-label' => 'Close'
+                'class' => ['widget' => 'btn-close text-reset'],
+                'data' => ['bs-dismiss' => 'offcanvas'],
+                'aria' => ['label' => 'Close']
             ], $this->closeButton);
         }
 

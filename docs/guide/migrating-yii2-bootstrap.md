@@ -8,6 +8,9 @@ The most notable changes are summarized below:
 
 * The namespace is `yii\bootstrap5` instead of `yii\bootstrap4`
 * The php compatibility **is limited to** `>=7.0`
+* The close buttons of widgets like [[yii\bootstrap5\Alert|Alert]] or [[yii\bootstrap5|Modal|Modal]] now gets rendered
+  via CSS and does not have any content anymore. So be sure to remove `btn-close` class and set appropriate styles yourself
+  if you override it.
 
 ## Widgets / Classes
 

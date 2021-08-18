@@ -64,7 +64,7 @@ class Toast extends Widget
      */
     public $dateTime = false;
     /**
-     * @var array the options for rendering the close button tag.
+     * @var array|false the options for rendering the close button tag.
      * The close button is displayed in the header of the toast. Clicking on the button will hide the toast.
      *
      * The following special options are supported:
@@ -180,13 +180,21 @@ class Toast extends Widget
 
     /**
      * Renders the close button.
-     * @return string the rendering result
+     * @return string|null the rendering result
      */
-    protected function renderCloseButton(): string
+    protected function renderCloseButton()
     {
-        $tag = ArrayHelper::remove($this->closeButton, 'tag', 'button');
+        if (($closeButton = $this->closeButton) !== false) {
+            $tag = ArrayHelper::remove($closeButton, 'tag', 'button');
+            $label = ArrayHelper::remove($closeButton, 'label', '');
+            if ($tag === 'button' && !isset($closeButton['type'])) {
+                $closeButton['type'] = 'button';
+            }
 
-        return Html::tag($tag, '', $this->closeButton);
+            return Html::tag($tag, $label, $closeButton);
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -197,12 +205,13 @@ class Toast extends Widget
     {
         Html::addCssClass($this->options, ['widget' => 'toast']);
 
-        $this->closeButton = array_merge([
-            'aria' => ['label' => 'Close'],
-            'data' => ['bs-dismiss' => 'toast'],
-            'class' => ['widget' => 'btn-close'],
-            'type' => 'button',
-        ], $this->closeButton);
+        if ($this->closeButton !== false) {
+            $this->closeButton = array_merge([
+                'class' => ['widget' => 'btn-close'],
+                'data' => ['bs-dismiss' => 'toast'],
+                'aria' => ['label' => 'Close']
+            ], $this->closeButton);
+        }
 
         if (!isset($this->options['role'])) {
             $this->options['role'] = 'alert';
