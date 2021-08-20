@@ -291,7 +291,7 @@ HTML;
 <div class="mb-3 field-user-username required">
 <label class="form-label" for="user-username">Username</label>
 <input type="text" id="user-username" class="form-control" name="User[username]" aria-required="true">
-<small class="form-text text-muted">Your username must be at least 4 characters long</small>
+<div class="form-text text-muted">Your username must be at least 4 characters long</div>
 <div class="invalid-feedback"></div>
 </div>
 HTML;
@@ -299,7 +299,7 @@ HTML;
 <div class="mb-3 field-user-password required">
 <label class="form-label" for="user-password">Password</label>
 <input type="password" id="user-password" class="form-control" name="User[password]" aria-required="true">
-<small class="form-text text-muted">Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.</small>
+<div class="form-text text-muted">Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.</div>
 <div class="invalid-feedback"></div>
 </div>
 HTML;
@@ -308,6 +308,58 @@ HTML;
         $this->assertContainsWithoutLE($expected2, $out);
         $this->assertContainsWithoutLE($expected3, $out);
         $this->assertContainsWithoutLE($expected4, $out);
+    }
+
+    public function testStaticControlRendering()
+    {
+        ActiveForm::$counter = 0;
+        ob_start();
+        $model = new User();
+        $model->setAttributes([
+            'id' => 1,
+            'firstName' => 'John',
+            'lastName' => 'Doe'
+        ]);
+        $form = ActiveForm::begin([
+            'action' => '/some-action',
+            'layout' => ActiveForm::LAYOUT_DEFAULT
+        ]);
+        echo $form->field($model, 'id')->staticControl();
+        echo $form->field($model, 'firstName')->staticControl();
+        echo $form->field($model, 'lastName')->staticControl();
+        echo $form->field($model, 'username')->staticControl();
+        ActiveForm::end();
+        $out = ob_get_clean();
+
+        $expected = <<<HTML
+<div class="mb-3 field-user-id">
+<label class="form-label" for="user-id">Id</label>
+<input type="text" class="form-control-plaintext" value="1" readonly>
+
+<div class="invalid-feedback"></div>
+</div>
+HTML;
+
+        $expected2 = <<<HTML
+<div class="mb-3 field-user-firstname">
+<label class="form-label" for="user-firstname">First Name</label>
+<input type="text" class="form-control-plaintext" value="John" readonly>
+
+<div class="invalid-feedback"></div>
+</div>
+HTML;
+        $expected3 = <<<HTML
+<div class="mb-3 field-user-lastname">
+<label class="form-label" for="user-lastname">Last Name</label>
+<input type="text" class="form-control-plaintext" value="Doe" readonly>
+
+<div class="invalid-feedback"></div>
+</div>
+HTML;
+
+        $this->assertContainsWithoutLE($expected, $out);
+        $this->assertContainsWithoutLE($expected2, $out);
+        $this->assertContainsWithoutLE($expected3, $out);
     }
 
     /**
@@ -330,7 +382,7 @@ HTML;
 <div class="mb-3 field-user-username required">
 <label class="form-label" for="user-username">Username</label>
 <input type="text" id="user-username" class="form-control is-invalid" name="User[username]" aria-required="true" aria-invalid="true">
-<small class="form-text text-muted">Your username must be at least 4 characters long</small>
+<div class="form-text text-muted">Your username must be at least 4 characters long</div>
 <div class="invalid-feedback">Username cannot be blank.</div>
 </div>
 HTML;

@@ -49,7 +49,6 @@ abstract class BaseHtml extends \yii\helpers\Html
     public static function staticControl(string $value, array $options = []): string
     {
         static::addCssClass($options, 'form-control-plaintext');
-        $value = (string)$value;
         $options['readonly'] = true;
 
         return static::input('text', null, $value, $options);
@@ -64,7 +63,7 @@ abstract class BaseHtml extends \yii\helpers\Html
      * @return string generated HTML
      * @see staticControl()
      */
-    public static function activeStaticControl(Model $model, string $attribute, $options = []): string
+    public static function activeStaticControl(Model $model, string $attribute, array $options = []): string
     {
         if (isset($options['value'])) {
             $value = $options['value'];
@@ -73,11 +72,11 @@ abstract class BaseHtml extends \yii\helpers\Html
             $value = static::getAttributeValue($model, $attribute);
         }
 
-        return static::staticControl($value, $options);
+        return static::staticControl((string)$value, $options);
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public static function radioList($name, $selection = null, $items = [], $options = []): string
     {

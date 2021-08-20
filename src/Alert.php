@@ -108,8 +108,12 @@ class Alert extends Widget
     {
         if (($closeButton = $this->closeButton) !== false) {
             $tag = ArrayHelper::remove($closeButton, 'tag', 'button');
+            $label = ArrayHelper::remove($closeButton, 'label', '');
+            if ($tag === 'button' && !isset($closeButton['type'])) {
+                $closeButton['type'] = 'button';
+            }
 
-            return Html::tag($tag, '', $closeButton);
+            return Html::tag($tag, $label, $closeButton);
         } else {
             return null;
         }
@@ -125,7 +129,6 @@ class Alert extends Widget
 
         if ($this->closeButton !== false) {
             $this->closeButton = array_merge([
-                'type' => 'button',
                 'class' => ['widget' => 'btn-close'],
                 'data' => ['bs-dismiss' => 'alert'],
                 'aria' => ['label' => 'Close']

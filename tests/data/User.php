@@ -11,6 +11,7 @@ use yii\base\Model;
 
 class User extends Model
 {
+    public $id;
     public $firstName;
     public $lastName;
     public $username;
@@ -22,6 +23,8 @@ class User extends Model
     public function rules()
     {
         return [
+            ['id', 'integer'],
+            [['firstName', 'lastName'], 'string'],
             ['username', 'string', 'min' => 4],
             ['password', 'string', 'min' => 8, 'max' => '20'],
             [['username', 'password'], 'required']
