@@ -2,7 +2,10 @@
 
 namespace yiiunit\extensions\bootstrap5;
 
+use PHPUnit\Framework\Constraint\IsType;
+use Yii;
 use yii\bootstrap5\Toast;
+use yii\web\View;
 
 /**
  * @group bootstrap5
@@ -112,5 +115,31 @@ HTML;
 HTML;
 
         $this->assertEqualsWithoutLE($expected, $out);
+    }
+
+    /**
+     * @see https://github.com/yiisoft/yii2-bootstrap5/issues/5
+     */
+    public function testWidgetInitialization()
+    {
+        Toast::$counter = 0;
+        ob_start();
+        $toast = Toast::begin([
+            'title' => 'Toast title',
+            'titleOptions' => ['tag' => 'h5', 'style' => ['text-align' => 'left']]
+        ]);
+        echo 'test';
+        Toast::end();
+        $out = ob_get_clean();
+
+        $this->assertInternalType(IsType::TYPE_ARRAY, $toast->clientOptions);
+        $this->assertCount(0, $toast->clientOptions);
+
+        $js = Yii::$app->view->js[View::POS_READY];
+
+        $this->assertInternalType(IsType::TYPE_ARRAY, $js);
+        $options = array_shift($js);
+
+        $this->assertContainsWithoutLE("jQuery('#w0').toast();", $options);
     }
 }
