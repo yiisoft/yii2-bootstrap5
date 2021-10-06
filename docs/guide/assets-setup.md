@@ -173,4 +173,4 @@ return [
 ];
 ```
 
-After you make changes to Bootstrap's source files, make sure to [compile them](https://getbootstrap.com/docs/4.1/getting-started/build-tools/), eg. using `npm run dist`.
+After you make changes to Bootstrap's source files, make sure to [compile them](https://getbootstrap.com/docs/5.1/getting-started/contribute/#using-npm-scripts), eg. using `npm run dist`.
