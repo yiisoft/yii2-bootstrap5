@@ -340,9 +340,9 @@ class ActiveField extends \yii\widgets\ActiveField
                     'label' => $encode ? Html::encode($label) : $label,
                     'value' => $value,
                 ], $itemOptions);
-                $wrapperOptions = ArrayHelper::remove($options, 'wrapperOptions', ['class' => ['form-check']]);
+                $wrapperOptions = ArrayHelper::remove($options, 'wrapperOptions', ['class' => ['widget' => 'form-check']]);
                 if ($this->inline) {
-                    Html::addCssClass($wrapperOptions, 'form-check-inline');
+                    Html::addCssClass($wrapperOptions, ['inline' => 'form-check-inline']);
                 }
 
                 $html = Html::beginTag('div', $wrapperOptions) . "\n" .
@@ -382,9 +382,9 @@ class ActiveField extends \yii\widgets\ActiveField
                     'label' => $encode ? Html::encode($label) : $label,
                     'value' => $value,
                 ], $itemOptions);
-                $wrapperOptions = ArrayHelper::remove($options, 'wrapperOptions', ['class' => ['form-check']]);
+                $wrapperOptions = ArrayHelper::remove($options, 'wrapperOptions', ['class' => ['widget' => 'form-check']]);
                 if ($this->inline) {
-                    Html::addCssClass($wrapperOptions, 'form-check-inline');
+                    Html::addCssClass($wrapperOptions, ['inline' => 'form-check-inline']);
                 }
 
                 $html = Html::beginTag('div', $wrapperOptions) . "\n" .
