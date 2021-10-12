@@ -194,12 +194,12 @@ HTML;
         $expectedHtml = <<<HTML
 <div class="mb-3 field-dynamicmodel-attributename">
 <label class="form-label">Attribute Name</label>
-<input type="hidden" name="DynamicModel[attributeName]" value=""><div id="dynamicmodel-attributename" role="radiogroup"><div class="form-check">
+<input type="hidden" name="DynamicModel[attributeName]" value=""><div id="dynamicmodel-attributename" role="radiogroup"><div class="form-check form-check-inline">
 <input type="radio" id="i0" class="form-check-input" name="DynamicModel[attributeName]" value="1">
 <label class="form-check-label" for="i0">name1</label>
 </div>
 
-<div class="form-check">
+<div class="form-check form-check-inline">
 <input type="radio" id="i1" class="form-check-input" name="DynamicModel[attributeName]" value="2">
 <label class="form-check-label" for="i1">name2</label>
 <div class="invalid-feedback"></div>
@@ -220,12 +220,12 @@ HTML;
         $expectedHtml = <<<HTML
 <div class="mb-3 field-dynamicmodel-attributename">
 <label class="form-label">Attribute Name</label>
-<input type="hidden" name="DynamicModel[attributeName]" value=""><div id="dynamicmodel-attributename"><div class="form-check">
+<input type="hidden" name="DynamicModel[attributeName]" value=""><div id="dynamicmodel-attributename"><div class="form-check form-check-inline">
 <input type="checkbox" id="i0" class="form-check-input" name="DynamicModel[attributeName][]" value="1">
 <label class="form-check-label" for="i0">name1</label>
 </div>
 
-<div class="form-check">
+<div class="form-check form-check-inline">
 <input type="checkbox" id="i1" class="form-check-input" name="DynamicModel[attributeName][]" value="2">
 <label class="form-check-label" for="i1">name2</label>
 <div class="invalid-feedback"></div>

@@ -341,9 +341,9 @@ class ActiveField extends \yii\widgets\ActiveField
                     'value' => $value,
                 ], $itemOptions);
                 $wrapperOptions = ArrayHelper::remove($options, 'wrapperOptions', ['class' => ['form-check']]);
-//                if ($this->inline) {
-//                    Html::addCssClass($wrapperOptions, 'custom-control-inline');
-//                }
+                if ($this->inline) {
+                    Html::addCssClass($wrapperOptions, 'form-check-inline');
+                }
 
                 $html = Html::beginTag('div', $wrapperOptions) . "\n" .
                     Html::checkbox($name, $checked, $options) . "\n";
@@ -383,9 +383,9 @@ class ActiveField extends \yii\widgets\ActiveField
                     'value' => $value,
                 ], $itemOptions);
                 $wrapperOptions = ArrayHelper::remove($options, 'wrapperOptions', ['class' => ['form-check']]);
-//                if ($this->inline) {
-//                    Html::addCssClass($wrapperOptions, 'custom-control-inline');
-//                }
+                if ($this->inline) {
+                    Html::addCssClass($wrapperOptions, 'form-check-inline');
+                }
 
                 $html = Html::beginTag('div', $wrapperOptions) . "\n" .
                     Html::radio($name, $checked, $options) . "\n";
