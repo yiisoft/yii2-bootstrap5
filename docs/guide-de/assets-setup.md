@@ -167,4 +167,4 @@ return [
 ];
 ```
 
-Nach dem Verändern des Bootstrap Quellcodes, stellen Sie sicher, dass sie neu [kompiliert werden](https://getbootstrap.com/docs/4.1/getting-started/build-tools/), z.B. mittels `npm run dist`. 
+Nach dem Verändern des Bootstrap Quellcodes, stellen Sie sicher, dass sie neu [kompiliert werden](https://getbootstrap.com/docs/5.1/getting-started/contribute/#using-npm-scripts), z.B. mittels `npm run dist`. 

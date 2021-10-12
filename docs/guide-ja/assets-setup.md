@@ -173,4 +173,4 @@ return [
 ];
 ```
 
-Bootsrap のソース・ファイルを変更した後は、例えば `npm run dist` を使って、必ず[コンパイル](https://getbootstrap.com/docs/4.1/getting-started/build-tools/)して下さい。
+Bootsrap のソース・ファイルを変更した後は、例えば `npm run dist` を使って、必ず[コンパイル](https://getbootstrap.com/docs/5.1/getting-started/contribute/#using-npm-scripts)して下さい。
