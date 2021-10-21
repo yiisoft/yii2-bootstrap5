@@ -5,8 +5,6 @@
  * @license http://www.yiiframework.com/license/
  */
 
-declare(strict_types=1);
-
 namespace yii\bootstrap5;
 
 use yii\helpers\ArrayHelper;
@@ -84,8 +82,6 @@ use yii\helpers\ArrayHelper;
  *
  * ActiveForm::end();
  * ```
- *
- * @property-read ActiveForm $form
  *
  * @see ActiveForm
  * @see https://getbootstrap.com/docs/5.1/components/forms/
