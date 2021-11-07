@@ -106,7 +106,7 @@ class Alert extends Widget
      */
     protected function renderCloseButton()
     {
-        if (($closeButton = $this->closeButton) !== false) {
+        if ($closeButton = $this->closeButton) {
             $tag = ArrayHelper::remove($closeButton, 'tag', 'button');
             $label = ArrayHelper::remove($closeButton, 'label', '');
             if ($tag === 'button' && !isset($closeButton['type'])) {
