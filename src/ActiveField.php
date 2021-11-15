@@ -167,6 +167,10 @@ class ActiveField extends \yii\widgets\ActiveField
      */
     public $checkTemplate = "<div class=\"form-check\">\n{input}\n{label}\n{error}\n{hint}\n</div>";
     /**
+     * @var string the template forswitches (custom checkboxes) in default layout
+     */
+    public $switchTemplate = "<div class=\"form-check form-switch\">\n{input}\n{label}\n{error}\n{hint}\n</div>";
+    /**
      * @var string the template for radios in default layout
      * @since 2.0.5
      */
@@ -176,6 +180,10 @@ class ActiveField extends \yii\widgets\ActiveField
      */
     public $checkHorizontalTemplate = "{beginWrapper}\n<div class=\"form-check\">\n{input}\n{label}\n{error}\n{hint}\n</div>\n{endWrapper}";
     /**
+     * @var string the template for switches (custom checkboxes) in horizontal layout
+     */
+    public $switchHorizontalTemplate = "{beginWrapper}\n<div class=\"form-check form-switch\">\n{input}\n{label}\n{error}\n{hint}\n</div>\n{endWrapper}";
+    /**
      * @var string the template for checkboxes and radios in horizontal layout
      * @since 2.0.5
      */
@@ -184,6 +192,10 @@ class ActiveField extends \yii\widgets\ActiveField
      * @var string the `enclosed by label` template for checkboxes and radios in default layout
      */
     public $checkEnclosedTemplate = "<div class=\"form-check\">\n{beginLabel}\n{input}\n{labelTitle}\n{endLabel}\n{error}\n{hint}\n</div>";
+    /**
+     * @var string tthe `enclosed by label` template for switches(custom checkboxes) in default layout
+     */
+    public $switchEnclosedTemplate = "<div class=\"form-check form-switch\">\n{beginLabel}\n{input}\n{labelTitle}\n{endLabel}\n{error}\n{hint}\n</div>";
     /**
      * @var bool whether to render the error. Default is `true` except for layout `inline`.
      */
@@ -245,6 +257,8 @@ class ActiveField extends \yii\widgets\ActiveField
 
     /**
      * {@inheritdoc}
+     * Enable option `switch` to render as toggle switch.
+     * @see https://getbootstrap.com/docs/5.1/forms/checks-radios/#switches
      */
     public function checkbox($options = [], $enclosedByLabel = false)
     {
@@ -256,14 +270,21 @@ class ActiveField extends \yii\widgets\ActiveField
         $this->labelOptions = ArrayHelper::merge($this->labelOptions, $labelOptions);
         $this->wrapperOptions = ArrayHelper::merge($this->wrapperOptions, $wrapperOptions);
 
+        if (!empty($options['switch'])) {
+            $this->addRoleAttributes($options, 'switch');
+        }
         if (!isset($options['template'])) {
-            $this->template = ($enclosedByLabel) ? $this->checkEnclosedTemplate : $this->checkTemplate;
+            if (empty($options['switch'])) {
+                $this->template = $enclosedByLabel ? $this->checkEnclosedTemplate : $this->checkTemplate;
+            } else {
+                $this->template = $enclosedByLabel ? $this->switchEnclosedTemplate : $this->switchTemplate;
+            }
         } else {
             $this->template = $options['template'];
         }
         if ($this->form->layout === ActiveForm::LAYOUT_HORIZONTAL) {
             if (!isset($options['template'])) {
-                $this->template = $this->checkHorizontalTemplate;
+                $this->template = empty($options['switch']) ? $this->checkHorizontalTemplate : $this->switchHorizontalTemplate;
             }
             Html::removeCssClass($this->labelOptions, $this->horizontalCssClasses['label']);
             Html::addCssClass($this->wrapperOptions, $this->horizontalCssClasses['offset']);
@@ -480,6 +501,41 @@ class ActiveField extends \yii\widgets\ActiveField
         Html::addCssClass($options, ['widget' => 'form-control']);
 
         return parent::fileInput($options);
+    }
+
+    /**
+     * Renders a range (custom input).
+     *
+     * @param array $options the tag options in terms of name-value pairs:
+     *
+     * - 'min': min. value
+     * - 'max': max. value
+     * - 'step': range step, by default, 1
+     *
+     * @return $this
+     * @see https://getbootstrap.com/docs/5.1/forms/range/
+     */
+    public function rangeInput(array $options = [])
+    {
+        Html::removeCssClass($options, 'form-control');
+        Html::addCssClass($options, ['widget' => 'form-range']);
+
+        return $this->input('range', $options);
+    }
+
+    /**
+     * Renders a color picker (custom input).
+     *
+     * @param array $options the tag options in terms of name-value pairs
+     * @return $this
+     * @see https://getbootstrap.com/docs/5.1/forms/form-control/#color
+     */
+    public function colorInput(array $options = [])
+    {
+        Html::removeCssClass($options, 'form-control');
+        Html::addCssClass($options, ['widget' => 'form-control form-control-color']);
+
+        return $this->input('color', $options);
     }
 
     /**
