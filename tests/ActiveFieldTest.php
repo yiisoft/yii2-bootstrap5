@@ -49,7 +49,7 @@ HTML;
         $expectedHtml = <<<HTML
 <div class="mb-3 field-dynamicmodel-attributename">
 <label class="form-label" for="dynamicmodel-attributename">Attribute Name</label>
-<input type="hidden" name="DynamicModel[attributeName]" value=""><input type="range" id="dynamicmodel-attributename" class="form-range" name="DynamicModel[attributeName]">
+<input type="range" id="dynamicmodel-attributename" class="form-range" name="DynamicModel[attributeName]">
 
 <div class="invalid-feedback"></div>
 </div>
@@ -65,7 +65,7 @@ HTML;
         $expectedHtml = <<<HTML
 <div class="mb-3 field-dynamicmodel-attributename">
 <label class="form-label" for="dynamicmodel-attributename">Attribute Name</label>
-<input type="hidden" name="DynamicModel[attributeName]" value=""><input type="color" id="dynamicmodel-attributename" class="form-control form-control-color" name="DynamicModel[attributeName]">
+<input type="color" id="dynamicmodel-attributename" class="form-control form-control-color" name="DynamicModel[attributeName]">
 
 <div class="invalid-feedback"></div>
 </div>
@@ -180,6 +180,8 @@ HTML;
 <input type="hidden" name="DynamicModel[attributeName]" value="0"><input type="checkbox" id="dynamicmodel-attributename" class="form-check-input is-invalid" name="DynamicModel[attributeName]" value="1" aria-invalid="true">
 <label class="form-check-label" for="dynamicmodel-attributename">Attribute Name</label>
 </div>
+
+<div class="invalid-feedback"></div>
 </div>
 HTML;
         $this->assertEqualsWithoutLE($expectedHtml, $html);
