@@ -290,7 +290,7 @@ class ActiveField extends \yii\widgets\ActiveField
             Html::addCssClass($this->wrapperOptions, $this->horizontalCssClasses['offset']);
         }
         Html::removeCssClass($this->labelOptions, 'form-label');
-        unset($options['template']);
+        unset($options['template'], $options['switch']);
 
         if ($enclosedByLabel) {
             if (isset($options['label'])) {
