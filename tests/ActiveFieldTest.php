@@ -177,7 +177,7 @@ HTML;
         $expectedHtml = <<<HTML
 <div class="mb-3 field-dynamicmodel-attributename">
 <div class="form-check form-switch">
-<input type="hidden" name="DynamicModel[attributeName]" value="0"><input type="checkbox" id="dynamicmodel-attributename" class="form-check-input is-invalid" name="DynamicModel[attributeName]" value="1" role="switch">
+<input type="hidden" name="DynamicModel[attributeName]" value="0"><input type="checkbox" id="dynamicmodel-attributename" class="form-check-input" name="DynamicModel[attributeName]" value="1" role="switch">
 <label class="form-check-label" for="dynamicmodel-attributename">Attribute Name</label>
 <div class="invalid-feedback"></div>
 
