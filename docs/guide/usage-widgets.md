@@ -26,6 +26,11 @@ framework features. All widgets belong to `\yii\bootstrap5` namespace:
 - [[yii\bootstrap5\Toast|Toast]]
 - [[yii\bootstrap5\ToggleButtonGroup|ToggleButtonGroup]]
 
+## ActiveField: additional fields <span id="additional-fields"></span>
+
+- [Range](https://getbootstrap.com/docs/5.1/forms/range/): `$form->rangeInput(['min' => 0, 'max' => 100, 'step' => 1])`
+- [Color picker](https://getbootstrap.com/docs/5.1/forms/form-control/#color): `$form->colorInput()`
+- [Switch](https://getbootstrap.com/docs/5.1/forms/checks-radios/#switches): `$form->checkbox(['switch' => true])`
 
 ## Customizing widget CSS classes <span id="customizing-css-classes"></span>
 
