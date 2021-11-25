@@ -269,22 +269,25 @@ class ActiveField extends \yii\widgets\ActiveField
         Html::removeCssClass($options, 'form-control');
         $this->labelOptions = ArrayHelper::merge($this->labelOptions, $labelOptions);
         $this->wrapperOptions = ArrayHelper::merge($this->wrapperOptions, $wrapperOptions);
+        $switch = isset($options['switch']) && $options['switch'];
 
-        if (!empty($options['switch'])) {
+        if ($switch) {
             $this->addRoleAttributes($options, 'switch');
         }
         if (!isset($options['template'])) {
-            if (empty($options['switch'])) {
-                $this->template = $enclosedByLabel ? $this->checkEnclosedTemplate : $this->checkTemplate;
-            } else {
+            if ($switch) {
                 $this->template = $enclosedByLabel ? $this->switchEnclosedTemplate : $this->switchTemplate;
+            } else {
+                $this->template = $enclosedByLabel ? $this->checkEnclosedTemplate : $this->checkTemplate;
             }
         } else {
             $this->template = $options['template'];
         }
         if ($this->form->layout === ActiveForm::LAYOUT_HORIZONTAL) {
             if (!isset($options['template'])) {
-                $this->template = empty($options['switch']) ? $this->checkHorizontalTemplate : $this->switchHorizontalTemplate;
+                $this->template = ($switch)
+                    ? $this->switchHorizontalTemplate
+                    : $this->checkHorizontalTemplate;
             }
             Html::removeCssClass($this->labelOptions, $this->horizontalCssClasses['label']);
             Html::addCssClass($this->wrapperOptions, $this->horizontalCssClasses['offset']);
