@@ -23,6 +23,11 @@ von Framework-Funktionen. Alle Widgets gehören zum `\yii\bootstrap5` Namespace:
 - [[yii\bootstrap5\Tabs|Tabs]]
 - [[yii\bootstrap5\ToggleButtonGroup|ToggleButtonGroup]]
 
+## ActiveField: Weitere Input-Typen <span id="additional-fields"></span>
+
+- [Range](https://getbootstrap.com/docs/5.1/forms/range/): `$form->rangeInput(['min' => 0, 'max' => 100, 'step' => 1])`
+- [Color picker](https://getbootstrap.com/docs/5.1/forms/form-control/#color): `$form->colorInput()`
+- [Switch](https://getbootstrap.com/docs/5.1/forms/checks-radios/#switches): `$form->checkbox(['switch' => true])`
 
 ## Anpassen der Widget CSS-Klassen <span id="customizing-css-classes"></span>
 
