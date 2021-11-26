@@ -70,12 +70,12 @@ class LinkPagerTest extends TestCase
             'pagination' => $pagination,
             'disableCurrentPageButton' => false,
         ]);
-        $this->assertContains('<li class="page-item active" aria-current="true"><a class="page-link" href="/?r=test&amp;page=6" data-page="5">6</a></li>', $output);
+        $this->assertContains('<li class="page-item active" aria-current="page"><a class="page-link" href="/?r=test&amp;page=6" data-page="5">6</a></li>', $output);
         $output = LinkPager::widget([
             'pagination' => $pagination,
             'disableCurrentPageButton' => true,
         ]);
-        $this->assertContains('<li class="page-item active disabled" aria-current="true"><a class="page-link" href="/?r=test&amp;page=6" data-page="5" tabindex="-1">6</a></li>', $output);
+        $this->assertContains('<li class="page-item active disabled" aria-current="page"><a class="page-link" href="/?r=test&amp;page=6" data-page="5" tabindex="-1">6</a></li>', $output);
     }
 
     public function testOptionsWithTagOption()
@@ -105,7 +105,7 @@ class LinkPagerTest extends TestCase
             $output
         );
         $this->assertContains(
-            '<div class="my-class page-item active" aria-current="true"><a class="page-link" href="/?r=test&amp;page=2" data-page="1">2</a></div>',
+            '<div class="my-class page-item active" aria-current="page"><a class="page-link" href="/?r=test&amp;page=2" data-page="1">2</a></div>',
             $output
         );
     }
