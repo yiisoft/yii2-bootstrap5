@@ -285,13 +285,13 @@ class LinkPager extends Widget
     {
         $options = $this->linkContainerOptions;
         $linkWrapTag = ArrayHelper::remove($options, 'tag', 'li');
-        Html::addCssClass($options, empty($class) ? $this->pageCssClass : $class);
+        Html::addCssClass($options, $class ?: $this->pageCssClass);
 
         $linkOptions = $this->linkOptions;
         $linkOptions['data-page'] = $page;
 
         if ($active) {
-            $options['aria'] = ['current' => 'true'];
+            $options['aria'] = ['current' => 'page'];
             Html::addCssClass($options, $this->activePageCssClass);
         }
         if ($disabled) {
