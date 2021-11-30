@@ -117,7 +117,7 @@ class ActiveField extends \yii\widgets\ActiveField
      *
      * If you set a custom `id` for the input element, you may need to adjust the [[$selectors]] accordingly.
      *
-     * @see Html::renderTagAttributes() for details on how attributes are being rendered.
+     * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      * @since 2.0.7
      */
     public $checkOptions = [
@@ -132,7 +132,7 @@ class ActiveField extends \yii\widgets\ActiveField
      *
      * If you set a custom `id` for the input element, you may need to adjust the [[$selectors]] accordingly.
      *
-     * @see Html::renderTagAttributes() for details on how attributes are being rendered.
+     * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      * @since 2.0.7
      */
     public $radioOptions = [
