@@ -438,7 +438,7 @@ class ActiveField extends \yii\widgets\ActiveField
     /**
      * {@inheritdoc}
      */
-    public function dropdownList($items, $options = [])
+    public function dropDownList($items, $options = [])
     {
         if ($this->form->layout === ActiveForm::LAYOUT_INLINE) {
             Html::removeCssClass($this->labelOptions, 'visually-hidden');
