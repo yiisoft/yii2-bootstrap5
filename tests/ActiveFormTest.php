@@ -227,7 +227,7 @@ HTML;
 HTML;
         $expected2 = <<<HTML
 <div class="form-floating mt-3 field-dynamicmodel-selectname">
-<input type="hidden" name="DynamicModel[selectName]" value=""><select id="dynamicmodel-selectname" class="form-control" name="DynamicModel[selectName]" size="4" placeholder>
+<input type="hidden" name="DynamicModel[selectName]" value=""><select id="dynamicmodel-selectname" class="form-select" name="DynamicModel[selectName]" size="4" placeholder>
 <option value="1">One</option>
 <option value="2">Two</option>
 <option value="3">Three</option>
