@@ -444,7 +444,7 @@ class ActiveField extends \yii\widgets\ActiveField
             Html::removeCssClass($this->labelOptions, 'visually-hidden');
         }
 
-        return parent::dropdownList($items, $options);
+        return parent::dropDownList($items, $options);
     }
 
     /**
