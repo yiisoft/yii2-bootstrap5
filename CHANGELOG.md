@@ -5,6 +5,7 @@ Yii Framework 2 bootstrap5 extension Change Log
 -----------------------
 
 - Enh #18: Add rangeInput(), colorInput() and switch mode to checkbox() in class ActiveField (WinterSilence)
+- Bug #19: Fix value of attribute "aria-current" in LinkPager::renderPageButton() (WinterSilence)
 
 
 2.0.2 October 21, 2021
