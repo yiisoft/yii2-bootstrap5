@@ -117,7 +117,7 @@ class ActiveField extends \yii\widgets\ActiveField
      *
      * If you set a custom `id` for the input element, you may need to adjust the [[$selectors]] accordingly.
      *
-     * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
+     * @see Html::renderTagAttributes() for details on how attributes are being rendered.
      * @since 2.0.7
      */
     public $checkOptions = [
@@ -132,7 +132,7 @@ class ActiveField extends \yii\widgets\ActiveField
      *
      * If you set a custom `id` for the input element, you may need to adjust the [[$selectors]] accordingly.
      *
-     * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
+     * @see Html::renderTagAttributes() for details on how attributes are being rendered.
      * @since 2.0.7
      */
     public $radioOptions = [
@@ -431,6 +431,8 @@ class ActiveField extends \yii\widgets\ActiveField
         if ($this->form->layout === ActiveForm::LAYOUT_INLINE) {
             Html::removeCssClass($this->labelOptions, 'visually-hidden');
         }
+        Html::removeCssClass($options, 'form-control');
+        Html::addCssClass($options, ['widget' => 'form-select']);
 
         return parent::listBox($items, $options);
     }
@@ -443,6 +445,8 @@ class ActiveField extends \yii\widgets\ActiveField
         if ($this->form->layout === ActiveForm::LAYOUT_INLINE) {
             Html::removeCssClass($this->labelOptions, 'visually-hidden');
         }
+        Html::removeCssClass($options, 'form-control');
+        Html::addCssClass($options, ['widget' => 'form-select']);
 
         return parent::dropdownList($items, $options);
     }
