@@ -431,7 +431,6 @@ class ActiveField extends \yii\widgets\ActiveField
         if ($this->form->layout === ActiveForm::LAYOUT_INLINE) {
             Html::removeCssClass($this->labelOptions, 'visually-hidden');
         }
-        Html::removeCssClass($options, 'form-control');
         Html::addCssClass($options, ['widget' => 'form-select']);
 
         return parent::listBox($items, $options);
@@ -445,7 +444,6 @@ class ActiveField extends \yii\widgets\ActiveField
         if ($this->form->layout === ActiveForm::LAYOUT_INLINE) {
             Html::removeCssClass($this->labelOptions, 'visually-hidden');
         }
-        Html::removeCssClass($options, 'form-control');
         Html::addCssClass($options, ['widget' => 'form-select']);
 
         return parent::dropdownList($items, $options);
@@ -524,7 +522,6 @@ class ActiveField extends \yii\widgets\ActiveField
      */
     public function rangeInput(array $options = [])
     {
-        Html::removeCssClass($options, 'form-control');
         Html::addCssClass($options, ['widget' => 'form-range']);
 
         return $this->input('range', $options);
