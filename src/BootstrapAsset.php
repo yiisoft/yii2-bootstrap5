@@ -18,4 +18,9 @@ class BootstrapAsset extends AssetBundle
         'css/bootstrap.css',
     ];
     public $js = [];
+    
+    public $depends = [
+        BootstrapIconAsset::class
+    ];
+
 }
