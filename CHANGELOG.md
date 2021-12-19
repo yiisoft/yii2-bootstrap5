@@ -4,6 +4,7 @@ Yii Framework 2 bootstrap5 extension Change Log
 2.0.3 under development
 -----------------------
 
+- Enh #26: Add Bootstrap icon asset (Krakozaber)
 - Enh #18: Add rangeInput(), colorInput() and switch mode to checkbox() in class ActiveField (WinterSilence)
 - Bug #19: Fix value of attribute "aria-current" in LinkPager::renderPageButton() (WinterSilence)
 - Bug #23: Fix class attribute in listBox() and dropDownList() of class ActiveField (WinterSilence)
