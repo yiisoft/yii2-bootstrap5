@@ -32,7 +32,7 @@
     "require-dev": {
         "yiisoft/yii2-coding-standards": "~2.0",
         "phpunit/phpunit": "^6.5.14",
-        "twbs/bootstrap-icons": "^1.7.5"
+        "twbs/bootstrap-icons": "^1.7.2"
     },
     "suggest": {
         "twbs/bootstrap-icons": "Add this package to the `require` section of your `composer.json` if you'd like to use the bootstrap icon asset."
