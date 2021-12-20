@@ -35,7 +35,7 @@ There is a new constant [[yii\bootstrap5\ActiveForm::LAYOUT_FLOATING]]. It's a
 
 ### Modal
 
-Change `data-target` and `data-toggle` change to `data-bs-target` and `data-bs-toggle`
+Change `data-target` and `data-toggle` to `data-bs-target` and `data-bs-toggle`
 
 ### Nav
 
