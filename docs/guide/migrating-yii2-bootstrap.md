@@ -1,4 +1,4 @@
-Migrating from yii2-bootstrap4
+Миграция с yii2-bootstrap4
 ==============================
 
 yii2-bootstrap5 является серьезной переработкой всего проекта (в соответствии с руководством по миграции с Bootstrap4 на Bootstrap5).
