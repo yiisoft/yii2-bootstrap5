@@ -14,7 +14,7 @@ php composer.phar require --prefer-dist yiisoft/yii2-bootstrap5
 или добавьте
 
 ```
-"yiisoft/yii2-bootstrap5": "~1.0.0"
+"yiisoft/yii2-bootstrap5": "~2.0.0"
 ```
 
 в секцию **require** вашего `composer.json`.
