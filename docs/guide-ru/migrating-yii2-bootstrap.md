@@ -35,7 +35,7 @@ yii2-bootstrap5 является серьезной переработкой в�
 
 ### Modal
 
-`data-target` and `data-toggle` change to `data-bs-target` and `data-bs-toggle`
+Заменить `data-target` и `data-toggle` на `data-bs-target` и `data-bs-toggle`
 
 ### Nav
 
