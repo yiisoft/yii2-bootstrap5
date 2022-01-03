@@ -77,7 +77,7 @@ class Carousel extends Widget
     /**
      * {@inheritdoc}
      */
-    public $options = ['data-bs-ride' => 'carousel'];
+    public $options = ['data' => ['bs-ride' => 'carousel']];
 
 
     /**

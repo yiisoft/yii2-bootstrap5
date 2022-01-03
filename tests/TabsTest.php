@@ -180,7 +180,7 @@ class TabsTest extends TestCase
         ]);
 
         $this->assertContains(
-            '<li class="nav-item"><a class="nav-link disabled" href="#w0-tab0" data-bs-toggle="tab" role="tab" aria-controls="w0-tab0" tabindex="-1" aria-disabled="true">Page1</a></li>',
+            '<li class="nav-item"><a class="nav-link disabled" href="#w0-tab0" data-bs-toggle="tab" role="tab" aria-controls="w0-tab0" aria-disabled="true" tabindex="-1">Page1</a></li>',
             $html
         );
         $this->assertContains(
@@ -188,11 +188,11 @@ class TabsTest extends TestCase
             $html
         );
         $this->assertContains(
-            '<li class="nav-item"><a class="nav-link disabled" href="#w0-tab2" data-bs-toggle="tab" role="tab" aria-controls="w0-tab2" tabindex="-1" aria-disabled="true">DisabledPage</a></li>',
+            '<li class="nav-item"><a class="nav-link disabled" href="#w0-tab2" data-bs-toggle="tab" role="tab" aria-controls="w0-tab2" aria-disabled="true" tabindex="-1">DisabledPage</a></li>',
             $html
         );
         $this->assertContains(
-            '<a class="dropdown-item disabled" href="#w0-dd3-tab1" data-bs-toggle="tab" role="tab" aria-controls="w0-dd3-tab1" tabindex="-1" aria-disabled="true">DisabledItem</a>',
+            '<a class="dropdown-item disabled" href="#w0-dd3-tab1" data-bs-toggle="tab" role="tab" aria-controls="w0-dd3-tab1" aria-disabled="true" tabindex="-1">DisabledItem</a>',
             $html
         );
         $this->assertContains(

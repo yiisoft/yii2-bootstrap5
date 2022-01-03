@@ -183,9 +183,9 @@ class Nav extends Widget
             Html::addCssClass($options, ['widget' => 'nav-item']);
             Html::addCssClass($linkOptions, ['widget' => 'nav-link']);
         } else {
-            $linkOptions['data-bs-toggle'] = 'dropdown';
+            $linkOptions['data']['bs-toggle'] = 'dropdown';
             $linkOptions['role'] = 'button';
-            $linkOptions['aria-expanded'] = 'false';
+            $linkOptions['aria']['expanded'] = 'false';
             Html::addCssClass($options, ['widget' => 'dropdown nav-item']);
             Html::addCssClass($linkOptions, ['widget' => 'dropdown-toggle nav-link']);
             if (is_array($items)) {
@@ -196,7 +196,7 @@ class Nav extends Widget
 
         if ($disabled) {
             ArrayHelper::setValue($linkOptions, 'tabindex', '-1');
-            ArrayHelper::setValue($linkOptions, 'aria-disabled', 'true');
+            ArrayHelper::setValue($linkOptions, 'aria.disabled', 'true');
             Html::addCssClass($linkOptions, ['disable' => 'disabled']);
         } elseif ($this->activateItems && $active) {
             Html::addCssClass($linkOptions, ['activate' => 'active']);

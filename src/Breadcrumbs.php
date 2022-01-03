@@ -76,7 +76,7 @@ class Breadcrumbs extends Widget
      * @var array the HTML attributes for the widgets nav container tag.
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $navOptions = ['aria-label' => 'breadcrumb'];
+    public $navOptions = ['aria' => ['label' => 'breadcrumb']];
 
 
     /**

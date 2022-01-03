@@ -187,8 +187,8 @@ class Accordion extends Widget
                 Html::addCssClass($options, ['visibility' => 'show']);
             }
 
-            if (!isset($options['aria-label'], $options['aria-labelledby'])) {
-                $options['aria-labelledby'] = $options['id'] . '-heading';
+            if (!isset($options['aria']['label'], $options['aria']['labelledby'])) {
+                $options['aria']['labelledby'] = $options['id'] . '-heading';
             }
 
             $encodeLabel = $item['encode'] ?? $this->encodeLabels;

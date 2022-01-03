@@ -216,7 +216,7 @@ class Toast extends Widget
         if (!isset($this->options['role'])) {
             $this->options['role'] = 'alert';
         }
-        if (!isset($this->options['aria']) && !isset($this->options['aria-live'])) {
+        if (!isset($this->options['aria']['live'])) {
             $this->options['aria'] = [
                 'live' => 'assertive',
                 'atomic' => 'true',

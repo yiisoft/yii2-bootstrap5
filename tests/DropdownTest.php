@@ -174,7 +174,7 @@ HTML;
 
         $expected = <<<HTML
 <div id="w0" class="dropdown-menu"><div class="dropdown" aria-expanded="false">
-<a class="dropdown-item disabled dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" role="button" tabindex="-1" aria-disabled="true">Dropdown1</a>
+<a class="dropdown-item disabled dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" aria-disabled="true" role="button" tabindex="-1">Dropdown1</a>
 <div id="w1" class="submenu-list dropdown-submenu dropdown-menu"><h6 class="dropdown-header">Page1</h6>
 <h6 class="dropdown-header">Page2</h6></div>
 </div>

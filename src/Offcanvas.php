@@ -223,16 +223,18 @@ class Offcanvas extends Widget
     {
         $this->options = array_merge([
             'tabindex' => -1,
-            'data-bs-backdrop' => $this->backdrop ? 'true' : 'false',
-            'data-bs-scroll' => $this->scrolling ? 'true' : 'false'
+            'data' =>[
+                'bs-backdrop' => $this->backdrop ? 'true' : 'false',
+                'bs-scroll' => $this->scrolling ? 'true' : 'false'
+            ]
         ], $this->options);
         Html::addCssClass($this->options, ['widget' => 'offcanvas offcanvas-' . $this->placement]);
 
         $this->titleOptions = array_merge([
             'id' => $this->options['id'] . '-label',
         ], $this->titleOptions);
-        if (!isset($this->options['aria-label'], $this->options['aria-labelledby']) && isset($this->title)) {
-            $this->options['aria-labelledby'] = $this->titleOptions['id'];
+        if (!isset($this->options['aria']['label'], $this->options['aria']['labelledby']) && isset($this->title)) {
+            $this->options['aria']['labelledby'] = $this->titleOptions['id'];
         }
 
         if ($this->closeButton !== false) {
@@ -245,12 +247,12 @@ class Offcanvas extends Widget
 
         if ($this->toggleButton !== false) {
             $this->toggleButton = array_merge([
-                'data-bs-toggle' => 'offcanvas',
+                'data' => ['bs-toggle' => 'offcanvas'],
                 'type' => 'button',
-                'aria-controls' => $this->options['id']
+                'aria' => ['controls' => $this->options['id']]
             ], $this->toggleButton);
-            if (!isset($this->toggleButton['data-bs-target']) && !isset($this->toggleButton['href'])) {
-                $this->toggleButton['data-bs-target'] = '#' . $this->options['id'];
+            if (!isset($this->toggleButton['data']['bs-target']) && !isset($this->toggleButton['href'])) {
+                $this->toggleButton['data']['bs-target'] = '#' . $this->options['id'];
             }
         }
     }

@@ -288,7 +288,7 @@ class LinkPager extends Widget
         Html::addCssClass($options, $class ?: $this->pageCssClass);
 
         $linkOptions = $this->linkOptions;
-        $linkOptions['data-page'] = $page;
+        $linkOptions['data']['page'] = $page;
 
         if ($active) {
             $options['aria'] = ['current' => 'page'];
