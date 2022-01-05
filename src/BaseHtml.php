@@ -27,6 +27,13 @@ abstract class BaseHtml extends \yii\helpers\Html
      * @see getId()
      */
     public static $autoIdPrefix = 'i';
+    /**
+     * @var bool whether to removes duplicate class names in tag attribute `class` (fix strange yii2 behavior since 2.0.44)
+     * @see mergeCssClasses()
+     * @see renderTagAttributes()
+     * @since 2.0.3
+     */
+    public static $normalizeClassAttribute = true;
 
 
     /**
