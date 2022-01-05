@@ -70,11 +70,21 @@ class TestCase extends \PHPUnit\Framework\TestCase
             'id' => 'testapp',
             'basePath' => __DIR__,
             'vendorPath' => dirname(__DIR__) . '/vendor',
+            'language' =>  'en-US',
             'aliases' => [
                 '@bower' => '@vendor/bower-asset',
                 '@npm' => '@vendor/npm-asset',
             ],
             'components' => [
+                'i18n' => [
+                    'translations' => [
+                        'yii/bootstrap5*' => [
+                            'class' => 'yii\i18n\GettextMessageSource',
+                            'sourceLanguage' => 'en-US',
+                            'basePath' => '@yii/bootstrap5/messages',
+                        ],
+                    ],
+                ],
                 'request' => [
                     'cookieValidationKey' => 'wefJDF8sfdsfSDefwqdxj9oq',
                     'scriptFile' => __DIR__ . '/index.php',
