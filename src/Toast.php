@@ -209,7 +209,7 @@ class Toast extends Widget
             $this->closeButton = array_merge([
                 'class' => ['widget' => 'btn-close'],
                 'data' => ['bs-dismiss' => 'toast'],
-                'aria' => ['label' => 'Close']
+                'aria' => ['label' => Yii::t('yii/bootstrap5', 'Close')]
             ], $this->closeButton);
         }
 

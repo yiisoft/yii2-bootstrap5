@@ -33,10 +33,29 @@ php composer.phar require --prefer-dist yiisoft/yii2-bootstrap5
 or add
 
 ```
-"yiisoft/yii2-bootstrap5": "~1.0@dev"
+"yiisoft/yii2-bootstrap5": "*"
 ```
 
 to the require section of your `composer.json` file.
+
+Translations
+----
+
+To use translations, configure your app like following
+```php
+'components' => [
+    // ...
+    'i18n' => [
+        'translations' => [
+            'yii/bootstrap5*' => [
+                'class' => 'yii\i18n\GettextMessageSource',
+                'sourceLanguage' => 'en-US',
+                'basePath' => '@yii/bootstrap5/messages',
+            ],
+        ],
+    ],
+],
+```
 
 Usage
 ----

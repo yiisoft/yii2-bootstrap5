@@ -4,6 +4,7 @@ Yii Framework 2 bootstrap5 extension Change Log
 2.0.3 under development
 -----------------------
 
+- Enh #28: Added translations (simialbi)
 - Enh #24: Accept `Breadcrumbs::$homeLink = false` to omit "Home" link (fetus-hina)
 - Enh #27: Changed all data- and aria- attributes to short syntax (simialbi)
 - Enh #26: Add Bootstrap icon asset (Krakozaber)
@@ -28,6 +29,6 @@ Yii Framework 2 bootstrap5 extension Change Log
 - no changes in this release.
 
 
-1.0.0 under development
+1.0.0
 -----------------------
 - Initial release

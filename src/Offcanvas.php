@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace yii\bootstrap5;
 
+use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -188,7 +189,7 @@ class Offcanvas extends Widget
     {
         if (($toggleButton = $this->toggleButton) !== false) {
             $tag = ArrayHelper::remove($toggleButton, 'tag', 'button');
-            $label = ArrayHelper::remove($toggleButton, 'label', 'Show');
+            $label = ArrayHelper::remove($toggleButton, 'label', Yii::t('yii/bootstrap5', 'Show'));
 
             return Html::tag($tag, $label, $toggleButton);
         } else {
@@ -241,7 +242,7 @@ class Offcanvas extends Widget
             $this->closeButton = array_merge([
                 'class' => ['widget' => 'btn-close text-reset'],
                 'data' => ['bs-dismiss' => 'offcanvas'],
-                'aria' => ['label' => 'Close']
+                'aria' => ['label' => Yii::t('yii/bootstrap5', 'Close')]
             ], $this->closeButton);
         }
 

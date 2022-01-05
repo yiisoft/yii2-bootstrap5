@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace yii\bootstrap5;
 
+use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -131,7 +132,7 @@ class Alert extends Widget
             $this->closeButton = array_merge([
                 'class' => ['widget' => 'btn-close'],
                 'data' => ['bs-dismiss' => 'alert'],
-                'aria' => ['label' => 'Close']
+                'aria' => ['label' => Yii::t('yii/bootstrap5', 'Close')]
             ], $this->closeButton);
 
             Html::addCssClass($this->options, ['toggle' => 'alert-dismissible']);
