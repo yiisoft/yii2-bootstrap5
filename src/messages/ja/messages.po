@@ -12,21 +12,21 @@ msgstr ""
 
 msgctxt "yii/bootstrap5"
 msgid "Button"
-msgstr ""
+msgstr "ボタン"
 
 msgctxt "yii/bootstrap5"
 msgid "Close"
-msgstr ""
+msgstr "閉じる"
 
 msgctxt "yii/bootstrap5"
 msgid "Home"
-msgstr ""
+msgstr "ホーム"
 
 msgctxt "yii/bootstrap5"
 msgid "Show"
-msgstr ""
+msgstr "表示"
 
 msgctxt "yii/bootstrap5"
 msgid "Toggle Dropdown"
-msgstr ""
+msgstr "ドロップダウンをトグル"
 
