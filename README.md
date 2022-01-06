@@ -41,21 +41,7 @@ to the require section of your `composer.json` file.
 Translations
 ----
 
-To use translations, configure your app like following
-```php
-'components' => [
-    // ...
-    'i18n' => [
-        'translations' => [
-            'yii/bootstrap5*' => [
-                'class' => 'yii\i18n\GettextMessageSource',
-                'sourceLanguage' => 'en-US',
-                'basePath' => '@yii/bootstrap5/messages',
-            ],
-        ],
-    ],
-],
-```
+The i18n configuration will be automatically added to your application configuration via bootstrapping process.
 
 Usage
 ----
