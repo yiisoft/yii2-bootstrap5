@@ -12,21 +12,21 @@ msgstr ""
 
 msgctxt "yii/bootstrap5"
 msgid "Button"
-msgstr ""
+msgstr "Bottone"
 
 msgctxt "yii/bootstrap5"
 msgid "Close"
-msgstr ""
+msgstr "Chiudi"
 
 msgctxt "yii/bootstrap5"
 msgid "Home"
-msgstr ""
+msgstr "Partenza"
 
 msgctxt "yii/bootstrap5"
 msgid "Show"
-msgstr ""
+msgstr "Indicare"
 
 msgctxt "yii/bootstrap5"
 msgid "Toggle Dropdown"
-msgstr ""
+msgstr "Attiva/Disattiva lista a tendina"
 
