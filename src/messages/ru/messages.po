@@ -16,7 +16,7 @@ msgstr ""
 
 msgctxt "yii/bootstrap5"
 msgid "Close"
-msgstr ""
+msgstr "Закрыть"
 
 msgctxt "yii/bootstrap5"
 msgid "Home"
@@ -28,5 +28,5 @@ msgstr ""
 
 msgctxt "yii/bootstrap5"
 msgid "Toggle Dropdown"
-msgstr ""
+msgstr "Переключить навигацию"
 
