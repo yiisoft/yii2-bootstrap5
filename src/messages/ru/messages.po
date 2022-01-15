@@ -12,7 +12,7 @@ msgstr ""
 
 msgctxt "yii/bootstrap5"
 msgid "Button"
-msgstr ""
+msgstr "Кнопка"
 
 msgctxt "yii/bootstrap5"
 msgid "Close"
@@ -20,13 +20,12 @@ msgstr "Закрыть"
 
 msgctxt "yii/bootstrap5"
 msgid "Home"
-msgstr ""
+msgstr "Главная"
 
 msgctxt "yii/bootstrap5"
 msgid "Show"
-msgstr ""
+msgstr "Показать"
 
 msgctxt "yii/bootstrap5"
 msgid "Toggle Dropdown"
 msgstr "Переключить навигацию"
-
