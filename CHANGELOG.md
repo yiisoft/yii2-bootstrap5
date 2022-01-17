@@ -4,6 +4,7 @@ Yii Framework 2 bootstrap5 extension Change Log
 2.0.3 under development
 -----------------------
 
+- Enh #33: Updated russian translations (WinterSilence)
 - Enh #28: Added translations (simialbi)
 - Enh #24: Accept `Breadcrumbs::$homeLink = false` to omit "Home" link (fetus-hina)
 - Enh #27: Changed all data- and aria- attributes to short syntax (simialbi)
