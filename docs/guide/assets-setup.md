@@ -114,7 +114,7 @@ return [
                 ],
                 'yii\bootstrap5\BootstrapPluginAsset' => [
                     'sourcePath' => null,
-                    'baseUrl' => 'https://cdn.jsdelivr.net/npm/bootstrap@5.1/dist/,
+                    'baseUrl' => 'https://cdn.jsdelivr.net/npm/bootstrap@5.1/dist/',
                     'js' => [
                         'js/bootstrap.bundle.min.js'
                     ],
