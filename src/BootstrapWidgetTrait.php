@@ -76,10 +76,12 @@ trait BootstrapWidgetTrait
 
         $id = $this->options['id'];
 
-        $options = empty($this->clientOptions) ? '' : Json::htmlEncode($this->clientOptions);
-        $js = "jQuery('#$id').$name($options);";
-        $view->registerJs($js);
-
+        if($this->clientOptions !== false){
+            $options = empty($this->clientOptions) ? '' : Json::htmlEncode($this->clientOptions);
+            $js = "jQuery('#$id').$name($options);";
+            $view->registerJs($js);
+        }
+        
         $this->registerClientEvents();
     }
 
