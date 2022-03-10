@@ -3,7 +3,7 @@ Yii Framework 2 bootstrap5 extension Change Log
 
 2.0.3 under development
 -----------------------
-
+- Enh #36: `BootstrapWidgetTrait::$clientOptions = false` disables registerJs in `BootstrapWidgetTrait` (julianrutten)
 - Enh #33: Updated russian translations (WinterSilence)
 - Enh #28: Added translations (simialbi)
 - Enh #24: Accept `Breadcrumbs::$homeLink = false` to omit "Home" link (fetus-hina)
