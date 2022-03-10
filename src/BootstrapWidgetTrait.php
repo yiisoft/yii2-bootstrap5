@@ -35,10 +35,11 @@ use yii\helpers\Json;
 trait BootstrapWidgetTrait
 {
     /**
-     * @var array the options for the underlying Bootstrap JS plugin.
+     * @var array|bool the options for the underlying Bootstrap JS plugin.
      * Please refer to the corresponding Bootstrap plugin Web page for possible options.
      * For example, [this page](http://getbootstrap.com/javascript/#modals) shows
      * how to use the "Modal" plugin and the supported options (e.g. "remote").
+     * If this property is false, registerJs will not be called on the view to initialize the module.
      */
     public $clientOptions = [];
     /**
@@ -76,10 +77,12 @@ trait BootstrapWidgetTrait
 
         $id = $this->options['id'];
 
-        $options = empty($this->clientOptions) ? '' : Json::htmlEncode($this->clientOptions);
-        $js = "jQuery('#$id').$name($options);";
-        $view->registerJs($js);
-
+        if($this->clientOptions !== false){
+            $options = empty($this->clientOptions) ? '' : Json::htmlEncode($this->clientOptions);
+            $js = "jQuery('#$id').$name($options);";
+            $view->registerJs($js);
+        }
+        
         $this->registerClientEvents();
     }
 
