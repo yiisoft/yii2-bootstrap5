@@ -1,8 +1,13 @@
 Yii Framework 2 bootstrap5 extension Change Log
 ==============================================
 
-2.0.3 under development
+2.0.4 under development
 -----------------------
+
+
+2.0.3 April 22, 2022
+--------------------
+
 - Enh #36: `BootstrapWidgetTrait::$clientOptions = false` disables registerJs in `BootstrapWidgetTrait` (julianrutten)
 - Enh #33: Updated russian translations (WinterSilence)
 - Enh #28: Added translations (simialbi)
