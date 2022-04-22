@@ -74,7 +74,7 @@ abstract class BaseHtml extends \yii\helpers\Html
 
     /**
      * {@inheritdoc}
-     * Pass `true` in `$options['inline']` to generate {@see https://getbootstrap.com/docs/5.1/forms/checks-radios/#inline inline list}.
+     * Pass `true` in `$options['inline']` to generate [inline list](https://getbootstrap.com/docs/5.1/forms/checks-radios/#inline).
      */
     public static function radioList($name, $selection = null, $items = [], $options = []): string
     {
@@ -108,7 +108,7 @@ abstract class BaseHtml extends \yii\helpers\Html
 
     /**
      * {@inheritdoc}
-     * Pass `true` in `$options['inline']` to generate {@see https://getbootstrap.com/docs/5.1/forms/checks-radios/#inline inline list}.
+     * Pass `true` in `$options['inline']` to generate [inline list](https://getbootstrap.com/docs/5.1/forms/checks-radios/#inline).
      */
     public static function checkboxList($name, $selection = null, $items = [], $options = []): string
     {
