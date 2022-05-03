@@ -103,7 +103,12 @@ class Breadcrumbs extends \yii\widgets\Breadcrumbs
         }
         Html::addCssClass($this->options, ['widget' => 'breadcrumb']);
 
-        return Html::tag('nav', parent::run(), $this->navOptions);
+        // @todo update after fixing the parent method
+        ob_start();
+        parent::run();
+        $content = ob_get_clean();
+
+        return Html::tag('nav', $content, $this->navOptions);
     }
 
     /**
