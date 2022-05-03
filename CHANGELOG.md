@@ -4,6 +4,8 @@ Yii Framework 2 bootstrap5 extension Change Log
 2.0.4 under development
 -----------------------
 
+- Enh #39: Add inline mode to `BaseHtml::checkboxList()` and `BaseHtml::radioList()` (WinterSilence)
+
 
 2.0.3 April 22, 2022
 --------------------
