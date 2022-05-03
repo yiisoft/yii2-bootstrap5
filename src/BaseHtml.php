@@ -145,7 +145,9 @@ abstract class BaseHtml extends \yii\helpers\Html
      */
     public static function error($model, $attribute, $options = []): string
     {
-        static::addCssClass($options, 'invalid-feedback');
+        if (!array_key_exists('class', $options)) {
+            $options['class'] = ['invalid-feedback'];
+        }
 
         return parent::error($model, $attribute, $options);
     }
