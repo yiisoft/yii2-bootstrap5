@@ -63,7 +63,7 @@ HTML;
         ]);
 
         $expected = <<<HTML
-<nav aria-label="breadcrumb"><ol id="w0" class="breadcrumb"><li class="breadcrumb-item"><a href="/index.php">Start</a></li>
+<nav aria-label="breadcrumb"><ol id="w0" class="breadcrumb"><li class="breadcrumb-item"><a href="/index.php">Home</a></li>
 <li class="breadcrumb-item"><a href="#">Library</a></li>
 <li class="breadcrumb-item active" aria-current="page">Data</li>
 </ol></nav>
