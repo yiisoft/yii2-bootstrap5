@@ -3,7 +3,7 @@ Yii Framework 2 bootstrap5 extension Change Log
 
 2.0.4 under development
 -----------------------
-
+- Enh #40: Breadcrumbs refactoring (WinterSilence)
 
 2.0.3 April 22, 2022
 --------------------
