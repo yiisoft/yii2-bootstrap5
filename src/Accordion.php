@@ -214,7 +214,11 @@ class Accordion extends Widget
                 ArrayHelper::remove($itemToggleOptions, 'data.bs-target');
                 $headerToggle = Html::a($header, '#' . $id, $itemToggleOptions) . "\n";
             } else {
-                Html::addCssClass($itemToggleOptions, ['widget' => 'accordion-button']);
+                if (!$expand) {
+                    Html::addCssClass($itemToggleOptions, ['widget' => 'accordion-button collapsed']);
+                } else {
+                    Html::addCssClass($itemToggleOptions, ['widget' => 'accordion-button']);
+                }
                 $headerToggle = Button::widget([
                         'label' => $header,
                         'encodeLabel' => false,
