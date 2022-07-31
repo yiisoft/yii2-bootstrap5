@@ -20,7 +20,7 @@ use yii\helpers\ArrayHelper;
  *
  * ```php
  * <div class="dropdown">
- *     <a href="#" data-toggle="dropdown" class="dropdown-toggle">Label <b class="caret"></b></a>
+ *     <a href="#" data-bs-toggle="dropdown" class="dropdown-toggle">Label <b class="caret"></b></a>
  *     <?php
  *         echo Dropdown::widget([
  *             'items' => [
