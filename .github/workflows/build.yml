@@ -32,9 +32,7 @@ jobs:
                   key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
                   restore-keys: ${{ runner.os }}-composer-
             - name: Install dependencies
-              run: |
-                  composer config --no-plugins allow-plugins.yiisoft/yii2-composer true
-                  composer update $DEFAULT_COMPOSER_FLAGS
+              run: composer update $DEFAULT_COMPOSER_FLAGS
             - name: Run unit tests with coverage
               run: vendor/bin/phpunit --verbose --coverage-clover=coverage.clover --colors=always
               if: matrix.php == '7.4'
