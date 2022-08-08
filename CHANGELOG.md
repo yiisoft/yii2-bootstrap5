@@ -7,6 +7,7 @@ Yii Framework 2 bootstrap5 extension Change Log
 - Bug #43: Accordion widget does not set "collapsed" class on toggle button (simialbi)
 - Enh #39: Add inline mode to `BaseHtml::checkboxList()` and `BaseHtml::radioList()` (WinterSilence)
 - Enh #40: Breadcrumbs refactoring (WinterSilence)
+- Bug #46: Fix data-attribute usage for Dropdown toggle (machour)
 
 
 2.0.3 April 22, 2022
