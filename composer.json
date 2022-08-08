@@ -37,6 +37,11 @@
     "suggest": {
         "twbs/bootstrap-icons": "Add this package to the `require` section of your `composer.json` if you'd like to use the bootstrap icon asset."
     },
+    "config": {
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true
+        }
+    },
     "repositories": [
         {
             "type": "composer",
