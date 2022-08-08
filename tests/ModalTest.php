@@ -50,7 +50,7 @@ HTML;
                     'type' => 'button',
                     'class' => ['btn', 'btn-secondary'],
                     'data' => [
-                        'dismiss' => 'modal'
+                        'bs-dismiss' => 'modal'
                     ]
                 ]) . "\n" . Html::button('Save changes', [
                     'type' => 'button',
