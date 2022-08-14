@@ -96,7 +96,7 @@ trait BootstrapWidgetTrait
            ) {
                 $name = ucfirst($name);
                 $id = $this->options['id'];
-                $options = Json::htmlEncode($this->clientOptions);
+                $options = empty($this->clientOptions) ? '{}' : Json::htmlEncode($this->clientOptions);
                 $view->registerJs("(new bootstrap.$name('#$id', $options));");
             }
 
