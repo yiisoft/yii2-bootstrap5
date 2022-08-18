@@ -35,6 +35,24 @@ use yii\helpers\Json;
 trait BootstrapWidgetTrait
 {
     /**
+     * @see https://github.com/twbs/bootstrap/blob/v5.2.0/js/index.esm.js
+     */
+    protected const JS_PLUGINS = [
+        'alert',
+        'button',
+        'carousel',
+        'collapse',
+        'dropdown',
+        'modal',
+        'offcanvas',
+        'popover',
+        'scrollspy',
+        'tab',
+        'toast',
+        'tooltip'
+    ];
+
+    /**
      * @var array|false the options for the underlying Bootstrap JS plugin/component.
      * Please refer to the corresponding Bootstrap plugin/component Web page for possible options.
      * For example, [this page](https://getbootstrap.com/docs/5.1/components/modal/#options) shows
@@ -71,23 +89,9 @@ trait BootstrapWidgetTrait
      */
     protected function registerPlugin(string $name)
     {
-        // https://github.com/twbs/bootstrap/blob/v5.2.0/js/index.esm.js
-        $jsPlugins = [
-            'alert',
-            'button',
-            'carousel',
-            'collapse',
-            'dropdown',
-            'modal',
-            'offcanvas',
-            'popover',
-            'scrollspy',
-            'tab',
-            'toast',
-            'tooltip'
-        ];
-        if (in_array($name, $jsPlugins, true)) {
-            BootstrapPluginAsset::register($this->getView());
+        if (in_array($name, static::JS_PLUGINS, true)) {
+            $view = $this->getView();
+            BootstrapPluginAsset::register($view);
             // 'popover', 'toast' and 'tooltip' plugins not activates via data attributes
             if (
                 $this->clientOptions !== false
