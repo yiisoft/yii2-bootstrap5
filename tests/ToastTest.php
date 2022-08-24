@@ -176,7 +176,7 @@ HTML;
         Toast::end();
         $out = ob_get_clean();
 
-        $this->assertTrue($toast->clientOptions);
+        $this->assertArrayHasKey('delay', $toast->clientOptions);
         $this->assertArrayHasKey(View::POS_READY, Yii::$app->view->js);
         $js = Yii::$app->view->js[View::POS_READY];
 
