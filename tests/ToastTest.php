@@ -140,7 +140,7 @@ HTML;
         $this->assertInternalType(IsType::TYPE_ARRAY, $js);
         $options = array_shift($js);
 
-        $this->assertContainsWithoutLE("jQuery('#w0').toast();", $options);
+        $this->assertContainsWithoutLE("(new bootstrap.Toast('#w0', {", $options);
     }
 
     /**
@@ -187,6 +187,6 @@ HTML;
         $this->assertInternalType(IsType::TYPE_ARRAY, $js);
         $options = array_shift($js);
 
-        $this->assertContainsWithoutLE("jQuery('#w0').toast(true);", $options);
+        $this->assertContainsWithoutLE("(new bootstrap.Toast('#w0', {", $options);
     }
 }
