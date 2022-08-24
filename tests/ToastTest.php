@@ -183,6 +183,6 @@ HTML;
         $this->assertInternalType(IsType::TYPE_ARRAY, $js);
         $options = array_shift($js);
 
-        $this->assertContainsWithoutLE("(new bootstrap.Toast('#w0', {\"delay\": 1000}));", $options);
+        $this->assertContainsWithoutLE("(new bootstrap.Toast('#w0', {\"delay\":1000}));", $options);
     }
 }
