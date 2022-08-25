@@ -13,7 +13,7 @@ use yii\base\InvalidConfigException;
 use yii\helpers\Json;
 
 /**
- * BootstrapWidgetTrait is the trait, which provides basic for all bootstrap widgets features.
+ * BootstrapWidgetTrait is the trait, which provides basic for all Bootstrap widgets features.
  *
  * Note: class, which uses this trait must declare public field named `options` with the array default value:
  *
@@ -35,21 +35,20 @@ use yii\helpers\Json;
 trait BootstrapWidgetTrait
 {
     /**
-     * @var array|bool the options for the underlying Bootstrap JS plugin.
-     * Please refer to the corresponding Bootstrap plugin Web page for possible options.
-     * For example, [this page](http://getbootstrap.com/javascript/#modals) shows
-     * how to use the "Modal" plugin and the supported options (e.g. "remote").
-     * If this property is false, registerJs will not be called on the view to initialize the module.
+     * @var array|false the options for the underlying Bootstrap JS plugin/component.
+     * Please refer to the corresponding Bootstrap plugin/component Web page for possible options.
+     * For example, [this page](https://getbootstrap.com/docs/5.1/components/modal/#options) shows
+     * how to use the "Modal" component and the supported options (e.g. "backdrop").
+     * If this property is false, `registerJs()` will not be called on the view to initialize the module.
      */
     public $clientOptions = [];
     /**
      * @var array the event handlers for the underlying Bootstrap JS plugin.
      * Please refer to the corresponding Bootstrap plugin Web page for possible events.
-     * For example, [this page](http://getbootstrap.com/javascript/#modals) shows
-     * how to use the "Modal" plugin and the supported events (e.g. "shown").
+     * For example, [this page](https://getbootstrap.com/docs/5.1/components/modal/#events) shows
+     * how to use the "Modal" plugin and the supported events (e.g. "shown.bs.modal").
      */
     public $clientEvents = [];
-
 
     /**
      * Initializes the widget.
@@ -66,24 +65,46 @@ trait BootstrapWidgetTrait
     }
 
     /**
-     * Registers a specific Bootstrap plugin and the related events
+     * Registers a specific Bootstrap plugin/component and the related events.
+     *
      * @param string $name the name of the Bootstrap plugin
      */
     protected function registerPlugin(string $name)
     {
-        $view = $this->getView();
+        /**
+         * @see https://github.com/twbs/bootstrap/blob/v5.2.0/js/index.esm.js
+         */
+        $jsPlugins = [
+            'alert',
+            'button',
+            'carousel',
+            'collapse',
+            'dropdown',
+            'modal',
+            'offcanvas',
+            'popover',
+            'scrollspy',
+            'tab',
+            'toast',
+            'tooltip'
+        ];
+        if (in_array($name, $jsPlugins, true)) {
+            $view = $this->getView();
+            BootstrapPluginAsset::register($view);
+            // 'popover', 'toast' and 'tooltip' plugins not activates via data attributes
+            if (
+                $this->clientOptions !== false
+                || !empty($this->clientOptions)
+                || in_array($name, ['popover', 'toast', 'tooltip'], true)
+           ) {
+                $name = ucfirst($name);
+                $id = $this->options['id'];
+                $options = empty($this->clientOptions) ? '{}' : Json::htmlEncode($this->clientOptions);
+                $view->registerJs("(new bootstrap.$name('#$id', $options));");
+            }
 
-        BootstrapPluginAsset::register($view);
-
-        $id = $this->options['id'];
-
-        if ($this->clientOptions !== false) {
-            $options = empty($this->clientOptions) ? '' : Json::htmlEncode($this->clientOptions);
-            $js = "jQuery('#$id').$name($options);";
-            $view->registerJs($js);
+            $this->registerClientEvents();
         }
-        
-        $this->registerClientEvents();
     }
 
     /**
@@ -95,7 +116,7 @@ trait BootstrapWidgetTrait
             $id = $this->options['id'];
             $js = [];
             foreach ($this->clientEvents as $event => $handler) {
-                $js[] = "jQuery('#$id').on('$event', $handler);";
+                $js[] = "document.getElementById('$id').addEventListener('$event', $handler);";
             }
             $this->getView()->registerJs(implode("\n", $js));
         }

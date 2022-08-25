@@ -140,7 +140,7 @@ HTML;
         $this->assertInternalType(IsType::TYPE_ARRAY, $js);
         $options = array_shift($js);
 
-        $this->assertContainsWithoutLE("jQuery('#w0').toast();", $options);
+        $this->assertContainsWithoutLE("(new bootstrap.Toast('#w0', {}));", $options);
     }
 
     /**
@@ -160,33 +160,29 @@ HTML;
         $out = ob_get_clean();
 
         $this->assertFalse($toast->clientOptions);
-        $this->assertArrayNotHasKey(View::POS_READY,Yii::$app->view->js);
+        $this->assertArrayHasKey(View::POS_READY, Yii::$app->view->js);
     }
 
-    /**
-     * 
-     * @see https://github.com/yiisoft/yii2-bootstrap5/issues/36
-     */
-    public function testWidgetInitializationTrue()
+    public function testWidgetInitializationWithClientOptions()
     {
         Toast::$counter = 0;
         ob_start();
         $toast = Toast::begin([
             'title' => 'Toast title',
-            'clientOptions' => true,
+            'clientOptions' => ['delay' => 1000],
             'titleOptions' => ['tag' => 'h5', 'style' => ['text-align' => 'left']]
         ]);
         echo 'test';
         Toast::end();
         $out = ob_get_clean();
 
-        $this->assertTrue($toast->clientOptions);
-        $this->assertArrayHasKey(View::POS_READY,Yii::$app->view->js);
+        $this->assertArrayHasKey('delay', $toast->clientOptions);
+        $this->assertArrayHasKey(View::POS_READY, Yii::$app->view->js);
         $js = Yii::$app->view->js[View::POS_READY];
 
         $this->assertInternalType(IsType::TYPE_ARRAY, $js);
         $options = array_shift($js);
 
-        $this->assertContainsWithoutLE("jQuery('#w0').toast(true);", $options);
+        $this->assertContainsWithoutLE("(new bootstrap.Toast('#w0', {\"delay\":1000}));", $options);
     }
 }

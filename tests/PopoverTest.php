@@ -39,7 +39,7 @@ HTML;
         $this->assertInternalType(IsType::TYPE_ARRAY, $js);
         $options = array_shift($js);
 
-        $this->assertContainsWithoutLE("jQuery('#w0').popover({", $options);
+        $this->assertContainsWithoutLE("(new bootstrap.Popover('#w0', {", $options);
         $this->assertContainsWithoutLE("id=\u0022w0-popover\u0022", $options);
         $this->assertContainsWithoutLE("class=\u0022test-header popover-header\u0022", $options);
         $this->assertContainsWithoutLE('"placement":"bottom"', $options);
