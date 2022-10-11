@@ -29,7 +29,7 @@ class BootstrapPluginAsset extends AssetBundle
     /**
      * @inheritDoc
      */
-    public $publishOptions => [
+    public $publishOptions = [
         'only' => ['js/bootstrap.bundle.*']
     ];
     /**
