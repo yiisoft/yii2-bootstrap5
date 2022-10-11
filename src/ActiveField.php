@@ -344,6 +344,10 @@ class ActiveField extends \yii\widgets\ActiveField
      */
     public function checkboxList($items, $options = [])
     {
+        if (isset($options['inline'])) {
+            $this->inline(ArrayHelper::remove($options, 'inline'));
+        }
+
         if (!isset($options['item'])) {
             $this->template = str_replace("\n{error}", '', $this->template);
             $itemOptions = $options['itemOptions'] ?? [];
@@ -363,6 +367,8 @@ class ActiveField extends \yii\widgets\ActiveField
                 $wrapperOptions = ArrayHelper::remove($options, 'wrapperOptions', ['class' => ['widget' => 'form-check']]);
                 if ($this->inline) {
                     Html::addCssClass($wrapperOptions, ['inline' => 'form-check-inline']);
+                } else {
+                    Html::removeCssClass($wrapperOptions, 'form-check-inline');
                 }
 
                 $html = Html::beginTag('div', $wrapperOptions) . "\n" .
@@ -376,9 +382,7 @@ class ActiveField extends \yii\widgets\ActiveField
             };
         }
 
-        parent::checkboxList($items, $options);
-
-        return $this;
+        return parent::checkboxList($items, $options);
     }
 
     /**
@@ -386,6 +390,10 @@ class ActiveField extends \yii\widgets\ActiveField
      */
     public function radioList($items, $options = [])
     {
+        if (isset($options['inline'])) {
+            $this->inline(ArrayHelper::remove($options, 'inline'));
+        }
+
         if (!isset($options['item'])) {
             $this->template = str_replace("\n{error}", '', $this->template);
             $itemOptions = $options['itemOptions'] ?? [];
@@ -405,6 +413,8 @@ class ActiveField extends \yii\widgets\ActiveField
                 $wrapperOptions = ArrayHelper::remove($options, 'wrapperOptions', ['class' => ['widget' => 'form-check']]);
                 if ($this->inline) {
                     Html::addCssClass($wrapperOptions, ['inline' => 'form-check-inline']);
+                } else {
+                    Html::removeCssClass($wrapperOptions, 'form-check-inline');
                 }
 
                 $html = Html::beginTag('div', $wrapperOptions) . "\n" .
@@ -418,9 +428,7 @@ class ActiveField extends \yii\widgets\ActiveField
             };
         }
 
-        parent::radioList($items, $options);
-
-        return $this;
+        return parent::radioList($items, $options);
     }
 
     /**
@@ -487,9 +495,24 @@ class ActiveField extends \yii\widgets\ActiveField
     }
 
     /**
-     * @param bool $value whether to render a inline list
-     * @return $this the field object itself
+     * {@inheritdoc}
+     */
+    public function error($options = [])
+    {
+        if ($options === false) {
+            $this->enableError = false;
+
+            return $this;
+        }
+
+        return parent::error($options);
+    }
+
+    /**
      * Make sure you call this method before [[checkboxList()]] or [[radioList()]] to have any effect.
+     *
+     * @param bool $value whether to render a inline list
+     * @return $this
      */
     public function inline($value = true): self
     {
