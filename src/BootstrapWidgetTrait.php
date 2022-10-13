@@ -96,7 +96,8 @@ trait BootstrapWidgetTrait
                 $name = ucfirst($name);
                 $id = $this->options['id'];
                 $options = empty($this->clientOptions) ? '{}' : Json::htmlEncode($this->clientOptions);
-                $view->registerJs(<<<JS
+                $view->registerJs(
+<<<JS
 var bs5pluginElement = document.getElementById('$id');
 if (bs5pluginElement.lenght > 0) {
     (new bootstrap.$name('#$id', $options));
