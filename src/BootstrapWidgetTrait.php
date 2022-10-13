@@ -27,10 +27,6 @@ use yii\helpers\Json;
  * ```
  *
  * This field is not present in the trait in order to avoid possible PHP Fatal error on definition conflict.
- *
- * @author Antonio Ramirez <amigo.cobos@gmail.com>
- * @author Qiang Xue <qiang.xue@gmail.com>
- * @author Paul Klimov <klimov.paul@gmail.com>
  */
 trait BootstrapWidgetTrait
 {
@@ -100,7 +96,13 @@ trait BootstrapWidgetTrait
                 $name = ucfirst($name);
                 $id = $this->options['id'];
                 $options = empty($this->clientOptions) ? '{}' : Json::htmlEncode($this->clientOptions);
-                $view->registerJs("(new bootstrap.$name('#$id', $options));");
+                $view->registerJs(<<<JS
+var bs5pluginElement = document.getElementById('$id');
+if (bs5pluginElement.lenght > 0) {
+    (new bootstrap.$name('#$id', $options));
+}
+JS
+                );
             }
 
             $this->registerClientEvents();
@@ -114,10 +116,14 @@ trait BootstrapWidgetTrait
     {
         if (!empty($this->clientEvents)) {
             $id = $this->options['id'];
-            $js = [];
+            $js = [
+                "var bs5pluginElement = document.getElementById('$id');",
+                "if (bs5pluginElement.lenght > 0) {",
+            ];
             foreach ($this->clientEvents as $event => $handler) {
-                $js[] = "document.getElementById('$id').addEventListener('$event', $handler);";
+                $js[] = "    bs5pluginElement.addEventListener('$event', $handler);";
             }
+            $js[] = "}";
             $this->getView()->registerJs(implode("\n", $js));
         }
     }
