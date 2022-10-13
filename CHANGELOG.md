@@ -9,6 +9,7 @@ Yii Framework 2 bootstrap5 extension Change Log
 - Enh #40: Breadcrumbs refactoring (WinterSilence)
 - Bug #46: Fix data-attribute usage for Dropdown toggle (machour)
 - Enh #48: Update `BootstrapWidgetTrait` to initialize JS plugins without jQuery (WinterSilence)
+- Bug #52: Update `BootstrapAsset` to load minified JS on production, optimize and fix list of publishes files (WinterSilence)
 
 
 2.0.3 April 22, 2022
