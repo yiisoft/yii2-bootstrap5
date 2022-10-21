@@ -11,6 +11,7 @@ Yii Framework 2 bootstrap5 extension Change Log
 - Enh #48: Update `BootstrapWidgetTrait` to initialize JS plugins without jQuery (WinterSilence)
 - Bug #51: Update `BootstrapPluginAsset` to load minified JS on production, optimize and fix list of publishes files (WinterSilence)
 - Bug #52: Update `BootstrapAsset` to load minified CSS on production, optimize and fix list of publishes files (WinterSilence)
+- Bug #56: Force copy `BootstrapAsset` to fix conflict with `BootstrapPluginAsset` (WinterSilence)
 
 
 2.0.3 April 22, 2022
