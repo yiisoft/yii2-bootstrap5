@@ -90,7 +90,7 @@ class NavBar extends Widget
     /**
      * @var string text to show for screen readers for the button to toggle the navbar.
      */
-    public $screenReaderToggleText = 'Toggle navigation';
+    public $screenReaderToggleText;
     /**
      * @var string the toggle button content. Defaults to bootstrap 5 default `<span class="navbar-toggler-icon"></span>`
      */
@@ -229,7 +229,7 @@ class NavBar extends Widget
                 'aria' => [
                     'controls' => $aria,
                     'expanded' => 'false',
-                    'label' => $this->screenReaderToggleText,
+                    'label' => $this->screenReaderToggleText ?: Yii::t('yii/bootstrap5', 'Toggle navigation'),
                 ]
             ])
         );
