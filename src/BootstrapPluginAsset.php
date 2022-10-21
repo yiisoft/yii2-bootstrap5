@@ -30,7 +30,7 @@ class BootstrapPluginAsset extends AssetBundle
      * @inheritDoc
      */
     public $publishOptions = [
-        'only' => ['*.js', '*.css', '*.scss', '*.map']
+        'only' => ['dist/js/bootstrap.bundle.*', 'js/src/*.js', 'js/src/*/*.js']
     ];
     /**
      * @inheritDoc
