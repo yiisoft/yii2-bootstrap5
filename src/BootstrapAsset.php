@@ -28,9 +28,11 @@ class BootstrapAsset extends AssetBundle
     ];
     /**
      * @inheritDoc
+     * Note: This asset MUST be force copy because BootstrapPluginAsset use same path!
      */
     public $publishOptions = [
         'only' => ['scss/*.scss', 'scss/*/*.scss', 'dist/css/bootstrap.*'],
-        'except' => ['scss/bootstrap-*.scss']
+        'except' => ['scss/bootstrap-*.scss'],
+        'forceCopy' => true,
     ];
 }
