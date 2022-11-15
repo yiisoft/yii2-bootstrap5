@@ -19,14 +19,14 @@ msgid "Close"
 msgstr ""
 
 msgctxt "yii/bootstrap5"
-msgid "Home"
-msgstr ""
-
-msgctxt "yii/bootstrap5"
 msgid "Show"
 msgstr ""
 
 msgctxt "yii/bootstrap5"
 msgid "Toggle Dropdown"
+msgstr ""
+
+msgctxt "yii/bootstrap5"
+msgid "Toggle navigation"
 msgstr ""
 

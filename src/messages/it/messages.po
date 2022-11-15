@@ -19,14 +19,14 @@ msgid "Close"
 msgstr "Chiudi"
 
 msgctxt "yii/bootstrap5"
-msgid "Home"
-msgstr "Partenza"
-
-msgctxt "yii/bootstrap5"
 msgid "Show"
 msgstr "Indicare"
 
 msgctxt "yii/bootstrap5"
 msgid "Toggle Dropdown"
 msgstr "Attiva/Disattiva lista a tendina"
+
+msgctxt "yii/bootstrap5"
+msgid "Toggle navigation"
+msgstr "Attiva/Disattiva navigazione"
 
