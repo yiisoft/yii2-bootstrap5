@@ -1,7 +1,10 @@
 Yii Framework 2 bootstrap5 extension Change Log
 ==============================================
 
-2.0.4 under development
+2.0.5 under development
+-----------------------
+
+2.0.4 November 30, 2022
 -----------------------
 
 - Bug #58: Dropdown clientEvents did not fire because they need to be bound on parent (simialbi)
