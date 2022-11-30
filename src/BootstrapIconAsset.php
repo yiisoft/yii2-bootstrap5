@@ -11,12 +11,20 @@ namespace yii\bootstrap5;
 
 use yii\web\AssetBundle;
 
+/**
+ * Twitter Bootstrap 5 icon bundle
+ */
 class BootstrapIconAsset extends AssetBundle
 {
+    /**
+     * @inheritDoc
+     */
     public $sourcePath = '@vendor/twbs/bootstrap-icons/font';
 
+    /**
+     * @inheritDoc
+     */
     public $css = [
         'bootstrap-icons.css'
     ];
-
 }

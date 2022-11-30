@@ -20,22 +20,18 @@ class BootstrapPluginAsset extends AssetBundle
      * @inheritDoc
      */
     public $sourcePath = '@bower/bootstrap';
+
     /**
      * @inheritDoc
      */
     public $js = [
-        YII_ENV_PROD ? 'dist/js/bootstrap.bundle.min.js' : 'dist/js/bootstrap.bundle.js'
+        'dist/js/bootstrap.bundle.js'
     ];
-    /**
-     * @inheritDoc
-     */
-    public $publishOptions = [
-        'only' => ['dist/js/bootstrap.bundle.*', 'js/src/*.js', 'js/src/*/*.js']
-    ];
+
     /**
      * @inheritDoc
      */
     public $depends = [
-        BootstrapAsset::class
+        'yii\bootstrap5\BootstrapAsset'
     ];
 }

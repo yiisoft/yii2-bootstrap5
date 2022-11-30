@@ -20,17 +20,11 @@ class BootstrapAsset extends AssetBundle
      * @inheritDoc
      */
     public $sourcePath = '@bower/bootstrap';
+
     /**
      * @inheritDoc
      */
     public $css = [
-        YII_ENV_PROD ? 'dist/css/bootstrap.min.css' : 'dist/css/bootstrap.css'
-    ];
-    /**
-     * @inheritDoc
-     */
-    public $publishOptions = [
-        'only' => ['scss/*.scss', 'scss/*/*.scss', 'dist/css/bootstrap.*'],
-        'except' => ['scss/bootstrap-*.scss']
+        'dist/css/bootstrap.css'
     ];
 }
