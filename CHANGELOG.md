@@ -4,6 +4,7 @@ Yii Framework 2 bootstrap5 extension Change Log
 2.0.4 under development
 -----------------------
 
+- Bug #58: Dropdown clientEvents did not fire because they need to be bound on parent (simialbi)
 - Bug #43: Accordion widget does not set "collapsed" class on toggle button (simialbi)
 - Enh #39: Add inline mode to `BaseHtml::checkboxList()` and `BaseHtml::radioList()` (WinterSilence)
 - Enh #40: Breadcrumbs refactoring (WinterSilence)

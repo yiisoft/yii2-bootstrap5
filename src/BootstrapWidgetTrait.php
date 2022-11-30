@@ -94,7 +94,6 @@ trait BootstrapWidgetTrait
             // 'popover', 'toast' and 'tooltip' plugins not activates via data attributes
             if (
                 $this->clientOptions !== false
-                || !empty($this->clientOptions)
                 || in_array($name, ['popover', 'toast', 'tooltip'], true)
            ) {
                 $name = ucfirst($name);
@@ -103,20 +102,21 @@ trait BootstrapWidgetTrait
                 $view->registerJs("(new bootstrap.$name('#$id', $options));");
             }
 
-            $this->registerClientEvents();
+            $this->registerClientEvents($name);
         }
     }
 
     /**
      * Registers JS event handlers that are listed in [[clientEvents]].
      */
-    protected function registerClientEvents()
+    protected function registerClientEvents(string $name = null)
     {
         if (!empty($this->clientEvents)) {
             $id = $this->options['id'];
             $js = [];
+            $appendix = ($name === 'dropdown') ? '.parentElement' : '';
             foreach ($this->clientEvents as $event => $handler) {
-                $js[] = "document.getElementById('$id').addEventListener('$event', $handler);";
+                $js[] = "document.getElementById('$id')$appendix.addEventListener('$event', $handler);";
             }
             $this->getView()->registerJs(implode("\n", $js));
         }

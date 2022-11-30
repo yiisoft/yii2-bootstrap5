@@ -85,7 +85,7 @@ class Dropdown extends Widget
     public function run(): string
     {
         BootstrapPluginAsset::register($this->getView());
-        $this->registerClientEvents();
+        $this->registerClientEvents('dropdown');
 
         return $this->renderItems($this->items, $this->options);
     }
