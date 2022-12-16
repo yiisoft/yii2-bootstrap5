@@ -218,7 +218,7 @@ class NavBar extends Widget
         if ($this->offcanvasOptions !== false) {
             $bsData = ['bs-toggle' => 'offcanvas', 'bs-target' => '#' . $this->offcanvasOptions['id']];
             $aria = $this->offcanvasOptions['id'];
-        if ($this->collapseOptions !== false) {
+        } elseif ($this->collapseOptions !== false) {
             $bsData = ['bs-toggle' => 'collapse', 'bs-target' => '#' . $this->collapseOptions['id']];
             $aria = $this->collapseOptions['id'];
         }
