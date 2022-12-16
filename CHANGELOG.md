@@ -4,6 +4,8 @@ Yii Framework 2 bootstrap5 extension Change Log
 2.0.5 under development
 -----------------------
 
+- Bug #62: Navbar can now accept `collapseOptions` to be `false`
+
 2.0.4 November 30, 2022
 -----------------------
 
