@@ -213,16 +213,16 @@ class NavBar extends Widget
         if($this->collapseOptions === false && $this->offcanvasOptions === false) {
             return '';
         }
+
         $options = $this->togglerOptions;
         Html::addCssClass($options, ['widget' => 'navbar-toggler']);
         if ($this->offcanvasOptions !== false) {
             $bsData = ['bs-toggle' => 'offcanvas', 'bs-target' => '#' . $this->offcanvasOptions['id']];
             $aria = $this->offcanvasOptions['id'];
-        if ($this->collapseOptions !== false) {
+        } elseif ($this->collapseOptions !== false) {
             $bsData = ['bs-toggle' => 'collapse', 'bs-target' => '#' . $this->collapseOptions['id']];
             $aria = $this->collapseOptions['id'];
         }
-
 
         return Html::button(
             $this->togglerContent,
