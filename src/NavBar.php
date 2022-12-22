@@ -210,7 +210,7 @@ class NavBar extends Widget
      */
     protected function renderToggleButton(): string
     {
-        if($this->collapseOptions === false && $this->offcanvasOptions === false) {
+        if ($this->collapseOptions === false && $this->offcanvasOptions === false) {
             return '';
         }
 
