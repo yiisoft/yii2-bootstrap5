@@ -192,4 +192,26 @@ HTML;
 
         $this->assertEqualsWithoutLE($expected, $out);
     }
+
+    public function testNoCollapse()
+    {
+        NavBar::$counter = 0;
+
+        $out = NavBar::widget([
+            'brandLabel' => 'My Company',
+            'brandUrl' => '/',
+            'collapseOptions' => false,
+        ]);
+
+        $expected = <<<EXPECTED
+<nav id="w0" class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="container">
+<a class="navbar-brand" href="/">My Company</a>
+
+</div>
+</nav>
+EXPECTED;
+
+        $this->assertEqualsWithoutLE($expected, $out);
+    }
 }
