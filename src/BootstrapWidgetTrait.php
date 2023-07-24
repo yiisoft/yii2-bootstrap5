@@ -92,10 +92,7 @@ trait BootstrapWidgetTrait
             $view = $this->getView();
             BootstrapPluginAsset::register($view);
             // 'popover', 'toast' and 'tooltip' plugins not activates via data attributes
-            if (
-                $this->clientOptions !== false
-                || in_array($name, ['popover', 'toast', 'tooltip'], true)
-           ) {
+            if ($this->clientOptions !== false || in_array($name, ['popover', 'toast', 'tooltip'], true)) {
                 $name = ucfirst($name);
                 $id = $this->options['id'];
                 $options = empty($this->clientOptions) ? '{}' : Json::htmlEncode($this->clientOptions);
