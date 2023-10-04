@@ -184,12 +184,12 @@ HTML;
 HTML;
 
 
-        $this->assertContainsWithoutLE($expected, $out);
-        $this->assertContainsWithoutLE($expected2, $out);
-        $this->assertContainsWithoutLE($expected3, $out);
+        $this->assertStringContainsString($expected, $out);
+        $this->assertStringContainsString($expected2, $out);
+        $this->assertStringContainsString($expected3, $out);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         // dirty way to have Request object not throwing exception when running testHomeLinkNull()
         $_SERVER['SCRIPT_FILENAME'] = 'index.php';

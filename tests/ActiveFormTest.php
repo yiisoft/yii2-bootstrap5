@@ -37,8 +37,7 @@ class ActiveFormTest extends TestCase
 </div>
 HTML;
 
-
-        $this->assertContainsWithoutLE($expected, $out);
+        $this->assertStringContainsString($expected, $out);
     }
 
     public function testHorizontalLayout()
@@ -109,9 +108,9 @@ HTML;
 HTML;
 
 
-        $this->assertContainsWithoutLE($expected, $out);
-        $this->assertContainsWithoutLE($expected2, $out);
-        $this->assertContainsWithoutLE($expected3, $out);
+        $this->assertStringContainsString($expected, $out);
+        $this->assertStringContainsString($expected2, $out);
+        $this->assertStringContainsString($expected3, $out);
     }
 
     /**
@@ -138,7 +137,7 @@ HTML;
 HTML;
 
 
-        $this->assertContainsWithoutLE($expected, $out);
+        $this->assertStringContainsString($expected, $out);
     }
 
     public function testInlineLayout()
@@ -192,10 +191,10 @@ HTML;
 HTML;
 
 
-        $this->assertContainsWithoutLE('<form id="w0" class="form-inline"', $out);
-        $this->assertContainsWithoutLE($expected, $out);
-        $this->assertContainsWithoutLE($expected2, $out);
-        $this->assertContainsWithoutLE($expected3, $out);
+        $this->assertStringContainsString('<form id="w0" class="form-inline"', $out);
+        $this->assertStringContainsString($expected, $out);
+        $this->assertStringContainsString($expected2, $out);
+        $this->assertStringContainsString($expected3, $out);
     }
 
     public function testFloatingLayout()
@@ -249,10 +248,10 @@ HTML;
 HTML;
 
 
-        $this->assertContainsWithoutLE('<form id="w0"', $out);
-        $this->assertContainsWithoutLE($expected, $out);
-        $this->assertContainsWithoutLE($expected2, $out);
-        $this->assertContainsWithoutLE($expected3, $out);
+        $this->assertStringContainsString('<form id="w0"', $out);
+        $this->assertStringContainsString($expected, $out);
+        $this->assertStringContainsString($expected2, $out);
+        $this->assertStringContainsString($expected3, $out);
     }
 
     public function testHintRendering()
@@ -304,10 +303,10 @@ HTML;
 </div>
 HTML;
 
-        $this->assertContainsWithoutLE($expected, $out);
-        $this->assertContainsWithoutLE($expected2, $out);
-        $this->assertContainsWithoutLE($expected3, $out);
-        $this->assertContainsWithoutLE($expected4, $out);
+        $this->assertStringContainsString($expected, $out);
+        $this->assertStringContainsString($expected2, $out);
+        $this->assertStringContainsString($expected3, $out);
+        $this->assertStringContainsString($expected4, $out);
     }
 
     public function testStaticControlRendering()
@@ -357,9 +356,9 @@ HTML;
 </div>
 HTML;
 
-        $this->assertContainsWithoutLE($expected, $out);
-        $this->assertContainsWithoutLE($expected2, $out);
-        $this->assertContainsWithoutLE($expected3, $out);
+        $this->assertStringContainsString($expected, $out);
+        $this->assertStringContainsString($expected2, $out);
+        $this->assertStringContainsString($expected3, $out);
     }
 
     /**
@@ -387,7 +386,7 @@ HTML;
 </div>
 HTML;
 
-        $this->assertContainsWithoutLE($expected, $out);
+        $this->assertStringContainsString($expected, $out);
     }
 
     /**
@@ -397,7 +396,7 @@ HTML;
     {
         $form = ActiveForm::widget();
 
-        $this->assertNotContains('role="form"', $form);
+        $this->assertStringNotContainsString('role="form"', $form);
     }
 
     public function testErrorSummaryRendering()
@@ -415,10 +414,10 @@ HTML;
         $out = ob_get_clean();
 
 
-        $this->assertContainsWithoutLE('<div class="alert alert-danger"', $out);
+        $this->assertStringContainsString('<div class="alert alert-danger"', $out);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         // dirty way to have Request object not throwing exception when running testFormNoRoleAttribute()
         $_SERVER['REQUEST_URI'] = "index.php";

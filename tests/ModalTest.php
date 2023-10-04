@@ -108,9 +108,9 @@ HTML;
         Modal::end();
         $out = ob_get_clean();
 
-        $this->assertContains(
+        $this->assertStringContainsString(
             '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#w0">Launch demo modal</button>',
-            $out
+            $out,
         );
     }
 

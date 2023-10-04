@@ -2,7 +2,6 @@
 
 namespace yiiunit\extensions\bootstrap5;
 
-use PHPUnit\Framework\Constraint\IsType;
 use Yii;
 use yii\bootstrap5\Html;
 use yii\bootstrap5\Popover;
@@ -36,14 +35,14 @@ HTML;
 
         $js = Yii::$app->view->js[View::POS_READY];
 
-        $this->assertInternalType(IsType::TYPE_ARRAY, $js);
+        $this->assertIsArray($js);
         $options = array_shift($js);
 
-        $this->assertContainsWithoutLE("(new bootstrap.Popover('#w0', {", $options);
-        $this->assertContainsWithoutLE("id=\u0022w0-popover\u0022", $options);
-        $this->assertContainsWithoutLE("class=\u0022test-header popover-header\u0022", $options);
-        $this->assertContainsWithoutLE('"placement":"bottom"', $options);
-        $this->assertContainsWithoutLE('"title":"Test Popover"', $options);
+        $this->assertStringContainsString("(new bootstrap.Popover('#w0', {", $options);
+        $this->assertStringContainsString("id=\u0022w0-popover\u0022", $options);
+        $this->assertStringContainsString("class=\u0022test-header popover-header\u0022", $options);
+        $this->assertStringContainsString('"placement":"bottom"', $options);
+        $this->assertStringContainsString('"title":"Test Popover"', $options);
     }
 
     public function testContent()
@@ -55,9 +54,12 @@ HTML;
 
         $js = Yii::$app->view->js[View::POS_READY];
 
-        $this->assertInternalType(IsType::TYPE_ARRAY, $js);
+        $this->assertIsArray($js);
         $options = array_shift($js);
 
-        $this->assertContainsWithoutLE('"content":"\u003Cspan class=\u0022test-content\u0022\u003ETest content\u003C\/span\u003E"', $options);
+        $this->assertStringContainsString(
+            '"content":"\u003Cspan class=\u0022test-content\u0022\u003ETest content\u003C\/span\u003E"',
+            $options,
+        );
     }
 }

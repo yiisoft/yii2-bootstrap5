@@ -2,7 +2,6 @@
 
 namespace yiiunit\extensions\bootstrap5;
 
-use PHPUnit\Framework\Constraint\IsType;
 use Yii;
 use yii\bootstrap5\Toast;
 use yii\web\View;
@@ -132,15 +131,15 @@ HTML;
         Toast::end();
         $out = ob_get_clean();
 
-        $this->assertInternalType(IsType::TYPE_ARRAY, $toast->clientOptions);
+        $this->assertIsArray($toast->clientOptions);
         $this->assertCount(0, $toast->clientOptions);
 
         $js = Yii::$app->view->js[View::POS_READY];
 
-        $this->assertInternalType(IsType::TYPE_ARRAY, $js);
+        $this->assertIsArray($js);
         $options = array_shift($js);
 
-        $this->assertContainsWithoutLE("(new bootstrap.Toast('#w0', {}));", $options);
+        $this->assertEqualsWithoutLE("(new bootstrap.Toast('#w0', {}));", $options);
     }
 
     /**
@@ -180,9 +179,9 @@ HTML;
         $this->assertArrayHasKey(View::POS_READY, Yii::$app->view->js);
         $js = Yii::$app->view->js[View::POS_READY];
 
-        $this->assertInternalType(IsType::TYPE_ARRAY, $js);
+        $this->assertIsArray($js);
         $options = array_shift($js);
 
-        $this->assertContainsWithoutLE("(new bootstrap.Toast('#w0', {\"delay\":1000}));", $options);
+        $this->assertEqualsWithoutLE("(new bootstrap.Toast('#w0', {\"delay\":1000}));", $options);
     }
 }

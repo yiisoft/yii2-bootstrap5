@@ -347,7 +347,7 @@ EXPECTED;
         $this->assertEqualsWithoutLE($expected, $out);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->mockWebApplication([
             'components' => [
