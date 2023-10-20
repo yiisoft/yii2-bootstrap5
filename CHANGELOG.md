@@ -4,9 +4,11 @@ Yii Framework 2 bootstrap5 extension Change Log
 2.0.5 under development
 -----------------------
 
+- Enh #78: Navbar has new attribute `brandImageOptions` (EvilKarter)
 - Bug #74: Bootstrap5 Button is not registering clientEvents (simialbi)
 - Bug #72: Nav::isItemActive(): Return value must be of type bool, int returned (hirenbhut93)
 - Bug #62: Navbar can now accept `collapseOptions` to be `false` (theblindfrog)
+
 
 2.0.4 November 30, 2022
 -----------------------
