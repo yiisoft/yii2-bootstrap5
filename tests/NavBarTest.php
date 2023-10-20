@@ -48,6 +48,17 @@ EXPECTED;
 
         $this->assertContains('<a class="navbar-brand" href="/"><img src="/images/test.jpg" alt=""></a>', $out);
     }
+    
+    public function testBrandImageOptions()
+    {
+        $out = NavBar::widget([
+            'brandImage' => '/images/test.jpg',
+            'brandImageOptions' => ['alt' => 'test image'],
+            'brandUrl' => '/',
+        ]);
+
+        $this->assertContains('<a class="navbar-brand" href="/"><img src="/images/test.jpg" alt="test image"></a>', $out);
+    }
 
     public function testBrandLink()
     {
