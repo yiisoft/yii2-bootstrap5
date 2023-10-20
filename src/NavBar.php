@@ -75,6 +75,12 @@ class NavBar extends Widget
      * @since 2.0.8
      */
     public $brandImage = false;
+
+    /**
+     * @var array the HTML attributes of the brand image.
+     * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
+     */
+    public $brandImageOptions = [];
     /**
      * @var array|string|bool $url the URL for the brand's hyperlink tag. This parameter will be processed by [[\yii\helpers\Url::to()]]
      * and will be used for the "href" attribute of the brand link. Default value is false that means
@@ -144,7 +150,7 @@ class NavBar extends Widget
             $this->offcanvasOptions['id'] = "{$this->options['id']}-offcanvas";
         }
         if ($this->brandImage !== false) {
-            $this->brandLabel = Html::img($this->brandImage);
+            $this->brandLabel = Html::img($this->brandImage, $this->brandImageOptions);
         }
         if ($this->brandLabel !== false) {
             Html::addCssClass($this->brandOptions, ['widget' => 'navbar-brand']);
