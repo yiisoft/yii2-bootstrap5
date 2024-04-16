@@ -184,7 +184,7 @@ HTML;
 <div class="mb-3 field-dynamicmodel-checkboxname">
 <div class="form-check">
 <input type="hidden" name="DynamicModel[checkboxName]" value="0"><input type="checkbox" id="dynamicmodel-checkboxname" class="form-check-input" name="DynamicModel[checkboxName]" value="1">
-<label class="visually-hidden form-check-label" for="dynamicmodel-checkboxname">Checkbox Name</label>
+<label class="form-check-label" for="dynamicmodel-checkboxname">Checkbox Name</label>
 
 
 </div>

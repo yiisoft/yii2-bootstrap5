@@ -292,6 +292,9 @@ class ActiveField extends \yii\widgets\ActiveField
             Html::removeCssClass($this->labelOptions, $this->horizontalCssClasses['label']);
             Html::addCssClass($this->wrapperOptions, $this->horizontalCssClasses['offset']);
         }
+        if ($this->form->layout === ActiveForm::LAYOUT_INLINE) {
+            Html::removeCssClass($this->labelOptions, 'visually-hidden');
+        }
         Html::removeCssClass($this->labelOptions, 'form-label');
         unset($options['template'], $options['switch']);
 
