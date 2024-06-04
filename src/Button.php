@@ -49,7 +49,9 @@ class Button extends Widget
     public function init()
     {
         parent::init();
-        $this->clientOptions = [];
+        if ($this->clientOptions !== false) {
+            $this->clientOptions = [];
+        }
         Html::addCssClass($this->options, ['widget' => 'btn']);
     }
 
