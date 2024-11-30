@@ -137,7 +137,7 @@ class ActiveForm extends \yii\widgets\ActiveForm
      * {@inheritDoc}
      * @return ActiveField|\yii\widgets\ActiveField
      */
-    public function field($model, $attribute, $options = []): ActiveField
+    public function field($model, $attribute, $options = []): ActiveField|\yii\widgets\ActiveField
     {
         return parent::field($model, $attribute, $options);
     }
