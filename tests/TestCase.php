@@ -102,7 +102,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * @param string|null $moduleID
      * @param array $params
      */
-    protected function mockAction(string $controllerId, string $actionID, string $moduleID = null, array $params = [])
+    protected function mockAction(string $controllerId, string $actionID, string|null $moduleID = null, array $params = [])
     {
         Yii::$app->controller = $controller = new Controller($controllerId, Yii::$app);
         $controller->actionParams = $params;

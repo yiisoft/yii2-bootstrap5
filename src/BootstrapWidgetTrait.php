@@ -106,7 +106,7 @@ trait BootstrapWidgetTrait
     /**
      * Registers JS event handlers that are listed in [[clientEvents]].
      */
-    protected function registerClientEvents(string $name = null)
+    protected function registerClientEvents(string|null $name = null)
     {
         if (!empty($this->clientEvents)) {
             $id = $this->options['id'];

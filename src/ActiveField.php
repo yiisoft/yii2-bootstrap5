@@ -608,7 +608,7 @@ class ActiveField extends \yii\widgets\ActiveField
      * @param string|null $label the label or null to use model label
      * @param array $options the tag options
      */
-    protected function renderLabelParts(string $label = null, array $options = [])
+    protected function renderLabelParts(string|null $label = null, array $options = [])
     {
         $options = array_merge($this->labelOptions, $options);
         if ($label === null) {
