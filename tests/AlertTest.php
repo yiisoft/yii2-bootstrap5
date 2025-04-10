@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\bootstrap5;
 
 use yii\bootstrap5\Alert;
@@ -17,8 +19,8 @@ class AlertTest extends TestCase
         $html = Alert::widget([
             'body' => '<strong>Holy guacamole!</strong> You should check in on some of those fields below.',
             'options' => [
-                'class' => ['alert-warning']
-            ]
+                'class' => ['alert-warning'],
+            ],
         ]);
 
         $expectedHtml = <<<HTML
@@ -33,8 +35,7 @@ HTML;
         $this->assertEqualsWithoutLE($expectedHtml, $html);
     }
 
-    /**
-     */
+
     public function testDismissibleAlert()
     {
         Alert::$counter = 0;
@@ -61,17 +62,21 @@ HTML;
         Alert::$counter = 0;
         $html = Alert::widget([
             'body' => "Low Blow: Bob Loblaw's Law Blog Lobs Law Bomb",
-            'options' => ['class' => 'alert-warning'],
+            'options' => [
+                'class' => 'alert-warning',
+            ],
             'closeButton' => [
                 'label' => 'Dismiss',
                 'tag' => 'a',
-                'class' => ['widget' => 'btn btn-outline-warning'],
+                'class' => [
+                    'widget' => 'btn btn-outline-warning',
+                ],
                 'style' => [
                     'position' => 'absolute',
                     'top' => '.5rem',
-                    'right' => '.5rem'
+                    'right' => '.5rem',
                 ],
-            ]
+            ],
         ]);
 
         $expectedHtml = <<<HTML

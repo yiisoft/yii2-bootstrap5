@@ -32,6 +32,7 @@
     "require-dev": {
         "yiisoft/yii2-coding-standards": "~2.0",
         "phpunit/phpunit": "^9.6",
+        "symplify/easy-coding-standard": "^12.1",
         "twbs/bootstrap-icons": "^1.7.2"
     },
     "suggest": {

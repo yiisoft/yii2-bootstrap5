@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -34,15 +35,15 @@ use yii\helpers\ArrayHelper;
  */
 class Popover extends Widget
 {
-    const PLACEMENT_AUTO = 'auto';
-    const PLACEMENT_TOP = 'top';
-    const PLACEMENT_BOTTOM = 'bottom';
-    const PLACEMENT_LEFT = 'left';
-    const PLACEMENT_RIGHT = 'right';
-    const TRIGGER_CLICK = 'click';
-    const TRIGGER_HOVER = 'hover';
-    const TRIGGER_FOCUS = 'focus';
-    const TRIGGER_MANUAL = 'manual';
+    public const PLACEMENT_AUTO = 'auto';
+    public const PLACEMENT_TOP = 'top';
+    public const PLACEMENT_BOTTOM = 'bottom';
+    public const PLACEMENT_LEFT = 'left';
+    public const PLACEMENT_RIGHT = 'right';
+    public const TRIGGER_CLICK = 'click';
+    public const TRIGGER_HOVER = 'hover';
+    public const TRIGGER_FOCUS = 'focus';
+    public const TRIGGER_MANUAL = 'manual';
 
     /**
      * @var string|null the tile content in the popover.
@@ -85,9 +86,6 @@ class Popover extends Widget
     public $toggleButton = false;
 
 
-    /**
-     * {@inheritDoc}
-     */
     public function init(): void
     {
         parent::init();
@@ -97,9 +95,6 @@ class Popover extends Widget
         ob_start();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function run(): ?string
     {
         $content = ob_get_clean();
@@ -120,7 +115,9 @@ class Popover extends Widget
      */
     protected function renderArrow(): string
     {
-        Html::addCssClass($this->arrowOptions, ['widget' => 'popover-arrow']);
+        Html::addCssClass($this->arrowOptions, [
+            'widget' => 'popover-arrow',
+        ]);
 
         return Html::tag('div', '', $this->arrowOptions);
     }
@@ -131,7 +128,9 @@ class Popover extends Widget
      */
     protected function renderHeader(): string
     {
-        Html::addCssClass($this->headerOptions, ['widget' => 'popover-header']);
+        Html::addCssClass($this->headerOptions, [
+            'widget' => 'popover-header',
+        ]);
 
         return Html::tag('h3', '', $this->headerOptions);
     }
@@ -142,7 +141,9 @@ class Popover extends Widget
      */
     protected function renderBody(): string
     {
-        Html::addCssClass($this->bodyOptions, ['widget' => 'popover-body']);
+        Html::addCssClass($this->bodyOptions, [
+            'widget' => 'popover-body',
+        ]);
 
         return Html::tag('div', '', $this->bodyOptions);
     }
@@ -173,8 +174,12 @@ class Popover extends Widget
 
         $options = array_merge([
             'role' => 'tooltip',
-        ], $this->options, ['id' => $this->options['id'] . '-popover']);
-        Html::addCssClass($options, ['widget' => 'popover']);
+        ], $this->options, [
+            'id' => $this->options['id'] . '-popover',
+        ]);
+        Html::addCssClass($options, [
+            'widget' => 'popover',
+        ]);
         $template = Html::beginTag('div', $options);
         $template .= $this->renderArrow();
         $template .= $this->renderHeader();
@@ -186,7 +191,7 @@ class Popover extends Widget
             'placement' => $this->placement,
             'title' => $this->title,
             'sanitize' => false,
-            'html' => true
+            'html' => true,
         ], $this->clientOptions);
 
         if ($this->toggleButton !== false) {

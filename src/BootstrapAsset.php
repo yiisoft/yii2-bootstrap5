@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -16,15 +17,9 @@ use yii\web\AssetBundle;
  */
 class BootstrapAsset extends AssetBundle
 {
-    /**
-     * @inheritDoc
-     */
     public $sourcePath = '@bower/bootstrap/dist';
 
-    /**
-     * @inheritDoc
-     */
     public $css = [
-        'css/bootstrap.css'
+        'css/bootstrap.css',
     ];
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\bootstrap5;
 
 use yii\bootstrap5\Dropdown;
@@ -18,26 +20,36 @@ class DropdownTest extends TestCase
             [
                 'items' => [
                     [
-                        'label' => 'Page1'
+                        'label' => 'Page1',
                     ],
                     [
                         'label' => 'Dropdown1',
                         'url' => '#test',
                         'items' => [
-                            ['label' => 'Page2'],
-                            ['label' => 'Page3'],
-                        ]
+                            [
+                                'label' => 'Page2',
+                            ],
+                            [
+                                'label' => 'Page3',
+                            ],
+                        ],
                     ],
                     [
                         'label' => 'Dropdown2',
                         'visible' => false,
                         'items' => [
-                            ['label' => 'Page4', 'content' => 'Page4'],
-                            ['label' => 'Page5', 'content' => 'Page5'],
-                        ]
-                    ]
-                ]
-            ]
+                            [
+                                'label' => 'Page4',
+                                'content' => 'Page4',
+                            ],
+                            [
+                                'label' => 'Page5',
+                                'content' => 'Page5',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         );
 
         $expected = <<<EXPECTED
@@ -64,23 +76,35 @@ EXPECTED;
                     [
                         'label' => 'Dropdown1',
                         'items' => [
-                            ['label' => 'Page1', 'content' => 'Page2'],
-                            ['label' => 'Page2', 'content' => 'Page3'],
-                        ]
+                            [
+                                'label' => 'Page1',
+                                'content' => 'Page2',
+                            ],
+                            [
+                                'label' => 'Page2',
+                                'content' => 'Page3',
+                            ],
+                        ],
                     ],
                     '-',
                     [
                         'label' => 'Dropdown2',
                         'items' => [
-                            ['label' => 'Page3', 'content' => 'Page4'],
-                            ['label' => 'Page4', 'content' => 'Page5'],
+                            [
+                                'label' => 'Page3',
+                                'content' => 'Page4',
+                            ],
+                            [
+                                'label' => 'Page4',
+                                'content' => 'Page5',
+                            ],
                         ],
                         'submenuOptions' => [
                             'class' => 'submenu-override',
                         ],
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         );
 
         $expected = <<<EXPECTED
@@ -112,20 +136,34 @@ EXPECTED;
                     [
                         'label' => 'Dropdown1',
                         'items' => [
-                            ['label' => 'Page1', 'content' => 'Page2'],
-                            ['label' => 'Page2', 'content' => 'Page3'],
-                        ]
+                            [
+                                'label' => 'Page1',
+                                'content' => 'Page2',
+                            ],
+                            [
+                                'label' => 'Page2',
+                                'content' => 'Page3',
+                            ],
+                        ],
                     ],
                     '-',
                     [
                         'label' => 'Dropdown2',
                         'items' => [
-                            ['label' => 'Page3', 'content' => 'Page3', 'url' => '/', 'active' => true],
-                            ['label' => 'Page4', 'content' => 'Page4'],
+                            [
+                                'label' => 'Page3',
+                                'content' => 'Page3',
+                                'url' => '/',
+                                'active' => true,
+                            ],
+                            [
+                                'label' => 'Page4',
+                                'content' => 'Page4',
+                            ],
                         ],
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         );
         $expected = <<<HTML
 <div id="w0" class="dropdown-menu"><div class="dropdown" aria-expanded="false">
@@ -155,21 +193,33 @@ HTML;
                     [
                         'label' => 'Dropdown1',
                         'items' => [
-                            ['label' => 'Page1', 'content' => 'Page2'],
-                            ['label' => 'Page2', 'content' => 'Page3'],
+                            [
+                                'label' => 'Page1',
+                                'content' => 'Page2',
+                            ],
+                            [
+                                'label' => 'Page2',
+                                'content' => 'Page3',
+                            ],
                         ],
-                        'disabled' => true
+                        'disabled' => true,
                     ],
                     '-',
                     [
                         'label' => 'Dropdown2',
                         'items' => [
-                            ['label' => 'Page3', 'content' => 'Page3'],
-                            ['label' => 'Page4', 'content' => 'Page4'],
+                            [
+                                'label' => 'Page3',
+                                'content' => 'Page3',
+                            ],
+                            [
+                                'label' => 'Page4',
+                                'content' => 'Page4',
+                            ],
                         ],
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         );
 
         $expected = <<<HTML
@@ -216,9 +266,15 @@ HTML;
             'items' => [
                 $form,
                 '-',
-                ['label' => 'New around here? Sign up', 'url' => '#'],
-                ['label' => 'Forgot password?', 'url' => '#']
-            ]
+                [
+                    'label' => 'New around here? Sign up',
+                    'url' => '#',
+                ],
+                [
+                    'label' => 'Forgot password?',
+                    'url' => '#',
+                ],
+            ],
         ]);
 
         $expected = <<<HTML

@@ -1,7 +1,8 @@
 <?php
 
-namespace yiiunit\extensions\bootstrap5;
+declare(strict_types=1);
 
+namespace yiiunit\extensions\bootstrap5;
 
 use yii\bootstrap5\ButtonGroup;
 use yii\bootstrap5\ButtonToolbar;
@@ -16,32 +17,46 @@ class ButtonToolbarTest extends TestCase
         ButtonToolbar::$counter = 0;
         $out = ButtonToolbar::widget([
             'options' => [
-                'aria-label' => 'Toolbar with button groups'
+                'aria-label' => 'Toolbar with button groups',
             ],
             'buttonGroups' => [
                 ButtonGroup::widget([
                     'options' => [
                         'aria-label' => 'First group',
-                        'class' => ['mr-2']
+                        'class' => ['mr-2'],
                     ],
                     'buttons' => [
-                        ['label' => '1'],
-                        ['label' => '2'],
-                        ['label' => '3'],
-                        ['label' => '4']
-                    ]
+                        [
+                            'label' => '1',
+                        ],
+                        [
+                            'label' => '2',
+                        ],
+                        [
+                            'label' => '3',
+                        ],
+                        [
+                            'label' => '4',
+                        ],
+                    ],
                 ]),
                 [
                     'options' => [
-                        'aria-label' => 'Second group'
+                        'aria-label' => 'Second group',
                     ],
                     'buttons' => [
-                        ['label' => '5'],
-                        ['label' => '6'],
-                        ['label' => '7']
-                    ]
-                ]
-            ]
+                        [
+                            'label' => '5',
+                        ],
+                        [
+                            'label' => '6',
+                        ],
+                        [
+                            'label' => '7',
+                        ],
+                    ],
+                ],
+            ],
         ]);
 
         $expected = <<<HTML
@@ -70,23 +85,31 @@ HTML;
 HTML;
         $out = ButtonToolbar::widget([
             'options' => [
-                'aria-label' => 'Toolbar with button groups'
+                'aria-label' => 'Toolbar with button groups',
             ],
             'buttonGroups' => [
                 [
                     'options' => [
                         'aria-label' => 'First group',
-                        'class' => ['mr-2']
+                        'class' => ['mr-2'],
                     ],
                     'buttons' => [
-                        ['label' => '1'],
-                        ['label' => '2'],
-                        ['label' => '3'],
-                        ['label' => '4']
-                    ]
+                        [
+                            'label' => '1',
+                        ],
+                        [
+                            'label' => '2',
+                        ],
+                        [
+                            'label' => '3',
+                        ],
+                        [
+                            'label' => '4',
+                        ],
+                    ],
                 ],
-                $addHtml
-            ]
+                $addHtml,
+            ],
         ]);
 
         $expected = <<<HTML

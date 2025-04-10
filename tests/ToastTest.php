@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\bootstrap5;
 
-use PHPUnit\Framework\Constraint\IsType;
 use Yii;
 use yii\bootstrap5\Toast;
 use yii\web\View;
@@ -16,7 +17,12 @@ class ToastTest extends TestCase
     {
         Toast::$counter = 0;
         $out = Toast::widget([
-            'bodyOptions' => ['class' => 'toast-body test', 'style' => ['text-align' => 'center']]
+            'bodyOptions' => [
+                'class' => 'toast-body test',
+                'style' => [
+                    'text-align' => 'center',
+                ],
+            ],
         ]);
 
         $expected = <<<HTML
@@ -35,8 +41,7 @@ HTML;
         $this->assertEqualsWithoutLE($expected, $out);
     }
 
-    /**
-     */
+
     public function testContainerOptions()
     {
         Toast::$counter = 0;
@@ -44,7 +49,7 @@ HTML;
         ob_start();
         Toast::begin([
             'title' => 'Toast title',
-            'dateTime' => time() - 60
+            'dateTime' => time() - 60,
         ]);
         echo 'Woohoo, you\'re reading this text in a toast!';
         Toast::end();
@@ -73,7 +78,12 @@ HTML;
         $out = Toast::widget([
             'title' => 'Toast title',
             'dateTime' => time() - 60,
-            'dateTimeOptions' => ['class' => ['toast-date-time'], 'style' => ['text-align' => 'right']]
+            'dateTimeOptions' => [
+                'class' => ['toast-date-time'],
+                'style' => [
+                    'text-align' => 'right',
+                ],
+            ],
         ]);
 
         $expected = <<<HTML
@@ -98,7 +108,12 @@ HTML;
         Toast::$counter = 0;
         $out = Toast::widget([
             'title' => 'Toast title',
-            'titleOptions' => ['tag' => 'h5', 'style' => ['text-align' => 'left']]
+            'titleOptions' => [
+                'tag' => 'h5',
+                'style' => [
+                    'text-align' => 'left',
+                ],
+            ],
         ]);
 
         $expected = <<<HTML
@@ -126,7 +141,12 @@ HTML;
         ob_start();
         $toast = Toast::begin([
             'title' => 'Toast title',
-            'titleOptions' => ['tag' => 'h5', 'style' => ['text-align' => 'left']]
+            'titleOptions' => [
+                'tag' => 'h5',
+                'style' => [
+                    'text-align' => 'left',
+                ],
+            ],
         ]);
         echo 'test';
         Toast::end();
@@ -153,7 +173,12 @@ HTML;
         $toast = Toast::begin([
             'title' => 'Toast title',
             'clientOptions' => false,
-            'titleOptions' => ['tag' => 'h5', 'style' => ['text-align' => 'left']]
+            'titleOptions' => [
+                'tag' => 'h5',
+                'style' => [
+                    'text-align' => 'left',
+                ],
+            ],
         ]);
         echo 'test';
         Toast::end();
@@ -169,8 +194,15 @@ HTML;
         ob_start();
         $toast = Toast::begin([
             'title' => 'Toast title',
-            'clientOptions' => ['delay' => 1000],
-            'titleOptions' => ['tag' => 'h5', 'style' => ['text-align' => 'left']]
+            'clientOptions' => [
+                'delay' => 1000,
+            ],
+            'titleOptions' => [
+                'tag' => 'h5',
+                'style' => [
+                    'text-align' => 'left',
+                ],
+            ],
         ]);
         echo 'test';
         Toast::end();

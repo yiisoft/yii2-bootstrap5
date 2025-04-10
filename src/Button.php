@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -50,20 +51,18 @@ class Button extends Widget
     {
         parent::init();
         $this->clientOptions = [];
-        Html::addCssClass($this->options, ['widget' => 'btn']);
+        Html::addCssClass($this->options, [
+            'widget' => 'btn',
+        ]);
     }
 
-    /**
-     * {@inheritdoc}
-     * @return string
-     */
     public function run(): string
     {
         $this->registerPlugin('button');
         return Html::tag(
             $this->tagName,
             $this->encodeLabel ? Html::encode($this->label) : $this->label,
-            $this->options
+            $this->options,
         );
     }
 }

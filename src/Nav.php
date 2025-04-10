@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -109,9 +110,6 @@ class Nav extends Widget
     public $dropdownClass = Dropdown::class;
 
 
-    /**
-     * {@inheritDoc}
-     */
     public function init(): void
     {
         parent::init();
@@ -121,12 +119,13 @@ class Nav extends Widget
         if ($this->params === null) {
             $this->params = Yii::$app->request->getQueryParams();
         }
-        Html::addCssClass($this->options, ['widget' => 'nav']);
+        Html::addCssClass($this->options, [
+            'widget' => 'nav',
+        ]);
     }
 
     /**
      * Renders the widget.
-     * @return string
      * @throws InvalidConfigException|Throwable
      */
     public function run(): string
@@ -138,7 +137,6 @@ class Nav extends Widget
 
     /**
      * Renders widget items.
-     * @return string
      * @throws InvalidConfigException|Throwable
      */
     public function renderItems(): string
@@ -180,14 +178,22 @@ class Nav extends Widget
 
         if (empty($items)) {
             $items = '';
-            Html::addCssClass($options, ['widget' => 'nav-item']);
-            Html::addCssClass($linkOptions, ['widget' => 'nav-link']);
+            Html::addCssClass($options, [
+                'widget' => 'nav-item',
+            ]);
+            Html::addCssClass($linkOptions, [
+                'widget' => 'nav-link',
+            ]);
         } else {
             $linkOptions['data']['bs-toggle'] = 'dropdown';
             $linkOptions['role'] = 'button';
             $linkOptions['aria']['expanded'] = 'false';
-            Html::addCssClass($options, ['widget' => 'dropdown nav-item']);
-            Html::addCssClass($linkOptions, ['widget' => 'dropdown-toggle nav-link']);
+            Html::addCssClass($options, [
+                'widget' => 'dropdown nav-item',
+            ]);
+            Html::addCssClass($linkOptions, [
+                'widget' => 'dropdown-toggle nav-link',
+            ]);
             if (is_array($items)) {
                 $items = $this->isChildActive($items, $active);
                 $items = $this->renderDropdown($items, $item);
@@ -197,9 +203,13 @@ class Nav extends Widget
         if ($disabled) {
             ArrayHelper::setValue($linkOptions, 'tabindex', '-1');
             ArrayHelper::setValue($linkOptions, 'aria.disabled', 'true');
-            Html::addCssClass($linkOptions, ['disable' => 'disabled']);
+            Html::addCssClass($linkOptions, [
+                'disable' => 'disabled',
+            ]);
         } elseif ($this->activateItems && $active) {
-            Html::addCssClass($linkOptions, ['activate' => 'active']);
+            Html::addCssClass($linkOptions, [
+                'activate' => 'active',
+            ]);
         }
 
         return Html::tag('li', Html::a($label, $url, $linkOptions) . $items, $options);
@@ -231,7 +241,6 @@ class Nav extends Widget
      * Check to see if a child item is active optionally activating the parent.
      * @param array $items @see items
      * @param bool $active should the parent be active too
-     * @return array
      * @throws Exception
      * @see items
      */
@@ -252,7 +261,9 @@ class Nav extends Widget
                 $activeParent = false;
                 $items[$i]['items'] = $this->isChildActive($childItems, $activeParent);
                 if ($activeParent) {
-                    Html::addCssClass($items[$i]['options'], ['activate' => 'active']);
+                    Html::addCssClass($items[$i]['options'], [
+                        'activate' => 'active',
+                    ]);
                     $active = true;
                 }
             }
@@ -278,7 +289,7 @@ class Nav extends Widget
             return false;
         }
         if (isset($item['active'])) {
-            return (bool)ArrayHelper::getValue($item, 'active', false);
+            return (bool) ArrayHelper::getValue($item, 'active', false);
         }
         if (isset($item['url']) && is_array($item['url']) && isset($item['url'][0])) {
             $route = $item['url'][0];
@@ -293,7 +304,7 @@ class Nav extends Widget
                 $params = $item['url'];
                 unset($params[0]);
                 foreach ($params as $name => $value) {
-                    if ($value !== null && (!isset($this->params[$name]) || $this->params[$name] != $value)) {
+                    if ($value !== null && (!isset($this->params[$name]) || $this->params[$name] !== $value)) {
                         return false;
                     }
                 }

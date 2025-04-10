@@ -17,22 +17,13 @@ use yii\web\AssetBundle;
  */
 class BootstrapPluginAsset extends AssetBundle
 {
-    /**
-     * @inheritDoc
-     */
     public $sourcePath = '@bower/bootstrap/dist';
 
-    /**
-     * @inheritDoc
-     */
     public $js = [
-        'js/bootstrap.bundle.js'
+        'js/bootstrap.bundle.js',
     ];
 
-    /**
-     * @inheritDoc
-     */
     public $depends = [
-        'yii\bootstrap5\BootstrapAsset'
+        'yii\bootstrap5\BootstrapAsset',
     ];
 }

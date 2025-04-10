@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -115,18 +116,16 @@ class Progress extends Widget
     public $bars;
 
 
-    /**
-     * {@inheritdoc}
-     */
     public function init(): void
     {
         parent::init();
 
-        Html::addCssClass($this->options, ['widget' => 'progress']);
+        Html::addCssClass($this->options, [
+            'widget' => 'progress',
+        ]);
     }
 
     /**
-     * {@inheritdoc}
      * @throws InvalidConfigException
      */
     public function run(): string
@@ -147,7 +146,11 @@ class Progress extends Widget
         $out = Html::beginTag('div', $this->options) . "\n";
         if (empty($this->bars)) {
             $this->bars = [
-                ['label' => $this->label, 'percent' => $this->percent, 'options' => $this->barOptions],
+                [
+                    'label' => $this->label,
+                    'percent' => $this->percent,
+                    'options' => $this->barOptions,
+                ],
             ];
         }
         $bars = [];
@@ -181,10 +184,14 @@ class Progress extends Widget
                 'valuenow' => $percent,
                 'valuemin' => 0,
                 'valuemax' => 100,
-            ]
+            ],
         ]);
-        Html::addCssClass($options, ['widget' => 'progress-bar']);
-        Html::addCssStyle($options, ['width' => $percent . '%'], true);
+        Html::addCssClass($options, [
+            'widget' => 'progress-bar',
+        ]);
+        Html::addCssStyle($options, [
+            'width' => $percent . '%',
+        ], true);
 
         return Html::tag('div', $label, $options);
     }

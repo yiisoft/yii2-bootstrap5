@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -47,18 +49,21 @@ class LinkPagerTest extends TestCase
     {
         $output = LinkPager::widget([
             'pagination' => $this->getPagination(0),
-            'disabledListItemSubTagOptions' => ['class' => ['foo-bar']],
+            'disabledListItemSubTagOptions' => [
+                'class' => ['foo-bar'],
+            ],
         ]);
         $this->assertStringContainsString('<li class="page-item prev disabled"><a class="page-link foo-bar"', $output);
     }
 
-    /**
-     */
+
     public function testOverrideDisabledPageElementOptions()
     {
         $output = LinkPager::widget([
             'pagination' => $this->getPagination(0),
-            'disabledListItemSubTagOptions' => ['class' => new ReplaceArrayValue(['foo-bar'])],
+            'disabledListItemSubTagOptions' => [
+                'class' => new ReplaceArrayValue(['foo-bar']),
+            ],
         ]);
         $this->assertStringContainsString('<li class="page-item prev disabled"><a class="foo-bar"', $output);
     }
@@ -102,11 +107,11 @@ class LinkPagerTest extends TestCase
         ]);
         $this->assertStringContainsString(
             '<div class="my-class page-item"><a class="page-link" href="/?r=test&amp;page=3" data-page="2">3</a></div>',
-            $output
+            $output,
         );
         $this->assertStringContainsString(
             '<div class="my-class page-item active" aria-current="page"><a class="page-link" href="/?r=test&amp;page=2" data-page="1">2</a></div>',
-            $output
+            $output,
         );
     }
 
@@ -120,7 +125,7 @@ class LinkPagerTest extends TestCase
             'pagination' => $this->getPagination(1),
             'on init' => function () use (&$initTriggered) {
                 $initTriggered = true;
-            }
+            },
         ]);
         $this->assertTrue($initTriggered);
     }

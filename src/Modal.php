@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -41,19 +42,19 @@ class Modal extends Widget
      * The additional css class of extra large modal
      * @since 2.0.3
      */
-    const SIZE_EXTRA_LARGE = 'modal-xl';
+    public const SIZE_EXTRA_LARGE = 'modal-xl';
     /**
      * The additional css class of large modal
      */
-    const SIZE_LARGE = 'modal-lg';
+    public const SIZE_LARGE = 'modal-lg';
     /**
      * The additional css class of small modal
      */
-    const SIZE_SMALL = 'modal-sm';
+    public const SIZE_SMALL = 'modal-sm';
     /**
      * The additional css class of default modal
      */
-    const SIZE_DEFAULT = '';
+    public const SIZE_DEFAULT = '';
 
     /**
      * @var string the title content in the modal window.
@@ -139,7 +140,6 @@ class Modal extends Widget
 
 
     /**
-     * {@inheritDoc}
      * @throws InvalidConfigException
      */
     public function init(): void
@@ -153,7 +153,9 @@ class Modal extends Widget
         echo $this->renderToggleButton() . "\n";
         echo Html::beginTag('div', $this->options) . "\n";
         echo Html::beginTag('div', $this->dialogOptions) . "\n";
-        echo Html::beginTag('div', ['class' => 'modal-content']) . "\n";
+        echo Html::beginTag('div', [
+            'class' => 'modal-content',
+        ]) . "\n";
         echo $this->renderHeader() . "\n";
         echo $this->renderBodyBegin() . "\n";
     }
@@ -183,7 +185,9 @@ class Modal extends Widget
     {
         $button = $this->renderCloseButton();
         if (isset($this->title)) {
-            Html::addCssClass($this->titleOptions, ['widget' => 'modal-title']);
+            Html::addCssClass($this->titleOptions, [
+                'widget' => 'modal-title',
+            ]);
             $header = Html::tag('h5', $this->title, $this->titleOptions);
         } else {
             $header = '';
@@ -194,7 +198,9 @@ class Modal extends Widget
         } elseif ($header === '') {
             return '';
         }
-        Html::addCssClass($this->headerOptions, ['widget' => 'modal-header']);
+        Html::addCssClass($this->headerOptions, [
+            'widget' => 'modal-header',
+        ]);
 
         return Html::tag('div', "\n" . $header . "\n", $this->headerOptions);
     }
@@ -205,7 +211,9 @@ class Modal extends Widget
      */
     protected function renderBodyBegin(): string
     {
-        Html::addCssClass($this->bodyOptions, ['widget' => 'modal-body']);
+        Html::addCssClass($this->bodyOptions, [
+            'widget' => 'modal-body',
+        ]);
 
         return Html::beginTag('div', $this->bodyOptions);
     }
@@ -226,7 +234,9 @@ class Modal extends Widget
     protected function renderFooter(): ?string
     {
         if (isset($this->footer)) {
-            Html::addCssClass($this->footerOptions, ['widget' => 'modal-footer']);
+            Html::addCssClass($this->footerOptions, [
+                'widget' => 'modal-footer',
+            ]);
 
             return Html::tag('div', "\n" . $this->footer . "\n", $this->footerOptions);
         } else {
@@ -279,10 +289,14 @@ class Modal extends Widget
             'tabindex' => -1,
             'aria-hidden' => 'true',
         ], $this->options);
-        Html::addCssClass($this->options, ['widget' => 'modal fade']);
+        Html::addCssClass($this->options, [
+            'widget' => 'modal fade',
+        ]);
 
         if (!empty($this->clientOptions)) {
-            $this->clientOptions = array_merge(['show' => false], $this->clientOptions);
+            $this->clientOptions = array_merge([
+                'show' => false,
+            ], $this->clientOptions);
         }
 
         $this->titleOptions = array_merge([
@@ -294,15 +308,23 @@ class Modal extends Widget
 
         if ($this->closeButton !== false) {
             $this->closeButton = array_merge([
-                'class' => ['widget' => 'btn-close'],
-                'data' => ['bs-dismiss' => 'modal'],
-                'aria' => ['label' => Yii::t('yii/bootstrap5', 'Close')]
+                'class' => [
+                    'widget' => 'btn-close',
+                ],
+                'data' => [
+                    'bs-dismiss' => 'modal',
+                ],
+                'aria' => [
+                    'label' => Yii::t('yii/bootstrap5', 'Close'),
+                ],
             ], $this->closeButton);
         }
 
         if ($this->toggleButton !== false) {
             $this->toggleButton = array_merge([
-                'data' => ['bs-toggle' => 'modal'],
+                'data' => [
+                    'bs-toggle' => 'modal',
+                ],
                 'type' => 'button',
             ], $this->toggleButton);
             if (!isset($this->toggleButton['data']['bs-target']) && !isset($this->toggleButton['href'])) {
@@ -310,15 +332,23 @@ class Modal extends Widget
             }
         }
 
-        Html::addCssClass($this->dialogOptions, ['widget' => 'modal-dialog']);
+        Html::addCssClass($this->dialogOptions, [
+            'widget' => 'modal-dialog',
+        ]);
         if (isset($this->size)) {
-            Html::addCssClass($this->dialogOptions, ['size' => $this->size]);
+            Html::addCssClass($this->dialogOptions, [
+                'size' => $this->size,
+            ]);
         }
         if ($this->centerVertical) {
-            Html::addCssClass($this->dialogOptions, ['align' => 'modal-dialog-centered']);
+            Html::addCssClass($this->dialogOptions, [
+                'align' => 'modal-dialog-centered',
+            ]);
         }
         if ($this->scrollable) {
-            Html::addCssClass($this->dialogOptions, ['scroll' => 'modal-dialog-scrollable']);
+            Html::addCssClass($this->dialogOptions, [
+                'scroll' => 'modal-dialog-scrollable',
+            ]);
         }
     }
 }

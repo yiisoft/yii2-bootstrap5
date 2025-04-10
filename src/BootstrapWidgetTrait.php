@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -86,7 +87,7 @@ trait BootstrapWidgetTrait
             'scrollspy',
             'tab',
             'toast',
-            'tooltip'
+            'tooltip',
         ];
         if (in_array($name, $jsPlugins, true)) {
             $view = $this->getView();

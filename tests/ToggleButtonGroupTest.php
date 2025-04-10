@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\bootstrap5;
 
 use yii\base\Model;
@@ -33,14 +35,15 @@ HTML;
         $this->assertEqualsWithoutLE($expectedHtml, $html);
     }
 
-    /**
-     */
+
     public function testCheckboxChecked()
     {
         Html::$counter = 0;
         $html = ToggleButtonGroup::widget([
             'type' => ToggleButtonGroup::TYPE_CHECKBOX,
-            'model' => new ToggleButtonGroupTestModel(['value' => '2']),
+            'model' => new ToggleButtonGroupTestModel([
+                'value' => '2',
+            ]),
             'attribute' => 'value',
             'items' => [
                 '1' => 'item 1',
@@ -73,14 +76,15 @@ HTML;
         $this->assertEqualsWithoutLE($expectedHtml, $html);
     }
 
-    /**
-     */
+
     public function testRadioChecked()
     {
         Html::$counter = 0;
         $html = ToggleButtonGroup::widget([
             'type' => ToggleButtonGroup::TYPE_RADIO,
-            'model' => new ToggleButtonGroupTestModel(['value' => '2']),
+            'model' => new ToggleButtonGroupTestModel([
+                'value' => '2',
+            ]),
             'attribute' => 'value',
             'items' => [
                 '1' => 'item 1',

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -109,9 +110,6 @@ class Toast extends Widget
     public $bodyOptions = [];
 
 
-    /**
-     * {@inheritdoc}
-     */
     public function init(): void
     {
         parent::init();
@@ -125,9 +123,6 @@ class Toast extends Widget
         echo $this->renderBodyBegin() . "\n";
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function run(): string
     {
         $content = ob_get_clean();
@@ -147,18 +142,24 @@ class Toast extends Widget
     {
         $button = $this->renderCloseButton();
         $tag = ArrayHelper::remove($this->titleOptions, 'tag', 'strong');
-        Html::addCssClass($this->titleOptions, ['widget' => 'me-auto']);
+        Html::addCssClass($this->titleOptions, [
+            'widget' => 'me-auto',
+        ]);
         $title = Html::tag($tag, $this->title === null ? '' : $this->title, $this->titleOptions);
 
         if ($this->dateTime !== false) {
             $tag = ArrayHelper::remove($this->dateTimeOptions, 'tag', 'small');
-            Html::addCssClass($this->dateTimeOptions, ['widget' => 'text-muted']);
+            Html::addCssClass($this->dateTimeOptions, [
+                'widget' => 'text-muted',
+            ]);
             $title .= "\n" . Html::tag($tag, Yii::$app->formatter->asRelativeTime($this->dateTime), $this->dateTimeOptions);
         }
 
         $title .= "\n" . $button;
 
-        Html::addCssClass($this->headerOptions, ['widget' => 'toast-header']);
+        Html::addCssClass($this->headerOptions, [
+            'widget' => 'toast-header',
+        ]);
 
         return Html::tag('div', "\n" . $title . "\n", $this->headerOptions);
     }
@@ -169,7 +170,9 @@ class Toast extends Widget
      */
     protected function renderBodyBegin(): string
     {
-        Html::addCssClass($this->bodyOptions, ['widget' => 'toast-body']);
+        Html::addCssClass($this->bodyOptions, [
+            'widget' => 'toast-body',
+        ]);
 
         return Html::beginTag('div', $this->bodyOptions);
     }
@@ -208,13 +211,21 @@ class Toast extends Widget
      */
     protected function initOptions(): void
     {
-        Html::addCssClass($this->options, ['widget' => 'toast']);
+        Html::addCssClass($this->options, [
+            'widget' => 'toast',
+        ]);
 
         if ($this->closeButton !== false) {
             $this->closeButton = array_merge([
-                'class' => ['widget' => 'btn-close'],
-                'data' => ['bs-dismiss' => 'toast'],
-                'aria' => ['label' => Yii::t('yii/bootstrap5', 'Close')]
+                'class' => [
+                    'widget' => 'btn-close',
+                ],
+                'data' => [
+                    'bs-dismiss' => 'toast',
+                ],
+                'aria' => [
+                    'label' => Yii::t('yii/bootstrap5', 'Close'),
+                ],
             ], $this->closeButton);
         }
 

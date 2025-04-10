@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\bootstrap5;
 
 use yii\bootstrap5\ButtonDropdown;
@@ -22,8 +24,14 @@ class ButtonDropdownTest extends TestCase
             'label' => 'Action',
             'dropdown' => [
                 'items' => [
-                    ['label' => 'DropdownA', 'url' => '/'],
-                    ['label' => 'DropdownB', 'url' => '#'],
+                    [
+                        'label' => 'DropdownA',
+                        'url' => '/',
+                    ],
+                    [
+                        'label' => 'DropdownB',
+                        'url' => '#',
+                    ],
                 ],
             ],
         ]);
@@ -39,8 +47,14 @@ class ButtonDropdownTest extends TestCase
             'label' => 'Action',
             'dropdown' => [
                 'items' => [
-                    ['label' => 'ItemA', 'url' => '#'],
-                    ['label' => 'ItemB', 'url' => '#'],
+                    [
+                        'label' => 'ItemA',
+                        'url' => '#',
+                    ],
+                    [
+                        'label' => 'ItemB',
+                        'url' => '#',
+                    ],
                 ],
             ],
         ]);
@@ -64,10 +78,16 @@ EXPECTED;
             'split' => true,
             'dropdown' => [
                 'items' => [
-                    ['label' => 'ItemA', 'url' => '#'],
-                    ['label' => 'ItemB', 'url' => '#']
-                ]
-            ]
+                    [
+                        'label' => 'ItemA',
+                        'url' => '#',
+                    ],
+                    [
+                        'label' => 'ItemB',
+                        'url' => '#',
+                    ],
+                ],
+            ],
         ]);
 
         $expected = <<<EXPECTED

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\bootstrap5;
 
 use yii\bootstrap5\Nav;
@@ -53,7 +55,9 @@ EXPECTED;
     {
         $out = NavBar::widget([
             'brandImage' => '/images/test.jpg',
-            'brandImageOptions' => ['alt' => 'test image'],
+            'brandImageOptions' => [
+                'alt' => 'test image',
+            ],
             'brandUrl' => '/',
         ]);
 
@@ -80,8 +84,7 @@ EXPECTED;
         $this->assertStringContainsString('<span class="navbar-brand">Yii Framework</span>', $out);
     }
 
-    /**
-     */
+
     public function testNavAndForm()
     {
 
@@ -96,18 +99,36 @@ EXPECTED;
         ]);
         echo Nav::widget([
             'options' => [
-                'class' => ['mr-auto']
+                'class' => ['mr-auto'],
             ],
             'items' => [
-                ['label' => 'Home', 'url' => '#'],
-                ['label' => 'Link', 'url' => '#'],
-                ['label' => 'Dropdown', 'items' => [
-                    ['label' => 'Action', 'url' => '#'],
-                    ['label' => 'Another action', 'url' => '#'],
-                    '-',
-                    ['label' => 'Something else here', 'url' => '#'],
-                ]]
-            ]
+                [
+                    'label' => 'Home',
+                    'url' => '#',
+                ],
+                [
+                    'label' => 'Link',
+                    'url' => '#',
+                ],
+                [
+                    'label' => 'Dropdown',
+                    'items' => [
+                        [
+                            'label' => 'Action',
+                            'url' => '#',
+                        ],
+                        [
+                            'label' => 'Another action',
+                            'url' => '#',
+                        ],
+                        '-',
+                        [
+                            'label' => 'Something else here',
+                            'url' => '#',
+                        ],
+                    ],
+                ],
+            ],
         ]);
         echo <<<HTML
 <form class="form-inline my-2 my-lg-0">
@@ -149,31 +170,49 @@ EXPECTED;
             'brandLabel' => 'Offcanvas navbar',
             'brandUrl' => ['/'],
             'options' => [
-                'class' => ['navbar', 'navbar-light', 'bg-light', 'fixed-top']
+                'class' => ['navbar', 'navbar-light', 'bg-light', 'fixed-top'],
             ],
             'innerContainerOptions' => [
-                'class' => ['container-fluid']
+                'class' => ['container-fluid'],
             ],
             'collapseOptions' => false,
             'offcanvasOptions' => [
                 'title' => 'Offcanvas',
-                'placement' => Offcanvas::PLACEMENT_END
-            ]
+                'placement' => Offcanvas::PLACEMENT_END,
+            ],
         ]);
         echo Nav::widget([
             'options' => [
-                'class' => ['navbar-nav']
+                'class' => ['navbar-nav'],
             ],
             'items' => [
-                ['label' => 'Home', 'url' => '#'],
-                ['label' => 'Link', 'url' => '#'],
-                ['label' => 'Dropdown', 'items' => [
-                    ['label' => 'Action', 'url' => '#'],
-                    ['label' => 'Another action', 'url' => '#'],
-                    '-',
-                    ['label' => 'Something else here', 'url' => '#'],
-                ]]
-            ]
+                [
+                    'label' => 'Home',
+                    'url' => '#',
+                ],
+                [
+                    'label' => 'Link',
+                    'url' => '#',
+                ],
+                [
+                    'label' => 'Dropdown',
+                    'items' => [
+                        [
+                            'label' => 'Action',
+                            'url' => '#',
+                        ],
+                        [
+                            'label' => 'Another action',
+                            'url' => '#',
+                        ],
+                        '-',
+                        [
+                            'label' => 'Something else here',
+                            'url' => '#',
+                        ],
+                    ],
+                ],
+            ],
         ]);
         NavBar::end();
         $out = ob_get_clean();

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\bootstrap5;
 
 use yii\bootstrap5\Tabs;
@@ -25,7 +27,7 @@ class TabsTest extends TestCase
                     'label' => 'Page2',
                     'content' => 'Page2',
                 ],
-            ]
+            ],
         ]);
 
         $this->assertContainsWithoutLE('<ul id="w0" class="nav nav-tabs" role="tablist">', $out);
@@ -48,16 +50,28 @@ class TabsTest extends TestCase
                 [
                     'label' => 'Dropdown1',
                     'items' => [
-                        ['label' => 'Page2', 'content' => 'Page2'],
-                        ['label' => 'Page3', 'content' => 'Page3'],
-                    ]
+                        [
+                            'label' => 'Page2',
+                            'content' => 'Page2',
+                        ],
+                        [
+                            'label' => 'Page3',
+                            'content' => 'Page3',
+                        ],
+                    ],
                 ],
                 [
                     'label' => 'Dropdown2',
                     'items' => [
-                        ['label' => 'Page4', 'content' => 'Page4'],
-                        ['label' => 'Page5', 'content' => 'Page5'],
-                    ]
+                        [
+                            'label' => 'Page4',
+                            'content' => 'Page4',
+                        ],
+                        [
+                            'label' => 'Page5',
+                            'content' => 'Page5',
+                        ],
+                    ],
                 ],
                 [
                     'label' => $extAnchor1 = 'External link',
@@ -68,11 +82,11 @@ class TabsTest extends TestCase
                     'items' => [
                         [
                             'label' => $extAnchor2 = 'External Dropdown Link',
-                            'url' => $extUrl2 = ['//other/dropdown/route']
+                            'url' => $extUrl2 = ['//other/dropdown/route'],
                         ],
-                    ]
+                    ],
                 ],
-            ]
+            ],
         ]);
 
         $page1 = 'w0-tab0';
@@ -102,9 +116,12 @@ class TabsTest extends TestCase
             "id=\"$page3\"",
             "id=\"$page4\"",
             "id=\"$page5\"",
-            Html::a($extAnchor1, $extUrl1, ['class' => 'nav-link']),
-            Html::a($extAnchor2, $extUrl2, [/*'tabindex' => -1, */
-                'class' => 'dropdown-item'
+            Html::a($extAnchor1, $extUrl1, [
+                'class' => 'nav-link',
+            ]),
+            Html::a($extAnchor2, $extUrl2, [
+                /*'tabindex' => -1, */
+                'class' => 'dropdown-item',
             ]),
         ];
 
@@ -125,19 +142,36 @@ class TabsTest extends TestCase
                 [
                     'label' => 'InvisiblePage',
                     'content' => 'Invisible Page Content',
-                    'visible' => false
+                    'visible' => false,
                 ],
                 [
                     'label' => 'Dropdown1',
                     'items' => [
-                        ['label' => 'Page2', 'content' => 'Page2'],
-                        ['label' => 'InvisibleItem', 'content' => 'Invisible Item Content', 'visible' => false],
-                        ['label' => 'Page3', 'content' => 'Page3'],
-                        ['label' => 'External Link', 'url' => ['//other/dropdown/route']],
-                        ['label' => 'Invisible External Link', 'url' => ['//other/dropdown/route'], 'visible' => false],
-                    ]
+                        [
+                            'label' => 'Page2',
+                            'content' => 'Page2',
+                        ],
+                        [
+                            'label' => 'InvisibleItem',
+                            'content' => 'Invisible Item Content',
+                            'visible' => false,
+                        ],
+                        [
+                            'label' => 'Page3',
+                            'content' => 'Page3',
+                        ],
+                        [
+                            'label' => 'External Link',
+                            'url' => ['//other/dropdown/route'],
+                        ],
+                        [
+                            'label' => 'Invisible External Link',
+                            'url' => ['//other/dropdown/route'],
+                            'visible' => false,
+                        ],
+                    ],
                 ],
-            ]
+            ],
         ]);
 
         $this->assertStringNotContainsString('InvisiblePage', $html);
@@ -155,7 +189,7 @@ class TabsTest extends TestCase
                 [
                     'label' => 'Page1',
                     'content' => 'Page1',
-                    'disabled' => true
+                    'disabled' => true,
                 ],
                 [
                     'label' => 'Page2',
@@ -164,40 +198,57 @@ class TabsTest extends TestCase
                 [
                     'label' => 'DisabledPage',
                     'content' => 'Disabled Page Content',
-                    'disabled' => true
+                    'disabled' => true,
                 ],
                 [
                     'label' => 'Dropdown1',
                     'items' => [
-                        ['label' => 'Page2', 'content' => 'Page2'],
-                        ['label' => 'DisabledItem', 'content' => 'Disabled Item Content', 'disabled' => true],
-                        ['label' => 'Page3', 'content' => 'Page3'],
-                        ['label' => 'External Link', 'url' => ['//other/dropdown/route']],
-                        ['label' => 'Disabled External Link', 'url' => ['//other/dropdown/route'], 'disabled' => true],
-                    ]
+                        [
+                            'label' => 'Page2',
+                            'content' => 'Page2',
+                        ],
+                        [
+                            'label' => 'DisabledItem',
+                            'content' => 'Disabled Item Content',
+                            'disabled' => true,
+                        ],
+                        [
+                            'label' => 'Page3',
+                            'content' => 'Page3',
+                        ],
+                        [
+                            'label' => 'External Link',
+                            'url' => ['//other/dropdown/route'],
+                        ],
+                        [
+                            'label' => 'Disabled External Link',
+                            'url' => ['//other/dropdown/route'],
+                            'disabled' => true,
+                        ],
+                    ],
                 ],
-            ]
+            ],
         ]);
 
         $this->assertStringContainsString(
             '<li class="nav-item"><a class="nav-link disabled" href="#w0-tab0" data-bs-toggle="tab" role="tab" aria-controls="w0-tab0" aria-disabled="true" tabindex="-1">Page1</a></li>',
-            $html
+            $html,
         );
         $this->assertStringContainsString(
             '<li class="nav-item"><a class="nav-link active" href="#w0-tab1" data-bs-toggle="tab" role="tab" aria-controls="w0-tab1" aria-selected="true">Page2</a></li>',
-            $html
+            $html,
         );
         $this->assertStringContainsString(
             '<li class="nav-item"><a class="nav-link disabled" href="#w0-tab2" data-bs-toggle="tab" role="tab" aria-controls="w0-tab2" aria-disabled="true" tabindex="-1">DisabledPage</a></li>',
-            $html
+            $html,
         );
         $this->assertStringContainsString(
             '<a class="dropdown-item disabled" href="#w0-dd3-tab1" data-bs-toggle="tab" role="tab" aria-controls="w0-dd3-tab1" aria-disabled="true" tabindex="-1">DisabledItem</a>',
-            $html
+            $html,
         );
         $this->assertStringContainsString(
             '<a class="dropdown-item disabled" href="/index.php?r=other%2Fdropdown%2Froute" tabindex="-1" aria-disabled="true">Disabled External Link</a>',
-            $html
+            $html,
         );
     }
 
@@ -216,7 +267,9 @@ class TabsTest extends TestCase
                     'content' => 'Page2',
                 ],
             ],
-            'itemOptions' => ['tag' => $checkTag],
+            'itemOptions' => [
+                'tag' => $checkTag,
+            ],
             'renderTabContent' => true,
         ]);
 
@@ -232,12 +285,12 @@ class TabsTest extends TestCase
             'items' => [
                 [
                     'label' => 'Page1',
-                    'content' => 'Page1'
-                ]
+                    'content' => 'Page1',
+                ],
             ],
             'tabContentOptions' => [
-                $checkAttribute => $checkValue
-            ]
+                $checkAttribute => $checkValue,
+            ],
         ]);
 
         $this->assertStringContainsString($checkAttribute . '=', $out);
@@ -252,35 +305,35 @@ class TabsTest extends TestCase
                 [
                     'label' => 'Tab 1',
                     'content' => 'some content',
-                    'visible' => false
+                    'visible' => false,
                 ],
                 [
                     'label' => 'Tab 2',
                     'content' => 'some content',
-                    'disabled' => true
+                    'disabled' => true,
                 ],
                 [
                     'label' => 'Tab 3',
-                    'content' => 'some content'
+                    'content' => 'some content',
                 ],
                 [
                     'label' => 'Tab 4',
-                    'content' => 'some content'
-                ]
-            ]
+                    'content' => 'some content',
+                ],
+            ],
         ]);
 
         $this->assertStringNotContainsString(
             '<li class="nav-item"><a class="nav-link active" href="#mytab-tab0" data-bs-toggle="tab" role="tab" aria-controls="mytab-tab0" aria-selected="true">Tab 1</a></li>',
-            $html
+            $html,
         );
         $this->assertStringNotContainsString(
             '<li class="nav-item"><a class="nav-link active" href="#mytab-tab1" data-bs-toggle="tab" role="tab" aria-controls="mytab-tab1" aria-selected="true">Tab 2</a></li>',
-            $html
+            $html,
         );
         $this->assertStringContainsString(
             '<li class="nav-item"><a class="nav-link active" href="#mytab-tab2" data-bs-toggle="tab" role="tab" aria-controls="mytab-tab2" aria-selected="true">Tab 3</a></li>',
-            $html
+            $html,
         );
     }
 
@@ -292,26 +345,26 @@ class TabsTest extends TestCase
                 [
                     'label' => 'Tab 1',
                     'content' => 'some content',
-                    'visible' => false
+                    'visible' => false,
                 ],
                 [
                     'label' => 'Tab 2',
-                    'content' => 'some content'
+                    'content' => 'some content',
                 ],
                 [
                     'label' => 'Tab 3',
                     'content' => 'some content',
-                    'active' => true
+                    'active' => true,
                 ],
                 [
                     'label' => 'Tab 4',
-                    'content' => 'some content'
-                ]
-            ]
+                    'content' => 'some content',
+                ],
+            ],
         ]);
         $this->assertStringContainsString(
             '<li class="nav-item"><a class="nav-link active" href="#mytab-tab2" data-bs-toggle="tab" role="tab" aria-controls="mytab-tab2" aria-selected="true">Tab 3</a></li>',
-            $html
+            $html,
         );
     }
 
@@ -334,7 +387,7 @@ class TabsTest extends TestCase
                     'label' => 'Tab 3<span>not encoded too</span>',
                     'content' => 'some content',
                 ],
-            ]
+            ],
         ]);
         $this->assertStringContainsString('&lt;span&gt;encoded&lt;/span&gt;', $html);
         $this->assertStringContainsString('<span>not encoded</span>', $html);
@@ -350,7 +403,9 @@ class TabsTest extends TestCase
         $html = Tabs::widget([
             'items' => [
                 [
-                    'options' => ['id' => 'pane1'],
+                    'options' => [
+                        'id' => 'pane1',
+                    ],
                     'label' => 'Tab 1',
                     'content' => '<div>Content 1</div>',
                 ],
@@ -383,16 +438,24 @@ HTML;
                 [
                     'label' => 'Tab 2',
                     'content' => '<div>Content 2</div>',
-                    'headerOptions' => ['class' => 'col-6'],
+                    'headerOptions' => [
+                        'class' => 'col-6',
+                    ],
                 ],
                 [
                     'label' => 'Link',
                     'url' => 'http://www.example.com/',
-                    'headerOptions' => ['class' => 'col-3'],
+                    'headerOptions' => [
+                        'class' => 'col-3',
+                    ],
                 ],
             ],
-            'options' => ['class' => 'row'],
-            'headerOptions' => ['class' => 'col'],
+            'options' => [
+                'class' => 'row',
+            ],
+            'headerOptions' => [
+                'class' => 'col',
+            ],
         ]);
 
         $expected = <<<HTML

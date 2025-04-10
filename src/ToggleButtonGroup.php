@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -37,11 +38,11 @@ class ToggleButtonGroup extends InputWidget
     /**
      * Checkbox type
      */
-    const TYPE_CHECKBOX = 'checkbox';
+    public const TYPE_CHECKBOX = 'checkbox';
     /**
      * Radio type
      */
-    const TYPE_RADIO = 'radio';
+    public const TYPE_RADIO = 'radio';
 
     /**
      * @var string input type, can be [[TYPE_CHECKBOX]] or [[TYPE_RADIO]]
@@ -66,20 +67,17 @@ class ToggleButtonGroup extends InputWidget
     public $encodeLabels = true;
 
 
-    /**
-     * {@inheritdoc}
-     */
     public function init(): void
     {
         parent::init();
         $this->registerPlugin('button');
-        Html::addCssClass($this->options, ['widget' => 'btn-group']);
+        Html::addCssClass($this->options, [
+            'widget' => 'btn-group',
+        ]);
         $this->options['role'] = 'group';
     }
 
     /**
-     * {@inheritdoc}
-     * @return string
      * @throws InvalidConfigException
      */
     public function run(): string
@@ -94,12 +92,14 @@ class ToggleButtonGroup extends InputWidget
                 } else {
                     return Html::checkboxList($this->name, $this->value, $this->items, $this->options);
                 }
+                // no break
             case 'radio':
                 if ($this->hasModel()) {
                     return Html::activeRadioList($this->model, $this->attribute, $this->items, $this->options);
                 } else {
                     return Html::radioList($this->name, $this->value, $this->items, $this->options);
                 }
+                // no break
             default:
                 throw new InvalidConfigException("Unsupported type '{$this->type}'");
         }
@@ -121,7 +121,9 @@ class ToggleButtonGroup extends InputWidget
         unset($index);
         $labelOptions = $this->labelOptions;
         $labelOptions['wrapInput'] = false;
-        Html::addCssClass($labelOptions, ['widget' => 'btn']);
+        Html::addCssClass($labelOptions, [
+            'widget' => 'btn',
+        ]);
         $type = $this->type;
         if ($this->encodeLabels) {
             $label = Html::encode($label);
@@ -132,7 +134,9 @@ class ToggleButtonGroup extends InputWidget
             'autocomplete' => 'off',
             'value' => $value,
         ];
-        Html::addCssClass($options, ['widget' => 'btn-check']);
+        Html::addCssClass($options, [
+            'widget' => 'btn-check',
+        ]);
 
         return Html::$type($name, $checked, $options);
     }

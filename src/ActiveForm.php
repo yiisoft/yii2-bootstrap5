@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -68,19 +69,19 @@ class ActiveForm extends \yii\widgets\ActiveForm
     /**
      * Default form layout
      */
-    const LAYOUT_DEFAULT = 'default';
+    public const LAYOUT_DEFAULT = 'default';
     /**
      * Horizontal form layout
      */
-    const LAYOUT_HORIZONTAL = 'horizontal';
+    public const LAYOUT_HORIZONTAL = 'horizontal';
     /**
      * Inline form layout
      */
-    const LAYOUT_INLINE = 'inline';
+    public const LAYOUT_INLINE = 'inline';
     /**
      * Floating labels form layout
      */
-    const LAYOUT_FLOATING = 'floating';
+    public const LAYOUT_FLOATING = 'floating';
 
     /**
      * @var string the default field class name when calling [[field()]] to create a new field.
@@ -103,38 +104,29 @@ class ActiveForm extends \yii\widgets\ActiveForm
      * @var string the CSS class that is added to a field container when the associated attribute has validation error.
      */
     public $errorCssClass = 'is-invalid';
-    /**
-     * {@inheritdoc}
-     */
     public $successCssClass = 'is-valid';
-    /**
-     * {@inheritdoc}
-     */
     public $errorSummaryCssClass = 'alert alert-danger';
-    /**
-     * {@inheritdoc}
-     */
     public $validationStateOn = self::VALIDATION_STATE_ON_INPUT;
 
 
     /**
-     * {@inheritdoc}
      * @throws InvalidConfigException
      */
     public function init(): void
     {
-        if (!in_array($this->layout, [self::LAYOUT_DEFAULT, self::LAYOUT_HORIZONTAL, self::LAYOUT_INLINE, self::LAYOUT_FLOATING])) {
+        if (!in_array($this->layout, [self::LAYOUT_DEFAULT, self::LAYOUT_HORIZONTAL, self::LAYOUT_INLINE, self::LAYOUT_FLOATING], true)) {
             throw new InvalidConfigException('Invalid layout type: ' . $this->layout);
         }
 
         if ($this->layout === self::LAYOUT_INLINE) {
-            Html::addCssClass($this->options, ['widget' => 'form-inline']);
+            Html::addCssClass($this->options, [
+                'widget' => 'form-inline',
+            ]);
         }
         parent::init();
     }
 
     /**
-     * {@inheritDoc}
      * @return ActiveField|\yii\widgets\ActiveField
      */
     public function field($model, $attribute, $options = []): ActiveField

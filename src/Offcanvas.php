@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -37,10 +38,10 @@ use yii\helpers\ArrayHelper;
  */
 class Offcanvas extends Widget
 {
-    const PLACEMENT_START = 'start';
-    const PLACEMENT_END = 'end';
-    const PLACEMENT_TOP = 'top';
-    const PLACEMENT_BOTTOM = 'bottom';
+    public const PLACEMENT_START = 'start';
+    public const PLACEMENT_END = 'end';
+    public const PLACEMENT_TOP = 'top';
+    public const PLACEMENT_BOTTOM = 'bottom';
 
     /**
      * @var string Where to place the offcanvas. Can be of of the [[PLACEMENT_*]] constants.
@@ -109,9 +110,6 @@ class Offcanvas extends Widget
     public $bodyOptions = [];
 
 
-    /**
-     * {@inheritDoc}
-     */
     public function init(): void
     {
         parent::init();
@@ -150,7 +148,9 @@ class Offcanvas extends Widget
         $button = $this->renderCloseButton();
         if (isset($this->title)) {
             $tag = ArrayHelper::remove($this->titleOptions, 'tag', 'h5');
-            Html::addCssClass($this->titleOptions, ['widget' => 'offcanvas-title']);
+            Html::addCssClass($this->titleOptions, [
+                'widget' => 'offcanvas-title',
+            ]);
             $header = Html::tag($tag, $this->title, $this->titleOptions);
         } else {
             $header = '';
@@ -161,7 +161,9 @@ class Offcanvas extends Widget
         } elseif ($header === '') {
             return '';
         }
-        Html::addCssClass($this->headerOptions, ['widget' => 'offcanvas-header']);
+        Html::addCssClass($this->headerOptions, [
+            'widget' => 'offcanvas-header',
+        ]);
 
         return Html::tag('div', "\n" . $header . "\n", $this->headerOptions);
     }
@@ -172,7 +174,9 @@ class Offcanvas extends Widget
      */
     protected function renderBodyBegin(): string
     {
-        Html::addCssClass($this->bodyOptions, ['widget' => 'offcanvas-body']);
+        Html::addCssClass($this->bodyOptions, [
+            'widget' => 'offcanvas-body',
+        ]);
 
         return Html::beginTag('div', $this->bodyOptions);
     }
@@ -229,12 +233,14 @@ class Offcanvas extends Widget
     {
         $this->options = array_merge([
             'tabindex' => -1,
-            'data' =>[
+            'data' => [
                 'bs-backdrop' => $this->backdrop ? 'true' : 'false',
-                'bs-scroll' => $this->scrolling ? 'true' : 'false'
-            ]
+                'bs-scroll' => $this->scrolling ? 'true' : 'false',
+            ],
         ], $this->options);
-        Html::addCssClass($this->options, ['widget' => 'offcanvas offcanvas-' . $this->placement]);
+        Html::addCssClass($this->options, [
+            'widget' => 'offcanvas offcanvas-' . $this->placement,
+        ]);
 
         $this->titleOptions = array_merge([
             'id' => $this->options['id'] . '-label',
@@ -245,17 +251,27 @@ class Offcanvas extends Widget
 
         if ($this->closeButton !== false) {
             $this->closeButton = array_merge([
-                'class' => ['widget' => 'btn-close text-reset'],
-                'data' => ['bs-dismiss' => 'offcanvas'],
-                'aria' => ['label' => Yii::t('yii/bootstrap5', 'Close')]
+                'class' => [
+                    'widget' => 'btn-close text-reset',
+                ],
+                'data' => [
+                    'bs-dismiss' => 'offcanvas',
+                ],
+                'aria' => [
+                    'label' => Yii::t('yii/bootstrap5', 'Close'),
+                ],
             ], $this->closeButton);
         }
 
         if ($this->toggleButton !== false) {
             $this->toggleButton = array_merge([
-                'data' => ['bs-toggle' => 'offcanvas'],
+                'data' => [
+                    'bs-toggle' => 'offcanvas',
+                ],
                 'type' => 'button',
-                'aria' => ['controls' => $this->options['id']]
+                'aria' => [
+                    'controls' => $this->options['id'],
+                ],
             ], $this->toggleButton);
             if (!isset($this->toggleButton['data']['bs-target']) && !isset($this->toggleButton['href'])) {
                 $this->toggleButton['data']['bs-target'] = '#' . $this->options['id'];

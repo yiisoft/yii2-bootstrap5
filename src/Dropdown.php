@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -68,18 +69,16 @@ class Dropdown extends Widget
     public $submenuOptions = [];
 
 
-    /**
-     * {@inheritDoc}
-     */
     public function init(): void
     {
         parent::init();
-        Html::addCssClass($this->options, ['widget' => 'dropdown-menu']);
+        Html::addCssClass($this->options, [
+            'widget' => 'dropdown-menu',
+        ]);
     }
 
     /**
      * Renders the widget.
-     * @return string
      * @throws InvalidConfigException
      */
     public function run(): string
@@ -104,7 +103,9 @@ class Dropdown extends Widget
         foreach ($items as $item) {
             if (is_string($item)) {
                 $lines[] = ($item === '-')
-                    ? Html::tag('hr', '', ['class' => 'dropdown-divider'])
+                    ? Html::tag('hr', '', [
+                        'class' => 'dropdown-divider',
+                    ])
                     : $item;
                 continue;
             }
@@ -121,20 +122,28 @@ class Dropdown extends Widget
             $active = ArrayHelper::getValue($item, 'active', false);
             $disabled = ArrayHelper::getValue($item, 'disabled', false);
 
-            Html::addCssClass($linkOptions, ['widget' => 'dropdown-item']);
+            Html::addCssClass($linkOptions, [
+                'widget' => 'dropdown-item',
+            ]);
             if ($disabled) {
                 ArrayHelper::setValue($linkOptions, 'tabindex', '-1');
                 ArrayHelper::setValue($linkOptions, 'aria.disabled', 'true');
-                Html::addCssClass($linkOptions, ['disable' => 'disabled']);
+                Html::addCssClass($linkOptions, [
+                    'disable' => 'disabled',
+                ]);
             } elseif ($active) {
                 ArrayHelper::setValue($linkOptions, 'aria.current', 'true');
-                Html::addCssClass($linkOptions, ['activate' => 'active']);
+                Html::addCssClass($linkOptions, [
+                    'activate' => 'active',
+                ]);
             }
 
             $url = array_key_exists('url', $item) ? $item['url'] : null;
             if (empty($item['items'])) {
                 if ($url === null) {
-                    $content = Html::tag('h6', $label, ['class' => 'dropdown-header']);
+                    $content = Html::tag('h6', $label, [
+                        'class' => 'dropdown-header',
+                    ]);
                 } else {
                     $content = Html::a($label, $url, $linkOptions);
                 }
@@ -144,13 +153,26 @@ class Dropdown extends Widget
                 if (isset($item['submenuOptions'])) {
                     $submenuOptions = array_merge($submenuOptions, $item['submenuOptions']);
                 }
-                Html::addCssClass($submenuOptions, ['widget' => 'dropdown-submenu dropdown-menu']);
-                Html::addCssClass($linkOptions, ['toggle' => 'dropdown-toggle']);
+                Html::addCssClass($submenuOptions, [
+                    'widget' => 'dropdown-submenu dropdown-menu',
+                ]);
+                Html::addCssClass($linkOptions, [
+                    'toggle' => 'dropdown-toggle',
+                ]);
 
-                $lines[] = Html::beginTag('div', array_merge_recursive(['class' => ['dropdown'], 'aria' => ['expanded' => 'false']], $itemOptions));
+                $lines[] = Html::beginTag('div', array_merge_recursive([
+                    'class' => ['dropdown'],
+                    'aria' => [
+                        'expanded' => 'false',
+                    ],
+                ], $itemOptions));
                 $lines[] = Html::a($label, $url, array_merge_recursive([
-                    'data' => ['bs-toggle' => 'dropdown'],
-                    'aria' => ['expanded' => 'false'],
+                    'data' => [
+                        'bs-toggle' => 'dropdown',
+                    ],
+                    'aria' => [
+                        'expanded' => 'false',
+                    ],
                     'role' => 'button',
                 ], $linkOptions));
                 $lines[] = static::widget([
