@@ -1,8 +1,11 @@
 Yii Framework 2 bootstrap5 extension Change Log
 ==============================================
 
-2.0.5 under development
------------------------
+2.0.51 under development
+------------------------
+
+2.0.50 April 10, 2025
+---------------------
 
 - Bug #84: Checkbox labels in inline forms are no longer hidden (BBoom)
 - Bug #80: Prevent publishing of whole bootstrap directory (rmenor)
