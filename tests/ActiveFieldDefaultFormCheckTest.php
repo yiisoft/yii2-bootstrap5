@@ -189,7 +189,7 @@ HTML;
         $this->assertContainsWithoutLE($expected3, $out);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         // dirty way to have Request object not throwing exception when running testHomeLinkNull()
         $_SERVER['SCRIPT_FILENAME'] = 'index.php';

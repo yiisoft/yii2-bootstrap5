@@ -36,7 +36,7 @@ HTML;
 
         $js = Yii::$app->view->js[View::POS_READY];
 
-        $this->assertInternalType(IsType::TYPE_ARRAY, $js);
+        $this->assertIsArray($js);
         $options = array_shift($js);
 
         $this->assertContainsWithoutLE("(new bootstrap.Popover('#w0', {", $options);
@@ -55,7 +55,7 @@ HTML;
 
         $js = Yii::$app->view->js[View::POS_READY];
 
-        $this->assertInternalType(IsType::TYPE_ARRAY, $js);
+        $this->assertIsArray($js);
         $options = array_shift($js);
 
         $this->assertContainsWithoutLE('"content":"\u003Cspan class=\u0022test-content\u0022\u003ETest content\u003C\/span\u003E"', $options);
