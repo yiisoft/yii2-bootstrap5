@@ -4,6 +4,7 @@ Yii Framework 2 bootstrap5 extension Change Log
 2.0.5 under development
 -----------------------
 
+- Bug #84: Checkbox labels in inline forms are no longer hidden (BBoom)
 - Bug #80: Prevent publishing of whole bootstrap directory (rmenor)
 - Bug #92: Explicit nullable parameter (OneMorePenguin, simialbi)
 - Enh #78: Navbar has new attribute `brandImageOptions` (EvilKarter)
