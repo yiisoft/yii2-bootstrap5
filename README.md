@@ -16,7 +16,8 @@ Documentation is at [docs/guide/README.md](docs/guide/README.md).
 
 [![Latest Stable Version](https://poser.pugx.org/yiisoft/yii2-bootstrap5/v/stable.png)](https://packagist.org/packages/yiisoft/yii2-bootstrap5)
 [![Total Downloads](https://poser.pugx.org/yiisoft/yii2-bootstrap5/downloads.png)](https://packagist.org/packages/yiisoft/yii2-bootstrap5)
-[![Build Status](https://github.com/yiisoft/yii2-bootstrap5/workflows/build/badge.svg)](https://github.com/yiisoft/yii2-bootstrap5/actions)
+[![Build Status](https://github.com/yiisoft/yii2-bootstrap5/workflows/build/badge.svg)](https://github.com/yiisoft/yii2-bootstrap5/actions/workflows/build.yml)
+[![ECS Status](https://github.com/yiisoft/yii2-bootstrap5/workflows/ecs/badge.svg)](https://github.com/yiisoft/yii2-bootstrap5/actions/workflows/ecs.yml)
 
 
 Installation
