@@ -7,7 +7,7 @@ env:
 
 jobs:
     phpunit:
-        name: PHP ${{ matrix.php }} on ${{ matrix.os }}
+        name: PHP ${{ matrix.php }}-${{ matrix.os }}
         runs-on: ${{ matrix.os }}
         strategy:
             fail-fast: false
@@ -17,21 +17,23 @@ jobs:
 
         steps:
             - name: Checkout
-              uses: actions/checkout@v2
+              uses: actions/checkout@v4
             - name: Install PHP
               uses: shivammathur/setup-php@v2
               with:
                   php-version: ${{ matrix.php }}
-            - name: Get composer cache directory
+            - name: Determine composer cache directory
               id: composer-cache
-              run: echo "name=dir::$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
-            - name: Cache composer dependencies
+              run: echo "COMPOSER_CACHE_DIR=$(composer config cache-dir)" >> $GITHUB_ENV
+            - name: Cache dependencies composer installed with composer
               uses: actions/cache@v4
               with:
-                  path: ${{ steps.composer-cache.outputs.dir }}
-                  key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-                  restore-keys: ${{ runner.os }}-composer-
-            - name: Install dependencies
+                  path: ${{ env.COMPOSER_CACHE_DIR }}
+                  key: php${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
+                  restore-keys: php${{ matrix.php }}-composer-
+            - name: Update composer
+              run: composer self-update
+            - name: Install dependencies with composer
               run: composer update $DEFAULT_COMPOSER_FLAGS
             - name: Run unit tests with coverage
               run: vendor/bin/phpunit --verbose --coverage-clover=coverage.clover --colors=always
