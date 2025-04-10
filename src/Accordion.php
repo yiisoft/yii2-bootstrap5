@@ -139,7 +139,7 @@ class Accordion extends Widget
     {
         $items = [];
         $index = 0;
-        $expanded = array_search(true, ArrayHelper::getColumn(ArrayHelper::toArray($this->items), 'expand', true));
+        $expanded = in_array(true, ArrayHelper::getColumn(ArrayHelper::toArray($this->items), 'expand', true));
         foreach ($this->items as $key => $item) {
             if (!is_array($item)) {
                 $item = ['content' => $item];
@@ -166,12 +166,13 @@ class Accordion extends Widget
 
     /**
      * Renders a single collapsible item group
+     *
      * @param string $header a label of the item group [[items]]
      * @param array $item a single item from [[items]]
      * @param int $index the item index as each item group content must have an id
+     *
      * @return string the rendering result
-     * @throws InvalidConfigException
-     * @throws Exception
+     * @throws InvalidConfigException|Exception|\Throwable
      */
     public function renderItem(string $header, array $item, int $index): string
     {

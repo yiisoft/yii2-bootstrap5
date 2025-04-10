@@ -56,7 +56,7 @@ trait BootstrapWidgetTrait
      * make sure you call the parent implementation first.
      * @throws InvalidConfigException
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
         if (!isset($this->options['id'])) {
@@ -69,7 +69,7 @@ trait BootstrapWidgetTrait
      *
      * @param string $name the name of the Bootstrap plugin
      */
-    protected function registerPlugin(string $name)
+    protected function registerPlugin(string $name): void
     {
         /**
          * @see https://github.com/twbs/bootstrap/blob/v5.2.0/js/index.esm.js
@@ -106,7 +106,7 @@ trait BootstrapWidgetTrait
     /**
      * Registers JS event handlers that are listed in [[clientEvents]].
      */
-    protected function registerClientEvents(?string $name = null)
+    protected function registerClientEvents(?string $name = null): void
     {
         if (!empty($this->clientEvents)) {
             $id = $this->options['id'];

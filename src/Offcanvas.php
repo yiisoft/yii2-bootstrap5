@@ -112,11 +112,13 @@ class Offcanvas extends Widget
     /**
      * {@inheritDoc}
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
 
         $this->initOptions();
+
+        ob_start();
 
         echo $this->renderToggleButton() . "\n";
         echo Html::beginTag('div', $this->options) . "\n";
@@ -128,12 +130,15 @@ class Offcanvas extends Widget
     /**
      * Renders the widget.
      */
-    public function run()
+    public function run(): string
     {
-        echo "\n" . $this->renderBodyEnd();
-        echo "\n" . Html::endTag('div');
+        $content = ob_get_clean();
+        $content .= "\n" . $this->renderBodyEnd();
+        $content .= "\n" . Html::endTag('div');
 
         $this->registerPlugin('offcanvas');
+
+        return $content;
     }
 
     /**
@@ -185,7 +190,7 @@ class Offcanvas extends Widget
      * Renders the toggle button.
      * @return string|null the rendering result
      */
-    protected function renderToggleButton()
+    protected function renderToggleButton(): ?string
     {
         if (($toggleButton = $this->toggleButton) !== false) {
             $tag = ArrayHelper::remove($toggleButton, 'tag', 'button');
@@ -201,7 +206,7 @@ class Offcanvas extends Widget
      * Renders the close button.
      * @return string|null the rendering result
      */
-    protected function renderCloseButton()
+    protected function renderCloseButton(): ?string
     {
         if (($closeButton = $this->closeButton) !== false) {
             $tag = ArrayHelper::remove($closeButton, 'tag', 'button');
@@ -220,7 +225,7 @@ class Offcanvas extends Widget
      * Initializes the widget options.
      * This method sets the default values for various options.
      */
-    protected function initOptions()
+    protected function initOptions(): void
     {
         $this->options = array_merge([
             'tabindex' => -1,

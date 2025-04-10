@@ -88,7 +88,7 @@ class Popover extends Widget
     /**
      * {@inheritDoc}
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
 
@@ -100,7 +100,7 @@ class Popover extends Widget
     /**
      * {@inheritDoc}
      */
-    public function run()
+    public function run(): ?string
     {
         $content = ob_get_clean();
 
@@ -151,7 +151,7 @@ class Popover extends Widget
      * Renders the toggle button.
      * @return string|null the rendering result
      */
-    protected function renderToggleButton()
+    protected function renderToggleButton(): ?string
     {
         if (($toggleButton = $this->toggleButton) !== false) {
             $tag = ArrayHelper::remove($toggleButton, 'tag', 'button');
@@ -168,7 +168,7 @@ class Popover extends Widget
      * Initializes the widget options.
      * This method sets the default values for various options.
      */
-    protected function initOptions()
+    protected function initOptions(): void
     {
 
         $options = array_merge([

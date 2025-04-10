@@ -260,7 +260,7 @@ class ActiveField extends \yii\widgets\ActiveField
      * Enable option `switch` to render as toggle switch.
      * @see https://getbootstrap.com/docs/5.1/forms/checks-radios/#switches
      */
-    public function checkbox($options = [], $enclosedByLabel = false)
+    public function checkbox($options = [], $enclosedByLabel = false): self
     {
         $checkOptions = $this->checkOptions;
         $options = ArrayHelper::merge($checkOptions, $options);
@@ -304,13 +304,15 @@ class ActiveField extends \yii\widgets\ActiveField
             }
         }
 
-        return parent::checkbox($options, false);
+        parent::checkbox($options, false);
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function radio($options = [], $enclosedByLabel = false)
+    public function radio($options = [], $enclosedByLabel = false): self
     {
         $checkOptions = $this->radioOptions;
         $options = ArrayHelper::merge($checkOptions, $options);
@@ -339,13 +341,15 @@ class ActiveField extends \yii\widgets\ActiveField
             $this->parts['{labelTitle}'] = $options['label'];
         }
 
-        return parent::radio($options, false);
+        parent::radio($options, false);
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function checkboxList($items, $options = [])
+    public function checkboxList($items, $options = []): self
     {
         if (!isset($options['item'])) {
             $this->template = str_replace("\n{error}", '', $this->template);
@@ -353,12 +357,7 @@ class ActiveField extends \yii\widgets\ActiveField
             $encode = ArrayHelper::getValue($options, 'encode', true);
             $itemCount = count($items) - 1;
             $error = $this->error()->parts['{error}'];
-            $options['item'] = function ($i, $label, $name, $checked, $value) use (
-                $itemOptions,
-                $encode,
-                $itemCount,
-                $error
-            ) {
+            $options['item'] = function ($i, $label, $name, $checked, $value) use ($itemOptions, $encode, $itemCount, $error): string {
                 $options = array_merge($this->checkOptions, [
                     'label' => $encode ? Html::encode($label) : $label,
                     'value' => $value,
@@ -387,7 +386,7 @@ class ActiveField extends \yii\widgets\ActiveField
     /**
      * {@inheritdoc}
      */
-    public function radioList($items, $options = [])
+    public function radioList($items, $options = []): self
     {
         if (!isset($options['item'])) {
             $this->template = str_replace("\n{error}", '', $this->template);
@@ -395,12 +394,7 @@ class ActiveField extends \yii\widgets\ActiveField
             $encode = ArrayHelper::getValue($options, 'encode', true);
             $itemCount = count($items) - 1;
             $error = $this->error()->parts['{error}'];
-            $options['item'] = function ($i, $label, $name, $checked, $value) use (
-                $itemOptions,
-                $encode,
-                $itemCount,
-                $error
-            ) {
+            $options['item'] = function ($i, $label, $name, $checked, $value) use ($itemOptions, $encode, $itemCount, $error): string {
                 $options = array_merge($this->radioOptions, [
                     'label' => $encode ? Html::encode($label) : $label,
                     'value' => $value,
@@ -429,31 +423,36 @@ class ActiveField extends \yii\widgets\ActiveField
     /**
      * {@inheritdoc}
      */
-    public function listBox($items, $options = [])
+    public function listBox($items, $options = []): self
     {
         if ($this->form->layout === ActiveForm::LAYOUT_INLINE) {
             Html::removeCssClass($this->labelOptions, 'visually-hidden');
         }
         Html::addCssClass($options, ['widget' => 'form-select']);
 
-        return parent::listBox($items, $options);
+        parent::listBox($items, $options);
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function dropDownList($items, $options = [])
+    public function dropDownList($items, $options = []): self
     {
         if ($this->form->layout === ActiveForm::LAYOUT_INLINE) {
             Html::removeCssClass($this->labelOptions, 'visually-hidden');
         }
         Html::addCssClass($options, ['widget' => 'form-select']);
 
-        return parent::dropDownList($items, $options);
+        parent::dropDownList($items, $options);
+
+        return $this;
     }
 
     /**
      * Renders Bootstrap static form control.
+     *
      * @param array $options the tag options in terms of name-value pairs. These will be rendered as
      * the attributes of the resulting tag. There are also a special options:
      *
@@ -473,7 +472,7 @@ class ActiveField extends \yii\widgets\ActiveField
     /**
      * {@inheritdoc}
      */
-    public function label($label = null, $options = [])
+    public function label($label = null, $options = []): self
     {
         if (is_bool($label)) {
             $this->enableLabel = $label;
@@ -490,13 +489,16 @@ class ActiveField extends \yii\widgets\ActiveField
     }
 
     /**
+     * Set inline to true or false
+     *
      * @param bool $value whether to render a inline list
+     *
      * @return $this the field object itself
      * Make sure you call this method before [[checkboxList()]] or [[radioList()]] to have any effect.
      */
-    public function inline($value = true): self
+    public function inline(bool $value = true): self
     {
-        $this->inline = (bool)$value;
+        $this->inline = $value;
 
         return $this;
     }
@@ -504,11 +506,13 @@ class ActiveField extends \yii\widgets\ActiveField
     /**
      * {@inheritdoc}
      */
-    public function fileInput($options = [])
+    public function fileInput($options = []): self
     {
         Html::addCssClass($options, ['widget' => 'form-control']);
 
-        return parent::fileInput($options);
+        parent::fileInput($options);
+
+        return $this;
     }
 
     /**
@@ -523,21 +527,24 @@ class ActiveField extends \yii\widgets\ActiveField
      * @return $this
      * @see https://getbootstrap.com/docs/5.1/forms/range/
      */
-    public function rangeInput(array $options = [])
+    public function rangeInput(array $options = []): self
     {
         Html::addCssClass($options, ['widget' => 'form-range']);
 
-        return $this->input('range', $options);
+        $this->input('range', $options);
+
+        return $this;
     }
 
     /**
      * Renders a color picker (custom input).
      *
      * @param array $options the tag options in terms of name-value pairs
+     *
      * @return $this
      * @see https://getbootstrap.com/docs/5.1/forms/form-control/#color
      */
-    public function colorInput(array $options = [])
+    public function colorInput(array $options = []): self
     {
         Html::removeCssClass($options, 'form-control');
         Html::addCssClass($options, ['widget' => 'form-control form-control-color']);
@@ -547,6 +554,7 @@ class ActiveField extends \yii\widgets\ActiveField
 
     /**
      * @param array $instanceConfig the configuration passed to this instance's constructor
+     *
      * @return array the layout specific default configuration for this instance
      */
     protected function createLayoutConfig(array $instanceConfig): array
@@ -611,7 +619,7 @@ class ActiveField extends \yii\widgets\ActiveField
      * @param string|null $label the label or null to use model label
      * @param array $options the tag options
      */
-    protected function renderLabelParts(?string $label = null, array $options = [])
+    protected function renderLabelParts(?string $label = null, array $options = []): void
     {
         $options = array_merge($this->labelOptions, $options);
         if ($label === null) {

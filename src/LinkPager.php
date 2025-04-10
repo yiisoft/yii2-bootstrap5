@@ -146,7 +146,7 @@ class LinkPager extends Widget
      * Initializes the pager.
      * @throws InvalidConfigException
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
 
@@ -179,7 +179,7 @@ class LinkPager extends Widget
      * These links are generated using [[\yii\data\Pagination::getLinks()]].
      * @see https://www.w3.org/TR/html401/struct/links.html#h-12.1.2
      */
-    protected function registerLinkTags()
+    protected function registerLinkTags(): void
     {
         $view = $this->getView();
         foreach ($this->pagination->getLinks() as $rel => $href) {

@@ -71,7 +71,7 @@ class Dropdown extends Widget
     /**
      * {@inheritDoc}
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
         Html::addCssClass($this->options, ['widget' => 'dropdown-menu']);

@@ -20,7 +20,7 @@ class TranslationBootstrap implements BootstrapInterface
     /**
      * @inheritDoc
      */
-    public function bootstrap($app)
+    public function bootstrap($app): void
     {
         $app->getI18n()->translations['yii/bootstrap5'] = [
             'class' => GettextMessageSource::class,

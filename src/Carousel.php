@@ -84,7 +84,7 @@ class Carousel extends Widget
      * {@inheritDoc}
      * @throws InvalidConfigException
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
         Html::addCssClass($this->options, ['widget' => 'carousel slide']);

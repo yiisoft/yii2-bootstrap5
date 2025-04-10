@@ -125,7 +125,7 @@ class NavBar extends Widget
     /**
      * {@inheritDoc}
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
         if (!isset($this->options['class']) || empty($this->options['class'])) {
@@ -165,6 +165,8 @@ class NavBar extends Widget
             }
         }
 
+        ob_start();
+
         echo Html::beginTag($navTag, $navOptions) . "\n";
         if ($this->renderInnerContainer) {
             echo Html::beginTag('div', $this->innerContainerOptions) . "\n";
@@ -184,7 +186,7 @@ class NavBar extends Widget
     /**
      * Renders the widget.
      */
-    public function run()
+    public function run(): string
     {
         if ($this->collapseOptions !== false) {
             $tag = ArrayHelper::remove($this->collapseOptions, 'tag', 'div');
@@ -192,12 +194,15 @@ class NavBar extends Widget
         } elseif ($this->offcanvasOptions !== false) {
             Offcanvas::end();
         }
+        $content = ob_get_clean();
         if ($this->renderInnerContainer) {
-            echo Html::endTag('div') . "\n";
+            $content .= Html::endTag('div') . "\n";
         }
         $tag = ArrayHelper::remove($this->options, 'tag', 'nav');
-        echo Html::endTag($tag);
+        $content .= Html::endTag($tag);
         BootstrapPluginAsset::register($this->getView());
+
+        return $content;
     }
 
     /**
@@ -205,7 +210,7 @@ class NavBar extends Widget
      * @param array $collapseOptions
      * @deprecated
      */
-    public function setContainerOptions(array $collapseOptions)
+    public function setContainerOptions(array $collapseOptions): void
     {
         $this->collapseOptions = $collapseOptions;
     }

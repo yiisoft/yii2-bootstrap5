@@ -142,7 +142,7 @@ class Tabs extends Widget
     /**
      * {@inheritdoc}
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
         Html::addCssClass($this->options, ['widget' => 'nav', $this->navType]);
@@ -186,7 +186,7 @@ class Tabs extends Widget
      * @throws InvalidConfigException
      * @throws Exception
      */
-    protected function prepareItems(array &$items, string $prefix = '')
+    protected function prepareItems(array &$items, string $prefix = ''): void
     {
         if (!$this->hasActiveTab()) {
             $this->activateFirstVisibleTab();
@@ -260,7 +260,7 @@ class Tabs extends Widget
      * not explicitly set to inactive (`'active' => false`).
      * @throws Exception
      */
-    protected function activateFirstVisibleTab()
+    protected function activateFirstVisibleTab(): void
     {
         foreach ($this->items as $i => $item) {
             $active = ArrayHelper::getValue($item, 'active', null);

@@ -72,24 +72,28 @@ class Alert extends Widget
     /**
      * {@inheritdoc}
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
 
         $this->initOptions();
 
+        ob_start();
         echo Html::beginTag('div', $this->options) . "\n";
     }
 
     /**
      * {@inheritdoc}
      */
-    public function run()
+    public function run(): string
     {
-        echo "\n" . $this->renderBodyEnd();
-        echo "\n" . Html::endTag('div');
+        $content = ob_get_clean();
+        $content .= "\n" . $this->renderBodyEnd();
+        $content .= "\n" . Html::endTag('div');
 
         $this->registerPlugin('alert');
+
+        return $content;
     }
 
     /**
@@ -105,7 +109,7 @@ class Alert extends Widget
      * Renders the close button.
      * @return string|null the rendering result
      */
-    protected function renderCloseButton()
+    protected function renderCloseButton(): ?string
     {
         if (($closeButton = $this->closeButton) !== false) {
             $tag = ArrayHelper::remove($closeButton, 'tag', 'button');
@@ -124,7 +128,7 @@ class Alert extends Widget
      * Initializes the widget options.
      * This method sets the default values for various options.
      */
-    protected function initOptions()
+    protected function initOptions(): void
     {
         Html::addCssClass($this->options, ['widget' => 'alert']);
 
