@@ -215,10 +215,10 @@ HTML
 
     /**
      * @dataProvider invalidItemsProvider
-     * @expectedException \yii\base\InvalidConfigException
      */
     public function testMissingLabel($items)
     {
+        $this->expectException(\yii\base\InvalidConfigException::class);
         Accordion::widget([
             'items' => $items,
         ]);
@@ -278,12 +278,12 @@ HTML
         $output = Accordion::widget([
             'items' => $items
         ]);
-        $this->assertContains('data-bs-parent="', $output);
+        $this->assertStringContainsString('data-bs-parent="', $output);
         $output = Accordion::widget([
             'autoCloseItems' => false,
             'items' => $items
         ]);
-        $this->assertNotContains('data-bs-parent="', $output);
+        $this->assertStringNotContainsString('data-bs-parent="', $output);
     }
 
     /**
@@ -310,8 +310,8 @@ HTML
                 'class' => 'custom-toggle',
             ],
         ]);
-        $this->assertContains('<h5 class="mb-0"><a type="button" class="custom-toggle" href="#w0-collapse0" ', $output);
-        $this->assertNotContains('<button', $output);
+        $this->assertStringContainsString('<h5 class="mb-0"><a type="button" class="custom-toggle" href="#w0-collapse0" ', $output);
+        $this->assertStringNotContainsString('<button', $output);
 
         $output = Accordion::widget([
             'items' => $items,
@@ -320,7 +320,7 @@ HTML
                 'class' => ['widget' => 'custom-toggle'],
             ],
         ]);
-        $this->assertContains('<h5 class="mb-0"><a type="button" class="custom-toggle" href="#w1-collapse0" ', $output);
-        $this->assertNotContains('collapse-toggle', $output);
+        $this->assertStringContainsString('<h5 class="mb-0"><a type="button" class="custom-toggle" href="#w1-collapse0" ', $output);
+        $this->assertStringNotContainsString('collapse-toggle', $output);
     }
 }

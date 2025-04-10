@@ -291,7 +291,7 @@ HTML;
             ]
         ])->render();
 
-        $this->assertContains('data-attribute="test"', $content);
+        $this->assertStringContainsString('data-attribute="test"', $content);
     }
 
     /**
@@ -306,10 +306,10 @@ HTML;
             ]
         ])->render();
 
-        $this->assertContains('data-attribute="test"', $content);
+        $this->assertStringContainsString('data-attribute="test"', $content);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         // dirty way to have Request object not throwing exception when running testHomeLinkNull()
         $_SERVER['SCRIPT_FILENAME'] = "index.php";

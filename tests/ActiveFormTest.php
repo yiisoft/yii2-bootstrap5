@@ -397,7 +397,7 @@ HTML;
     {
         $form = ActiveForm::widget();
 
-        $this->assertNotContains('role="form"', $form);
+        $this->assertStringNotContainsString('role="form"', $form);
     }
 
     public function testErrorSummaryRendering()
@@ -418,7 +418,7 @@ HTML;
         $this->assertContainsWithoutLE('<div class="alert alert-danger"', $out);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         // dirty way to have Request object not throwing exception when running testFormNoRoleAttribute()
         $_SERVER['REQUEST_URI'] = "index.php";

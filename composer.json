@@ -24,14 +24,14 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "php": ">=7.0",
+        "php": ">=7.3",
         "ext-json": "*",
         "yiisoft/yii2": "^2.0.42",
-        "bower-asset/bootstrap": "^5.1.0"
+        "bower-asset/bootstrap": "^5.2.3"
     },
     "require-dev": {
         "yiisoft/yii2-coding-standards": "~2.0",
-        "phpunit/phpunit": "^6.5.14",
+        "phpunit/phpunit": "^9.6",
         "twbs/bootstrap-icons": "^1.7.2"
     },
     "suggest": {
