@@ -11,7 +11,7 @@ use yii\bootstrap5\Breadcrumbs;
 
 class TranslationTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->mockWebApplication([
             'language' => 'de-CH',
