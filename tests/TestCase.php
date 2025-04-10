@@ -39,13 +39,13 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $needle = str_replace("\r\n", "\n", $needle);
         $haystack = str_replace("\r\n", "\n", $haystack);
 
-        $this->assertContains($needle, $haystack);
+        $this->assertStringContainsString($needle, $haystack);
     }
 
     /**
      * {@inheritDoc}
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
         $this->mockWebApplication();
@@ -54,7 +54,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     /**
      * {@inheritDoc}
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         parent::tearDown();
         $this->destroyApplication();
@@ -102,7 +102,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * @param string|null $moduleID
      * @param array $params
      */
-    protected function mockAction(string $controllerId, string $actionID, string $moduleID = null, array $params = [])
+    protected function mockAction(string $controllerId, string $actionID, ?string $moduleID = null, array $params = [])
     {
         Yii::$app->controller = $controller = new Controller($controllerId, Yii::$app);
         $controller->actionParams = $params;

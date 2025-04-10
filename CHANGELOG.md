@@ -4,6 +4,8 @@ Yii Framework 2 bootstrap5 extension Change Log
 2.0.5 under development
 -----------------------
 
+- Bug #80: Prevent publishing of whole bootstrap directory (rmenor)
+- Bug #92: Explicit nullable parameter (OneMorePenguin, simialbi)
 - Enh #78: Navbar has new attribute `brandImageOptions` (EvilKarter)
 - Bug #74: Bootstrap5 Button is not registering clientEvents (simialbi)
 - Bug #72: Nav::isItemActive(): Return value must be of type bool, int returned (hirenbhut93)
