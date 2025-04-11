@@ -104,9 +104,6 @@ class ButtonDropdown extends Widget
      */
     public $renderContainer = true;
 
-    /**
-     * {@inheritDoc}
-     */
     public function init(): void
     {
         parent::init();
