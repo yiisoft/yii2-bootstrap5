@@ -50,7 +50,6 @@ class Button extends Widget
     public function init(): void
     {
         parent::init();
-        $this->clientOptions = [];
         Html::addCssClass($this->options, [
             'widget' => 'btn',
         ]);

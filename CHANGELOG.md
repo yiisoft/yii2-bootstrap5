@@ -4,6 +4,8 @@ Yii Framework 2 bootstrap5 extension Change Log
 2.0.51 under development
 ------------------------
 
+- Bug #88: Fix ButtonDropdown JS error (stevekr, simialbi)
+
 2.0.50 April 10, 2025
 ---------------------
 

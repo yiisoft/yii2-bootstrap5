@@ -104,7 +104,9 @@ class ButtonDropdown extends Widget
      */
     public $renderContainer = true;
 
-
+    /**
+     * {@inheritDoc}
+     */
     public function init(): void
     {
         parent::init();
@@ -204,6 +206,7 @@ class ButtonDropdown extends Widget
             'tagName' => $this->tagName,
             'label' => $label,
             'options' => $buttonOptions,
+            'clientOptions' => false,
             'encodeLabel' => false,
             'view' => $this->getView(),
         ]) . "\n" . $splitButton;
