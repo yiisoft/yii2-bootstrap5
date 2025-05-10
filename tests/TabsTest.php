@@ -466,6 +466,6 @@ HTML;
 <div id="w0-tab1" class="tab-pane"><div>Content 2</div></div></div>
 HTML;
 
-        $this->assertEquals($expected, $html);
+        $this->assertEqualsWithoutLE($expected, $html);
     }
 }
