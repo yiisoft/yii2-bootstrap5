@@ -43,9 +43,6 @@
             "php-forge/foxy": true
         },
         "foxy": {
-            "enable-packages": {
-                "yiisoft/*": true
-            },
             "manager": "npm"
         }
     },
@@ -63,6 +60,7 @@
         "branch-alias": {
             "dev-master": "2.0.x-dev"
         },
-        "bootstrap": "yii\\bootstrap5\\i18n\\TranslationBootstrap"
+        "bootstrap": "yii\\bootstrap5\\i18n\\TranslationBootstrap",
+        "foxy": true
     }
 }
