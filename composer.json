@@ -22,7 +22,7 @@
             "email": "simi.albi@outlook.com"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {
         "php": ">=8.1",
         "ext-json": "*",
@@ -58,7 +58,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "2.0.x-dev"
+            "dev-master": "22.0.x-dev"
         },
         "bootstrap": "yii\\bootstrap5\\i18n\\TranslationBootstrap",
         "foxy": true
