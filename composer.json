@@ -57,9 +57,6 @@
         }
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "22.0.x-dev"
-        },
         "bootstrap": "yii\\bootstrap5\\i18n\\TranslationBootstrap",
         "foxy": true
     }
