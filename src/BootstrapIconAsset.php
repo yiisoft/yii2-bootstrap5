@@ -17,7 +17,7 @@ use yii\web\AssetBundle;
  */
 class BootstrapIconAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/twbs/bootstrap-icons/font';
+    public $sourcePath = '@npm/bootstrap-icons/font';
 
     public $css = [
         'bootstrap-icons.css',
