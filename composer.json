@@ -22,33 +22,30 @@
             "email": "simi.albi@outlook.com"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {
-        "php": ">=7.3",
+        "php": ">=8.1",
         "ext-json": "*",
-        "yiisoft/yii2": "^2.0.42",
-        "bower-asset/bootstrap": "^5.2.3"
+        "yiisoft/yii2": "22.0.x-dev"
     },
     "require-dev": {
-        "yiisoft/yii2-coding-standards": "~2.0",
+        "php-forge/foxy": "^0.1",
         "phpunit/phpunit": "^9.6",
         "symplify/easy-coding-standard": "^12.1",
-        "twbs/bootstrap-icons": "^1.7.2"
+        "yiisoft/yii2-coding-standards": "~2.0"
     },
     "suggest": {
         "twbs/bootstrap-icons": "Add this package to the `require` section of your `composer.json` if you'd like to use the bootstrap icon asset."
     },
     "config": {
         "allow-plugins": {
-            "yiisoft/yii2-composer": true
+            "yiisoft/yii2-composer": true,
+            "php-forge/foxy": true
+        },
+        "foxy": {
+            "manager": "npm"
         }
     },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://asset-packagist.org"
-        }
-    ],
     "autoload": {
         "psr-4": {
             "yii\\bootstrap5\\": "src"
@@ -60,9 +57,7 @@
         }
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "2.0.x-dev"
-        },
-        "bootstrap": "yii\\bootstrap5\\i18n\\TranslationBootstrap"
+        "bootstrap": "yii\\bootstrap5\\i18n\\TranslationBootstrap",
+        "foxy": true
     }
 }
