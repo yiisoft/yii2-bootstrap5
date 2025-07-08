@@ -150,8 +150,8 @@ class LinkPager extends Widget
     public $disableCurrentPageButton = false;
 
     /**
-     * @var array Number of records displayed per page. If the array is empty, this area will not be displayed.
-     * e.g. [5=>5, 10 => 10, 20 => 20, 50 => 50]
+     * @var array Options array for records per page in the pager dropdown. If empty, the page size selection dropdown will not be shown.
+     * e.g. [5 => '5 per page', 10 => '10 per page', 20 => '20 per page', 50 => '50 per page'] The key is the page size, and the value is the display text.
      */
     public $pageSizeOptions = [];
 
