@@ -191,7 +191,7 @@ class LinkPagerTest extends TestCase
             <ul class="pagination"><li class="page-item prev disabled"><a class="page-link" href="/?r=test&amp;page=1" data-page="0" tabindex="-1"><span aria-hidden="true">&laquo;</span></a></li>
             <li class="page-item next"><a class="page-link" href="/?r=test&amp;page=2" data-page="1"><span aria-hidden="true">&raquo;</span></a></li></ul>
             HTML,
-            $output
+            $output,
         );
 
         $output = LinkPager::widget([
@@ -204,7 +204,7 @@ class LinkPagerTest extends TestCase
             <ul class="pagination"><li class="page-item prev"><a class="page-link" href="/?r=test&amp;page=1" data-page="0"><span aria-hidden="true">&laquo;</span></a></li>
             <li class="page-item next"><a class="page-link" href="/?r=test&amp;page=3" data-page="2"><span aria-hidden="true">&raquo;</span></a></li></ul>
             HTML,
-            $output
+            $output,
         );
     }
 
