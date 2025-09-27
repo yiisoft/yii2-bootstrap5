@@ -5,6 +5,7 @@ Yii Framework 2 bootstrap5 extension Change Log
 ------------------------
 
 - Bug #88: Fix ButtonDropdown JS error (stevekr, simialbi)
+- Bug #103: Fix `LinkPager::getPageRange` when `maxButtons` is 2 (max-s-lab)
 
 2.0.50 April 10, 2025
 ---------------------
