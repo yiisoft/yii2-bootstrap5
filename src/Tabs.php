@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace yii\bootstrap5;
 
+use Yii;
 use Exception;
 use Throwable;
 use yii\base\InvalidConfigException;
@@ -76,6 +77,7 @@ class Tabs extends Widget
      * - headerOptions: array, optional, the HTML attributes of the tab header.
      * - linkOptions: array, optional, the HTML attributes of the tab header link tags.
      * - content: string, optional, the content (HTML) of the tab pane.
+     * - view: array, optional, the view that should be rendered with Yii::$app->controller->view->render
      * - url: string, optional, an external URL. When this is specified, clicking on this tab will bring
      *   the browser to this URL. This option is available since version 2.0.4.
      * - options: array, optional, the HTML attributes of the tab pane container.
@@ -237,7 +239,12 @@ class Tabs extends Widget
 
             if ($this->renderTabContent) {
                 $tag = ArrayHelper::remove($options, 'tag', 'div');
-                $this->panes[] = Html::tag($tag, $item['content'] ?? '', $options);
+                $view = ArrayHelper::getValue($item, 'view');
+                $content = ArrayHelper::getValue($item, 'content', '');
+                if (!$content && $view) {
+                    $content = Yii::$app->view->renderFile($view[0], ArrayHelper::getValue($view, 1, []), Yii::$app->controller);
+                }
+                $this->panes[] = Html::tag($tag, $content, $options);
             }
         }
     }

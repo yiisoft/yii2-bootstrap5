@@ -276,6 +276,25 @@ class TabsTest extends TestCase
         $this->assertStringContainsString('<' . $checkTag, $out);
     }
 
+    public function testRenderView()
+    {
+        $out = Tabs::widget([
+            'items' => [
+                [
+                    'label' => 'Page1',
+                    'view' => [
+                        '@yiiunit/extensions/bootstrap5/views/tab-test.php',
+                        [
+                            'content' => 'test',
+                        ],
+                    ],
+                ],
+            ],
+        ]);
+
+        $this->assertStringContainsString('<span class="test-content">test</span>', $out);
+    }
+
     public function testTabContentOptions()
     {
         $checkAttribute = 'test_attribute';
