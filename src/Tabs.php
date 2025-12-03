@@ -9,6 +9,7 @@
 declare(strict_types=1);
 
 namespace yii\bootstrap5;
+
 use Yii;
 use Exception;
 use Throwable;
@@ -241,7 +242,7 @@ class Tabs extends Widget
                 $view = ArrayHelper::getValue($item, 'view');
                 $content = ArrayHelper::getValue($item, 'content', '');
                 if (!$content && $view) {
-                    $content = Yii::$app->controller->renderPartial($view[0], ArrayHelper::getValue($view, 1, []));
+                    $content = Yii::$app->view->renderFile($view[0], ArrayHelper::getValue($view, 1, []), Yii::$app->controller);
                 }
                 $this->panes[] = Html::tag($tag, $content, $options);
             }

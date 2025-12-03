@@ -4,10 +4,10 @@ Yii Framework 2 bootstrap5 extension Change Log
 2.0.51 under development
 ------------------------
 
+- Enh #87: Added view option to render a view with Yii inside tab content
 - Bug #83: Removed bower asset and replaced with twbs/bootstrap package (simialbi)
 - Bug #88: Fix ButtonDropdown JS error (stevekr, simialbi)
 - Bug #103: Fix `LinkPager::getPageRange` when `maxButtons` is 2 (mspirkov)
-- Enh #87: Added view option to render a view with Yii inside tab content
 
 2.0.50 April 10, 2025
 ---------------------
