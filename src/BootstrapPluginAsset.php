@@ -17,10 +17,10 @@ use yii\web\AssetBundle;
  */
 class BootstrapPluginAsset extends AssetBundle
 {
-    public $sourcePath = '@bower/bootstrap/dist';
+    public $sourcePath = '@vendor/twbs/bootstrap/dist/js';
 
     public $js = [
-        'js/bootstrap.bundle.js',
+        'bootstrap.bundle.js',
     ];
 
     public $depends = [
