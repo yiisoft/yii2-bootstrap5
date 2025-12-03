@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace yii\bootstrap5;
 
+use Yii;
 use yii\base\InvalidConfigException;
 use yii\data\Pagination;
 use yii\helpers\ArrayHelper;
@@ -148,6 +149,17 @@ class LinkPager extends Widget
      */
     public $disableCurrentPageButton = false;
 
+    /**
+     * @var array Options array for records per page in the pager dropdown. If empty, the page size selection dropdown will not be shown.
+     * e.g. [5 => '5 per page', 10 => '10 per page', 20 => '20 per page', 50 => '50 per page'] The key is the page size, and the value is the display text.
+     */
+    public $pageSizeOptions = [];
+
+    /**
+     * @var string|bool the text label for the "goto" page area. Note that this will NOT be HTML-encoded.
+     * If this property is false, the "goto" page area will not be displayed.
+     */
+    public $goToPageLabel = false;
 
     /**
      * Initializes the pager.
@@ -208,6 +220,8 @@ class LinkPager extends Widget
         }
 
         $buttons = [];
+        $buttons[] = $this->renderSelectPageSize();
+
         $currentPage = $this->pagination->getPage();
 
         // first page
@@ -274,10 +288,55 @@ class LinkPager extends Widget
             );
         }
 
+        $buttons[] = $this->renderGoToPage();
+
         $options = $this->listOptions;
         $tag = ArrayHelper::remove($options, 'tag', 'ul');
 
         return Html::tag($tag, implode("\n", $buttons), $options);
+    }
+
+    protected function renderSelectPageSize(): string
+    {
+        $html = '';
+        if (!empty($this->pageSizeOptions)) {
+            $html .= '<li class="me-2">';
+            $html .= Html::dropDownList(
+                $this->pagination->pageSizeParam,
+                $this->pagination->getPageSize(),
+                $this->pageSizeOptions,
+                [
+                    'class' => 'form-select',
+                    'onchange' => "location.href='" . $this->pagination->createUrl(0) . "&" . $this->pagination->pageSizeParam . "=' + this.value;",
+                ],
+            );
+            $html .= '</li>';
+        }
+        return $html;
+    }
+
+    protected function renderGoToPage(): string
+    {
+        $currentPage = $this->pagination->getPage();
+        $totalPages = $this->pagination->getPageCount();
+
+        $html = '';
+        if ($this->goToPageLabel !== false) {
+            $text = $this->goToPageLabel === true ? Yii::t('yii', 'View') : $this->goToPageLabel;
+            $html .= '<li class="d-flex ms-2">';
+            $html .= Html::input('number', 'page', $currentPage + 1, [
+                'class' => 'form-control form-control-sm',
+                'min' => 1,
+                'max' => $totalPages,
+                'id' => 'custom-page-input',
+            ]);
+            $html .= Html::button($text, [
+                'class' => 'form-control btn btn-outline-secondary',
+                'onclick' => "location.href='" . $this->pagination->createUrl(0) . "&" . $this->pagination->pageParam . "=' + (this.parentElement.querySelector('input').value);",
+            ]);
+            $html .= '</li>';
+        }
+        return $html;
     }
 
     /**
