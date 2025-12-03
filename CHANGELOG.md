@@ -1,9 +1,19 @@
 Yii Framework 2 bootstrap5 extension Change Log
 ==============================================
 
-2.0.5 under development
------------------------
+2.0.51 under development
+------------------------
 
+- Bug #83: Removed bower asset and replaced with twbs/bootstrap package (simialbi)
+- Bug #88: Fix ButtonDropdown JS error (stevekr, simialbi)
+- Bug #103: Fix `LinkPager::getPageRange` when `maxButtons` is 2 (mspirkov)
+
+2.0.50 April 10, 2025
+---------------------
+
+- Bug #84: Checkbox labels in inline forms are no longer hidden (BBoom)
+- Bug #80: Prevent publishing of whole bootstrap directory (rmenor)
+- Bug #92: Explicit nullable parameter (OneMorePenguin, simialbi)
 - Enh #78: Navbar has new attribute `brandImageOptions` (EvilKarter)
 - Bug #74: Bootstrap5 Button is not registering clientEvents (simialbi)
 - Bug #72: Nav::isItemActive(): Return value must be of type bool, int returned (hirenbhut93)

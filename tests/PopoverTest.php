@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\bootstrap5;
 
-use PHPUnit\Framework\Constraint\IsType;
 use Yii;
 use yii\bootstrap5\Html;
 use yii\bootstrap5\Popover;
@@ -16,7 +17,11 @@ class PopoverTest extends TestCase
     public function testButtonRender()
     {
         Popover::$counter = 0;
-        $out = Popover::widget(['toggleButton' => ['class' => ['btn', 'btn-primary']]]);
+        $out = Popover::widget([
+            'toggleButton' => [
+                'class' => ['btn', 'btn-primary'],
+            ],
+        ]);
 
         $expected = <<<HTML
 <button type="button" id="w0" class="btn btn-primary">Show</button>
@@ -29,14 +34,16 @@ HTML;
     {
         Popover::$counter = 0;
         Popover::widget([
-            'headerOptions' => ['class' => ['test-header']],
+            'headerOptions' => [
+                'class' => ['test-header'],
+            ],
             'placement' => Popover::PLACEMENT_BOTTOM,
-            'title' => 'Test Popover'
+            'title' => 'Test Popover',
         ]);
 
         $js = Yii::$app->view->js[View::POS_READY];
 
-        $this->assertInternalType(IsType::TYPE_ARRAY, $js);
+        $this->assertIsArray($js);
         $options = array_shift($js);
 
         $this->assertContainsWithoutLE("(new bootstrap.Popover('#w0', {", $options);
@@ -50,12 +57,14 @@ HTML;
     {
         Popover::$counter = 0;
         Popover::begin([]);
-        echo Html::tag('span', 'Test content', ['class' => ['test-content']]);
+        echo Html::tag('span', 'Test content', [
+            'class' => ['test-content'],
+        ]);
         Popover::end();
 
         $js = Yii::$app->view->js[View::POS_READY];
 
-        $this->assertInternalType(IsType::TYPE_ARRAY, $js);
+        $this->assertIsArray($js);
         $options = array_shift($js);
 
         $this->assertContainsWithoutLE('"content":"\u003Cspan class=\u0022test-content\u0022\u003ETest content\u003C\/span\u003E"', $options);

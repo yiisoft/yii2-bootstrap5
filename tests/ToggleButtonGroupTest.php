@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\bootstrap5;
 
 use yii\base\Model;
@@ -33,14 +35,15 @@ HTML;
         $this->assertEqualsWithoutLE($expectedHtml, $html);
     }
 
-    /**
-     */
+
     public function testCheckboxChecked()
     {
         Html::$counter = 0;
         $html = ToggleButtonGroup::widget([
             'type' => ToggleButtonGroup::TYPE_CHECKBOX,
-            'model' => new ToggleButtonGroupTestModel(['value' => '2']),
+            'model' => new ToggleButtonGroupTestModel([
+                'value' => '2',
+            ]),
             'attribute' => 'value',
             'items' => [
                 '1' => 'item 1',
@@ -48,7 +51,7 @@ HTML;
             ],
         ]);
 
-        $this->assertContains('<input type="checkbox" id="i1" class="btn-check" name="ToggleButtonGroupTestModel[value][]" value="2" checked autocomplete="off">', $html);
+        $this->assertStringContainsString('<input type="checkbox" id="i1" class="btn-check" name="ToggleButtonGroupTestModel[value][]" value="2" checked autocomplete="off">', $html);
     }
 
     public function testRadio()
@@ -73,14 +76,15 @@ HTML;
         $this->assertEqualsWithoutLE($expectedHtml, $html);
     }
 
-    /**
-     */
+
     public function testRadioChecked()
     {
         Html::$counter = 0;
         $html = ToggleButtonGroup::widget([
             'type' => ToggleButtonGroup::TYPE_RADIO,
-            'model' => new ToggleButtonGroupTestModel(['value' => '2']),
+            'model' => new ToggleButtonGroupTestModel([
+                'value' => '2',
+            ]),
             'attribute' => 'value',
             'items' => [
                 '1' => 'item 1',
@@ -88,7 +92,7 @@ HTML;
             ],
         ]);
 
-        $this->assertContains('<input type="radio" id="i1" class="btn-check" name="ToggleButtonGroupTestModel[value]" value="2" checked autocomplete="off">', $html);
+        $this->assertStringContainsString('<input type="radio" id="i1" class="btn-check" name="ToggleButtonGroupTestModel[value]" value="2" checked autocomplete="off">', $html);
     }
 }
 

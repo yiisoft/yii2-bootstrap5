@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -52,16 +53,22 @@ class LinkPager extends Widget
      * @var array HTML attributes for the pager list tag.
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $listOptions = ['class' => ['pagination']];
+    public $listOptions = [
+        'class' => ['pagination'],
+    ];
     /**
      * @var array HTML attributes which will be applied to all link containers
      */
-    public $linkContainerOptions = ['class' => ['page-item']];
+    public $linkContainerOptions = [
+        'class' => ['page-item'],
+    ];
     /**
      * @var array HTML attributes for the link in a pager container tag.
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $linkOptions = ['class' => ['page-link']];
+    public $linkOptions = [
+        'class' => ['page-link'],
+    ];
     /**
      * @var string the CSS class for the each page button.
      */
@@ -146,7 +153,7 @@ class LinkPager extends Widget
      * Initializes the pager.
      * @throws InvalidConfigException
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
 
@@ -158,7 +165,6 @@ class LinkPager extends Widget
     /**
      * Executes the widget.
      * This overrides the parent implementation by displaying the generated page buttons.
-     * @return string
      */
     public function run(): string
     {
@@ -179,11 +185,14 @@ class LinkPager extends Widget
      * These links are generated using [[\yii\data\Pagination::getLinks()]].
      * @see https://www.w3.org/TR/html401/struct/links.html#h-12.1.2
      */
-    protected function registerLinkTags()
+    protected function registerLinkTags(): void
     {
         $view = $this->getView();
         foreach ($this->pagination->getLinks() as $rel => $href) {
-            $view->registerLinkTag(['rel' => $rel, 'href' => $href], $rel);
+            $view->registerLinkTag([
+                'rel' => $rel,
+                'href' => $href,
+            ], $rel);
         }
     }
 
@@ -209,7 +218,7 @@ class LinkPager extends Widget
                 0,
                 $this->firstPageCssClass,
                 $currentPage <= 0,
-                false
+                false,
             );
         }
 
@@ -223,7 +232,7 @@ class LinkPager extends Widget
                 $page,
                 $this->prevPageCssClass,
                 $currentPage <= 0,
-                false
+                false,
             );
         }
 
@@ -231,11 +240,11 @@ class LinkPager extends Widget
         list($beginPage, $endPage) = $this->getPageRange();
         for ($i = $beginPage; $i <= $endPage; ++$i) {
             $buttons[] = $this->renderPageButton(
-                (string)($i + 1),
+                (string) ($i + 1),
                 $i,
                 '',
-                $this->disableCurrentPageButton && $i == $currentPage,
-                $i == $currentPage
+                $this->disableCurrentPageButton && $i === $currentPage,
+                $i === $currentPage,
             );
         }
 
@@ -249,7 +258,7 @@ class LinkPager extends Widget
                 $page,
                 $this->nextPageCssClass,
                 $currentPage >= $pageCount - 1,
-                false
+                false,
             );
         }
 
@@ -257,11 +266,11 @@ class LinkPager extends Widget
         $lastPageLabel = $this->lastPageLabel === true ? $pageCount : $this->lastPageLabel;
         if ($lastPageLabel !== false) {
             $buttons[] = $this->renderPageButton(
-                (string)$lastPageLabel,
+                (string) $lastPageLabel,
                 $pageCount - 1,
                 $this->lastPageCssClass,
                 $currentPage >= $pageCount - 1,
-                false
+                false,
             );
         }
 
@@ -291,7 +300,9 @@ class LinkPager extends Widget
         $linkOptions['data']['page'] = $page;
 
         if ($active) {
-            $options['aria'] = ['current' => 'page'];
+            $options['aria'] = [
+                'current' => 'page',
+            ];
             Html::addCssClass($options, $this->activePageCssClass);
         }
         if ($disabled) {
@@ -312,7 +323,9 @@ class LinkPager extends Widget
         $currentPage = $this->pagination->getPage();
         $pageCount = $this->pagination->getPageCount();
 
-        $beginPage = max(0, $currentPage - (int)($this->maxButtonCount / 2));
+        $beginPageOffset = $this->maxButtonCount > 2 ? (int) ($this->maxButtonCount / 2) : 0;
+        $beginPage = max(0, $currentPage - $beginPageOffset);
+
         if (($endPage = $beginPage + $this->maxButtonCount - 1) >= $pageCount) {
             $endPage = $pageCount - 1;
             $beginPage = max(0, $endPage - $this->maxButtonCount + 1);

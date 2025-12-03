@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\bootstrap5;
 
 use yii\bootstrap5\Offcanvas;
@@ -14,7 +16,12 @@ class OffcanvasTest extends TestCase
         Offcanvas::$counter = 0;
         $out = Offcanvas::widget([
             'closeButton' => false,
-            'bodyOptions' => ['class' => 'offcanvas-body test', 'style' => ['text-align' => 'center']]
+            'bodyOptions' => [
+                'class' => 'offcanvas-body test',
+                'style' => [
+                    'text-align' => 'center',
+                ],
+            ],
         ]);
 
 
@@ -31,8 +38,7 @@ HTML;
         $this->assertEqualsWithoutLE($expected, $out);
     }
 
-    /**
-     */
+
     public function testOptions()
     {
         Offcanvas::$counter = 0;
@@ -41,15 +47,15 @@ HTML;
         Offcanvas::begin([
             'title' => 'Offcanvas title',
             'headerOptions' => [
-                'data-test' => 'Test'
+                'data-test' => 'Test',
             ],
             'titleOptions' => [
-                'tag' => 'h2'
+                'tag' => 'h2',
             ],
             'placement' => Offcanvas::PLACEMENT_END,
             'backdrop' => false,
             'scrolling' => true,
-            'closeButton' => false
+            'closeButton' => false,
         ]);
         echo '<p>Woohoo, you\'re reading this text in an offcanvas!</p>';
         Offcanvas::end();
@@ -78,7 +84,7 @@ HTML;
         Offcanvas::begin([
             'toggleButton' => [
                 'class' => ['btn', 'btn-primary'],
-                'label' => 'Launch demo offcanvas'
+                'label' => 'Launch demo offcanvas',
             ],
             'title' => 'Offcanvas title',
         ]);
@@ -86,9 +92,9 @@ HTML;
         Offcanvas::end();
         $out = ob_get_clean();
 
-        $this->assertContains(
+        $this->assertStringContainsString(
             '<button type="button" class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#w0" aria-controls="w0">Launch demo offcanvas</button>',
-            $out
+            $out,
         );
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -16,15 +17,9 @@ use yii\web\AssetBundle;
  */
 class BootstrapIconAsset extends AssetBundle
 {
-    /**
-     * @inheritDoc
-     */
     public $sourcePath = '@vendor/twbs/bootstrap-icons/font';
 
-    /**
-     * @inheritDoc
-     */
     public $css = [
-        'bootstrap-icons.css'
+        'bootstrap-icons.css',
     ];
 }

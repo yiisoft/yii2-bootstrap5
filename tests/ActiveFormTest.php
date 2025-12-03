@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\bootstrap5;
 
 use yii\base\DynamicModel;
@@ -14,7 +16,6 @@ use yiiunit\extensions\bootstrap5\data\User;
  */
 class ActiveFormTest extends TestCase
 {
-
     public function testDefaultLayout()
     {
         ActiveForm::$counter = 0;
@@ -22,7 +23,7 @@ class ActiveFormTest extends TestCase
         $model = new DynamicModel(['attributeName', 'radios']);
         $form = ActiveForm::begin([
             'action' => '/some-action',
-            'layout' => ActiveForm::LAYOUT_DEFAULT
+            'layout' => ActiveForm::LAYOUT_DEFAULT,
         ]);
         echo $form->field($model, 'attributeName');
         ActiveForm::end();
@@ -49,14 +50,14 @@ HTML;
         $model = new DynamicModel(['attributeName', 'checkbox', 'gridRadios']);
         $form = ActiveForm::begin([
             'action' => '/some-action',
-            'layout' => ActiveForm::LAYOUT_HORIZONTAL
+            'layout' => ActiveForm::LAYOUT_HORIZONTAL,
         ]);
         echo $form->field($model, 'attributeName');
         echo $form->field($model, 'checkbox')->checkbox();
         echo $form->field($model, 'gridRadios')->radioList([
             'option1' => 'First radio',
             'option2' => 'Second radio',
-            'option3' => 'Third radio'
+            'option3' => 'Third radio',
         ]);
         ActiveForm::end();
         $out = ob_get_clean();
@@ -114,8 +115,7 @@ HTML;
         $this->assertContainsWithoutLE($expected3, $out);
     }
 
-    /**
-     */
+
     public function testHorizontalLayoutTemplateOverride()
     {
         ActiveForm::$counter = 0;
@@ -123,9 +123,11 @@ HTML;
         $model = new DynamicModel(['checkboxName']);
         $form = ActiveForm::begin([
             'action' => '/some-action',
-            'layout' => ActiveForm::LAYOUT_HORIZONTAL
+            'layout' => ActiveForm::LAYOUT_HORIZONTAL,
         ]);
-        echo $form->field($model, 'checkboxName')->checkbox(['template' => "<div class=\"form-check offset-lg-1 col-lg-3\">\n{input}\n{label}\n</div>\n<div class=\"col-lg-8\">{error}</div>"]);
+        echo $form->field($model, 'checkboxName')->checkbox([
+            'template' => "<div class=\"form-check offset-lg-1 col-lg-3\">\n{input}\n{label}\n</div>\n<div class=\"col-lg-8\">{error}</div>",
+        ]);
         ActiveForm::end();
         $out = ob_get_clean();
 
@@ -148,13 +150,13 @@ HTML;
         $model = new DynamicModel(['attributeName', 'selectName', 'checkboxName']);
         $form = ActiveForm::begin([
             'action' => '/some-action',
-            'layout' => ActiveForm::LAYOUT_INLINE
+            'layout' => ActiveForm::LAYOUT_INLINE,
         ]);
         echo $form->field($model, 'attributeName');
         echo $form->field($model, 'selectName')->listBox([
             '1' => 'One',
             '2' => 'Two',
-            '3' => 'Three'
+            '3' => 'Three',
         ]);
         echo $form->field($model, 'checkboxName')->checkbox();
         ActiveForm::end();
@@ -184,7 +186,7 @@ HTML;
 <div class="mb-3 field-dynamicmodel-checkboxname">
 <div class="form-check">
 <input type="hidden" name="DynamicModel[checkboxName]" value="0"><input type="checkbox" id="dynamicmodel-checkboxname" class="form-check-input" name="DynamicModel[checkboxName]" value="1">
-<label class="visually-hidden form-check-label" for="dynamicmodel-checkboxname">Checkbox Name</label>
+<label class="form-check-label" for="dynamicmodel-checkboxname">Checkbox Name</label>
 
 
 </div>
@@ -205,13 +207,13 @@ HTML;
         $model = new DynamicModel(['attributeName', 'selectName', 'checkboxName']);
         $form = ActiveForm::begin([
             'action' => '/some-action',
-            'layout' => ActiveForm::LAYOUT_FLOATING
+            'layout' => ActiveForm::LAYOUT_FLOATING,
         ]);
         echo $form->field($model, 'attributeName');
         echo $form->field($model, 'selectName')->listBox([
             '1' => 'One',
             '2' => 'Two',
-            '3' => 'Three'
+            '3' => 'Three',
         ]);
         echo $form->field($model, 'checkboxName')->checkbox();
         ActiveForm::end();
@@ -262,7 +264,7 @@ HTML;
         $model = new User();
         $form = ActiveForm::begin([
             'action' => '/some-action',
-            'layout' => ActiveForm::LAYOUT_DEFAULT
+            'layout' => ActiveForm::LAYOUT_DEFAULT,
         ]);
         echo $form->field($model, 'firstName');
         echo $form->field($model, 'lastName');
@@ -318,11 +320,11 @@ HTML;
         $model->setAttributes([
             'id' => 1,
             'firstName' => 'John',
-            'lastName' => 'Doe'
+            'lastName' => 'Doe',
         ]);
         $form = ActiveForm::begin([
             'action' => '/some-action',
-            'layout' => ActiveForm::LAYOUT_DEFAULT
+            'layout' => ActiveForm::LAYOUT_DEFAULT,
         ]);
         echo $form->field($model, 'id')->staticControl();
         echo $form->field($model, 'firstName')->staticControl();
@@ -374,7 +376,9 @@ HTML;
         ActiveForm::$counter = 0;
         ob_start();
         $form = ActiveForm::begin();
-        echo $form->field($model, 'username', ['inputTemplate' => '{input}']);
+        echo $form->field($model, 'username', [
+            'inputTemplate' => '{input}',
+        ]);
         ActiveForm::end();
         $out = ob_get_clean();
 
@@ -397,7 +401,7 @@ HTML;
     {
         $form = ActiveForm::widget();
 
-        $this->assertNotContains('role="form"', $form);
+        $this->assertStringNotContainsString('role="form"', $form);
     }
 
     public function testErrorSummaryRendering()
@@ -408,7 +412,7 @@ HTML;
         $model->validate();
         $form = ActiveForm::begin([
             'action' => '/some-action',
-            'layout' => ActiveForm::LAYOUT_DEFAULT
+            'layout' => ActiveForm::LAYOUT_DEFAULT,
         ]);
         echo $form->errorSummary($model);
         ActiveForm::end();
@@ -418,7 +422,7 @@ HTML;
         $this->assertContainsWithoutLE('<div class="alert alert-danger"', $out);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         // dirty way to have Request object not throwing exception when running testFormNoRoleAttribute()
         $_SERVER['REQUEST_URI'] = "index.php";

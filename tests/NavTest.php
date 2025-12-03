@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\bootstrap5;
 
 use yii\bootstrap5\Nav;
@@ -24,20 +26,32 @@ class NavTest extends TestCase
                     [
                         'label' => 'Dropdown1',
                         'items' => [
-                            ['label' => 'Page2', 'content' => 'Page2'],
-                            ['label' => 'Page3', 'content' => 'Page3'],
-                        ]
+                            [
+                                'label' => 'Page2',
+                                'content' => 'Page2',
+                            ],
+                            [
+                                'label' => 'Page3',
+                                'content' => 'Page3',
+                            ],
+                        ],
                     ],
                     [
                         'label' => 'Dropdown2',
                         'visible' => false,
                         'items' => [
-                            ['label' => 'Page4', 'content' => 'Page4'],
-                            ['label' => 'Page5', 'content' => 'Page5'],
-                        ]
-                    ]
-                ]
-            ]
+                            [
+                                'label' => 'Page4',
+                                'content' => 'Page4',
+                            ],
+                            [
+                                'label' => 'Page5',
+                                'content' => 'Page5',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         );
 
         $expected = <<<EXPECTED
@@ -61,22 +75,38 @@ EXPECTED;
                     ],
                     [
                         'label' => 'Dropdown1',
-                        'dropdownOptions' => ['class' => 'test', 'data-id' => 't1', 'id' => 'test1'],
+                        'dropdownOptions' => [
+                            'class' => 'test',
+                            'data-id' => 't1',
+                            'id' => 'test1',
+                        ],
                         'items' => [
-                            ['label' => 'Page2', 'content' => 'Page2'],
-                            ['label' => 'Page3', 'content' => 'Page3'],
-                        ]
+                            [
+                                'label' => 'Page2',
+                                'content' => 'Page2',
+                            ],
+                            [
+                                'label' => 'Page3',
+                                'content' => 'Page3',
+                            ],
+                        ],
                     ],
                     [
                         'label' => 'Dropdown2',
                         'visible' => false,
                         'items' => [
-                            ['label' => 'Page4', 'content' => 'Page4'],
-                            ['label' => 'Page5', 'content' => 'Page5'],
-                        ]
-                    ]
-                ]
-            ]
+                            [
+                                'label' => 'Page4',
+                                'content' => 'Page4',
+                            ],
+                            [
+                                'label' => 'Page5',
+                                'content' => 'Page5',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         );
 
         $expected = <<<EXPECTED
@@ -100,8 +130,14 @@ EXPECTED;
                 [
                     'label' => 'Dropdown1',
                     'items' => [
-                        ['label' => 'Page2', 'content' => 'Page2'],
-                        ['label' => 'Page3', 'content' => 'Page3'],
+                        [
+                            'label' => 'Page2',
+                            'content' => 'Page2',
+                        ],
+                        [
+                            'label' => 'Page3',
+                            'content' => 'Page3',
+                        ],
                     ],
                 ],
                 [
@@ -135,9 +171,18 @@ EXPECTED;
                 [
                     'label' => 'Admin',
                     'items' => [
-                        ['label' => 'Users', 'url' => ['site/users']],
-                        ['label' => 'Roles', 'url' => ['site/roles']],
-                        ['label' => 'Statuses', 'url' => ['site/statuses']]
+                        [
+                            'label' => 'Users',
+                            'url' => ['site/users'],
+                        ],
+                        [
+                            'label' => 'Roles',
+                            'url' => ['site/roles'],
+                        ],
+                        [
+                            'label' => 'Statuses',
+                            'url' => ['site/statuses'],
+                        ],
                     ],
                 ],
             ],
@@ -232,8 +277,16 @@ EXPECTED;
                 [
                     'label' => 'Item2',
                     'items' => [
-                        ['label' => 'Page2', 'content' => 'Page2', 'url' => ['site/index']],
-                        ['label' => 'Page3', 'content' => 'Page3', 'active' => true],
+                        [
+                            'label' => 'Page2',
+                            'content' => 'Page2',
+                            'url' => ['site/index'],
+                        ],
+                        [
+                            'label' => 'Page3',
+                            'content' => 'Page3',
+                            'active' => true,
+                        ],
                     ],
                 ],
             ],
@@ -265,8 +318,16 @@ EXPECTED;
                 [
                     'label' => 'Item2',
                     'items' => [
-                        ['label' => 'Page2', 'content' => 'Page2', 'url' => ['site/index']],
-                        ['label' => 'Page3', 'content' => 'Page3', 'active' => true],
+                        [
+                            'label' => 'Page2',
+                            'content' => 'Page2',
+                            'url' => ['site/index'],
+                        ],
+                        [
+                            'label' => 'Page3',
+                            'content' => 'Page3',
+                            'active' => true,
+                        ],
                     ],
                 ],
             ],
@@ -291,13 +352,22 @@ EXPECTED;
             'items' => [
                 [
                     'label' => 'Item1',
-                    'disabled' => true
+                    'disabled' => true,
                 ],
                 [
                     'label' => 'Item2',
                     'items' => [
-                        ['label' => 'Page2', 'content' => 'Page2', 'url' => ['site/index'], 'disabled' => true],
-                        ['label' => 'Page3', 'content' => 'Page3', 'active' => true],
+                        [
+                            'label' => 'Page2',
+                            'content' => 'Page2',
+                            'url' => ['site/index'],
+                            'disabled' => true,
+                        ],
+                        [
+                            'label' => 'Page3',
+                            'content' => 'Page3',
+                            'active' => true,
+                        ],
                     ],
                 ],
             ],
@@ -329,7 +399,11 @@ EXPECTED;
                         [
                             'label' => 'Sub-dropdown',
                             'items' => [
-                                ['label' => 'Page', 'content' => 'Page', 'active' => true],
+                                [
+                                    'label' => 'Page',
+                                    'content' => 'Page',
+                                    'active' => true,
+                                ],
                             ],
                         ],
                     ],
@@ -347,7 +421,7 @@ EXPECTED;
         $this->assertEqualsWithoutLE($expected, $out);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->mockWebApplication([
             'components' => [
@@ -355,14 +429,14 @@ EXPECTED;
                     'class' => 'yii\web\Request',
                     'scriptUrl' => '/base/index.php',
                     'hostInfo' => 'http://example.com/',
-                    'url' => '/base/index.php&r=site%2Fcurrent&id=42'
+                    'url' => '/base/index.php&r=site%2Fcurrent&id=42',
                 ],
                 'urlManager' => [
                     'class' => 'yii\web\UrlManager',
                     'baseUrl' => '/base',
                     'scriptUrl' => '/base/index.php',
                     'hostInfo' => 'http://example.com/',
-                ]
+                ],
             ],
         ]);
     }

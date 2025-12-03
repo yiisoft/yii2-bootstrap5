@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -140,18 +141,19 @@ class Tabs extends Widget
     protected $panes = [];
 
 
-    /**
-     * {@inheritdoc}
-     */
-    public function init()
+    public function init(): void
     {
         parent::init();
-        Html::addCssClass($this->options, ['widget' => 'nav', $this->navType]);
-        Html::addCssClass($this->tabContentOptions, ['panel' => 'tab-content']);
+        Html::addCssClass($this->options, [
+            'widget' => 'nav',
+            $this->navType,
+        ]);
+        Html::addCssClass($this->tabContentOptions, [
+            'panel' => 'tab-content',
+        ]);
     }
 
     /**
-     * {@inheritdoc}
      * @throws InvalidConfigException
      * @throws Throwable
      */
@@ -161,17 +163,18 @@ class Tabs extends Widget
         $this->prepareItems($this->items);
 
         return Nav::widget([
-                'dropdownClass' => $this->dropdownClass,
-                'options' => ArrayHelper::merge(['role' => 'tablist'], $this->options),
-                'items' => $this->items,
-                'encodeLabels' => $this->encodeLabels,
-            ]) . $this->renderPanes($this->panes);
+            'dropdownClass' => $this->dropdownClass,
+            'options' => ArrayHelper::merge([
+                'role' => 'tablist',
+            ], $this->options),
+            'items' => $this->items,
+            'encodeLabels' => $this->encodeLabels,
+        ]) . $this->renderPanes($this->panes);
     }
 
     /**
      * Renders tab panes.
      *
-     * @param array $panes
      * @return string the rendering result.
      */
     public function renderPanes(array $panes): string
@@ -182,12 +185,10 @@ class Tabs extends Widget
     /**
      * Renders tab items as specified on [[items]].
      *
-     * @param array $items
-     * @param string $prefix
      * @throws InvalidConfigException
      * @throws Exception
      */
-    protected function prepareItems(array &$items, string $prefix = '')
+    protected function prepareItems(array &$items, string $prefix = ''): void
     {
         if (!$this->hasActiveTab()) {
             $this->activateFirstVisibleTab();
@@ -226,9 +227,13 @@ class Tabs extends Widget
                 }
             }
 
-            Html::addCssClass($options, ['widget' => 'tab-pane']);
+            Html::addCssClass($options, [
+                'widget' => 'tab-pane',
+            ]);
             if ($selected) {
-                Html::addCssClass($options, ['activate' => 'active']);
+                Html::addCssClass($options, [
+                    'activate' => 'active',
+                ]);
             }
 
             if ($this->renderTabContent) {
@@ -266,7 +271,7 @@ class Tabs extends Widget
      * not explicitly set to inactive (`'active' => false`).
      * @throws Exception
      */
-    protected function activateFirstVisibleTab()
+    protected function activateFirstVisibleTab(): void
     {
         foreach ($this->items as $i => $item) {
             $active = ArrayHelper::getValue($item, 'active', null);

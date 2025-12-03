@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -69,27 +70,25 @@ class Alert extends Widget
     public $closeButton = [];
 
 
-    /**
-     * {@inheritdoc}
-     */
-    public function init()
+    public function init(): void
     {
         parent::init();
 
         $this->initOptions();
 
+        ob_start();
         echo Html::beginTag('div', $this->options) . "\n";
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function run()
+    public function run(): string
     {
-        echo "\n" . $this->renderBodyEnd();
-        echo "\n" . Html::endTag('div');
+        $content = ob_get_clean();
+        $content .= "\n" . $this->renderBodyEnd();
+        $content .= "\n" . Html::endTag('div');
 
         $this->registerPlugin('alert');
+
+        return $content;
     }
 
     /**
@@ -105,7 +104,7 @@ class Alert extends Widget
      * Renders the close button.
      * @return string|null the rendering result
      */
-    protected function renderCloseButton()
+    protected function renderCloseButton(): ?string
     {
         if (($closeButton = $this->closeButton) !== false) {
             $tag = ArrayHelper::remove($closeButton, 'tag', 'button');
@@ -124,18 +123,28 @@ class Alert extends Widget
      * Initializes the widget options.
      * This method sets the default values for various options.
      */
-    protected function initOptions()
+    protected function initOptions(): void
     {
-        Html::addCssClass($this->options, ['widget' => 'alert']);
+        Html::addCssClass($this->options, [
+            'widget' => 'alert',
+        ]);
 
         if ($this->closeButton !== false) {
             $this->closeButton = array_merge([
-                'class' => ['widget' => 'btn-close'],
-                'data' => ['bs-dismiss' => 'alert'],
-                'aria' => ['label' => Yii::t('yii/bootstrap5', 'Close')]
+                'class' => [
+                    'widget' => 'btn-close',
+                ],
+                'data' => [
+                    'bs-dismiss' => 'alert',
+                ],
+                'aria' => [
+                    'label' => Yii::t('yii/bootstrap5', 'Close'),
+                ],
             ], $this->closeButton);
 
-            Html::addCssClass($this->options, ['toggle' => 'alert-dismissible']);
+            Html::addCssClass($this->options, [
+                'toggle' => 'alert-dismissible',
+            ]);
         }
         if (!isset($this->options['role'])) {
             $this->options['role'] = 'alert';

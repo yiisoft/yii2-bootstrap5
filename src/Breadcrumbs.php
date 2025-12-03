@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -8,9 +9,6 @@
 declare(strict_types=1);
 
 namespace yii\bootstrap5;
-
-use Yii;
-use yii\helpers\ArrayHelper;
 
 /**
  * This widget represents a Bootstrap 5 component "Breadcrumb". It displays a list of links indicating the
@@ -48,9 +46,6 @@ class Breadcrumbs extends \yii\widgets\Breadcrumbs
 {
     use BootstrapWidgetTrait;
 
-    /**
-     * {@inheritDoc}
-     */
     public $tag = 'ol';
     /**
      * @var array|false the first hyperlink in the breadcrumbs (called home link).
@@ -59,23 +54,18 @@ class Breadcrumbs extends \yii\widgets\Breadcrumbs
      * with the label 'Home'. If this property is false, the home link will not be rendered.
      */
     public $homeLink = [];
-    /**
-     * {@inheritDoc}
-     */
     public $itemTemplate = "<li class=\"breadcrumb-item\">{link}</li>\n";
-    /**
-     * {@inheritDoc}
-     */
     public $activeItemTemplate = "<li class=\"breadcrumb-item active\" aria-current=\"page\">{link}</li>\n";
     /**
      * @var array the HTML attributes for the widgets nav container tag.
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
-    public $navOptions = ['aria' => ['label' => 'breadcrumb']];
+    public $navOptions = [
+        'aria' => [
+            'label' => 'breadcrumb',
+        ],
+    ];
 
-    /**
-     * {@inheritDoc}
-     */
     public function run(): string
     {
         if (empty($this->links)) {
@@ -88,7 +78,10 @@ class Breadcrumbs extends \yii\widgets\Breadcrumbs
             if (is_array($value)) {
                 $links[] = $value;
             } else {
-                $links[] = ['label' => $value, 'url' => is_string($key) ? $key : null];
+                $links[] = [
+                    'label' => $value,
+                    'url' => is_string($key) ? $key : null,
+                ];
             }
         }
         $this->links = $links;
@@ -101,7 +94,9 @@ class Breadcrumbs extends \yii\widgets\Breadcrumbs
         if (!isset($this->options['id'])) {
             $this->options['id'] = "{$this->getId()}-breadcrumb";
         }
-        Html::addCssClass($this->options, ['widget' => 'breadcrumb']);
+        Html::addCssClass($this->options, [
+            'widget' => 'breadcrumb',
+        ]);
 
         // parent method not return result
         ob_start();
@@ -115,8 +110,6 @@ class Breadcrumbs extends \yii\widgets\Breadcrumbs
      * The template used to render each active item in the breadcrumbs. The token `{link}` will be replaced with the
      * actual HTML link for each active item.
      *
-     * @param string $value
-     *
      * @return $this
      */
     public function activeItemTemplate(string $value): self
@@ -128,8 +121,6 @@ class Breadcrumbs extends \yii\widgets\Breadcrumbs
 
     /**
      * Whether to HTML-encode the link labels.
-     *
-     * @param bool $value
      *
      * @return $this
      */
@@ -163,8 +154,6 @@ class Breadcrumbs extends \yii\widgets\Breadcrumbs
      * The template used to render each inactive item in the breadcrumbs. The token `{link}` will be replaced with the
      * actual HTML link for each inactive item.
      *
-     * @param string $value
-     *
      * @return $this
      */
     public function itemTemplate(string $value): self
@@ -177,8 +166,6 @@ class Breadcrumbs extends \yii\widgets\Breadcrumbs
     /**
      * List of links to appear in the breadcrumbs. If this property is empty, the widget will not render anything.
      * Each array element represents a single item in the breadcrumbs with the following structure.
-     *
-     * @param array $value
      *
      * @return $this
      */
@@ -194,8 +181,6 @@ class Breadcrumbs extends \yii\widgets\Breadcrumbs
      *
      * {@see \yii\helpers\Html::renderTagAttributes()} for details on how attributes are being rendered.
      *
-     * @param array $value
-     *
      * @return $this
      */
     public function navOptions(array $value): self
@@ -210,8 +195,6 @@ class Breadcrumbs extends \yii\widgets\Breadcrumbs
      *
      * {@see \yii\helpers\Html::renderTagAttributes()} for details on how attributes are being rendered.
      *
-     * @param array $value
-     *
      * @return $this
      */
     public function options(array $value): self
@@ -223,8 +206,6 @@ class Breadcrumbs extends \yii\widgets\Breadcrumbs
 
     /**
      * The name of the breadcrumb container tag.
-     *
-     * @param string $value
      *
      * @return $this
      */

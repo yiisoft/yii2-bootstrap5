@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * @package yii2-bootstrap5
  * @author Simon Karlen <simi.albi@gmail.com>
@@ -11,7 +13,7 @@ use yii\bootstrap5\Breadcrumbs;
 
 class TranslationTest extends TestCase
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->mockWebApplication([
             'language' => 'de-CH',
@@ -36,8 +38,8 @@ class TranslationTest extends TestCase
         $html = Alert::widget([
             'body' => '<strong>Heilige Guacamole!</strong> Das ist ein deutscher Test.',
             'options' => [
-                'class' => ['alert-warning']
-            ]
+                'class' => ['alert-warning'],
+            ],
         ]);
 
         $expectedHtml = <<<HTML
@@ -57,9 +59,14 @@ HTML;
         Breadcrumbs::$counter = 0;
         $out = Breadcrumbs::widget([
             'links' => [
-                ['label' => 'Library', 'url' => '#'],
-                ['label' => 'Data']
-            ]
+                [
+                    'label' => 'Library',
+                    'url' => '#',
+                ],
+                [
+                    'label' => 'Data',
+                ],
+            ],
         ]);
 
         $expected = <<<HTML

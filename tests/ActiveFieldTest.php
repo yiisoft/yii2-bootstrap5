@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\bootstrap5;
 
 use yii\base\DynamicModel;
@@ -76,7 +78,10 @@ HTML;
 
     public function testRadioList()
     {
-        $html = $this->activeField->radioList([1 => 'name1', 2 => 'name2'])->render();
+        $html = $this->activeField->radioList([
+            1 => 'name1',
+            2 => 'name2',
+        ])->render();
 
         $expectedHtml = <<<HTML
 <div class="mb-3 field-dynamicmodel-attributename">
@@ -121,7 +126,10 @@ HTML;
     public function testRadioListError()
     {
         $this->helperModel->addError($this->attributeName, 'Test print error message');
-        $html = $this->activeField->radioList([1 => 'name1', 2 => 'name2'])->render();
+        $html = $this->activeField->radioList([
+            1 => 'name1',
+            2 => 'name2',
+        ])->render();
 
         $expectedHtml = <<<HTML
 <div class="mb-3 field-dynamicmodel-attributename">
@@ -145,7 +153,10 @@ HTML;
 
     public function testCheckboxList()
     {
-        $html = $this->activeField->checkboxList([1 => 'name1', 2 => 'name2'])->render();
+        $html = $this->activeField->checkboxList([
+            1 => 'name1',
+            2 => 'name2',
+        ])->render();
 
         $expectedHtml = <<<HTML
 <div class="mb-3 field-dynamicmodel-attributename">
@@ -172,7 +183,9 @@ HTML;
      */
     public function testCheckboxSwitch()
     {
-        $html = $this->activeField->checkbox(['switch' => true])->render();
+        $html = $this->activeField->checkbox([
+            'switch' => true,
+        ])->render();
 
         $expectedHtml = <<<HTML
 <div class="mb-3 field-dynamicmodel-attributename">
@@ -208,7 +221,10 @@ HTML;
     public function testCheckboxListError()
     {
         $this->helperModel->addError($this->attributeName, 'Test print error message');
-        $html = $this->activeField->checkboxList([1 => 'name1', 2 => 'name2'])->render();
+        $html = $this->activeField->checkboxList([
+            1 => 'name1',
+            2 => 'name2',
+        ])->render();
 
         $expectedHtml = <<<HTML
 <div class="mb-3 field-dynamicmodel-attributename">
@@ -233,7 +249,10 @@ HTML;
     public function testRadioListInline()
     {
         $this->activeField->inline = true;
-        $html = $this->activeField->radioList([1 => 'name1', 2 => 'name2'])->render();
+        $html = $this->activeField->radioList([
+            1 => 'name1',
+            2 => 'name2',
+        ])->render();
 
         $expectedHtml = <<<HTML
 <div class="mb-3 field-dynamicmodel-attributename">
@@ -258,7 +277,10 @@ HTML;
     public function testCheckboxListInline()
     {
         $this->activeField->inline = true;
-        $html = $this->activeField->checkboxList([1 => 'name1', 2 => 'name2'])->render();
+        $html = $this->activeField->checkboxList([
+            1 => 'name1',
+            2 => 'name2',
+        ])->render();
 
         $expectedHtml = <<<HTML
 <div class="mb-3 field-dynamicmodel-attributename">
@@ -285,31 +307,36 @@ HTML;
      */
     public function testRadioListItemOptions()
     {
-        $content = $this->activeField->radioList([1 => 'name1', 2 => 'name2'], [
+        $content = $this->activeField->radioList([
+            1 => 'name1',
+            2 => 'name2',
+        ], [
             'itemOptions' => [
-                'data-attribute' => 'test'
-            ]
+                'data-attribute' => 'test',
+            ],
         ])->render();
 
-        $this->assertContains('data-attribute="test"', $content);
+        $this->assertStringContainsString('data-attribute="test"', $content);
     }
 
     /**
-     *
      * @see https://github.com/yiisoft/yii2-bootstrap/issues/81
      */
     public function testCheckboxListItemOptions()
     {
-        $content = $this->activeField->checkboxList([1 => 'name1', 2 => 'name2'], [
+        $content = $this->activeField->checkboxList([
+            1 => 'name1',
+            2 => 'name2',
+        ], [
             'itemOptions' => [
-                'data-attribute' => 'test'
-            ]
+                'data-attribute' => 'test',
+            ],
         ])->render();
 
-        $this->assertContains('data-attribute="test"', $content);
+        $this->assertStringContainsString('data-attribute="test"', $content);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         // dirty way to have Request object not throwing exception when running testHomeLinkNull()
         $_SERVER['SCRIPT_FILENAME'] = "index.php";
@@ -320,11 +347,15 @@ HTML;
 
         $this->helperModel = new DynamicModel(['attributeName']);
         ob_start();
-        $this->helperForm = ActiveForm::begin(['action' => '/something']);
+        $this->helperForm = ActiveForm::begin([
+            'action' => '/something',
+        ]);
         ActiveForm::end();
         ob_end_clean();
 
-        $this->activeField = new ActiveField(['form' => $this->helperForm]);
+        $this->activeField = new ActiveField([
+            'form' => $this->helperForm,
+        ]);
         $this->activeField->model = $this->helperModel;
         $this->activeField->attribute = $this->attributeName;
     }

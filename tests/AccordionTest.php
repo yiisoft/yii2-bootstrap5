@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\bootstrap5;
 
 use yii\base\DynamicModel;
-use yii\base\InvalidConfigException;
 use yii\bootstrap5\Accordion;
 use yii\widgets\ActiveForm;
 
@@ -21,54 +22,54 @@ class AccordionTest extends TestCase
                     'label' => 'Collapsible Group Item #1',
                     'content' => [
                         'test content1',
-                        'test content2'
+                        'test content2',
                     ],
                 ],
                 [
                     'label' => 'Collapsible Group Item #2',
                     'content' => 'Das ist das Haus vom Nikolaus',
                     'contentOptions' => [
-                        'class' => 'testContentOptions'
+                        'class' => 'testContentOptions',
                     ],
                     'options' => [
                         'class' => 'testClass',
-                        'id' => 'testId'
+                        'id' => 'testId',
                     ],
-                    'footer' => 'Footer'
+                    'footer' => 'Footer',
                 ],
                 [
                     'label' => '<h1>Collapsible Group Item #3</h1>',
                     'content' => [
                         '<h2>test content1</h2>',
-                        '<h2>test content2</h2>'
+                        '<h2>test content2</h2>',
                     ],
                     'contentOptions' => [
-                        'class' => 'testContentOptions2'
+                        'class' => 'testContentOptions2',
                     ],
                     'options' => [
                         'class' => 'testClass2',
-                        'id' => 'testId2'
+                        'id' => 'testId2',
                     ],
                     'encode' => false,
-                    'footer' => 'Footer2'
+                    'footer' => 'Footer2',
                 ],
                 [
                     'label' => '<h1>Collapsible Group Item #4</h1>',
                     'content' => [
                         '<h2>test content1</h2>',
-                        '<h2>test content2</h2>'
+                        '<h2>test content2</h2>',
                     ],
                     'contentOptions' => [
-                        'class' => 'testContentOptions3'
+                        'class' => 'testContentOptions3',
                     ],
                     'options' => [
                         'class' => 'testClass3',
-                        'id' => 'testId3'
+                        'id' => 'testId3',
                     ],
                     'encode' => true,
-                    'footer' => 'Footer3'
+                    'footer' => 'Footer3',
                 ],
-            ]
+            ],
         ]);
 
         $this->assertEqualsWithoutLE(<<<HTML
@@ -118,7 +119,9 @@ HTML
     public function testLabelKeys()
     {
         ob_start();
-        $form = ActiveForm::begin(['action' => '/something']);
+        $form = ActiveForm::begin([
+            'action' => '/something',
+        ]);
         ActiveForm::end();
         ob_end_clean();
 
@@ -133,8 +136,10 @@ HTML
                     'label' => 'Item3',
                     'content' => 'Content3',
                 ],
-                'FormField' => $form->field(new DynamicModel(['test']), 'test', ['template' => '{input}']),
-            ]
+                'FormField' => $form->field(new DynamicModel(['test']), 'test', [
+                    'template' => '{input}',
+                ]),
+            ],
         ]);
 
         $this->assertEqualsWithoutLE(<<<HTML
@@ -181,7 +186,7 @@ HTML
                     'content' => 'Content2',
                     'expand' => true,
                 ],
-            ]
+            ],
         ]);
 
         $this->assertEqualsWithoutLE(<<<HTML
@@ -209,16 +214,18 @@ HTML
         return [
             [['content']], // only content without label key
             [[[]]], // only content array without label
-            [[['content' => 'test']]], // only content array without label
+            [[[
+                'content' => 'test',
+            ]]], // only content array without label
         ];
     }
 
     /**
      * @dataProvider invalidItemsProvider
-     * @expectedException \yii\base\InvalidConfigException
      */
     public function testMissingLabel($items)
     {
+        $this->expectException(\yii\base\InvalidConfigException::class);
         Accordion::widget([
             'items' => $items,
         ]);
@@ -229,21 +236,25 @@ HTML
      */
     public function testRenderObject()
     {
-        $template = ['template' => '{input}'];
+        $template = [
+            'template' => '{input}',
+        ];
         ob_start();
-        $form = ActiveForm::begin(['action' => '/something']);
+        $form = ActiveForm::begin([
+            'action' => '/something',
+        ]);
         ActiveForm::end();
         ob_end_clean();
-        $model = new data\Singer;
+        $model = new data\Singer();
 
         Accordion::$counter = 0;
         $output = Accordion::widget([
             'items' => [
                 [
                     'label' => 'Collapsible Group Item #1',
-                    'content' => $form->field($model, 'firstName', $template)
+                    'content' => $form->field($model, 'firstName', $template),
                 ],
-            ]
+            ],
         ]);
 
         $this->assertEqualsWithoutLE(<<<HTML
@@ -276,18 +287,17 @@ HTML
         ];
 
         $output = Accordion::widget([
-            'items' => $items
+            'items' => $items,
         ]);
-        $this->assertContains('data-bs-parent="', $output);
+        $this->assertStringContainsString('data-bs-parent="', $output);
         $output = Accordion::widget([
             'autoCloseItems' => false,
-            'items' => $items
+            'items' => $items,
         ]);
-        $this->assertNotContains('data-bs-parent="', $output);
+        $this->assertStringNotContainsString('data-bs-parent="', $output);
     }
 
-    /**
-     */
+
     public function testItemToggleTag()
     {
         $items = [
@@ -310,17 +320,19 @@ HTML
                 'class' => 'custom-toggle',
             ],
         ]);
-        $this->assertContains('<h5 class="mb-0"><a type="button" class="custom-toggle" href="#w0-collapse0" ', $output);
-        $this->assertNotContains('<button', $output);
+        $this->assertStringContainsString('<h5 class="mb-0"><a type="button" class="custom-toggle" href="#w0-collapse0" ', $output);
+        $this->assertStringNotContainsString('<button', $output);
 
         $output = Accordion::widget([
             'items' => $items,
             'itemToggleOptions' => [
                 'tag' => 'a',
-                'class' => ['widget' => 'custom-toggle'],
+                'class' => [
+                    'widget' => 'custom-toggle',
+                ],
             ],
         ]);
-        $this->assertContains('<h5 class="mb-0"><a type="button" class="custom-toggle" href="#w1-collapse0" ', $output);
-        $this->assertNotContains('collapse-toggle', $output);
+        $this->assertStringContainsString('<h5 class="mb-0"><a type="button" class="custom-toggle" href="#w1-collapse0" ', $output);
+        $this->assertStringNotContainsString('collapse-toggle', $output);
     }
 }

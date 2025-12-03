@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -27,9 +28,6 @@ abstract class BaseHtml extends \yii\helpers\Html
      * @see getId()
      */
     public static $autoIdPrefix = 'i';
-    /**
-     * @inheritDoc
-     */
     public static $normalizeClassAttribute = true;
 
     /**
@@ -69,7 +67,7 @@ abstract class BaseHtml extends \yii\helpers\Html
             $value = static::getAttributeValue($model, $attribute);
         }
 
-        return static::staticControl((string)$value, $options);
+        return static::staticControl((string) $value, $options);
     }
 
     /**
@@ -82,14 +80,24 @@ abstract class BaseHtml extends \yii\helpers\Html
 
         if (!isset($options['item'])) {
             $itemOptions = ArrayHelper::remove($options, 'itemOptions', []);
-            static::addCssClass($itemOptions, ['bootstrap' => 'form-check-input']);
+            static::addCssClass($itemOptions, [
+                'bootstrap' => 'form-check-input',
+            ]);
             if (!isset($itemOptions['labelOptions'])) {
-                $itemOptions['labelOptions'] = ['class' => 'form-check-label'];
+                $itemOptions['labelOptions'] = [
+                    'class' => 'form-check-label',
+                ];
             } else {
-                static::addCssClass($itemOptions['labelOptions'], ['bootstrap' => 'form-check-label']);
+                static::addCssClass($itemOptions['labelOptions'], [
+                    'bootstrap' => 'form-check-label',
+                ]);
             }
 
-            $wrapperOptions = $inline ? ['class' => 'form-check form-check-inline'] : ['class' => 'form-check'];
+            $wrapperOptions = $inline ? [
+                'class' => 'form-check form-check-inline',
+            ] : [
+                'class' => 'form-check',
+            ];
 
             $encode = ArrayHelper::getValue($options, 'encode', true);
 
@@ -118,12 +126,18 @@ abstract class BaseHtml extends \yii\helpers\Html
             $itemOptions = ArrayHelper::remove($options, 'itemOptions', []);
             static::addCssClass($itemOptions, 'form-check-input');
             if (!isset($itemOptions['labelOptions'])) {
-                $itemOptions['labelOptions'] = ['class' => 'form-check-label'];
+                $itemOptions['labelOptions'] = [
+                    'class' => 'form-check-label',
+                ];
             } else {
                 static::addCssClass($itemOptions['labelOptions'], 'form-check-label');
             }
 
-            $wrapperOptions = $inline ? ['class' => 'form-check form-check-inline'] : ['class' => 'form-check'];
+            $wrapperOptions = $inline ? [
+                'class' => 'form-check form-check-inline',
+            ] : [
+                'class' => 'form-check',
+            ];
 
             $encode = ArrayHelper::getValue($options, 'encode', true);
 
@@ -140,9 +154,6 @@ abstract class BaseHtml extends \yii\helpers\Html
         return parent::checkboxList($name, $selection, $items, $options);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function error($model, $attribute, $options = []): string
     {
         if (!array_key_exists('class', $options)) {
@@ -152,12 +163,9 @@ abstract class BaseHtml extends \yii\helpers\Html
         return parent::error($model, $attribute, $options);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected static function booleanInput($type, $name, $checked = false, $options = []): string
     {
-        $options['checked'] = (bool)$checked;
+        $options['checked'] = (bool) $checked;
         $value = array_key_exists('value', $options) ? $options['value'] : '1';
         if (isset($options['uncheck'])) {
             // add a hidden field so that if the checkbox is not selected, it still submits a value

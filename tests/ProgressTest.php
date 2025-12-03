@@ -1,7 +1,8 @@
 <?php
 
-namespace yiiunit\extensions\bootstrap5;
+declare(strict_types=1);
 
+namespace yiiunit\extensions\bootstrap5;
 
 use yii\bootstrap5\Progress;
 
@@ -16,7 +17,9 @@ class ProgressTest extends TestCase
         $out = Progress::widget([
             'label' => 'Progress',
             'percent' => 25,
-            'barOptions' => ['class' => 'bg-warning']
+            'barOptions' => [
+                'class' => 'bg-warning',
+            ],
         ]);
 
         $expected = <<<HTML
@@ -33,8 +36,11 @@ HTML;
         Progress::$counter = 0;
         $out = Progress::widget([
             'bars' => [
-                ['label' => 'Progress', 'percent' => 25]
-            ]
+                [
+                    'label' => 'Progress',
+                    'percent' => 25,
+                ],
+            ],
         ]);
 
         $expected = <<<HTML
@@ -46,17 +52,31 @@ HTML;
         $this->assertEqualsWithoutLE($expected, $out);
     }
 
-    /**
-     */
+
     public function testMultiple()
     {
         Progress::$counter = 0;
         $out = Progress::widget([
             'bars' => [
-                ['label' => '', 'percent' => 15],
-                ['label' => '', 'percent' => 30, 'options' => ['class' => ['bg-success']]],
-                ['label' => '', 'percent' => 20, 'options' => ['class' => ['bg-info']]]
-            ]
+                [
+                    'label' => '',
+                    'percent' => 15,
+                ],
+                [
+                    'label' => '',
+                    'percent' => 30,
+                    'options' => [
+                        'class' => ['bg-success'],
+                    ],
+                ],
+                [
+                    'label' => '',
+                    'percent' => 20,
+                    'options' => [
+                        'class' => ['bg-info'],
+                    ],
+                ],
+            ],
         ]);
 
         $expected = <<<HTML
@@ -83,8 +103,11 @@ HTML;
         Progress::$counter = 0;
         $out = Progress::widget([
             'bars' => [
-                ['label' => 'Progress', 'percent' => 25]
-            ]
+                [
+                    'label' => 'Progress',
+                    'percent' => 25,
+                ],
+            ],
         ]);
 
         $expected = <<<HTML

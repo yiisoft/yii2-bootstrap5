@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\bootstrap5\data;
 
 use yii\bootstrap5\ActiveField;
@@ -13,7 +15,7 @@ use yii\bootstrap5\ActiveField;
  */
 class ExtendedActiveField extends ActiveField
 {
-    public ?array $horizontalCssClasses = [
+    public $horizontalCssClasses = [
         'offset' => 'col-md-offset-4',
         'label' => 'col-md-4',
         'wrapper' => 'col-md-6',

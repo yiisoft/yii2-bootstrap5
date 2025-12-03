@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\bootstrap5;
 
 use yii\bootstrap5\ButtonDropdown;
@@ -9,7 +11,7 @@ use yii\bootstrap5\ButtonDropdown;
  */
 class ButtonDropdownTest extends TestCase
 {
-    public function testContainerOptions()
+    public function testContainerOptions(): void
     {
         $containerClass = 'testClass';
 
@@ -22,16 +24,22 @@ class ButtonDropdownTest extends TestCase
             'label' => 'Action',
             'dropdown' => [
                 'items' => [
-                    ['label' => 'DropdownA', 'url' => '/'],
-                    ['label' => 'DropdownB', 'url' => '#'],
+                    [
+                        'label' => 'DropdownA',
+                        'url' => '/',
+                    ],
+                    [
+                        'label' => 'DropdownB',
+                        'url' => '#',
+                    ],
                 ],
             ],
         ]);
 
-        $this->assertContains("$containerClass dropup btn-group", $out);
+        $this->assertStringContainsString("$containerClass dropup btn-group", $out);
     }
 
-    public function testDirection()
+    public function testDirection(): void
     {
         ButtonDropdown::$counter = 0;
         $out = ButtonDropdown::widget([
@@ -39,8 +47,14 @@ class ButtonDropdownTest extends TestCase
             'label' => 'Action',
             'dropdown' => [
                 'items' => [
-                    ['label' => 'ItemA', 'url' => '#'],
-                    ['label' => 'ItemB', 'url' => '#'],
+                    [
+                        'label' => 'ItemA',
+                        'url' => '#',
+                    ],
+                    [
+                        'label' => 'ItemB',
+                        'url' => '#',
+                    ],
                 ],
             ],
         ]);
@@ -55,7 +69,7 @@ EXPECTED;
         $this->assertEqualsWithoutLE($expected, $out);
     }
 
-    public function testSplit()
+    public function testSplit(): void
     {
         ButtonDropdown::$counter = 0;
         $out = ButtonDropdown::widget([
@@ -64,10 +78,16 @@ EXPECTED;
             'split' => true,
             'dropdown' => [
                 'items' => [
-                    ['label' => 'ItemA', 'url' => '#'],
-                    ['label' => 'ItemB', 'url' => '#']
-                ]
-            ]
+                    [
+                        'label' => 'ItemA',
+                        'url' => '#',
+                    ],
+                    [
+                        'label' => 'ItemB',
+                        'url' => '#',
+                    ],
+                ],
+            ],
         ]);
 
         $expected = <<<EXPECTED
@@ -78,5 +98,35 @@ EXPECTED;
 EXPECTED;
 
         $this->assertEqualsWithoutLE($expected, $out);
+    }
+
+    /**
+     * @see https://github.com/yiisoft/yii2-bootstrap5/pull/88 fix
+     */
+    public function testGeneratedJS(): void
+    {
+        ButtonDropdown::$counter = 0;
+        $out = ButtonDropdown::widget([
+            'direction' => ButtonDropdown::DIRECTION_DOWN,
+            'label' => 'Action',
+            'dropdown' => [
+                'items' => [
+                    [
+                        'label' => 'DropdownA',
+                        'url' => '/',
+                    ],
+                    [
+                        'label' => 'DropdownB',
+                        'url' => '#',
+                    ],
+                ],
+            ],
+        ]);
+
+        $js = array_shift(\Yii::$app->view->js);
+
+        $this->assertIsArray($js);
+        $this->assertNotContains('(new bootstrap.Button(\'#w0-button\', {}));', $js);
+        $this->assertContains('(new bootstrap.Dropdown(\'#w0-button\', {}));', $js);
     }
 }

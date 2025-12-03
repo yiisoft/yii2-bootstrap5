@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\bootstrap5;
 
 use yii\bootstrap5\Button;
@@ -15,10 +17,20 @@ class ButtonGroupTest extends TestCase
         ButtonGroup::$counter = 0;
         $out = ButtonGroup::widget([
             'buttons' => [
-                ['label' => 'button-A'],
-                ['label' => 'button-B', 'visible' => true],
-                ['label' => 'button-C', 'visible' => false],
-                Button::widget(['label' => 'button-D']),
+                [
+                    'label' => 'button-A',
+                ],
+                [
+                    'label' => 'button-B',
+                    'visible' => true,
+                ],
+                [
+                    'label' => 'button-C',
+                    'visible' => false,
+                ],
+                Button::widget([
+                    'label' => 'button-D',
+                ]),
             ],
         ]);
 

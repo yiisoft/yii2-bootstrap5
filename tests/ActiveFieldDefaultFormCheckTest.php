@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\bootstrap5;
 
 use Yii;
@@ -69,7 +71,10 @@ HTML;
     public function testDefaultCheckboxListByConfig()
     {
         Html::$counter = 0;
-        $html = $this->_activeField->checkboxList([1 => 'name1', 2 => 'name2'])->render();
+        $html = $this->_activeField->checkboxList([
+            1 => 'name1',
+            2 => 'name2',
+        ])->render();
 
         $expectedHtml = <<<HTML
 <div class="mb-3 field-dynamicmodel-attributename">
@@ -94,7 +99,10 @@ HTML;
     public function testDefaultRadioListByConfig()
     {
         Html::$counter = 0;
-        $html = $this->_activeField->radioList([1 => 'name1', 2 => 'name2'])->render();
+        $html = $this->_activeField->radioList([
+            1 => 'name1',
+            2 => 'name2',
+        ])->render();
 
         $expectedHtml = <<<HTML
 <div class="mb-3 field-dynamicmodel-attributename">
@@ -124,14 +132,20 @@ HTML;
         $model = new DynamicModel(['attributeName', 'checkbox', 'gridRadios']);
         $form = ActiveForm::begin([
             'action' => '/some-action',
-            'layout' => ActiveForm::LAYOUT_HORIZONTAL
+            'layout' => ActiveForm::LAYOUT_HORIZONTAL,
         ]);
         echo $form->field($model, 'attributeName');
-        echo $form->field($model, 'checkbox')->checkbox(['wrapperOptions' => ['class' => ['widget' => new UnsetArrayValue()]]]);
+        echo $form->field($model, 'checkbox')->checkbox([
+            'wrapperOptions' => [
+                'class' => [
+                    'widget' => new UnsetArrayValue(),
+                ],
+            ],
+        ]);
         echo $form->field($model, 'gridRadios')->radioList([
             'option1' => 'First radio',
             'option2' => 'Second radio',
-            'option3' => 'Third radio'
+            'option3' => 'Third radio',
         ]);
         ActiveForm::end();
         $out = ob_get_clean();
@@ -189,7 +203,7 @@ HTML;
         $this->assertContainsWithoutLE($expected3, $out);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         // dirty way to have Request object not throwing exception when running testHomeLinkNull()
         $_SERVER['SCRIPT_FILENAME'] = 'index.php';
@@ -204,37 +218,51 @@ HTML;
                         'checkHorizontalTemplate' => "{beginWrapper}\n<div class=\"form-check\">\n{input}\n{label}\n{error}\n{hint}\n</div>\n{endWrapper}",
                         'radioHorizontalTemplate' => "{beginWrapper}\n<div class=\"form-check\">\n{input}\n{label}\n{error}\n{hint}\n</div>\n{endWrapper}",
                         'checkOptions' => [
-                            'class' => ['widget' => 'form-check-input'],
+                            'class' => [
+                                'widget' => 'form-check-input',
+                            ],
                             'labelOptions' => [
-                                'class' => ['widget' => 'form-check-label']
+                                'class' => [
+                                    'widget' => 'form-check-label',
+                                ],
                             ],
                             'wrapperOptions' => [
-                                'class' => ['widget' => 'form-check']
-                            ]
+                                'class' => [
+                                    'widget' => 'form-check',
+                                ],
+                            ],
                         ],
                         'radioOptions' => [
-                            'class' => ['widget' => 'form-check-input'],
+                            'class' => [
+                                'widget' => 'form-check-input',
+                            ],
                             'labelOptions' => [
-                                'class' => ['widget' => 'form-check-label']
+                                'class' => [
+                                    'widget' => 'form-check-label',
+                                ],
                             ],
                             'wrapperOptions' => [
-                                'class' => ['widget' => 'form-check']
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'class' => [
+                                    'widget' => 'form-check',
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ]);
 
         $this->_helperModel = new DynamicModel(['attributeName']);
         ob_start();
-        $this->_helperForm = ActiveForm::begin(['action' => '/something']);
+        $this->_helperForm = ActiveForm::begin([
+            'action' => '/something',
+        ]);
         ActiveForm::end();
         ob_end_clean();
 
         $this->_activeField = Yii::createObject([
             'class' => 'yii\bootstrap5\ActiveField',
-            'form' => $this->_helperForm
+            'form' => $this->_helperForm,
         ]);
         $this->_activeField->model = $this->_helperModel;
         $this->_activeField->attribute = $this->_attributeName;

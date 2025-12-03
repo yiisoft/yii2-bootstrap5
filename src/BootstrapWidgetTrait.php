@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -56,7 +57,7 @@ trait BootstrapWidgetTrait
      * make sure you call the parent implementation first.
      * @throws InvalidConfigException
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
         if (!isset($this->options['id'])) {
@@ -69,7 +70,7 @@ trait BootstrapWidgetTrait
      *
      * @param string $name the name of the Bootstrap plugin
      */
-    protected function registerPlugin(string $name)
+    protected function registerPlugin(string $name): void
     {
         /**
          * @see https://github.com/twbs/bootstrap/blob/v5.2.0/js/index.esm.js
@@ -86,7 +87,7 @@ trait BootstrapWidgetTrait
             'scrollspy',
             'tab',
             'toast',
-            'tooltip'
+            'tooltip',
         ];
         if (in_array($name, $jsPlugins, true)) {
             $view = $this->getView();
@@ -106,7 +107,7 @@ trait BootstrapWidgetTrait
     /**
      * Registers JS event handlers that are listed in [[clientEvents]].
      */
-    protected function registerClientEvents(string $name = null)
+    protected function registerClientEvents(?string $name = null): void
     {
         if (!empty($this->clientEvents)) {
             $id = $this->options['id'];

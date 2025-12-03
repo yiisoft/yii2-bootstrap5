@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\bootstrap5;
 
 use yii\bootstrap5\Html;
@@ -15,7 +17,10 @@ class ModalTest extends TestCase
         Modal::$counter = 0;
         $out = Modal::widget([
             'closeButton' => false,
-            'bodyOptions' => ['class' => 'modal-body test', 'style' => 'text-align:center;']
+            'bodyOptions' => [
+                'class' => 'modal-body test',
+                'style' => 'text-align:center;',
+            ],
         ]);
 
 
@@ -37,8 +42,7 @@ HTML;
         $this->assertEqualsWithoutLE($expected, $out);
     }
 
-    /**
-     */
+
     public function testContainerOptions()
     {
         Modal::$counter = 0;
@@ -47,15 +51,15 @@ HTML;
         Modal::begin([
             'title' => 'Modal title',
             'footer' => Html::button('Close', [
-                    'type' => 'button',
-                    'class' => ['btn', 'btn-secondary'],
-                    'data' => [
-                        'bs-dismiss' => 'modal'
-                    ]
-                ]) . "\n" . Html::button('Save changes', [
-                    'type' => 'button',
-                    'class' => ['btn', 'btn-primary']
-                ])
+                'type' => 'button',
+                'class' => ['btn', 'btn-secondary'],
+                'data' => [
+                    'bs-dismiss' => 'modal',
+                ],
+            ]) . "\n" . Html::button('Save changes', [
+                'type' => 'button',
+                'class' => ['btn', 'btn-primary'],
+            ]),
         ]);
         echo '<p>Woohoo, you\'re reading this text in a modal!</p>';
         Modal::end();
@@ -93,24 +97,24 @@ HTML;
         Modal::begin([
             'toggleButton' => [
                 'class' => ['btn', 'btn-primary'],
-                'label' => 'Launch demo modal'
+                'label' => 'Launch demo modal',
             ],
             'title' => 'Modal title',
             'footer' => Html::button('Close', [
-                    'type' => 'button',
-                    'class' => ['btn', 'btn-secondary']
-                ]) . "\n" . Html::button('Save changes', [
-                    'type' => 'button',
-                    'class' => ['btn', 'btn-primary']
-                ])
+                'type' => 'button',
+                'class' => ['btn', 'btn-secondary'],
+            ]) . "\n" . Html::button('Save changes', [
+                'type' => 'button',
+                'class' => ['btn', 'btn-primary'],
+            ]),
         ]);
         echo '<p>Woohoo, you\'re reading this text in a modal!</p>';
         Modal::end();
         $out = ob_get_clean();
 
-        $this->assertContains(
+        $this->assertStringContainsString(
             '<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#w0">Launch demo modal</button>',
-            $out
+            $out,
         );
     }
 
@@ -119,7 +123,10 @@ HTML;
         Modal::$counter = 0;
         $out = Modal::widget([
             'closeButton' => false,
-            'dialogOptions' => ['class' => 'test', 'style' => 'text-align:center;']
+            'dialogOptions' => [
+                'class' => 'test',
+                'style' => 'text-align:center;',
+            ],
         ]);
 
 
@@ -146,7 +153,7 @@ HTML;
         Modal::$counter = 0;
         $out = Modal::widget([
             'closeButton' => false,
-            'centerVertical' => true
+            'centerVertical' => true,
         ]);
 
 
@@ -173,7 +180,7 @@ HTML;
         Modal::$counter = 0;
         $out = Modal::widget([
             'closeButton' => false,
-            'scrollable' => true
+            'scrollable' => true,
         ]);
 
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -82,7 +83,7 @@ class NavBar extends Widget
      */
     public $brandImageOptions = [];
     /**
-     * @var array|string|bool $url the URL for the brand's hyperlink tag. This parameter will be processed by [[\yii\helpers\Url::to()]]
+     * @var array|string|bool the URL for the brand's hyperlink tag. This parameter will be processed by [[\yii\helpers\Url::to()]]
      * and will be used for the "href" attribute of the brand link. Default value is false that means
      * [[\yii\web\Application::homeUrl]] will be used.
      * You may set it to `null` if you want to have no link at all.
@@ -116,16 +117,10 @@ class NavBar extends Widget
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $innerContainerOptions = [];
-    /**
-     * {@inheritdoc}
-     */
     public $clientOptions = [];
 
 
-    /**
-     * {@inheritDoc}
-     */
-    public function init()
+    public function init(): void
     {
         parent::init();
         if (!isset($this->options['class']) || empty($this->options['class'])) {
@@ -133,16 +128,20 @@ class NavBar extends Widget
                 'widget' => 'navbar',
                 'toggle' => 'navbar-expand-lg',
                 'navbar-light',
-                'bg-light'
+                'bg-light',
             ]);
         } else {
-            Html::addCssClass($this->options, ['widget' => 'navbar']);
+            Html::addCssClass($this->options, [
+                'widget' => 'navbar',
+            ]);
         }
         $navOptions = $this->options;
         $navTag = ArrayHelper::remove($navOptions, 'tag', 'nav');
         $brand = '';
         if (!isset($this->innerContainerOptions['class'])) {
-            Html::addCssClass($this->innerContainerOptions, ['panel' => 'container']);
+            Html::addCssClass($this->innerContainerOptions, [
+                'panel' => 'container',
+            ]);
         }
         if ($this->collapseOptions !== false && !isset($this->collapseOptions['id'])) {
             $this->collapseOptions['id'] = "{$this->options['id']}-collapse";
@@ -153,17 +152,21 @@ class NavBar extends Widget
             $this->brandLabel = Html::img($this->brandImage, $this->brandImageOptions);
         }
         if ($this->brandLabel !== false) {
-            Html::addCssClass($this->brandOptions, ['widget' => 'navbar-brand']);
+            Html::addCssClass($this->brandOptions, [
+                'widget' => 'navbar-brand',
+            ]);
             if ($this->brandUrl === null) {
                 $brand = Html::tag('span', $this->brandLabel, $this->brandOptions);
             } else {
                 $brand = Html::a(
                     $this->brandLabel,
                     $this->brandUrl === false ? Yii::$app->homeUrl : $this->brandUrl,
-                    $this->brandOptions
+                    $this->brandOptions,
                 );
             }
         }
+
+        ob_start();
 
         echo Html::beginTag($navTag, $navOptions) . "\n";
         if ($this->renderInnerContainer) {
@@ -172,7 +175,10 @@ class NavBar extends Widget
         echo $brand . "\n";
         echo $this->renderToggleButton() . "\n";
         if ($this->collapseOptions !== false) {
-            Html::addCssClass($this->collapseOptions, ['collapse' => 'collapse', 'widget' => 'navbar-collapse']);
+            Html::addCssClass($this->collapseOptions, [
+                'collapse' => 'collapse',
+                'widget' => 'navbar-collapse',
+            ]);
             $collapseOptions = $this->collapseOptions;
             $collapseTag = ArrayHelper::remove($collapseOptions, 'tag', 'div');
             echo Html::beginTag($collapseTag, $collapseOptions) . "\n";
@@ -184,7 +190,7 @@ class NavBar extends Widget
     /**
      * Renders the widget.
      */
-    public function run()
+    public function run(): string
     {
         if ($this->collapseOptions !== false) {
             $tag = ArrayHelper::remove($this->collapseOptions, 'tag', 'div');
@@ -192,20 +198,22 @@ class NavBar extends Widget
         } elseif ($this->offcanvasOptions !== false) {
             Offcanvas::end();
         }
+        $content = ob_get_clean();
         if ($this->renderInnerContainer) {
-            echo Html::endTag('div') . "\n";
+            $content .= Html::endTag('div') . "\n";
         }
         $tag = ArrayHelper::remove($this->options, 'tag', 'nav');
-        echo Html::endTag($tag);
+        $content .= Html::endTag($tag);
         BootstrapPluginAsset::register($this->getView());
+
+        return $content;
     }
 
     /**
      * Container options setter for backwards compatibility
-     * @param array $collapseOptions
      * @deprecated
      */
-    public function setContainerOptions(array $collapseOptions)
+    public function setContainerOptions(array $collapseOptions): void
     {
         $this->collapseOptions = $collapseOptions;
     }
@@ -221,12 +229,20 @@ class NavBar extends Widget
         }
 
         $options = $this->togglerOptions;
-        Html::addCssClass($options, ['widget' => 'navbar-toggler']);
+        Html::addCssClass($options, [
+            'widget' => 'navbar-toggler',
+        ]);
         if ($this->offcanvasOptions !== false) {
-            $bsData = ['bs-toggle' => 'offcanvas', 'bs-target' => '#' . $this->offcanvasOptions['id']];
+            $bsData = [
+                'bs-toggle' => 'offcanvas',
+                'bs-target' => '#' . $this->offcanvasOptions['id'],
+            ];
             $aria = $this->offcanvasOptions['id'];
         } elseif ($this->collapseOptions !== false) {
-            $bsData = ['bs-toggle' => 'collapse', 'bs-target' => '#' . $this->collapseOptions['id']];
+            $bsData = [
+                'bs-toggle' => 'collapse',
+                'bs-target' => '#' . $this->collapseOptions['id'],
+            ];
             $aria = $this->collapseOptions['id'];
         }
 
@@ -239,8 +255,8 @@ class NavBar extends Widget
                     'controls' => $aria,
                     'expanded' => 'false',
                     'label' => $this->screenReaderToggleText ?: Yii::t('yii/bootstrap5', 'Toggle navigation'),
-                ]
-            ])
+                ],
+            ]),
         );
     }
 }

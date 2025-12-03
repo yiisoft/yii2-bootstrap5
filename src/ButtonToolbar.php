@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -67,21 +68,18 @@ class ButtonToolbar extends Widget
     public $buttonGroups = [];
 
 
-    /**
-     * {@inheritdoc}
-     */
-    public function init()
+    public function init(): void
     {
         parent::init();
-        Html::addCssClass($this->options, ['widget' => 'btn-toolbar']);
+        Html::addCssClass($this->options, [
+            'widget' => 'btn-toolbar',
+        ]);
         if (!isset($this->options['role'])) {
             $this->options['role'] = 'toolbar';
         }
     }
 
     /**
-     * {@inheritdoc}
-     * @return string
      * @throws Throwable
      */
     public function run(): string

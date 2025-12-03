@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -40,19 +41,19 @@ class ButtonDropdown extends Widget
     /**
      * The css class part of dropdown
      */
-    const DIRECTION_DOWN = 'down';
+    public const DIRECTION_DOWN = 'down';
     /**
      * The css class part of dropleft
      */
-    const DIRECTION_LEFT = 'left';
+    public const DIRECTION_LEFT = 'left';
     /**
      * The css class part of dropright
      */
-    const DIRECTION_RIGHT = 'right';
+    public const DIRECTION_RIGHT = 'right';
     /**
      * The css class part of dropup
      */
-    const DIRECTION_UP = 'up';
+    public const DIRECTION_UP = 'up';
 
     /**
      * @var string|null the button label
@@ -103,11 +104,7 @@ class ButtonDropdown extends Widget
      */
     public $renderContainer = true;
 
-
-    /**
-     * {@inheritdoc}
-     */
-    public function init()
+    public function init(): void
     {
         parent::init();
 
@@ -120,8 +117,6 @@ class ButtonDropdown extends Widget
     }
 
     /**
-     * {@inheritdoc}
-     * @return string
      * @throws Throwable
      */
     public function run(): string
@@ -129,7 +124,10 @@ class ButtonDropdown extends Widget
         $html = $this->renderButton() . "\n" . $this->renderDropdown();
 
         if ($this->renderContainer) {
-            Html::addCssClass($this->options, ['widget' => 'drop' . $this->direction, 'btn-group']);
+            Html::addCssClass($this->options, [
+                'widget' => 'drop' . $this->direction,
+                'btn-group',
+            ]);
             $options = $this->options;
             $tag = ArrayHelper::remove($options, 'tag', 'div');
             $html = Html::tag($tag, $html, $options);
@@ -150,7 +148,9 @@ class ButtonDropdown extends Widget
      */
     protected function renderButton(): string
     {
-        Html::addCssClass($this->buttonOptions, ['widget' => 'btn']);
+        Html::addCssClass($this->buttonOptions, [
+            'widget' => 'btn',
+        ]);
         $label = $this->label;
         if ($this->encodeLabel) {
             $label = Html::encode($label);
@@ -158,9 +158,15 @@ class ButtonDropdown extends Widget
 
         if ($this->split) {
             $buttonOptions = $this->buttonOptions;
-            $this->buttonOptions['data'] = ['bs-toggle' => 'dropdown'];
-            $this->buttonOptions['aria'] = ['expanded' => 'false'];
-            Html::addCssClass($this->buttonOptions, ['toggle' => 'dropdown-toggle dropdown-toggle-split']);
+            $this->buttonOptions['data'] = [
+                'bs-toggle' => 'dropdown',
+            ];
+            $this->buttonOptions['aria'] = [
+                'expanded' => 'false',
+            ];
+            Html::addCssClass($this->buttonOptions, [
+                'toggle' => 'dropdown-toggle dropdown-toggle-split',
+            ]);
             unset($buttonOptions['id']);
             $splitButton = Button::widget([
                 'label' => '<span class="visually-hidden">' . Yii::t('yii/bootstrap5', 'Toggle Dropdown') . '</span>',
@@ -170,9 +176,15 @@ class ButtonDropdown extends Widget
             ]);
         } else {
             $buttonOptions = $this->buttonOptions;
-            Html::addCssClass($buttonOptions, ['toggle' => 'dropdown-toggle']);
-            $buttonOptions['data'] = ['bs-toggle' => 'dropdown'];
-            $buttonOptions['aria'] = ['expanded' => 'false'];
+            Html::addCssClass($buttonOptions, [
+                'toggle' => 'dropdown-toggle',
+            ]);
+            $buttonOptions['data'] = [
+                'bs-toggle' => 'dropdown',
+            ];
+            $buttonOptions['aria'] = [
+                'expanded' => 'false',
+            ];
             $splitButton = '';
         }
 
@@ -188,12 +200,13 @@ class ButtonDropdown extends Widget
         }
 
         return Button::widget([
-                'tagName' => $this->tagName,
-                'label' => $label,
-                'options' => $buttonOptions,
-                'encodeLabel' => false,
-                'view' => $this->getView(),
-            ]) . "\n" . $splitButton;
+            'tagName' => $this->tagName,
+            'label' => $label,
+            'options' => $buttonOptions,
+            'clientOptions' => false,
+            'encodeLabel' => false,
+            'view' => $this->getView(),
+        ]) . "\n" . $splitButton;
     }
 
     /**

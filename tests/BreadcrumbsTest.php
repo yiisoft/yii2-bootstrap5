@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\bootstrap5;
 
 use yii\bootstrap5\Breadcrumbs;
@@ -13,11 +15,19 @@ class BreadcrumbsTest extends TestCase
     {
         Breadcrumbs::$counter = 0;
         $out = Breadcrumbs::widget([
-            'homeLink' => ['label' => 'Home', 'url' => '#'],
+            'homeLink' => [
+                'label' => 'Home',
+                'url' => '#',
+            ],
             'links' => [
-                ['label' => 'Library', 'url' => '#'],
-                ['label' => 'Data']
-            ]
+                [
+                    'label' => 'Library',
+                    'url' => '#',
+                ],
+                [
+                    'label' => 'Data',
+                ],
+            ],
         ]);
 
         $expected = <<<HTML
@@ -35,9 +45,14 @@ HTML;
         $out = Breadcrumbs::widget([
             'homeLink' => false,
             'links' => [
-                ['label' => 'Library', 'url' => '#'],
-                ['label' => 'Data']
-            ]
+                [
+                    'label' => 'Library',
+                    'url' => '#',
+                ],
+                [
+                    'label' => 'Data',
+                ],
+            ],
         ]);
 
         $expected = <<<HTML

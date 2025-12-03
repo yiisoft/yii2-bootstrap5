@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\bootstrap5;
 
 use yii\base\DynamicModel;
@@ -19,13 +21,13 @@ class HtmlTest extends TestCase
             [
                 'foo',
                 [],
-                '<input type="text" class="form-control-plaintext" value="foo" readonly>'
+                '<input type="text" class="form-control-plaintext" value="foo" readonly>',
             ],
             [
                 '<html>',
                 [],
-                '<input type="text" class="form-control-plaintext" value="&lt;html&gt;" readonly>'
-            ]
+                '<input type="text" class="form-control-plaintext" value="&lt;html&gt;" readonly>',
+            ],
         ];
     }
 
@@ -33,7 +35,6 @@ class HtmlTest extends TestCase
      * @dataProvider dataProviderStaticControl
      *
      * @param string $value
-     * @param array $options
      * @param string $expectedHtml
      */
     public function testStaticControl($value, array $options, $expectedHtml)
@@ -67,7 +68,9 @@ EOD;
 EOD;
         $this->assertEqualsWithoutLE($expected, Html::radioList('test', ['value2'], $dataItems, [
             'item' => function ($index, $label, $name, $checked, $value) {
-                return $index . Html::label($label . ' ' . Html::radio($name, $checked, ['value' => $value]));
+                return $index . Html::label($label . ' ' . Html::radio($name, $checked, [
+                    'value' => $value,
+                ]));
             },
         ]));
 
@@ -76,14 +79,20 @@ EOD;
 <div><div class="form-check"><input type="radio" id="i0" class="form-check-input" name="test" value="value">
 <label class="form-check-label" for="i0">label&amp;</label></div></div>
 EOD;
-        $this->assertEqualsWithoutLE($expected, Html::radioList('test', [], ['value' => 'label&']));
+        $this->assertEqualsWithoutLE($expected, Html::radioList('test', [], [
+            'value' => 'label&',
+        ]));
 
         Html::$counter = 0;
         $expected = <<<'EOD'
 <div><div class="form-check"><input type="radio" id="i0" class="form-check-input" name="test" value="value">
 <label class="form-check-label" for="i0">label&</label></div></div>
 EOD;
-        $this->assertEqualsWithoutLE($expected, Html::radioList('test', [], ['value' => 'label&'], ['encode' => false]));
+        $this->assertEqualsWithoutLE($expected, Html::radioList('test', [], [
+            'value' => 'label&',
+        ], [
+            'encode' => false,
+        ]));
     }
 
     public function testCheckboxList()
@@ -113,7 +122,9 @@ EOD;
 EOD;
         $this->assertEqualsWithoutLE($expected, Html::checkboxList('test', ['value2'], $dataItems, [
             'item' => function ($index, $label, $name, $checked, $value) {
-                return $index . Html::label($label . ' ' . Html::checkbox($name, $checked, ['value' => $value]));
+                return $index . Html::label($label . ' ' . Html::checkbox($name, $checked, [
+                    'value' => $value,
+                ]));
             },
         ]));
 
@@ -122,14 +133,20 @@ EOD;
 <div><div class="form-check"><input type="checkbox" id="i0" class="form-check-input" name="test[]" value="value" checked>
 <label class="form-check-label" for="i0">label&amp;</label></div></div>
 EOD;
-        $this->assertEqualsWithoutLE($expected, Html::checkboxList('test', 'value', ['value' => 'label&']));
+        $this->assertEqualsWithoutLE($expected, Html::checkboxList('test', 'value', [
+            'value' => 'label&',
+        ]));
 
         Html::$counter = 0;
         $expected = <<<'EOD'
 <div><div class="form-check"><input type="checkbox" id="i0" class="form-check-input" name="test[]" value="value" checked>
 <label class="form-check-label" for="i0">label&</label></div></div>
 EOD;
-        $this->assertEqualsWithoutLE($expected, Html::checkboxList('test', 'value', ['value' => 'label&'], ['encode' => false]));
+        $this->assertEqualsWithoutLE($expected, Html::checkboxList('test', 'value', [
+            'value' => 'label&',
+        ], [
+            'encode' => false,
+        ]));
     }
 
     public function testError()
@@ -138,8 +155,14 @@ EOD;
         $model->addError('foo', 'Some error message.');
 
         $this->assertEquals('<div class="invalid-feedback">Some error message.</div>', Html::error($model, 'foo'));
-        $this->assertEquals('<div class="custom-class">Some error message.</div>', Html::error($model, 'foo', ['class' => 'custom-class']));
-        $this->assertEquals('<div>Some error message.</div>', Html::error($model, 'foo', ['class' => null]));
-        $this->assertEquals('<p class="invalid-feedback">Some error message.</p>', Html::error($model, 'foo', ['tag' => 'p']));
+        $this->assertEquals('<div class="custom-class">Some error message.</div>', Html::error($model, 'foo', [
+            'class' => 'custom-class',
+        ]));
+        $this->assertEquals('<div>Some error message.</div>', Html::error($model, 'foo', [
+            'class' => null,
+        ]));
+        $this->assertEquals('<p class="invalid-feedback">Some error message.</p>', Html::error($model, 'foo', [
+            'tag' => 'p',
+        ]));
     }
 }

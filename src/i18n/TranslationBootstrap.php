@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
@@ -17,15 +19,12 @@ use yii\i18n\GettextMessageSource;
  */
 class TranslationBootstrap implements BootstrapInterface
 {
-    /**
-     * @inheritDoc
-     */
-    public function bootstrap($app)
+    public function bootstrap($app): void
     {
         $app->getI18n()->translations['yii/bootstrap5'] = [
             'class' => GettextMessageSource::class,
             'sourceLanguage' => 'en-US',
-            'basePath' => '@yii/bootstrap5/messages'
+            'basePath' => '@yii/bootstrap5/messages',
         ];
     }
 }
