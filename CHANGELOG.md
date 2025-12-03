@@ -1,7 +1,10 @@
 Yii Framework 2 bootstrap5 extension Change Log
 ==============================================
 
-2.0.51 under development
+2.0.52 under development
+------------------------
+
+2.0.51 December 03, 2025
 ------------------------
 
 - Enh #87: Added view option to render a view with Yii inside tab content
