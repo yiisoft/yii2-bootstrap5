@@ -1,8 +1,11 @@
 Yii Framework 2 bootstrap5 extension Change Log
 ==============================================
 
-2.0.52 under development
+3.0.0 under development
 ------------------------
+
+- Enh #: Applying Yii2 coding standards (@s1lver)
+- Enh #: Raise min version to PHP 7.4 (@s1lver)
 
 2.0.51 December 03, 2025
 ------------------------

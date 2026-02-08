@@ -10,4 +10,6 @@ declare(strict_types=1);
 
 namespace yii\bootstrap5;
 
-class Html extends BaseHtml {}
+class Html extends BaseHtml
+{
+}
