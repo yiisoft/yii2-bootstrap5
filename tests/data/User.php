@@ -1,10 +1,11 @@
 <?php
 
-declare(strict_types=1);
 /**
  * @package yii2-bootstrap5
  * @author Simon Karlen <simi.albi@outlook.com>
  */
+
+declare(strict_types=1);
 
 namespace yiiunit\extensions\bootstrap5\data;
 

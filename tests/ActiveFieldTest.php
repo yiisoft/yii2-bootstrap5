@@ -339,8 +339,8 @@ HTML;
     protected function setUp(): void
     {
         // dirty way to have Request object not throwing exception when running testHomeLinkNull()
-        $_SERVER['SCRIPT_FILENAME'] = "index.php";
-        $_SERVER['SCRIPT_NAME'] = "index.php";
+        $_SERVER['SCRIPT_FILENAME'] = 'index.php';
+        $_SERVER['SCRIPT_NAME'] = 'index.php';
         parent::setUp();
 
         Html::$counter = 0;
