@@ -11,6 +11,7 @@ on:
             - 'CHANGELOG.md'
             - 'LICENSE.md'
             - '.gitignore'
+            - '.git-blame-ignore-revs'
             - '.gitattributes'
             - '.editorconfig'
             - 'docker-compose.yml'
