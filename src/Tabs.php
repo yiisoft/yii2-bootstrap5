@@ -90,6 +90,9 @@ class Tabs extends Widget
      *     * active: bool, optional, whether the item tab header and pane should be visible or not.
      *     * content: string, required if `items` is not set. The content (HTML) of the tab pane.
      *     * options: optional, array, the HTML attributes of the tab content container.
+     *
+     *
+     * You can also passing string, specially for `-` character, it would render `divider` like in `yii\bootstrap5\Dropdown`
      */
     public $items = [];
     /**
@@ -196,6 +199,16 @@ class Tabs extends Widget
         }
 
         foreach ($items as $n => $item) {
+
+            if (is_string($item)) {
+                if ($item === '-') {
+                    // Don't add divider to panes (tab-content)
+                    continue;
+                }
+                $this->panes[] = $item;
+                continue;
+            }
+            
             $options = array_merge($this->itemOptions, ArrayHelper::getValue($item, 'options', []));
             $options['id'] = ArrayHelper::getValue($options, 'id', $this->options['id'] . $prefix . '-tab' . $n);
             unset($items[$n]['options']['id']); // @see https://github.com/yiisoft/yii2-bootstrap4/issues/108#issuecomment-465219339
