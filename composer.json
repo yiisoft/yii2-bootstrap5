@@ -65,5 +65,11 @@
             "dev-master": "2.0.x-dev"
         },
         "bootstrap": "yii\\bootstrap5\\i18n\\TranslationBootstrap"
+    },
+    "scripts": {
+        "cs": "./vendor/bin/phpcs -q src tests",
+        "cs-fix": "./vendor/bin/phpcbf -q src tests",
+        "static": "./vendor/bin/phpstan analyse --memory-limit=-1",
+        "tests": "./vendor/bin/phpunit"
     }
 }
