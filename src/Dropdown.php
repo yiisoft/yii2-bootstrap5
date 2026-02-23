@@ -68,8 +68,13 @@ class Dropdown extends Widget
      */
     public $submenuOptions = [];
 
-
-    public function init(): void
+    /**
+     * Initializes the widget.
+     * If you override this method, make sure you call the parent implementation first.
+     * @throws InvalidConfigException
+     * @return void
+     */
+    public function init()
     {
         parent::init();
         Html::addCssClass($this->options, [

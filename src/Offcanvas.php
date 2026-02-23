@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace yii\bootstrap5;
 
 use Yii;
+use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -109,8 +110,13 @@ class Offcanvas extends Widget
      */
     public $bodyOptions = [];
 
-
-    public function init(): void
+    /**
+     * Initializes the widget.
+     * If you override this method, make sure you call the parent implementation first.
+     * @throws InvalidConfigException
+     * @return void
+     */
+    public function init()
     {
         parent::init();
 

@@ -138,11 +138,13 @@ class Modal extends Widget
      */
     public $dialogOptions = [];
 
-
     /**
+     * Initializes the widget.
+     * If you override this method, make sure you call the parent implementation first.
      * @throws InvalidConfigException
+     * @return void
      */
-    public function init(): void
+    public function init()
     {
         parent::init();
 

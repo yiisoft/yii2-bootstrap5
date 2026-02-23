@@ -56,8 +56,9 @@ trait BootstrapWidgetTrait
      * This method will register the bootstrap asset bundle. If you override this method,
      * make sure you call the parent implementation first.
      * @throws InvalidConfigException
+     * @return void
      */
-    public function init(): void
+    public function init()
     {
         parent::init();
         if (!isset($this->options['id'])) {

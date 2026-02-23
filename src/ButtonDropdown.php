@@ -12,6 +12,7 @@ namespace yii\bootstrap5;
 
 use Throwable;
 use Yii;
+use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 
@@ -104,7 +105,13 @@ class ButtonDropdown extends Widget
      */
     public $renderContainer = true;
 
-    public function init(): void
+    /**
+     * Initializes the widget.
+     * If you override this method, make sure you call the parent implementation first.
+     * @throws InvalidConfigException
+     * @return void
+     */
+    public function init()
     {
         parent::init();
 

@@ -109,8 +109,13 @@ class Nav extends Widget
      */
     public $dropdownClass = Dropdown::class;
 
-
-    public function init(): void
+    /**
+     * Initializes the widget.
+     * If you override this method, make sure you call the parent implementation first.
+     * @throws InvalidConfigException
+     * @return void
+     */
+    public function init()
     {
         parent::init();
         if ($this->route === null && Yii::$app->controller !== null) {
