@@ -34,8 +34,6 @@ use yii\helpers\ArrayHelper;
  * @see https://getbootstrap.com/docs/5.1/components/pagination/
  * @author Simon Karlen <simi.albi@outlook.com>
  * @since 2.0.2
- *
- * @property-read array $pageRange
  */
 class LinkPager extends Widget
 {
