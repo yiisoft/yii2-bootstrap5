@@ -9,6 +9,7 @@ Yii Framework 2 bootstrap5 extension Change Log
 - Bug #107: Enhance `README.md` and `internals.md` documentation; update scripts in `composer.json` (@terabytesoftw)
 - Bug #108: Fix logo image sources in `README.md` for correct color scheme display (@terabytesoftw)
 - Bug #109: Refactor widget initialization methods to remove return type declarations in `init()` method and enhance documentation (@terabytesoftw)
+- Bug #115: Remove unnecessary `@property` annotations in `LinkPager` and `NavBar` (mspirkov)
 
 2.0.51 December 03, 2025
 ------------------------
