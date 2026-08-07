@@ -1,11 +1,12 @@
 <?php
 
-declare(strict_types=1);
 /**
  * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
+
+declare(strict_types=1);
 
 namespace yii\bootstrap5;
 
@@ -313,6 +314,8 @@ class ActiveField extends \yii\widgets\ActiveField
             if (isset($options['label'])) {
                 $this->parts['{labelTitle}'] = $options['label'];
             }
+        } else {
+            $this->renderCheckLabel($options);
         }
 
         parent::checkbox($options, false);
@@ -345,8 +348,12 @@ class ActiveField extends \yii\widgets\ActiveField
         Html::removeCssClass($this->labelOptions, 'form-label');
         unset($options['template']);
 
-        if ($enclosedByLabel && isset($options['label'])) {
-            $this->parts['{labelTitle}'] = $options['label'];
+        if ($enclosedByLabel) {
+            if (isset($options['label'])) {
+                $this->parts['{labelTitle}'] = $options['label'];
+            }
+        } else {
+            $this->renderCheckLabel($options);
         }
 
         parent::radio($options, false);
@@ -629,6 +636,25 @@ class ActiveField extends \yii\widgets\ActiveField
         }
 
         return $config;
+    }
+
+    /**
+     * Renders the `{label}` part of a checkbox or radio that is not enclosed by its label.
+     *
+     * [[\yii\widgets\ActiveField::checkbox()]] and [[\yii\widgets\ActiveField::radio()]] pin `{label}` to an empty
+     * string when the `label` option is absent, so the part must be built before delegating to keep the
+     * `form-check-label` markup. A `label` option set to `false` disables the label.
+     *
+     * @param array<array-key, mixed> $options the input tag options passed to the parent renderer.
+     */
+    protected function renderCheckLabel(array $options): void
+    {
+        if ($this->enableLabel === false || isset($this->parts['{label}'])) {
+            return;
+        }
+
+        $this->adjustLabelFor($options);
+        $this->label($options['label'] ?? null);
     }
 
     /**

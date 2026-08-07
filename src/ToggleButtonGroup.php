@@ -66,8 +66,13 @@ class ToggleButtonGroup extends InputWidget
      */
     public $encodeLabels = true;
 
-
-    public function init(): void
+    /**
+     * Initializes the widget.
+     * If you override this method, make sure you call the parent implementation first.
+     * @throws InvalidConfigException
+     * @return void
+     */
+    public function init()
     {
         parent::init();
         $this->registerPlugin('button');

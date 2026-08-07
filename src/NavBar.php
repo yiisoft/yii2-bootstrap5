@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace yii\bootstrap5;
 
 use Yii;
+use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -34,9 +35,6 @@ use yii\helpers\ArrayHelper;
  * ]);
  * NavBar::end();
  * ```
- *
- * @property-write array $containerOptions
- *
  * @see https://getbootstrap.com/docs/5.1/components/navbar/
  * @author Antonio Ramirez <amigo.cobos@gmail.com>
  * @author Alexander Kochetov <creocoder@gmail.com>
@@ -119,8 +117,13 @@ class NavBar extends Widget
     public $innerContainerOptions = [];
     public $clientOptions = [];
 
-
-    public function init(): void
+    /**
+     * Initializes the widget.
+     * If you override this method, make sure you call the parent implementation first.
+     * @throws InvalidConfigException
+     * @return void
+     */
+    public function init()
     {
         parent::init();
         if (!isset($this->options['class']) || empty($this->options['class'])) {

@@ -1,10 +1,23 @@
 Yii Framework 2 bootstrap5 extension Change Log
 ==============================================
 
-2.0.51 under development
+3.0.0 under development
 ------------------------
 
+- Enh #106: Applying Yii2 coding standards (@s1lver)
+- Enh #106: Raise min version to PHP 7.4 (@s1lver)
+- Bug #107: Enhance `README.md` and `internals.md` documentation; update scripts in `composer.json` (@terabytesoftw)
+- Bug #108: Fix logo image sources in `README.md` for correct color scheme display (@terabytesoftw)
+- Bug #109: Refactor widget initialization methods to remove return type declarations in `init()` method and enhance documentation (@terabytesoftw)
+- Bug #115: Remove unnecessary `@property` annotations in `LinkPager` and `NavBar` (mspirkov)
+
+2.0.51 December 03, 2025
+------------------------
+
+- Enh #87: Added view option to render a view with Yii inside tab content
+- Bug #83: Removed bower asset and replaced with twbs/bootstrap package (simialbi)
 - Bug #88: Fix ButtonDropdown JS error (stevekr, simialbi)
+- Bug #103: Fix `LinkPager::getPageRange` when `maxButtons` is 2 (mspirkov)
 
 2.0.50 April 10, 2025
 ---------------------
