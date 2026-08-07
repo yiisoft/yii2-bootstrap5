@@ -40,7 +40,7 @@ HTML;
     {
         Alert::$counter = 0;
         $html = Alert::widget([
-            'body' => "Message1",
+            'body' => 'Message1',
         ]);
 
         $expectedHtml = <<<HTML

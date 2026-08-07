@@ -4,5 +4,6 @@
     },
     "devDependencies": {
         "bootstrap-icons": "^1.10.5"
-    }
+    },
+    "license": "BSD-3-Clause"
 }

@@ -24,15 +24,16 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": ">=8.1",
+        "php": ">=8.3",
         "ext-json": "*",
-        "yiisoft/yii2": "22.0.x-dev"
+        "yiisoft/yii2": "^22.0@dev"
     },
     "require-dev": {
-        "php-forge/foxy": "^0.1",
+        "php-forge/foxy": "^0.2",
+        "phpstan/phpstan": "^2.1",
+        "phpstan/phpstan-phpunit": "^2.0",
         "phpunit/phpunit": "^9.6",
-        "symplify/easy-coding-standard": "^12.1",
-        "yiisoft/yii2-coding-standards": "~2.0"
+        "yiisoft/yii2-coding-standards": "~3.0"
     },
     "suggest": {
         "twbs/bootstrap-icons": "Add this package to the `require` section of your `composer.json` if you'd like to use the bootstrap icon asset."
@@ -59,5 +60,11 @@
     "extra": {
         "bootstrap": "yii\\bootstrap5\\i18n\\TranslationBootstrap",
         "foxy": true
+    },
+    "scripts": {
+        "cs": "./vendor/bin/phpcs",
+        "cs-fix": "./vendor/bin/phpcbf",
+        "static": "./vendor/bin/phpstan --memory-limit=-1",
+        "tests": "./vendor/bin/phpunit"
     }
 }

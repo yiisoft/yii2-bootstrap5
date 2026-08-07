@@ -165,8 +165,8 @@ HTML
 <div class="accordion-item"><div id="w0-collapse3-heading" class="accordion-header"><h5 class="mb-0"><button type="button" id="w4" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#w0-collapse3" aria-expanded="false" aria-controls="w0-collapse3">FormField</button>
 </h5></div>
 <div id="w0-collapse3" class="collapse" aria-labelledby="w0-collapse3-heading" data-bs-parent="#w0">
-<div class="accordion-body"><div class="form-group field-dynamicmodel-test">
-<input type="text" id="dynamicmodel-test" class="form-control" name="DynamicModel[test]">
+<div class="accordion-body"><div class="field-dynamicmodel-test">
+<input type="text" id="dynamicmodel-test" name="DynamicModel[test]">
 </div></div>
 
 </div></div>
@@ -262,8 +262,8 @@ HTML
 <div class="accordion-item"><div id="w0-collapse0-heading" class="accordion-header"><h5 class="mb-0"><button type="button" id="w1" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#w0-collapse0" aria-expanded="true" aria-controls="w0-collapse0">Collapsible Group Item #1</button>
 </h5></div>
 <div id="w0-collapse0" class="collapse show" aria-labelledby="w0-collapse0-heading" data-bs-parent="#w0">
-<div class="accordion-body"><div class="form-group field-singer-firstname">
-<input type="text" id="singer-firstname" class="form-control" name="Singer[firstName]">
+<div class="accordion-body"><div class="field-singer-firstname">
+<input type="text" id="singer-firstname" name="Singer[firstName]">
 </div></div>
 
 </div></div>

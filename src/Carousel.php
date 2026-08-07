@@ -81,11 +81,13 @@ class Carousel extends Widget
         ],
     ];
 
-
     /**
+     * Initializes the widget.
+     * If you override this method, make sure you call the parent implementation first.
      * @throws InvalidConfigException
+     * @return void
      */
-    public function init(): void
+    public function init()
     {
         parent::init();
         Html::addCssClass($this->options, [

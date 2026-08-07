@@ -108,11 +108,12 @@ class ActiveForm extends \yii\widgets\ActiveForm
     public $errorSummaryCssClass = 'alert alert-danger';
     public $validationStateOn = self::VALIDATION_STATE_ON_INPUT;
 
-
     /**
      * @throws InvalidConfigException
+     *
+     * @return void
      */
-    public function init(): void
+    public function init()
     {
         if (!in_array($this->layout, [self::LAYOUT_DEFAULT, self::LAYOUT_HORIZONTAL, self::LAYOUT_INLINE, self::LAYOUT_FLOATING], true)) {
             throw new InvalidConfigException('Invalid layout type: ' . $this->layout);

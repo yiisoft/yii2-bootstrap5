@@ -34,8 +34,6 @@ use yii\helpers\ArrayHelper;
  * @see https://getbootstrap.com/docs/5.1/components/pagination/
  * @author Simon Karlen <simi.albi@outlook.com>
  * @since 2.0.2
- *
- * @property-read array $pageRange
  */
 class LinkPager extends Widget
 {
@@ -148,12 +146,13 @@ class LinkPager extends Widget
      */
     public $disableCurrentPageButton = false;
 
-
     /**
-     * Initializes the pager.
+     * Initializes the widget.
+     * If you override this method, make sure you call the parent implementation first.
      * @throws InvalidConfigException
+     * @return void
      */
-    public function init(): void
+    public function init()
     {
         parent::init();
 
@@ -323,7 +322,9 @@ class LinkPager extends Widget
         $currentPage = $this->pagination->getPage();
         $pageCount = $this->pagination->getPageCount();
 
-        $beginPage = max(0, $currentPage - (int) ($this->maxButtonCount / 2));
+        $beginPageOffset = $this->maxButtonCount > 2 ? (int) ($this->maxButtonCount / 2) : 0;
+        $beginPage = max(0, $currentPage - $beginPageOffset);
+
         if (($endPage = $beginPage + $this->maxButtonCount - 1) >= $pageCount) {
             $endPage = $pageCount - 1;
             $beginPage = max(0, $endPage - $this->maxButtonCount + 1);
