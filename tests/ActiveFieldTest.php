@@ -416,6 +416,38 @@ HTML;
         $this->assertStringContainsString('</label>', $html, 'Enclosing label must close.');
     }
 
+    public function testCheckboxEnclosedByLabelWithCustomLabelOption(): void
+    {
+        $html = $this->activeField->checkbox(['label' => 'Custom Label'], true)->render();
+
+        $this->assertStringContainsString(
+            'Custom Label',
+            $html,
+            'Custom label text must override the model attribute label.',
+        );
+        $this->assertStringNotContainsString(
+            'Attribute Name',
+            $html,
+            'Model attribute label must not appear when a custom label is set.',
+        );
+    }
+
+    public function testRadioEnclosedByLabelWithCustomLabelOption(): void
+    {
+        $html = $this->activeField->radio(['label' => 'Custom Label'], true)->render();
+
+        $this->assertStringContainsString(
+            'Custom Label',
+            $html,
+            'Custom label text must override the model attribute label.',
+        );
+        $this->assertStringNotContainsString(
+            'Attribute Name',
+            $html,
+            'Model attribute label must not appear when a custom label is set.',
+        );
+    }
+
     protected function setUp(): void
     {
         // dirty way to have Request object not throwing exception when running testHomeLinkNull()
