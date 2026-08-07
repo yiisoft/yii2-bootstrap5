@@ -336,6 +336,118 @@ HTML;
         $this->assertStringContainsString('data-attribute="test"', $content);
     }
 
+    public function testCheckboxRendersModelLabel(): void
+    {
+        $html = $this->activeField->checkbox()->render();
+
+        $this->assertStringContainsString(
+            'class="form-check-label"',
+            $html,
+            'Label with form-check-label class must appear.',
+        );
+        $this->assertStringContainsString(
+            'Attribute Name',
+            $html,
+            'Model attribute label text must be rendered.',
+        );
+    }
+
+    public function testRadioRendersModelLabel(): void
+    {
+        $html = $this->activeField->radio()->render();
+
+        $this->assertStringContainsString(
+            'class="form-check-label"',
+            $html,
+            'Label with form-check-label class must appear.',
+        );
+        $this->assertStringContainsString(
+            'Attribute Name',
+            $html,
+            'Model attribute label text must be rendered.',
+        );
+    }
+
+    public function testCheckboxSuppressesLabelWhenOptionIsFalse(): void
+    {
+        $html = $this->activeField->checkbox(['label' => false])->render();
+
+        $this->assertStringNotContainsString('<label', $html, 'Label tag must be absent.');
+    }
+
+    public function testRadioSuppressesLabelWhenOptionIsFalse(): void
+    {
+        $html = $this->activeField->radio(['label' => false])->render();
+
+        $this->assertStringNotContainsString('<label', $html, 'Label tag must be absent.');
+    }
+
+    public function testCheckboxEnclosedByLabelTrue(): void
+    {
+        $html = $this->activeField->checkbox([], true)->render();
+
+        $this->assertStringContainsString(
+            '<label class="form-check-label"',
+            $html,
+            'Enclosing label must open with form-check-label class.',
+        );
+        $this->assertStringContainsString(
+            'Attribute Name',
+            $html,
+            'Model label text must appear inside the enclosing element.',
+        );
+        $this->assertStringContainsString('</label>', $html, 'Enclosing label must close.');
+    }
+
+    public function testRadioEnclosedByLabelTrue(): void
+    {
+        $html = $this->activeField->radio([], true)->render();
+
+        $this->assertStringContainsString(
+            '<label class="form-check-label"',
+            $html,
+            'Enclosing label must open with form-check-label class.',
+        );
+        $this->assertStringContainsString(
+            'Attribute Name',
+            $html,
+            'Model label text must appear inside the enclosing element.',
+        );
+        $this->assertStringContainsString('</label>', $html, 'Enclosing label must close.');
+    }
+
+    public function testCheckboxEnclosedByLabelWithCustomLabelOption(): void
+    {
+        $html = $this->activeField->checkbox(['label' => 'Custom Label'], true)->render();
+
+        $this->assertStringContainsString(
+            'Custom Label',
+            $html,
+            'Custom label text must override the model attribute label.',
+        );
+        $this->assertStringNotContainsString(
+            'Attribute Name',
+            $html,
+            'Model attribute label must not appear when a custom label is set.',
+        );
+    }
+
+    public function testRadioEnclosedByLabelWithCustomLabelOption(): void
+    {
+        $html = $this->activeField->radio(['label' => 'Custom Label'], true)->render();
+
+        $this->assertStringContainsString(
+            'Custom Label',
+            $html,
+            'Custom label text must override the model attribute label.',
+        );
+        $this->assertStringNotContainsString(
+            'Attribute Name',
+            $html,
+            'Model attribute label must not appear when a custom label is set.',
+        );
+    }
+
     protected function setUp(): void
     {
         // dirty way to have Request object not throwing exception when running testHomeLinkNull()
