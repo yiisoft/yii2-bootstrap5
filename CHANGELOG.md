@@ -1,6 +1,10 @@
 Yii Framework 2 bootstrap5 extension Change Log
 ==============================================
 
+22.0.0 under development
+------------------------
+- Bug #117: Fix `ActiveField::checkbox()`/`radio()` dropping the model-generated label in the default non-enclosed layout (@terabytesoftw)
+
 3.0.0 under development
 ------------------------
 
