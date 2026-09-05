@@ -36,6 +36,9 @@ use yii\helpers\ArrayHelper;
  * NavBar::end();
  * ```
  * @see https://getbootstrap.com/docs/5.1/components/navbar/
+ *
+ * @property-write array $containerOptions
+ *
  * @author Antonio Ramirez <amigo.cobos@gmail.com>
  * @author Alexander Kochetov <creocoder@gmail.com>
  */

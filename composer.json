@@ -34,7 +34,9 @@
         "phpunit/phpunit": "^9.6",
         "phpstan/phpstan": "^2.1",
         "phpstan/phpstan-phpunit": "^2.0",
-        "twbs/bootstrap-icons": "^1.7.2"
+        "twbs/bootstrap-icons": "^1.7.2",
+        "rector/rector": "^2.6",
+        "mspirkov/yii2-rector": "^0.1"
     },
     "suggest": {
         "twbs/bootstrap-icons": "Add this package to the `require` section of your `composer.json` if you'd like to use the bootstrap icon asset."
@@ -70,6 +72,7 @@
         "cs": "./vendor/bin/phpcs -q src tests",
         "cs-fix": "./vendor/bin/phpcbf -q src tests",
         "static": "./vendor/bin/phpstan analyse --memory-limit=-1",
-        "tests": "./vendor/bin/phpunit"
+        "tests": "./vendor/bin/phpunit",
+        "rector": "./vendor/bin/rector"
     }
 }
