@@ -33,3 +33,7 @@ coverage.xml
 # nodejs
 /node_modules
 /package-lock.json
+
+# PHP CS Fixer
+.php-cs-fixer.php
+.php-cs-fixer.cache

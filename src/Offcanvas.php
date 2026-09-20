@@ -49,11 +49,11 @@ class Offcanvas extends Widget
      */
     public $placement = self::PLACEMENT_START;
     /**
-     * @var boolean Whether to enable backdrop or not. Defaults to `true`.
+     * @var bool Whether to enable backdrop or not. Defaults to `true`.
      */
     public $backdrop = true;
     /**
-     * @var boolean Whether to enable body scrolling or not. Defaults to `false`.
+     * @var bool Whether to enable body scrolling or not. Defaults to `false`.
      */
     public $scrolling = false;
     /**
