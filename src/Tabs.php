@@ -216,6 +216,8 @@ class Tabs extends Widget
             $disabled = ArrayHelper::getValue($item, 'disabled', false);
             $headerOptions = ArrayHelper::getValue($item, 'headerOptions', $this->headerOptions);
             ArrayHelper::setValue($items[$n], 'options', $headerOptions);
+            $linkOptions = ArrayHelper::getValue($item, 'linkOptions', $this->linkOptions);
+            ArrayHelper::setValue($items[$n], 'linkOptions', $linkOptions);
 
             if (isset($item['items'])) {
                 $this->prepareItems($items[$n]['items'], '-dd' . $n);

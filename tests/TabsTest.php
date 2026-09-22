@@ -504,4 +504,36 @@ HTML;
 
         $this->assertContainsWithoutLE($expected, $html);
     }
+
+    public function testLinkOptions(): void
+    {
+        Tabs::$counter = 0;
+        $html = Tabs::widget([
+            'linkOptions' => [
+                'class' => ['px-2'],
+            ],
+            'items' => [
+                [
+                    'label' => 'Page1',
+                    'content' => 'Page1',
+                ],
+                [
+                    'label' => 'Page2',
+                    'content' => 'Page2',
+                    'linkOptions' => [
+                        'class' => ['px-3'],
+                    ],
+                ],
+            ],
+        ]);
+
+        $expected = <<<HTML
+<ul id="w0" class="nav nav-tabs" role="tablist"><li class="nav-item"><a class="px-2 nav-link active" href="#w0-tab0" data-bs-toggle="tab" role="tab" aria-controls="w0-tab0" aria-selected="true">Page1</a></li>
+<li class="nav-item"><a class="px-3 nav-link" href="#w0-tab1" data-bs-toggle="tab" role="tab" aria-controls="w0-tab1" aria-selected="false">Page2</a></li></ul>
+<div class="tab-content"><div id="w0-tab0" class="tab-pane active">Page1</div>
+<div id="w0-tab1" class="tab-pane">Page2</div></div>
+HTML;
+
+        $this->assertContainsWithoutLE($expected, $html);
+    }
 }
