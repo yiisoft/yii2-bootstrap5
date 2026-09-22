@@ -215,11 +215,12 @@ class Tabs extends Widget
             $selected = ArrayHelper::getValue($item, 'active', false);
             $disabled = ArrayHelper::getValue($item, 'disabled', false);
             $headerOptions = ArrayHelper::getValue($item, 'headerOptions', $this->headerOptions);
+            ArrayHelper::setValue($items[$n], 'options', $headerOptions);
+
             if (isset($item['items'])) {
                 $this->prepareItems($items[$n]['items'], '-dd' . $n);
                 continue;
             } else {
-                ArrayHelper::setValue($items[$n], 'options', $headerOptions);
                 if (!isset($item['url'])) {
                     ArrayHelper::setValue($items[$n], 'url', '#' . $options['id']);
                     ArrayHelper::setValue($items[$n], 'linkOptions.data.bs-toggle', 'tab');
