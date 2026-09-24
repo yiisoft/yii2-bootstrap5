@@ -1,6 +1,12 @@
 <?php
 
 /**
+ * @link https://www.yiiframework.com/
+ * @copyright Copyright (c) 2008 Yii Software LLC
+ * @license https://www.yiiframework.com/license/
+ */
+
+/**
  * @package yii2-bootstrap5
  * @author Simon Karlen <simi.albi@gmail.com>
  */
