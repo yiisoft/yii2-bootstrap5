@@ -30,14 +30,12 @@
         "twbs/bootstrap": "^5.2.3"
     },
     "require-dev": {
-        "yiisoft/yii2-coding-standards": "~3.0",
         "phpunit/phpunit": "^9.6",
         "phpstan/phpstan": "^2.1",
         "phpstan/phpstan-phpunit": "^2.0",
         "twbs/bootstrap-icons": "^1.7.2",
         "rector/rector": "^2.6",
         "mspirkov/yii2-rector": "^0.1",
-        "slevomat/coding-standard": "^8.31",
         "friendsofphp/php-cs-fixer": "^3.95"
     },
     "suggest": {
@@ -45,8 +43,7 @@
     },
     "config": {
         "allow-plugins": {
-            "yiisoft/yii2-composer": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "yiisoft/yii2-composer": true
         }
     },
     "repositories": [
@@ -72,8 +69,8 @@
         "bootstrap": "yii\\bootstrap5\\i18n\\TranslationBootstrap"
     },
     "scripts": {
-        "cs": "./vendor/bin/phpcs -q src tests && ./vendor/bin/php-cs-fixer check",
-        "cs-fix": "./vendor/bin/phpcbf -q src tests && ./vendor/bin/php-cs-fixer fix",
+        "cs": "./vendor/bin/php-cs-fixer check",
+        "cs-fix": "./vendor/bin/php-cs-fixer fix",
         "static": "./vendor/bin/phpstan analyse --memory-limit=-1",
         "tests": "./vendor/bin/phpunit",
         "rector": "./vendor/bin/rector"
