@@ -11,6 +11,7 @@ Yii Framework 2 bootstrap5 extension Change Log
 - Bug #109: Refactor widget initialization methods to remove return type declarations in `init()` method and enhance documentation (@terabytesoftw)
 - Bug #115: Remove unnecessary `@property` annotations in `LinkPager` and `NavBar` (mspirkov)
 - Enh #118: Add the missing `@property` tags (mspirkov)
+- Enh #120: Fixed Tabs::linkOptions and Tabs::headerOptions (Sandritsch91)
 
 2.0.51 December 03, 2025
 ------------------------

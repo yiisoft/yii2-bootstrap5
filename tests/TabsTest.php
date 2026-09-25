@@ -474,6 +474,19 @@ HTML;
                         'class' => 'col-3',
                     ],
                 ],
+                [
+                    'label' => 'Tab 3',
+                    'items' => [
+                        [
+                            'label' => 'Subtab 1',
+                            'content' => '<div>Subtab Content 1</div>',
+                        ],
+                        [
+                            'label' => 'Subtab 2',
+                            'content' => '<div>Subtab Content 2</div>',
+                        ],
+                    ],
+                ]
             ],
             'options' => [
                 'class' => 'row',
@@ -486,9 +499,45 @@ HTML;
         $expected = <<<HTML
 <ul id="w0" class="row nav nav-tabs" role="tablist"><li class="col nav-item"><a class="nav-link active" href="#w0-tab0" data-bs-toggle="tab" role="tab" aria-controls="w0-tab0" aria-selected="true">Tab 1</a></li>
 <li class="col-6 nav-item"><a class="nav-link" href="#w0-tab1" data-bs-toggle="tab" role="tab" aria-controls="w0-tab1" aria-selected="false">Tab 2</a></li>
-<li class="col-3 nav-item"><a class="nav-link" href="http://www.example.com/">Link</a></li></ul>
+<li class="col-3 nav-item"><a class="nav-link" href="http://www.example.com/">Link</a></li>
+<li class="col dropdown nav-item"><a class="dropdown-toggle nav-link" href="#" data-bs-toggle="dropdown" role="button" aria-expanded="false">Tab 3</a><div id="w1" class="dropdown-menu"><a class="dropdown-item" href="#w0-dd3-tab0" data-bs-toggle="tab" role="tab" aria-controls="w0-dd3-tab0" aria-selected="false">Subtab 1</a>
+<a class="dropdown-item" href="#w0-dd3-tab1" data-bs-toggle="tab" role="tab" aria-controls="w0-dd3-tab1" aria-selected="false">Subtab 2</a></div></li></ul>
 <div class="tab-content"><div id="w0-tab0" class="tab-pane active"><div>Content 1</div></div>
-<div id="w0-tab1" class="tab-pane"><div>Content 2</div></div></div>
+<div id="w0-tab1" class="tab-pane"><div>Content 2</div></div>
+<div id="w0-dd3-tab0" class="tab-pane"><div>Subtab Content 1</div></div>
+<div id="w0-dd3-tab1" class="tab-pane"><div>Subtab Content 2</div></div></div>
+HTML;
+
+        $this->assertContainsWithoutLE($expected, $html);
+    }
+
+    public function testLinkOptions(): void
+    {
+        Tabs::$counter = 0;
+        $html = Tabs::widget([
+            'linkOptions' => [
+                'class' => ['px-2'],
+            ],
+            'items' => [
+                [
+                    'label' => 'Page1',
+                    'content' => 'Page1',
+                ],
+                [
+                    'label' => 'Page2',
+                    'content' => 'Page2',
+                    'linkOptions' => [
+                        'class' => ['px-3'],
+                    ],
+                ],
+            ],
+        ]);
+
+        $expected = <<<HTML
+<ul id="w0" class="nav nav-tabs" role="tablist"><li class="nav-item"><a class="px-2 nav-link active" href="#w0-tab0" data-bs-toggle="tab" role="tab" aria-controls="w0-tab0" aria-selected="true">Page1</a></li>
+<li class="nav-item"><a class="px-3 nav-link" href="#w0-tab1" data-bs-toggle="tab" role="tab" aria-controls="w0-tab1" aria-selected="false">Page2</a></li></ul>
+<div class="tab-content"><div id="w0-tab0" class="tab-pane active">Page1</div>
+<div id="w0-tab1" class="tab-pane">Page2</div></div>
 HTML;
 
         $this->assertContainsWithoutLE($expected, $html);
